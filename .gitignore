@@ -27,6 +27,9 @@ __pycache__/
 # Backups (large data exports)
 backups/
 
+# Private content
+blogs/
+
 # Repo management (private repo only)
 .gitignore.public
 .github/
