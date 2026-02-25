@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="marker-blur">
+      <feGaussianBlur stdDeviation="0.5"/>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <!-- Whiteboard surface -->
+  <rect width="1280" height="640" fill="#f5f5f0"/>
+  <!-- Metal frame -->
+  <rect x="0" y="0" width="1280" height="8" fill="#c0c0c0"/>
+  <rect x="0" y="632" width="1280" height="8" fill="#c0c0c0"/>
+  <rect x="0" y="0" width="8" height="640" fill="#c0c0c0"/>
+  <rect x="1272" y="0" width="8" height="640" fill="#c0c0c0"/>
+  <!-- Tray at bottom -->
+  <rect x="200" y="598" width="880" height="30" fill="#d0d0d0" rx="3" filter="url(#shadow)"/>
+  <!-- Markers on tray -->
+  <rect x="420" y="588" width="60" height="14" rx="4" fill="#ff6b35"/>
+  <rect x="500" y="590" width="60" height="14" rx="4" fill="#4ecdc4"/>
+  <rect x="580" y="587" width="60" height="14" rx="4" fill="#c4b5fd"/>
+  <rect x="660" y="591" width="60" height="14" rx="4" fill="#333"/>
+  <!-- Eraser -->
+  <rect x="770" y="586" width="50" height="18" rx="3" fill="#f0e68c"/>
+  <!-- Ghost eraser smudge -->
+  <ellipse cx="900" cy="200" rx="120" ry="40" fill="#e8e8e2" opacity="0.6"/>
+  <!-- Title -->
+  <text x="640" y="85" font-family="Arial Black, sans-serif" font-size="52" fill="#333" text-anchor="middle" font-weight="bold">INFINITE CRAFT</text>
+  <line x1="300" y1="100" x2="980" y2="100" stroke="#4ecdc4" stroke-width="3"/>
+  <!-- Equations in marker style -->
+  <text x="100" y="175" font-family="Comic Sans MS, cursive" font-size="32" fill="#333" filter="url(#marker-blur)">Water + Fire = Steam</text>
+  <text x="100" y="235" font-family="Comic Sans MS, cursive" font-size="32" fill="#ff6b35" filter="url(#marker-blur)">Earth + Wind = Dust</text>
+  <text x="100" y="295" font-family="Comic Sans MS, cursive" font-size="32" fill="#4ecdc4" filter="url(#marker-blur)">Fire + Earth = Lava</text>
+  <!-- Crossed out wrong guess -->
+  <text x="100" y="355" font-family="Comic Sans MS, cursive" font-size="32" fill="#999">Water + Earth = Dirt?</text>
+  <line x1="90" y1="348" x2="490" y2="348" stroke="#ff6b35" stroke-width="3"/>
+  <text x="510" y="355" font-family="Comic Sans MS, cursive" font-size="28" fill="#ff6b35">MUD!</text>
+  <text x="100" y="415" font-family="Comic Sans MS, cursive" font-size="32" fill="#c4b5fd" filter="url(#marker-blur)">Steam + Earth = Geyser</text>
+  <!-- Right side equations -->
+  <text x="700" y="175" font-family="Comic Sans MS, cursive" font-size="32" fill="#333" filter="url(#marker-blur)">Dust + Water = Clay</text>
+  <text x="700" y="235" font-family="Comic Sans MS, cursive" font-size="32" fill="#4ecdc4" filter="url(#marker-blur)">Lava + Water = Stone</text>
+  <text x="700" y="295" font-family="Comic Sans MS, cursive" font-size="32" fill="#ff6b35" filter="url(#marker-blur)">Clay + Fire = Brick</text>
+  <text x="700" y="355" font-family="Comic Sans MS, cursive" font-size="32" fill="#c4b5fd" filter="url(#marker-blur)">Stone + Fire = Metal</text>
+  <!-- Checkmarks and stars -->
+  <text x="1100" y="178" font-family="Arial" font-size="28" fill="#a8e06c">&#10003;</text>
+  <text x="1100" y="238" font-family="Arial" font-size="28" fill="#a8e06c">&#10003;</text>
+  <text x="1100" y="298" font-family="Arial" font-size="28" fill="#a8e06c">&#10003;</text>
+  <!-- Arrow doodle -->
+  <path d="M640 430 Q700 470 750 430 Q800 390 850 430" stroke="#ff6b35" stroke-width="2.5" fill="none"/>
+  <polygon points="855,425 865,430 855,435" fill="#ff6b35"/>
+  <!-- Bottom note -->
+  <text x="640" y="550" font-family="Comic Sans MS, cursive" font-size="24" fill="#999" text-anchor="middle">combinations are endless...</text>
+</svg>

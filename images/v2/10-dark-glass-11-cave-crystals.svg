@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="crystalGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="caveSoft">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <linearGradient id="crystal1" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0%" stop-color="#4ecdc4" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#4ecdc4" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="crystal2" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#c4b5fd" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="crystal3" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0%" stop-color="#a8e06c" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#a8e06c" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="crystal4" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#ffd93d" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="#080808"/>
+
+  <!-- Cave ceiling and walls -->
+  <path d="M0,0 L0,120 Q100,180 200,130 Q350,80 450,150 Q550,200 640,140 Q730,80 850,160 Q950,210 1050,140 Q1150,80 1280,150 L1280,0Z" fill="#0a0a0a"/>
+  <path d="M0,0 L0,80 Q150,130 300,90 Q500,50 640,100 Q800,140 1000,80 Q1150,40 1280,100 L1280,0Z" fill="#060606"/>
+
+  <!-- Cave floor -->
+  <path d="M0,640 L0,520 Q200,480 400,530 Q600,560 800,510 Q1000,470 1280,520 L1280,640Z" fill="#0c0c0c"/>
+
+  <!-- Ambient crystal glow on cave walls -->
+  <circle cx="300" cy="400" r="120" fill="#4ecdc4" opacity="0.03" filter="url(#caveSoft)"/>
+  <circle cx="640" cy="350" r="150" fill="#c4b5fd" opacity="0.03" filter="url(#caveSoft)"/>
+  <circle cx="950" cy="380" r="130" fill="#a8e06c" opacity="0.025" filter="url(#caveSoft)"/>
+
+  <!-- Crystal cluster 1 - teal -->
+  <g filter="url(#crystalGlow)">
+    <polygon points="250,520 265,350 280,520" fill="url(#crystal1)" opacity="0.8"/>
+    <polygon points="270,530 290,380 310,530" fill="url(#crystal1)" opacity="0.7" transform="rotate(8,290,530)"/>
+    <polygon points="230,525 242,400 254,525" fill="url(#crystal1)" opacity="0.6" transform="rotate(-12,242,525)"/>
+    <polygon points="290,525 300,420 310,525" fill="url(#crystal1)" opacity="0.5" transform="rotate(15,300,525)"/>
+  </g>
+
+  <!-- Crystal cluster 2 - purple -->
+  <g filter="url(#crystalGlow)">
+    <polygon points="580,510 600,300 620,510" fill="url(#crystal2)" opacity="0.85"/>
+    <polygon points="610,515 625,340 640,515" fill="url(#crystal2)" opacity="0.7" transform="rotate(10,625,515)"/>
+    <polygon points="555,518 568,370 581,518" fill="url(#crystal2)" opacity="0.65" transform="rotate(-8,568,518)"/>
+    <polygon points="640,520 650,390 660,520" fill="url(#crystal2)" opacity="0.5" transform="rotate(18,650,520)"/>
+  </g>
+
+  <!-- Crystal cluster 3 - green -->
+  <g filter="url(#crystalGlow)">
+    <polygon points="880,525 895,360 910,525" fill="url(#crystal3)" opacity="0.75"/>
+    <polygon points="905,520 918,390 931,520" fill="url(#crystal3)" opacity="0.65" transform="rotate(6,918,520)"/>
+    <polygon points="855,528 865,410 875,528" fill="url(#crystal3)" opacity="0.55" transform="rotate(-10,865,528)"/>
+  </g>
+
+  <!-- Crystal cluster 4 - orange/amber (ceiling stalactites) -->
+  <g filter="url(#crystalGlow)">
+    <polygon points="440,130 455,280 470,130" fill="url(#crystal4)" opacity="0.6"/>
+    <polygon points="460,120 472,250 484,120" fill="url(#crystal4)" opacity="0.5" transform="rotate(5,472,120)"/>
+    <polygon points="420,140 430,260 440,140" fill="url(#crystal4)" opacity="0.45" transform="rotate(-7,430,140)"/>
+  </g>
+
+  <!-- Small crystal fragments scattered -->
+  <polygon points="1050,530 1055,490 1060,530" fill="#4ecdc4" opacity="0.4" filter="url(#crystalGlow)"/>
+  <polygon points="160,535 164,500 168,535" fill="#c4b5fd" opacity="0.35" filter="url(#crystalGlow)"/>
+  <polygon points="750,525 754,480 758,525" fill="#ffd93d" opacity="0.3" filter="url(#crystalGlow)"/>
+
+  <!-- Element emojis near crystal clusters -->
+  <text x="265" y="340" font-size="28" text-anchor="middle" opacity="0.7">💧</text>
+  <text x="600" y="290" font-size="30" text-anchor="middle" opacity="0.75">💨</text>
+  <text x="895" y="350" font-size="28" text-anchor="middle" opacity="0.65">🌍</text>
+  <text x="455" y="275" font-size="26" text-anchor="middle" opacity="0.55">🔥</text>
+
+  <!-- Title -->
+  <text x="640" y="600" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="50" font-weight="800" fill="white" text-anchor="middle" letter-spacing="16" opacity="0.88">INFINITE CRAFT</text>
+</svg>

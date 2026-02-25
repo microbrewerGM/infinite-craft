@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <radialGradient id="bg8" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#0e1528"/>
+      <stop offset="100%" stop-color="#050810"/>
+    </radialGradient>
+    <filter id="glow8">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg8)"/>
+  <g transform="translate(640,320)">
+    <!-- Celestial sphere rings -->
+    <ellipse rx="290" ry="260" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.3"/>
+    <ellipse rx="250" ry="220" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.2"/>
+    <!-- Ecliptic band -->
+    <ellipse rx="220" ry="190" fill="none" stroke="#ffd93d" stroke-width="8" opacity="0.06"/>
+    <ellipse rx="220" ry="190" fill="none" stroke="#ffd93d" stroke-width="1" opacity="0.3"/>
+    <!-- Tilted orbital rings -->
+    <ellipse rx="200" ry="80" fill="none" stroke="#4ecdc4" stroke-width="0.8" opacity="0.3" transform="rotate(-23)"/>
+    <ellipse rx="160" ry="60" fill="none" stroke="#c4b5fd" stroke-width="0.8" opacity="0.25" transform="rotate(15)"/>
+    <ellipse rx="120" ry="45" fill="none" stroke="#ff6b35" stroke-width="0.8" opacity="0.25" transform="rotate(-10)"/>
+    <!-- Degree markings on outer ring -->
+    <g stroke="#c9a96e" stroke-width="0.3" opacity="0.3">
+      <line x1="0" y1="-260" x2="0" y2="-270" transform="rotate(0,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-268" transform="rotate(30,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-268" transform="rotate(60,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-270" transform="rotate(90,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-268" transform="rotate(120,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-268" transform="rotate(150,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-270" transform="rotate(180,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-268" transform="rotate(210,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-268" transform="rotate(240,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-270" transform="rotate(270,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-268" transform="rotate(300,0,0)"/>
+      <line x1="0" y1="-260" x2="0" y2="-268" transform="rotate(330,0,0)"/>
+    </g>
+    <!-- Sun at center -->
+    <circle r="25" fill="#ffd93d" opacity="0.12" filter="url(#glow8)"/>
+    <circle r="12" fill="#ffd93d" opacity="0.2"/>
+    <circle r="5" fill="#ffd93d" opacity="0.4"/>
+    <!-- Planets on orbits -->
+    <circle cx="85" cy="-30" r="6" fill="#ff6b35" opacity="0.6" filter="url(#glow8)"/>
+    <circle cx="-130" cy="40" r="8" fill="#4ecdc4" opacity="0.5" filter="url(#glow8)"/>
+    <circle cx="50" cy="55" r="5" fill="#a8e06c" opacity="0.5" filter="url(#glow8)"/>
+    <circle cx="-180" cy="-70" r="10" fill="#c4b5fd" opacity="0.4" filter="url(#glow8)"/>
+    <circle cx="200" cy="30" r="7" fill="#ffd93d" opacity="0.4" filter="url(#glow8)"/>
+    <!-- Constellation lines -->
+    <g stroke="white" stroke-width="0.3" opacity="0.15">
+      <line x1="-220" y1="-150" x2="-190" y2="-130"/>
+      <line x1="-190" y1="-130" x2="-170" y2="-160"/>
+      <line x1="-170" y1="-160" x2="-140" y2="-140"/>
+      <line x1="180" y1="130" x2="210" y2="150"/>
+      <line x1="210" y1="150" x2="240" y2="130"/>
+      <line x1="240" y1="130" x2="230" y2="100"/>
+    </g>
+    <!-- Small stars -->
+    <g fill="white" opacity="0.2">
+      <circle cx="-220" cy="-150" r="2"/><circle cx="-190" cy="-130" r="1.5"/>
+      <circle cx="-170" cy="-160" r="1.5"/><circle cx="-140" cy="-140" r="2"/>
+      <circle cx="180" cy="130" r="1.5"/><circle cx="210" cy="150" r="2"/>
+      <circle cx="240" cy="130" r="1.5"/><circle cx="230" cy="100" r="2"/>
+    </g>
+    <!-- Cardinal labels -->
+    <text x="0" y="-280" text-anchor="middle" font-family="serif" font-size="12" fill="#c9a96e" opacity="0.5">N</text>
+    <text x="300" y="5" text-anchor="middle" font-family="serif" font-size="12" fill="#c9a96e" opacity="0.5">E</text>
+    <text x="0" y="290" text-anchor="middle" font-family="serif" font-size="12" fill="#c9a96e" opacity="0.5">S</text>
+    <text x="-300" y="5" text-anchor="middle" font-family="serif" font-size="12" fill="#c9a96e" opacity="0.5">W</text>
+  </g>
+  <!-- Title -->
+  <text x="640" y="45" text-anchor="middle" font-family="serif" font-size="42" fill="#c9a96e" letter-spacing="10" filter="url(#glow8)">INFINITE CRAFT</text>
+  <text x="640" y="628" text-anchor="middle" font-family="serif" font-size="11" fill="#c9a96e" opacity="0.4" letter-spacing="5">MAPPA COELESTIS</text>
+  <!-- Scattered background stars -->
+  <g fill="white" opacity="0.1">
+    <circle cx="40" cy="80" r="1"/><circle cx="120" cy="500" r="1.5"/><circle cx="1240" cy="90" r="1"/>
+    <circle cx="1180" cy="550" r="1.5"/><circle cx="300" cy="600" r="1"/><circle cx="980" cy="610" r="1"/>
+  </g>
+</svg>

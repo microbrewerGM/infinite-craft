@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="screen-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#0d1f3c"/>
+    </linearGradient>
+    <filter id="lcd-glow">
+      <feGaussianBlur stdDeviation="1"/>
+    </filter>
+  </defs>
+  <!-- Dark trading screen background -->
+  <rect width="1280" height="640" fill="url(#screen-bg)"/>
+  <!-- Scanlines -->
+  <g opacity="0.03">
+    <line x1="0" y1="2" x2="1280" y2="2" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="6" x2="1280" y2="6" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="10" x2="1280" y2="10" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="14" x2="1280" y2="14" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="18" x2="1280" y2="18" stroke="white" stroke-width="1"/>
+  </g>
+  <!-- Top header bar -->
+  <rect x="0" y="0" width="1280" height="50" fill="#111d33"/>
+  <text x="30" y="34" font-family="'Courier New', monospace" font-size="28" fill="#ff6b35" font-weight="bold" filter="url(#lcd-glow)">INFINITE CRAFT</text>
+  <text x="420" y="34" font-family="'Courier New', monospace" font-size="16" fill="#4ecdc4">ELEMENT EXCHANGE</text>
+  <text x="900" y="28" font-family="'Courier New', monospace" font-size="12" fill="#555">FEB 24 2026</text>
+  <text x="900" y="42" font-family="'Courier New', monospace" font-size="12" fill="#555">14:32:07 UTC</text>
+  <text x="1100" y="34" font-family="'Courier New', monospace" font-size="14" fill="#a8e06c">DISCOVERIES: 1,247</text>
+  <!-- Scrolling ticker bar 1 -->
+  <rect x="0" y="55" width="1280" height="35" fill="#0f1a2e"/>
+  <g font-family="'Courier New', monospace" font-size="16">
+    <text x="20" y="78" fill="#a8e06c">WATER+FIRE</text>
+    <text x="160" y="78" fill="#a8e06c">STEAM</text>
+    <text x="230" y="78" fill="#a8e06c">&#9650; NEW</text>
+    <text x="310" y="78" fill="#555">|</text>
+    <text x="330" y="78" fill="#ff6b35">EARTH+WIND</text>
+    <text x="480" y="78" fill="#ff6b35">DUST</text>
+    <text x="540" y="78" fill="#a8e06c">&#9650; +12%</text>
+    <text x="640" y="78" fill="#555">|</text>
+    <text x="660" y="78" fill="#4ecdc4">FIRE+EARTH</text>
+    <text x="810" y="78" fill="#4ecdc4">LAVA</text>
+    <text x="870" y="78" fill="#ff6b35">&#9660; -3%</text>
+    <text x="950" y="78" fill="#555">|</text>
+    <text x="970" y="78" fill="#c4b5fd">LAVA+WATER</text>
+    <text x="1130" y="78" fill="#c4b5fd">STONE</text>
+    <text x="1200" y="78" fill="#a8e06c">&#9650; +8%</text>
+  </g>
+  <!-- Main data table header -->
+  <rect x="20" y="100" width="800" height="30" fill="#1a2844"/>
+  <g font-family="'Courier New', monospace" font-size="13" fill="#4ecdc4">
+    <text x="35" y="120">COMBO</text>
+    <text x="180" y="120">INPUT A</text>
+    <text x="320" y="120">INPUT B</text>
+    <text x="460" y="120">RESULT</text>
+    <text x="590" y="120">STATUS</text>
+    <text x="710" y="120">TREND</text>
+  </g>
+  <!-- Data rows -->
+  <g font-family="'Courier New', monospace" font-size="15">
+    <!-- Row 1 -->
+    <rect x="20" y="132" width="800" height="30" fill="#0d1830" opacity="0.5"/>
+    <text x="35" y="152" fill="#888">#001</text>
+    <text x="180" y="152" fill="#c9c4a1">Water</text>
+    <text x="320" y="152" fill="#c9c4a1">Fire</text>
+    <text x="460" y="152" fill="#ffd93d">Steam</text>
+    <text x="590" y="152" fill="#a8e06c">CONFIRMED</text>
+    <text x="710" y="152" fill="#a8e06c">&#9650;&#9650;&#9650;</text>
+    <!-- Row 2 -->
+    <rect x="20" y="164" width="800" height="30" fill="#111d33" opacity="0.5"/>
+    <text x="35" y="184" fill="#888">#002</text>
+    <text x="180" y="184" fill="#c9c4a1">Earth</text>
+    <text x="320" y="184" fill="#c9c4a1">Wind</text>
+    <text x="460" y="184" fill="#ffd93d">Dust</text>
+    <text x="590" y="184" fill="#a8e06c">CONFIRMED</text>
+    <text x="710" y="184" fill="#a8e06c">&#9650;&#9650;</text>
+    <!-- Row 3 -->
+    <rect x="20" y="196" width="800" height="30" fill="#0d1830" opacity="0.5"/>
+    <text x="35" y="216" fill="#888">#003</text>
+    <text x="180" y="216" fill="#c9c4a1">Fire</text>
+    <text x="320" y="216" fill="#c9c4a1">Earth</text>
+    <text x="460" y="216" fill="#ffd93d">Lava</text>
+    <text x="590" y="216" fill="#a8e06c">CONFIRMED</text>
+    <text x="710" y="216" fill="#ff6b35">&#9660;</text>
+    <!-- Row 4 -->
+    <rect x="20" y="228" width="800" height="30" fill="#111d33" opacity="0.5"/>
+    <text x="35" y="248" fill="#888">#004</text>
+    <text x="180" y="248" fill="#c9c4a1">Lava</text>
+    <text x="320" y="248" fill="#c9c4a1">Water</text>
+    <text x="460" y="248" fill="#ffd93d">Stone</text>
+    <text x="590" y="248" fill="#a8e06c">CONFIRMED</text>
+    <text x="710" y="248" fill="#a8e06c">&#9650;</text>
+    <!-- Row 5 -->
+    <rect x="20" y="260" width="800" height="30" fill="#0d1830" opacity="0.5"/>
+    <text x="35" y="280" fill="#888">#005</text>
+    <text x="180" y="280" fill="#c9c4a1">Dust</text>
+    <text x="320" y="280" fill="#c9c4a1">Water</text>
+    <text x="460" y="280" fill="#ffd93d">Clay</text>
+    <text x="590" y="280" fill="#a8e06c">CONFIRMED</text>
+    <text x="710" y="280" fill="#a8e06c">&#9650;&#9650;</text>
+    <!-- Row 6 - REJECTED -->
+    <rect x="20" y="292" width="800" height="30" fill="#1a0a0a" opacity="0.5"/>
+    <text x="35" y="312" fill="#888">#006</text>
+    <text x="180" y="312" fill="#666">Wind</text>
+    <text x="320" y="312" fill="#666">Wind</text>
+    <text x="460" y="312" fill="#666">???</text>
+    <text x="590" y="312" fill="#ff6b35">REJECTED</text>
+    <text x="710" y="312" fill="#ff6b35">&#9660;&#9660;&#9660;</text>
+    <!-- Row 7 -->
+    <rect x="20" y="324" width="800" height="30" fill="#111d33" opacity="0.5"/>
+    <text x="35" y="344" fill="#888">#007</text>
+    <text x="180" y="344" fill="#c9c4a1">Stone</text>
+    <text x="320" y="344" fill="#c9c4a1">Fire</text>
+    <text x="460" y="344" fill="#ffd93d">Metal</text>
+    <text x="590" y="344" fill="#a8e06c">CONFIRMED</text>
+    <text x="710" y="344" fill="#a8e06c">&#9650;&#9650;&#9650;</text>
+  </g>
+  <!-- Right panel: mini chart -->
+  <rect x="850" y="100" width="410" height="260" fill="#111d33" stroke="#1a2844" stroke-width="1" rx="4"/>
+  <text x="870" y="125" font-family="'Courier New', monospace" font-size="14" fill="#4ecdc4">DISCOVERY RATE (24H)</text>
+  <!-- Chart grid -->
+  <g stroke="#1a2844" stroke-width="0.5">
+    <line x1="880" y1="150" x2="1240" y2="150"/><line x1="880" y1="190" x2="1240" y2="190"/>
+    <line x1="880" y1="230" x2="1240" y2="230"/><line x1="880" y1="270" x2="1240" y2="270"/>
+    <line x1="880" y1="310" x2="1240" y2="310"/><line x1="880" y1="340" x2="1240" y2="340"/>
+  </g>
+  <!-- Chart line -->
+  <polyline points="880,300 920,290 960,270 1000,280 1040,240 1080,220 1120,200 1160,180 1200,160 1240,150" fill="none" stroke="#a8e06c" stroke-width="2"/>
+  <!-- Chart area fill -->
+  <polygon points="880,300 920,290 960,270 1000,280 1040,240 1080,220 1120,200 1160,180 1200,160 1240,150 1240,340 880,340" fill="#a8e06c" opacity="0.1"/>
+  <!-- Bottom stats -->
+  <rect x="20" y="380" width="1240" height="100" fill="#111d33" rx="4"/>
+  <g font-family="'Courier New', monospace">
+    <text x="50" y="410" font-size="12" fill="#555">MOST TRADED</text>
+    <text x="50" y="435" font-size="24" fill="#ffd93d">Steam</text>
+    <text x="50" y="460" font-size="14" fill="#a8e06c">+247 today</text>
+    <text x="300" y="410" font-size="12" fill="#555">RAREST COMBO</text>
+    <text x="300" y="435" font-size="24" fill="#c4b5fd">Geyser</text>
+    <text x="300" y="460" font-size="14" fill="#ff6b35">only 3 found</text>
+    <text x="560" y="410" font-size="12" fill="#555">TOTAL ELEMENTS</text>
+    <text x="560" y="435" font-size="24" fill="#4ecdc4">1,247</text>
+    <text x="560" y="460" font-size="14" fill="#a8e06c">&#9650; 12% this week</text>
+    <text x="820" y="410" font-size="12" fill="#555">BASE ELEMENTS</text>
+    <text x="820" y="435" font-size="24" fill="#ff6b35">4</text>
+    <text x="820" y="460" font-size="14" fill="#888">Water Fire Earth Wind</text>
+    <text x="1080" y="410" font-size="12" fill="#555">MARKET CAP</text>
+    <text x="1080" y="435" font-size="24" fill="#a8e06c">&#8734;</text>
+    <text x="1080" y="460" font-size="14" fill="#c9c4a1">infinite</text>
+  </g>
+  <!-- Bottom scrolling ticker -->
+  <rect x="0" y="500" width="1280" height="30" fill="#0f1a2e"/>
+  <g font-family="'Courier New', monospace" font-size="14">
+    <text x="20" y="520" fill="#a8e06c">CLAY+FIRE=BRICK &#9650;</text>
+    <text x="250" y="520" fill="#555">|</text>
+    <text x="270" y="520" fill="#c4b5fd">STEAM+EARTH=GEYSER &#9650;</text>
+    <text x="540" y="520" fill="#555">|</text>
+    <text x="560" y="520" fill="#ff6b35">METAL+WATER=RUST &#9660;</text>
+    <text x="790" y="520" fill="#555">|</text>
+    <text x="810" y="520" fill="#a8e06c">BRICK+BRICK=WALL &#9650;</text>
+    <text x="1050" y="520" fill="#555">|</text>
+    <text x="1070" y="520" fill="#ffd93d">STONE+WIND=SAND &#9650;</text>
+  </g>
+  <!-- Disclaimer at very bottom -->
+  <text x="640" y="570" font-family="'Courier New', monospace" font-size="10" fill="#333" text-anchor="middle">ELEMENT COMBINATION DATA PROVIDED FOR EDUCATIONAL PURPOSES ONLY. PAST COMBINATIONS DO NOT GUARANTEE FUTURE RESULTS.</text>
+  <!-- Breaking news bar -->
+  <rect x="0" y="585" width="1280" height="35" fill="#ff6b35" opacity="0.9"/>
+  <text x="20" y="608" font-family="'Courier New', monospace" font-size="14" fill="white" font-weight="bold">BREAKING:</text>
+  <text x="130" y="608" font-family="'Courier New', monospace" font-size="14" fill="white">New element discovered! Metal + Earth = Ore. Element count reaches all-time high. Analysts predict infinite growth.</text>
+</svg>

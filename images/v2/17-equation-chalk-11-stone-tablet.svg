@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="stone-texture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="6" result="noise"/>
+      <feDiffuseLighting in="noise" lighting-color="#a09080" surfaceScale="4">
+        <feDistantLight azimuth="225" elevation="35"/>
+      </feDiffuseLighting>
+    </filter>
+    <filter id="chisel">
+      <feGaussianBlur stdDeviation="0.4"/>
+    </filter>
+    <filter id="deep-carve">
+      <feOffset dx="1" dy="1" in="SourceGraphic" result="offset"/>
+      <feGaussianBlur in="offset" stdDeviation="1" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Stone background -->
+  <rect width="1280" height="640" fill="#8a7d6b"/>
+  <rect width="1280" height="640" filter="url(#stone-texture)" opacity="0.7"/>
+  <!-- Tablet shape (slightly irregular) -->
+  <path d="M80 40 Q640 25 1200 40 L1210 50 Q1220 320 1210 590 L1200 600 Q640 615 80 600 L70 590 Q60 320 70 50 Z" fill="#9a8e7c" stroke="#706050" stroke-width="3"/>
+  <!-- Inner tablet with lighter stone -->
+  <path d="M120 70 Q640 58 1160 70 Q1170 320 1160 570 Q640 580 120 570 Q110 320 120 70Z" fill="#a89e8c"/>
+  <!-- Cracks in stone -->
+  <path d="M300 40 Q310 80 295 120" stroke="#706050" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M900 570 Q920 530 910 500" stroke="#706050" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M1160 200 Q1180 220 1200 210" stroke="#706050" stroke-width="1" fill="none" opacity="0.3"/>
+  <!-- Title carved deep -->
+  <text x="640" y="130" font-family="'Trajan Pro', 'Times New Roman', serif" font-size="56" fill="#5a5040" text-anchor="middle" letter-spacing="8" filter="url(#deep-carve)">INFINITE CRAFT</text>
+  <!-- Decorative line -->
+  <line x1="250" y1="150" x2="1030" y2="150" stroke="#6a5e4e" stroke-width="3"/>
+  <line x1="280" y1="160" x2="1000" y2="160" stroke="#6a5e4e" stroke-width="1.5"/>
+  <!-- Carved equations -->
+  <g font-family="'Trajan Pro', 'Times New Roman', serif" fill="#5a5040" filter="url(#chisel)">
+    <text x="200" y="220" font-size="30">I.    AQUA  +  IGNIS  =  VAPOR</text>
+    <text x="200" y="275" font-size="30">II.   TERRA  +  VENTUS  =  PULVIS</text>
+    <text x="200" y="330" font-size="30">III.  IGNIS  +  TERRA  =  MAGMA</text>
+    <text x="200" y="385" font-size="30">IV.   MAGMA  +  AQUA  =  LAPIS</text>
+    <text x="200" y="440" font-size="30">V.    PULVIS  +  AQUA  =  ARGILLA</text>
+    <text x="200" y="495" font-size="30">VI.   LAPIS  +  IGNIS  =  FERRUM</text>
+  </g>
+  <!-- Decorative bottom border -->
+  <line x1="250" y1="520" x2="1030" y2="520" stroke="#6a5e4e" stroke-width="1.5"/>
+  <line x1="280" y1="530" x2="1000" y2="530" stroke="#6a5e4e" stroke-width="3"/>
+  <!-- Bottom inscription -->
+  <text x="640" y="565" font-family="'Trajan Pro', 'Times New Roman', serif" font-size="18" fill="#6a5e4e" text-anchor="middle" letter-spacing="3" filter="url(#chisel)">COMBINATIONES INFINITAE SUNT</text>
+  <!-- Weathering/chip marks -->
+  <circle cx="180" cy="300" r="8" fill="#8a7d6b" opacity="0.5"/>
+  <circle cx="1090" cy="400" r="6" fill="#8a7d6b" opacity="0.4"/>
+  <ellipse cx="500" cy="550" rx="12" ry="8" fill="#8a7d6b" opacity="0.3"/>
+  <!-- Moss/lichen spots -->
+  <ellipse cx="130" cy="500" rx="15" ry="10" fill="#6a7a4a" opacity="0.2"/>
+  <ellipse cx="1140" cy="120" rx="18" ry="12" fill="#6a7a4a" opacity="0.15"/>
+</svg>

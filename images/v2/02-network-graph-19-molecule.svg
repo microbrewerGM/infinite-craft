@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <radialGradient id="bg19" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#101828"/>
+      <stop offset="100%" stop-color="#050a14"/>
+    </radialGradient>
+    <filter id="atomGlow"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="bondGlow"><feGaussianBlur stdDeviation="1.5"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <radialGradient id="atom1" cx="40%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#ff9966"/><stop offset="100%" stop-color="#ff6b35"/>
+    </radialGradient>
+    <radialGradient id="atom2" cx="40%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#7eeee5"/><stop offset="100%" stop-color="#4ecdc4"/>
+    </radialGradient>
+    <radialGradient id="atom3" cx="40%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#d5c8ff"/><stop offset="100%" stop-color="#c4b5fd"/>
+    </radialGradient>
+    <radialGradient id="atom4" cx="40%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#c8f090"/><stop offset="100%" stop-color="#a8e06c"/>
+    </radialGradient>
+    <radialGradient id="atom5" cx="40%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#ffe56a"/><stop offset="100%" stop-color="#ffd93d"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg19)"/>
+  <!-- Bonds (tubes with 3D effect - double lines) -->
+  <g filter="url(#bondGlow)">
+    <!-- Central to surrounding -->
+    <line x1="640" y1="310" x2="440" y2="200" stroke="#888" stroke-width="6" opacity="0.3"/>
+    <line x1="640" y1="310" x2="440" y2="200" stroke="#bbb" stroke-width="2" opacity="0.5"/>
+    <line x1="640" y1="310" x2="840" y2="200" stroke="#888" stroke-width="6" opacity="0.3"/>
+    <line x1="640" y1="310" x2="840" y2="200" stroke="#bbb" stroke-width="2" opacity="0.5"/>
+    <line x1="640" y1="310" x2="500" y2="450" stroke="#888" stroke-width="6" opacity="0.3"/>
+    <line x1="640" y1="310" x2="500" y2="450" stroke="#bbb" stroke-width="2" opacity="0.5"/>
+    <line x1="640" y1="310" x2="780" y2="450" stroke="#888" stroke-width="6" opacity="0.3"/>
+    <line x1="640" y1="310" x2="780" y2="450" stroke="#bbb" stroke-width="2" opacity="0.5"/>
+    <line x1="640" y1="310" x2="640" y2="150" stroke="#888" stroke-width="6" opacity="0.3"/>
+    <line x1="640" y1="310" x2="640" y2="150" stroke="#bbb" stroke-width="2" opacity="0.5"/>
+    <!-- Outer bonds -->
+    <line x1="440" y1="200" x2="280" y2="140" stroke="#888" stroke-width="5" opacity="0.25"/>
+    <line x1="440" y1="200" x2="280" y2="140" stroke="#bbb" stroke-width="1.5" opacity="0.4"/>
+    <line x1="440" y1="200" x2="340" y2="330" stroke="#888" stroke-width="5" opacity="0.25"/>
+    <line x1="440" y1="200" x2="340" y2="330" stroke="#bbb" stroke-width="1.5" opacity="0.4"/>
+    <line x1="840" y1="200" x2="1000" y2="140" stroke="#888" stroke-width="5" opacity="0.25"/>
+    <line x1="840" y1="200" x2="1000" y2="140" stroke="#bbb" stroke-width="1.5" opacity="0.4"/>
+    <line x1="840" y1="200" x2="940" y2="330" stroke="#888" stroke-width="5" opacity="0.25"/>
+    <line x1="840" y1="200" x2="940" y2="330" stroke="#bbb" stroke-width="1.5" opacity="0.4"/>
+    <line x1="500" y1="450" x2="380" y2="540" stroke="#888" stroke-width="5" opacity="0.25"/>
+    <line x1="500" y1="450" x2="380" y2="540" stroke="#bbb" stroke-width="1.5" opacity="0.4"/>
+    <line x1="780" y1="450" x2="900" y2="540" stroke="#888" stroke-width="5" opacity="0.25"/>
+    <line x1="780" y1="450" x2="900" y2="540" stroke="#bbb" stroke-width="1.5" opacity="0.4"/>
+    <line x1="640" y1="150" x2="540" y2="70" stroke="#888" stroke-width="5" opacity="0.25"/>
+    <line x1="640" y1="150" x2="540" y2="70" stroke="#bbb" stroke-width="1.5" opacity="0.4"/>
+    <line x1="640" y1="150" x2="740" y2="70" stroke="#888" stroke-width="5" opacity="0.25"/>
+    <line x1="640" y1="150" x2="740" y2="70" stroke="#bbb" stroke-width="1.5" opacity="0.4"/>
+    <!-- Double bond indicator -->
+    <line x1="636" y1="308" x2="496" y2="448" stroke="#bbb" stroke-width="1" opacity="0.3" stroke-dasharray="4,3"/>
+    <line x1="644" y1="308" x2="784" y2="448" stroke="#bbb" stroke-width="1" opacity="0.3" stroke-dasharray="4,3"/>
+  </g>
+  <!-- Atom spheres with 3D shading -->
+  <g>
+    <!-- Outer atoms (behind) -->
+    <g filter="url(#atomGlow)">
+      <circle cx="280" cy="140" r="20" fill="#4ecdc4" opacity="0.3"/>
+      <circle cx="1000" cy="140" r="20" fill="#a8e06c" opacity="0.3"/>
+      <circle cx="340" cy="330" r="18" fill="#ffd93d" opacity="0.3"/>
+      <circle cx="940" cy="330" r="18" fill="#ff6b35" opacity="0.3"/>
+      <circle cx="380" cy="540" r="18" fill="#c4b5fd" opacity="0.3"/>
+      <circle cx="900" cy="540" r="18" fill="#4ecdc4" opacity="0.3"/>
+      <circle cx="540" cy="70" r="16" fill="#ffd93d" opacity="0.3"/>
+      <circle cx="740" cy="70" r="16" fill="#ff6b35" opacity="0.3"/>
+    </g>
+    <circle cx="280" cy="140" r="20" fill="url(#atom2)" opacity="0.9"/>
+    <circle cx="1000" cy="140" r="20" fill="url(#atom4)" opacity="0.9"/>
+    <circle cx="340" cy="330" r="18" fill="url(#atom5)" opacity="0.9"/>
+    <circle cx="940" cy="330" r="18" fill="url(#atom1)" opacity="0.9"/>
+    <circle cx="380" cy="540" r="18" fill="url(#atom3)" opacity="0.9"/>
+    <circle cx="900" cy="540" r="18" fill="url(#atom2)" opacity="0.9"/>
+    <circle cx="540" cy="70" r="16" fill="url(#atom5)" opacity="0.9"/>
+    <circle cx="740" cy="70" r="16" fill="url(#atom1)" opacity="0.9"/>
+    <!-- Inner ring atoms -->
+    <g filter="url(#atomGlow)">
+      <circle cx="440" cy="200" r="26" fill="#ff6b35" opacity="0.3"/>
+      <circle cx="840" cy="200" r="26" fill="#c4b5fd" opacity="0.3"/>
+      <circle cx="500" cy="450" r="24" fill="#4ecdc4" opacity="0.3"/>
+      <circle cx="780" cy="450" r="24" fill="#ffd93d" opacity="0.3"/>
+      <circle cx="640" cy="150" r="24" fill="#a8e06c" opacity="0.3"/>
+    </g>
+    <circle cx="440" cy="200" r="26" fill="url(#atom1)" opacity="0.95"/>
+    <circle cx="840" cy="200" r="26" fill="url(#atom3)" opacity="0.95"/>
+    <circle cx="500" cy="450" r="24" fill="url(#atom2)" opacity="0.95"/>
+    <circle cx="780" cy="450" r="24" fill="url(#atom5)" opacity="0.95"/>
+    <circle cx="640" cy="150" r="24" fill="url(#atom4)" opacity="0.95"/>
+    <!-- Central atom (largest, in front) -->
+    <circle cx="640" cy="310" r="35" fill="#ff6b35" opacity="0.35" filter="url(#atomGlow)"/>
+    <circle cx="640" cy="310" r="35" fill="url(#atom1)"/>
+  </g>
+  <!-- Specular highlights on atoms -->
+  <g fill="white" opacity="0.3">
+    <ellipse cx="630" cy="298" rx="10" ry="6"/>
+    <ellipse cx="432" cy="190" rx="7" ry="4"/>
+    <ellipse cx="832" cy="190" rx="7" ry="4"/>
+    <ellipse cx="493" cy="440" rx="6" ry="3.5"/>
+    <ellipse cx="773" cy="440" rx="6" ry="3.5"/>
+    <ellipse cx="634" cy="141" rx="6" ry="3.5"/>
+  </g>
+  <!-- Title -->
+  <text x="640" y="310" font-family="'Helvetica Neue', Arial, sans-serif" font-size="62" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="central" letter-spacing="3" opacity="0.92" filter="url(#bondGlow)">INFINITE CRAFT</text>
+  <text x="640" y="360" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#4ecdc4" text-anchor="middle" letter-spacing="10" opacity="0.45">MOLECULAR BONDS</text>
+</svg>

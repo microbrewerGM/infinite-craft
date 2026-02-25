@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="sfGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="sfBright">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="sfDust">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#020204"/>
+
+  <!-- Very faint galactic dust -->
+  <ellipse cx="640" cy="320" rx="600" ry="120" fill="#c4b5fd" opacity="0.015" filter="url(#sfDust)" transform="rotate(-5,640,320)"/>
+  <ellipse cx="500" cy="300" rx="300" ry="80" fill="#4ecdc4" opacity="0.01" filter="url(#sfDust)" transform="rotate(10,500,300)"/>
+
+  <!-- Dense star field - bright stars -->
+  <circle cx="50" cy="30" r="1.5" fill="white" opacity="0.8" filter="url(#sfGlow)"/>
+  <circle cx="130" cy="120" r="1.2" fill="#ffd93d" opacity="0.7" filter="url(#sfGlow)"/>
+  <circle cx="210" cy="60" r="1" fill="white" opacity="0.6"/>
+  <circle cx="290" cy="200" r="1.8" fill="white" opacity="0.85" filter="url(#sfBright)"/>
+  <circle cx="370" cy="140" r="1" fill="#4ecdc4" opacity="0.5"/>
+  <circle cx="450" cy="80" r="1.3" fill="white" opacity="0.7" filter="url(#sfGlow)"/>
+  <circle cx="530" cy="250" r="1.5" fill="#ffd93d" opacity="0.6" filter="url(#sfGlow)"/>
+  <circle cx="610" cy="170" r="1" fill="white" opacity="0.55"/>
+  <circle cx="690" cy="100" r="1.4" fill="white" opacity="0.75" filter="url(#sfGlow)"/>
+  <circle cx="770" cy="220" r="1.2" fill="#ff6b35" opacity="0.5" filter="url(#sfGlow)"/>
+  <circle cx="850" cy="50" r="1.6" fill="white" opacity="0.8" filter="url(#sfBright)"/>
+  <circle cx="930" cy="180" r="1" fill="white" opacity="0.6"/>
+  <circle cx="1010" cy="120" r="1.3" fill="#4ecdc4" opacity="0.55" filter="url(#sfGlow)"/>
+  <circle cx="1090" cy="60" r="1" fill="white" opacity="0.65"/>
+  <circle cx="1170" cy="200" r="1.5" fill="white" opacity="0.7" filter="url(#sfGlow)"/>
+  <circle cx="1250" cy="100" r="1.1" fill="#ffd93d" opacity="0.5"/>
+
+  <!-- Medium stars -->
+  <circle cx="80" cy="300" r="0.8" fill="white" opacity="0.5"/>
+  <circle cx="160" cy="380" r="0.9" fill="white" opacity="0.45"/>
+  <circle cx="240" cy="320" r="1" fill="white" opacity="0.55"/>
+  <circle cx="320" cy="420" r="0.7" fill="white" opacity="0.4"/>
+  <circle cx="400" cy="350" r="0.9" fill="white" opacity="0.5"/>
+  <circle cx="480" cy="450" r="0.8" fill="white" opacity="0.45"/>
+  <circle cx="560" cy="380" r="1.1" fill="white" opacity="0.6" filter="url(#sfGlow)"/>
+  <circle cx="640" cy="420" r="0.7" fill="white" opacity="0.4"/>
+  <circle cx="720" cy="350" r="0.9" fill="white" opacity="0.5"/>
+  <circle cx="800" cy="450" r="1" fill="white" opacity="0.55"/>
+  <circle cx="880" cy="320" r="0.8" fill="white" opacity="0.45"/>
+  <circle cx="960" cy="400" r="0.9" fill="white" opacity="0.5"/>
+  <circle cx="1040" cy="350" r="0.7" fill="white" opacity="0.4"/>
+  <circle cx="1120" cy="430" r="1" fill="white" opacity="0.55"/>
+  <circle cx="1200" cy="380" r="0.8" fill="white" opacity="0.45"/>
+
+  <!-- Dim stars (hundreds of faint points) -->
+  <circle cx="30" cy="180" r="0.4" fill="white" opacity="0.25"/>
+  <circle cx="70" cy="450" r="0.3" fill="white" opacity="0.2"/>
+  <circle cx="110" cy="540" r="0.4" fill="white" opacity="0.22"/>
+  <circle cx="150" cy="260" r="0.3" fill="white" opacity="0.18"/>
+  <circle cx="190" cy="490" r="0.5" fill="white" opacity="0.25"/>
+  <circle cx="230" cy="150" r="0.3" fill="white" opacity="0.2"/>
+  <circle cx="270" cy="560" r="0.4" fill="white" opacity="0.22"/>
+  <circle cx="310" cy="30" r="0.3" fill="white" opacity="0.18"/>
+  <circle cx="350" cy="480" r="0.4" fill="white" opacity="0.25"/>
+  <circle cx="390" cy="270" r="0.3" fill="white" opacity="0.2"/>
+  <circle cx="430" cy="520" r="0.4" fill="white" opacity="0.22"/>
+  <circle cx="470" cy="160" r="0.3" fill="white" opacity="0.18"/>
+  <circle cx="510" cy="580" r="0.5" fill="white" opacity="0.25"/>
+  <circle cx="550" cy="310" r="0.3" fill="white" opacity="0.2"/>
+  <circle cx="590" cy="500" r="0.4" fill="white" opacity="0.22"/>
+  <circle cx="630" cy="50" r="0.3" fill="white" opacity="0.18"/>
+  <circle cx="670" cy="470" r="0.4" fill="white" opacity="0.25"/>
+  <circle cx="710" cy="560" r="0.3" fill="white" opacity="0.2"/>
+  <circle cx="750" cy="30" r="0.4" fill="white" opacity="0.22"/>
+  <circle cx="790" cy="510" r="0.3" fill="white" opacity="0.18"/>
+  <circle cx="830" cy="280" r="0.5" fill="white" opacity="0.25"/>
+  <circle cx="870" cy="460" r="0.3" fill="white" opacity="0.2"/>
+  <circle cx="910" cy="540" r="0.4" fill="white" opacity="0.22"/>
+  <circle cx="950" cy="50" r="0.3" fill="white" opacity="0.18"/>
+  <circle cx="990" cy="480" r="0.4" fill="white" opacity="0.25"/>
+  <circle cx="1030" cy="260" r="0.3" fill="white" opacity="0.2"/>
+  <circle cx="1070" cy="520" r="0.4" fill="white" opacity="0.22"/>
+  <circle cx="1110" cy="150" r="0.3" fill="white" opacity="0.18"/>
+  <circle cx="1150" cy="560" r="0.5" fill="white" opacity="0.25"/>
+  <circle cx="1190" cy="300" r="0.3" fill="white" opacity="0.2"/>
+  <circle cx="1230" cy="470" r="0.4" fill="white" opacity="0.22"/>
+  <circle cx="1260" cy="240" r="0.3" fill="white" opacity="0.18"/>
+  <circle cx="40" cy="600" r="0.4" fill="white" opacity="0.2"/>
+  <circle cx="180" cy="20" r="0.3" fill="white" opacity="0.15"/>
+  <circle cx="340" cy="600" r="0.4" fill="white" opacity="0.2"/>
+  <circle cx="500" cy="40" r="0.3" fill="white" opacity="0.15"/>
+  <circle cx="660" cy="600" r="0.4" fill="white" opacity="0.2"/>
+  <circle cx="820" cy="15" r="0.3" fill="white" opacity="0.15"/>
+  <circle cx="980" cy="600" r="0.4" fill="white" opacity="0.2"/>
+  <circle cx="1140" cy="30" r="0.3" fill="white" opacity="0.15"/>
+
+  <!-- Colored accent stars -->
+  <circle cx="180" cy="440" r="0.6" fill="#ff6b35" opacity="0.35"/>
+  <circle cx="420" cy="190" r="0.5" fill="#4ecdc4" opacity="0.3"/>
+  <circle cx="660" cy="280" r="0.6" fill="#c4b5fd" opacity="0.3"/>
+  <circle cx="900" cy="490" r="0.5" fill="#a8e06c" opacity="0.3"/>
+  <circle cx="1100" cy="300" r="0.6" fill="#ffd93d" opacity="0.35"/>
+
+  <!-- Element emojis as constellations -->
+  <text x="200" y="320" font-size="26" text-anchor="middle" opacity="0.45">🔥</text>
+  <text x="480" y="400" font-size="24" text-anchor="middle" opacity="0.4">💧</text>
+  <text x="800" y="370" font-size="26" text-anchor="middle" opacity="0.45">🌍</text>
+  <text x="1060" y="420" font-size="24" text-anchor="middle" opacity="0.4">💨</text>
+
+  <!-- Title -->
+  <text x="640" y="580" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="54" font-weight="800" fill="white" text-anchor="middle" letter-spacing="18" opacity="0.88">INFINITE CRAFT</text>
+  <text x="640" y="615" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" letter-spacing="10" opacity="0.2">AMONG THE STARS</text>
+</svg>

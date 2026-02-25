@@ -1,4 +1,8 @@
-# Infinite Craft Pulse Explorer
+# Infinite Craft Explorer
+
+<p align="center">
+  <img src="images/cover.svg" alt="Infinite Craft Explorer" width="640"/>
+</p>
 
 A fully serverless element-combination explorer for [Infinite Craft](https://neal.fun/infinite-craft/) by Neal Agarwal. Self-coordinating Lambda workers autonomously discover new elements, persist results to DynamoDB, and serve a real-time dashboard via CloudFront.
 

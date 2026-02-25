@@ -1,0 +1,145 @@
+<svg viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg18" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg18)"/>
+  <!-- Origami paper fold element cards -->
+  <!-- Each card has a triangular fold in top-right corner -->
+  <g font-family="monospace">
+    <!-- Row 1 -->
+    <g transform="translate(60,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#ff6b35"/>
+      <polygon points="85,0 85,25 60,0" fill="#d45a2a"/>
+      <polygon points="60,0 85,25 85,0" fill="#c04e20" opacity="0.5"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="white">Wa</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="white" opacity="0.8">Water</text>
+      <text x="10" y="18" font-size="8" fill="white" opacity="0.5">001</text>
+    </g>
+    <g transform="translate(160,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#4ecdc4"/>
+      <polygon points="85,0 85,25 60,0" fill="#3ab8af"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Fi</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Fire</text>
+      <text x="10" y="18" font-size="8" fill="#1a1a2e" opacity="0.5">002</text>
+    </g>
+    <g transform="translate(260,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#a8e06c"/>
+      <polygon points="85,0 85,25 60,0" fill="#92c85c"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Ea</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Earth</text>
+      <text x="10" y="18" font-size="8" fill="#1a1a2e" opacity="0.5">003</text>
+    </g>
+    <g transform="translate(360,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#ffd93d"/>
+      <polygon points="85,0 85,25 60,0" fill="#e6c235"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Wi</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Wind</text>
+      <text x="10" y="18" font-size="8" fill="#1a1a2e" opacity="0.5">004</text>
+    </g>
+    <g transform="translate(460,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#c4b5fd"/>
+      <polygon points="85,0 85,25 60,0" fill="#b0a0e8"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">St</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Steam</text>
+      <text x="10" y="18" font-size="8" fill="#1a1a2e" opacity="0.5">005</text>
+    </g>
+    <g transform="translate(560,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#ff6b35"/>
+      <polygon points="85,0 85,25 60,0" fill="#d45a2a"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="white">Lv</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="white" opacity="0.8">Lava</text>
+      <text x="10" y="18" font-size="8" fill="white" opacity="0.5">006</text>
+    </g>
+    <g transform="translate(660,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#4ecdc4"/>
+      <polygon points="85,0 85,25 60,0" fill="#3ab8af"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Ic</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Ice</text>
+      <text x="10" y="18" font-size="8" fill="#1a1a2e" opacity="0.5">007</text>
+    </g>
+    <g transform="translate(760,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#a8e06c"/>
+      <polygon points="85,0 85,25 60,0" fill="#92c85c"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Mu</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Mud</text>
+      <text x="10" y="18" font-size="8" fill="#1a1a2e" opacity="0.5">008</text>
+    </g>
+    <g transform="translate(860,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#ffd93d"/>
+      <polygon points="85,0 85,25 60,0" fill="#e6c235"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Sm</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Smoke</text>
+      <text x="10" y="18" font-size="8" fill="#1a1a2e" opacity="0.5">009</text>
+    </g>
+    <g transform="translate(960,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#c4b5fd"/>
+      <polygon points="85,0 85,25 60,0" fill="#b0a0e8"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Du</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Dust</text>
+      <text x="10" y="18" font-size="8" fill="#1a1a2e" opacity="0.5">010</text>
+    </g>
+    <g transform="translate(1060,40)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#ff6b35"/>
+      <polygon points="85,0 85,25 60,0" fill="#d45a2a"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="white">Pl</text>
+      <text x="42" y="78" text-anchor="middle" font-size="10" fill="white" opacity="0.8">Plant</text>
+      <text x="10" y="18" font-size="8" fill="white" opacity="0.5">011</text>
+    </g>
+    <!-- Row 2 -->
+    <g transform="translate(60,155)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#4ecdc4"/><polygon points="85,0 85,25 60,0" fill="#3ab8af"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Vo</text><text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Volcano</text>
+    </g>
+    <g transform="translate(160,155)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#a8e06c"/><polygon points="85,0 85,25 60,0" fill="#92c85c"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Gl</text><text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Glass</text>
+    </g>
+    <g transform="translate(260,155)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#ffd93d"/><polygon points="85,0 85,25 60,0" fill="#e6c235"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Rn</text><text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Rain</text>
+    </g>
+    <g transform="translate(360,155)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#c4b5fd"/><polygon points="85,0 85,25 60,0" fill="#b0a0e8"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Sn</text><text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Snow</text>
+    </g>
+    <g transform="translate(460,155)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#ff6b35"/><polygon points="85,0 85,25 60,0" fill="#d45a2a"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="white">Cr</text><text x="42" y="78" text-anchor="middle" font-size="10" fill="white" opacity="0.8">Crystal</text>
+    </g>
+    <g transform="translate(560,155)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#4ecdc4"/><polygon points="85,0 85,25 60,0" fill="#3ab8af"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Pg</text><text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Penguin</text>
+    </g>
+    <g transform="translate(660,155)">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#a8e06c"/><polygon points="85,0 85,25 60,0" fill="#92c85c"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Lk</text><text x="42" y="78" text-anchor="middle" font-size="10" fill="#1a1a2e" opacity="0.8">Lake</text>
+    </g>
+    <g transform="translate(760,155)" opacity="0.7">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#ffd93d"/><polygon points="85,0 85,25 60,0" fill="#e6c235"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Hy</text>
+    </g>
+    <g transform="translate(860,155)" opacity="0.5">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#c4b5fd"/><polygon points="85,0 85,25 60,0" fill="#b0a0e8"/>
+      <text x="42" y="55" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a2e">Nv</text>
+    </g>
+    <g transform="translate(960,155)" opacity="0.3">
+      <polygon points="0,0 85,0 85,100 0,100" fill="#ff6b35"/><polygon points="85,0 85,25 60,0" fill="#d45a2a"/>
+      <text x="42" y="55" text-anchor="middle" font-size="22" fill="white">...</text>
+    </g>
+  </g>
+  <!-- Origami crane silhouette decoration -->
+  <g transform="translate(920,340)" opacity="0.1" fill="white">
+    <polygon points="0,60 40,0 80,60 60,50 40,80 20,50"/>
+    <polygon points="40,0 30,30 50,30"/>
+  </g>
+  <!-- Title -->
+  <text x="640" y="400" text-anchor="middle" font-family="monospace" font-size="14" fill="#4ecdc4" letter-spacing="6" opacity="0.6">FOLDED WITH CARE</text>
+  <text x="640" y="480" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="60" font-weight="900" fill="white" letter-spacing="6">INFINITE CRAFT</text>
+  <text x="640" y="530" text-anchor="middle" font-family="monospace" font-size="16" fill="#ff6b35">8,579 elements folded</text>
+  <!-- Paper fold corner on bottom right -->
+  <polygon points="1280,640 1280,590 1230,640" fill="#1a1a2e" stroke="#4ecdc4" stroke-width="1" opacity="0.3"/>
+  <polygon points="1280,590 1230,640 1260,610" fill="#16213e" opacity="0.5"/>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="ribbon1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="30%" stop-color="#c4b5fd"/>
+      <stop offset="60%" stop-color="#4ecdc4"/>
+      <stop offset="100%" stop-color="#ff6b35"/>
+    </linearGradient>
+    <linearGradient id="ribbon2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#c4b5fd" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#4ecdc4" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="ribbonSheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.15"/>
+    </linearGradient>
+    <filter id="ribbonShadow">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#ff6b35" flood-opacity="0.15"/>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a0a"/>
+  <!-- Ambient light -->
+  <ellipse cx="640" cy="300" rx="500" ry="250" fill="#c4b5fd" opacity="0.02"/>
+  <!-- Ribbon back face (darker, behind) -->
+  <path d="M270,300 C270,180 400,130 490,200 C545,245 575,285 640,285 C705,285 735,245 790,200 C880,130 1010,180 1010,300" fill="none" stroke="#4ecdc4" stroke-width="50" stroke-linecap="round" opacity="0.15" filter="url(#ribbonShadow)"/>
+  <path d="M1010,300 C1010,420 880,470 790,400 C735,355 705,315 640,315 C575,315 545,355 490,400 C400,470 270,420 270,300" fill="none" stroke="#c4b5fd" stroke-width="50" stroke-linecap="round" opacity="0.15"/>
+  <!-- Main ribbon - top edge -->
+  <path d="M270,290 C270,170 400,125 490,195 C545,238 575,278 640,278 C705,278 735,238 790,195 C880,125 1010,170 1010,290" fill="none" stroke="url(#ribbon1)" stroke-width="4" opacity="0.9"/>
+  <!-- Main ribbon surface - top half -->
+  <path d="M270,290 C270,170 400,125 490,195 C545,238 575,278 640,278 C705,278 735,238 790,195 C880,125 1010,170 1010,290 L1010,310 C1010,190 880,145 790,215 C735,258 705,298 640,298 C575,298 545,258 490,215 C400,145 270,190 270,310Z" fill="url(#ribbon1)" opacity="0.5"/>
+  <!-- Sheen overlay on top surface -->
+  <path d="M270,290 C270,170 400,125 490,195 C545,238 575,278 640,278 C705,278 735,238 790,195 C880,125 1010,170 1010,290 L1010,300 C1010,180 880,135 790,205 C735,248 705,288 640,288 C575,288 545,248 490,205 C400,135 270,180 270,300Z" fill="url(#ribbonSheen)"/>
+  <!-- Main ribbon - bottom edge -->
+  <path d="M270,310 C270,430 400,475 490,405 C545,362 575,322 640,322 C705,322 735,362 790,405 C880,475 1010,430 1010,310" fill="none" stroke="url(#ribbon1)" stroke-width="4" opacity="0.9"/>
+  <!-- Main ribbon surface - bottom half -->
+  <path d="M270,310 C270,430 400,475 490,405 C545,362 575,322 640,322 C705,322 735,362 790,405 C880,475 1010,430 1010,310 L1010,290 C1010,410 880,455 790,385 C735,342 705,302 640,302 C575,302 545,342 490,385 C400,455 270,410 270,290Z" fill="url(#ribbon1)" opacity="0.35"/>
+  <!-- Center twist crossing highlight -->
+  <ellipse cx="640" cy="300" rx="30" ry="22" fill="#fff" opacity="0.05"/>
+  <line x1="625" y1="278" x2="655" y2="322" stroke="#fff" stroke-width="1" opacity="0.3"/>
+  <line x1="655" y1="278" x2="625" y2="322" stroke="#fff" stroke-width="1" opacity="0.2"/>
+  <!-- Floating silk particles -->
+  <g opacity="0.4">
+    <circle cx="350" cy="220" r="2" fill="#ff6b35"/><circle cx="420" cy="380" r="1.5" fill="#c4b5fd"/>
+    <circle cx="560" cy="250" r="1.8" fill="#4ecdc4"/><circle cx="720" cy="250" r="1.5" fill="#ffd93d"/>
+    <circle cx="860" cy="380" r="2" fill="#a8e06c"/><circle cx="930" cy="220" r="1.5" fill="#ff6b35"/>
+    <circle cx="500" cy="350" r="1" fill="#fff"/><circle cx="780" cy="350" r="1" fill="#fff"/>
+  </g>
+  <!-- Title -->
+  <text x="640" y="560" text-anchor="middle" font-family="'Georgia', serif" font-size="40" font-weight="normal" fill="#ffffff" letter-spacing="16" opacity="0.85" font-style="italic">INFINITE CRAFT</text>
+</svg>

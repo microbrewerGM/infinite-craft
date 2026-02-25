@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a3d6a" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="640" fill="#1a2744"/>
+  <rect width="1280" height="640" fill="url(#grid)" opacity="0.4"/>
+
+  <!-- Title -->
+  <text x="640" y="50" fill="white" font-family="monospace" font-size="42" font-weight="bold" text-anchor="middle" letter-spacing="8">INFINITE CRAFT</text>
+  <line x1="300" y1="62" x2="980" y2="62" stroke="#ff6b35" stroke-width="2"/>
+  <text x="640" y="82" fill="#6eaadc" font-family="monospace" font-size="14" text-anchor="middle" letter-spacing="3">SUSPENSION BRIDGE FORCE ANALYSIS</text>
+
+  <!-- Water level -->
+  <rect x="0" y="480" width="1280" height="160" fill="#4ecdc4" opacity="0.05"/>
+  <path d="M 0 480 Q 60 470 120 480 Q 180 490 240 480 Q 300 470 360 480 Q 420 490 480 480 Q 540 470 600 480 Q 660 490 720 480 Q 780 470 840 480 Q 900 490 960 480 Q 1020 470 1080 480 Q 1140 490 1200 480 Q 1260 470 1280 478" fill="none" stroke="#4ecdc4" stroke-width="1.5"/>
+  <text x="640" y="510" fill="#4ecdc4" font-family="monospace" font-size="10" text-anchor="middle" opacity="0.5">WATER LEVEL</text>
+
+  <!-- Left tower -->
+  <rect x="280" y="180" width="40" height="280" fill="none" stroke="#ff6b35" stroke-width="3"/>
+  <rect x="285" y="185" width="30" height="40" fill="none" stroke="#ff6b35" stroke-width="1"/>
+  <rect x="285" y="240" width="30" height="40" fill="none" stroke="#ff6b35" stroke-width="1"/>
+  <rect x="285" y="300" width="30" height="40" fill="none" stroke="#ff6b35" stroke-width="1"/>
+  <text x="300" y="175" fill="#ff6b35" font-family="monospace" font-size="10" text-anchor="middle">TOWER A</text>
+  <text x="300" y="160" fill="#ff6b35" font-family="monospace" font-size="8" text-anchor="middle">[FIRE]</text>
+
+  <!-- Right tower -->
+  <rect x="960" y="180" width="40" height="280" fill="none" stroke="#ff6b35" stroke-width="3"/>
+  <rect x="965" y="185" width="30" height="40" fill="none" stroke="#ff6b35" stroke-width="1"/>
+  <rect x="965" y="240" width="30" height="40" fill="none" stroke="#ff6b35" stroke-width="1"/>
+  <rect x="965" y="300" width="30" height="40" fill="none" stroke="#ff6b35" stroke-width="1"/>
+  <text x="980" y="175" fill="#ff6b35" font-family="monospace" font-size="10" text-anchor="middle">TOWER B</text>
+  <text x="980" y="160" fill="#ff6b35" font-family="monospace" font-size="8" text-anchor="middle">[FIRE]</text>
+
+  <!-- Main cables (catenary curves) -->
+  <path d="M 100 220 Q 300 180 300 180" fill="none" stroke="#ffd93d" stroke-width="3"/>
+  <path d="M 300 180 Q 640 360 980 180" fill="none" stroke="#ffd93d" stroke-width="3"/>
+  <path d="M 980 180 Q 980 180 1180 220" fill="none" stroke="#ffd93d" stroke-width="3"/>
+  <text x="640" y="345" fill="#ffd93d" font-family="monospace" font-size="9" text-anchor="middle">MAIN CABLE [EARTH]</text>
+
+  <!-- Deck -->
+  <line x1="100" y1="410" x2="1180" y2="410" stroke="#a8e06c" stroke-width="4"/>
+  <text x="640" y="430" fill="#a8e06c" font-family="monospace" font-size="10" text-anchor="middle">ROAD DECK [EARTH FOUNDATION]</text>
+
+  <!-- Suspender cables (vertical from main cable to deck) -->
+  <g stroke="#c4b5fd" stroke-width="1.5">
+    <line x1="200" y1="207" x2="200" y2="410"/>
+    <line x1="250" y1="195" x2="250" y2="410"/>
+    <line x1="350" y1="200" x2="350" y2="410"/>
+    <line x1="400" y1="218" x2="400" y2="410"/>
+    <line x1="450" y1="240" x2="450" y2="410"/>
+    <line x1="500" y1="265" x2="500" y2="410"/>
+    <line x1="550" y1="290" x2="550" y2="410"/>
+    <line x1="600" y1="315" x2="600" y2="410"/>
+    <line x1="640" y1="330" x2="640" y2="410"/>
+    <line x1="680" y1="315" x2="680" y2="410"/>
+    <line x1="730" y1="290" x2="730" y2="410"/>
+    <line x1="780" y1="265" x2="780" y2="410"/>
+    <line x1="830" y1="240" x2="830" y2="410"/>
+    <line x1="880" y1="218" x2="880" y2="410"/>
+    <line x1="930" y1="200" x2="930" y2="410"/>
+    <line x1="1030" y1="200" x2="1030" y2="410"/>
+    <line x1="1080" y1="207" x2="1080" y2="410"/>
+  </g>
+  <text x="640" y="398" fill="#c4b5fd" font-family="monospace" font-size="8" text-anchor="middle">SUSPENDER CABLES [WIND]</text>
+
+  <!-- Foundation/abutments -->
+  <rect x="60" y="410" width="80" height="60" fill="none" stroke="#a8e06c" stroke-width="2"/>
+  <text x="100" y="445" fill="#a8e06c" font-family="monospace" font-size="8" text-anchor="middle">ABUTMENT</text>
+  <rect x="1140" y="410" width="80" height="60" fill="none" stroke="#a8e06c" stroke-width="2"/>
+  <text x="1180" y="445" fill="#a8e06c" font-family="monospace" font-size="8" text-anchor="middle">ABUTMENT</text>
+
+  <!-- Tower foundations -->
+  <rect x="265" y="460" width="70" height="30" fill="none" stroke="#a8e06c" stroke-width="2"/>
+  <rect x="945" y="460" width="70" height="30" fill="none" stroke="#a8e06c" stroke-width="2"/>
+
+  <!-- Force vectors -->
+  <!-- Tension in cable -->
+  <line x1="200" y1="200" x2="150" y2="230" stroke="#ffd93d" stroke-width="2"/>
+  <polygon points="152,224 145,235 158,230" fill="#ffd93d"/>
+  <text x="130" y="220" fill="#ffd93d" font-family="monospace" font-size="9" text-anchor="end">T = 45MN</text>
+
+  <!-- Compression in tower -->
+  <line x1="330" y1="280" x2="330" y2="240" stroke="#ff6b35" stroke-width="2"/>
+  <polygon points="325,245 330,235 335,245" fill="#ff6b35"/>
+  <line x1="330" y1="350" x2="330" y2="390" stroke="#ff6b35" stroke-width="2"/>
+  <polygon points="325,385 330,395 335,385" fill="#ff6b35"/>
+  <text x="345" y="325" fill="#ff6b35" font-family="monospace" font-size="8">COMPRESSION</text>
+  <text x="345" y="338" fill="#ff6b35" font-family="monospace" font-size="8">C = 120MN</text>
+
+  <!-- Weight force (downward) -->
+  <line x1="640" y1="410" x2="640" y2="460" stroke="white" stroke-width="2"/>
+  <polygon points="635,455 640,465 645,455" fill="white"/>
+  <text x="660" y="455" fill="white" font-family="monospace" font-size="9">W = mg</text>
+
+  <!-- Reaction forces at abutments -->
+  <line x1="100" y1="470" x2="100" y2="440" stroke="#a8e06c" stroke-width="2"/>
+  <polygon points="95,445 100,435 105,445" fill="#a8e06c"/>
+  <text x="100" y="485" fill="#a8e06c" font-family="monospace" font-size="8" text-anchor="middle">R = 60MN</text>
+
+  <!-- Dimension lines -->
+  <line x1="280" y1="120" x2="1000" y2="120" stroke="#6eaadc" stroke-width="0.8"/>
+  <line x1="280" y1="115" x2="280" y2="125" stroke="#6eaadc" stroke-width="0.8"/>
+  <line x1="1000" y1="115" x2="1000" y2="125" stroke="#6eaadc" stroke-width="0.8"/>
+  <text x="640" y="115" fill="#6eaadc" font-family="monospace" font-size="9" text-anchor="middle">MAIN SPAN: 1280m</text>
+
+  <line x1="100" y1="130" x2="280" y2="130" stroke="#6eaadc" stroke-width="0.5"/>
+  <text x="190" y="128" fill="#6eaadc" font-family="monospace" font-size="8" text-anchor="middle">SIDE: 320m</text>
+  <line x1="1000" y1="130" x2="1180" y2="130" stroke="#6eaadc" stroke-width="0.5"/>
+  <text x="1090" y="128" fill="#6eaadc" font-family="monospace" font-size="8" text-anchor="middle">SIDE: 320m</text>
+
+  <!-- Specs box -->
+  <rect x="60" y="530" width="350" height="70" fill="none" stroke="#6eaadc" stroke-width="1.5" rx="3"/>
+  <text x="235" y="555" fill="white" font-family="monospace" font-size="11" text-anchor="middle" font-weight="bold">STRUCTURAL SPECIFICATIONS</text>
+  <line x1="60" y1="562" x2="410" y2="562" stroke="#6eaadc" stroke-width="0.5"/>
+  <text x="80" y="578" fill="#6eaadc" font-family="monospace" font-size="9">TOWER HEIGHT: 227m | DECK WIDTH: 28m</text>
+  <text x="80" y="593" fill="#6eaadc" font-family="monospace" font-size="9">CABLE DIA: 0.92m | CLEARANCE: 67m</text>
+
+  <!-- Corner marks -->
+  <path d="M 20 20 L 20 50 M 20 20 L 50 20" stroke="#ff6b35" stroke-width="2" fill="none"/>
+  <path d="M 1260 20 L 1260 50 M 1260 20 L 1230 20" stroke="#ff6b35" stroke-width="2" fill="none"/>
+  <path d="M 20 620 L 20 590 M 20 620 L 50 620" stroke="#ff6b35" stroke-width="2" fill="none"/>
+  <path d="M 1260 620 L 1260 590 M 1260 620 L 1230 620" stroke="#ff6b35" stroke-width="2" fill="none"/>
+
+  <rect x="900" y="575" width="360" height="40" fill="none" stroke="#6eaadc" stroke-width="1"/>
+  <text x="1080" y="600" fill="#6eaadc" font-family="monospace" font-size="10" text-anchor="middle">DWG: IC-BRIDGE-016 | STRUCTURAL</text>
+</svg>

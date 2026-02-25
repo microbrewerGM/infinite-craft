@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  Infinite Craft Pulse Explorer — Zero-dollar serverless deployment.
+  Infinite Craft Explorer — Zero-dollar serverless deployment.
   Self-coordinating Lambda workers explore element combinations,
   persist to DynamoDB, served via read-only CloudFront dashboard.
 

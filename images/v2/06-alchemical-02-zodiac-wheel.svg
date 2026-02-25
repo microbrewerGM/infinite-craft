@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#1a1a3e"/>
+      <stop offset="100%" stop-color="#0a0a1a"/>
+    </radialGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg2)"/>
+  <!-- Outer wheel -->
+  <g transform="translate(640,310)">
+    <circle r="250" fill="none" stroke="#c9a96e" stroke-width="2" opacity="0.8"/>
+    <circle r="230" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.4"/>
+    <circle r="200" fill="none" stroke="#c9a96e" stroke-width="1.5" opacity="0.6"/>
+    <circle r="170" fill="none" stroke="#8b7355" stroke-width="0.5" opacity="0.4"/>
+    <circle r="140" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.5"/>
+    <circle r="80" fill="none" stroke="#ffd93d" stroke-width="1" opacity="0.3"/>
+    <circle r="30" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.6"/>
+    <circle r="8" fill="#ffd93d" opacity="0.4"/>
+    <!-- 12 division lines -->
+    <g stroke="#c9a96e" stroke-width="0.5" opacity="0.4">
+      <line x1="0" y1="-200" x2="0" y2="-250"/>
+      <line x1="100" y1="-173" x2="125" y2="-216.5" />
+      <line x1="173" y1="-100" x2="216.5" y2="-125"/>
+      <line x1="200" y1="0" x2="250" y2="0"/>
+      <line x1="173" y1="100" x2="216.5" y2="125"/>
+      <line x1="100" y1="173" x2="125" y2="216.5"/>
+      <line x1="0" y1="200" x2="0" y2="250"/>
+      <line x1="-100" y1="173" x2="-125" y2="216.5"/>
+      <line x1="-173" y1="100" x2="-216.5" y2="125"/>
+      <line x1="-200" y1="0" x2="-250" y2="0"/>
+      <line x1="-173" y1="-100" x2="-216.5" y2="-125"/>
+      <line x1="-100" y1="-173" x2="-125" y2="-216.5"/>
+    </g>
+    <!-- Zodiac symbols around the wheel -->
+    <g font-family="serif" font-size="20" text-anchor="middle" dominant-baseline="central">
+      <text x="0" y="-215" fill="#ff6b35">&#x2648;</text>
+      <text x="108" y="-186" fill="#a8e06c">&#x2649;</text>
+      <text x="186" y="-108" fill="#4ecdc4">&#x264A;</text>
+      <text x="215" y="0" fill="#ff6b35">&#x264B;</text>
+      <text x="186" y="108" fill="#a8e06c">&#x264C;</text>
+      <text x="108" y="186" fill="#4ecdc4">&#x264D;</text>
+      <text x="0" y="215" fill="#c4b5fd">&#x264E;</text>
+      <text x="-108" y="186" fill="#ff6b35">&#x264F;</text>
+      <text x="-186" y="108" fill="#a8e06c">&#x2650;</text>
+      <text x="-215" y="0" fill="#4ecdc4">&#x2651;</text>
+      <text x="-186" y="-108" fill="#c4b5fd">&#x2652;</text>
+      <text x="-108" y="-186" fill="#ffd93d">&#x2653;</text>
+    </g>
+    <!-- Element triangles at cardinal points -->
+    <g filter="url(#glow2)">
+      <polygon points="0,-160 -12,-140 12,-140" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
+      <polygon points="160,0 140,-12 140,12" fill="none" stroke="#4ecdc4" stroke-width="1.5"/>
+      <polygon points="0,160 -12,140 12,140" fill="none" stroke="#a8e06c" stroke-width="1.5"/>
+      <polygon points="-160,0 -140,-12 -140,12" fill="none" stroke="#c4b5fd" stroke-width="1.5"/>
+    </g>
+    <!-- Inner decorative star -->
+    <polygon points="0,-80 22,-28 80,-28 34,10 52,68 0,34 -52,68 -34,10 -80,-28 -22,-28" fill="none" stroke="#ffd93d" stroke-width="0.8" opacity="0.4"/>
+  </g>
+  <!-- Title -->
+  <text x="640" y="52" text-anchor="middle" font-family="serif" font-size="44" fill="#c9a96e" letter-spacing="14" filter="url(#glow2)">INFINITE CRAFT</text>
+  <!-- Decorative line under title -->
+  <line x1="400" y1="65" x2="880" y2="65" stroke="#c9a96e" stroke-width="0.5" opacity="0.4"/>
+  <!-- Scattered stars -->
+  <g fill="#ffd93d" opacity="0.2">
+    <circle cx="60" cy="100" r="1.5"/><circle cx="120" cy="300" r="1"/><circle cx="80" cy="500" r="1.5"/>
+    <circle cx="200" cy="180" r="1"/><circle cx="1080" cy="120" r="1.5"/><circle cx="1200" cy="300" r="1"/>
+    <circle cx="1150" cy="500" r="1.5"/><circle cx="1220" cy="180" r="1"/><circle cx="300" cy="580" r="1"/>
+    <circle cx="980" cy="580" r="1.5"/>
+  </g>
+</svg>

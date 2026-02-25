@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="20%" stop-color="#ffd93d"/>
+      <stop offset="60%" stop-color="#ff6b35"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="planet1" cx="30%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#6ecdc4"/>
+      <stop offset="100%" stop-color="#2a6a64"/>
+    </radialGradient>
+    <radialGradient id="planet2" cx="30%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#d4c5fd"/>
+      <stop offset="100%" stop-color="#6a5a9a"/>
+    </radialGradient>
+    <radialGradient id="planet3" cx="30%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ffaa6b"/>
+      <stop offset="100%" stop-color="#cc4400"/>
+    </radialGradient>
+    <filter id="orbitGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="sunGlow">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="planetShadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a0a"/>
+  <!-- Stars -->
+  <g opacity="0.5">
+    <circle cx="80" cy="60" r="0.8" fill="#fff"/><circle cx="200" cy="120" r="0.6" fill="#fff"/>
+    <circle cx="350" cy="50" r="1" fill="#fff"/><circle cx="500" cy="90" r="0.7" fill="#fff"/>
+    <circle cx="780" cy="70" r="0.8" fill="#fff"/><circle cx="950" cy="50" r="0.6" fill="#fff"/>
+    <circle cx="1100" cy="100" r="0.9" fill="#fff"/><circle cx="1200" cy="60" r="0.7" fill="#fff"/>
+    <circle cx="120" cy="500" r="0.6" fill="#fff"/><circle cx="300" cy="540" r="0.7" fill="#ffd93d"/>
+    <circle cx="980" cy="530" r="0.6" fill="#4ecdc4"/><circle cx="1150" cy="490" r="0.8" fill="#fff"/>
+    <circle cx="640" cy="45" r="1.2" fill="#fff"/><circle cx="440" cy="520" r="0.5" fill="#fff"/>
+    <circle cx="840" cy="510" r="0.5" fill="#fff"/>
+  </g>
+  <!-- Orbit paths (infinity shape) -->
+  <!-- Outer orbit -->
+  <path d="M250,300 C250,175 385,132 470,198 C532,242 568,282 640,282 C712,282 748,242 810,198 C895,132 1030,175 1030,300 C1030,425 895,468 810,402 C748,358 712,318 640,318 C568,318 532,358 470,402 C385,468 250,425 250,300Z" fill="none" stroke="#4ecdc4" stroke-width="1" opacity="0.3" stroke-dasharray="6,4"/>
+  <!-- Middle orbit -->
+  <path d="M280,300 C280,190 400,155 478,212 C535,250 568,285 640,285 C712,285 745,250 802,212 C880,155 1000,190 1000,300 C1000,410 880,445 802,388 C745,350 712,315 640,315 C568,315 535,350 478,388 C400,445 280,410 280,300Z" fill="none" stroke="#c4b5fd" stroke-width="1" opacity="0.25" stroke-dasharray="4,6"/>
+  <!-- Inner orbit -->
+  <path d="M310,300 C310,205 415,175 485,225 C538,258 570,288 640,288 C710,288 742,258 795,225 C865,175 970,205 970,300 C970,395 865,425 795,375 C742,342 710,312 640,312 C570,312 538,342 485,375 C415,425 310,395 310,300Z" fill="none" stroke="#ff6b35" stroke-width="1" opacity="0.2" stroke-dasharray="3,5"/>
+  <!-- Sun 1 - at center-left of left loop -->
+  <circle cx="400" cy="300" r="30" fill="url(#sun)" filter="url(#sunGlow)" opacity="0.3"/>
+  <circle cx="400" cy="300" r="20" fill="url(#sun)" opacity="0.6"/>
+  <circle cx="400" cy="300" r="10" fill="#ffd93d" filter="url(#orbitGlow)"/>
+  <circle cx="400" cy="300" r="5" fill="#fff" opacity="0.8"/>
+  <!-- Sun 2 - at center-right of right loop -->
+  <circle cx="880" cy="300" r="30" fill="url(#sun)" filter="url(#sunGlow)" opacity="0.3"/>
+  <circle cx="880" cy="300" r="20" fill="url(#sun)" opacity="0.6"/>
+  <circle cx="880" cy="300" r="10" fill="#ffd93d" filter="url(#orbitGlow)"/>
+  <circle cx="880" cy="300" r="5" fill="#fff" opacity="0.8"/>
+  <!-- Planets on orbits -->
+  <!-- Planet - teal, outer orbit top-left -->
+  <circle cx="340" cy="215" r="10" fill="url(#planet1)" filter="url(#planetShadow)"/>
+  <ellipse cx="340" cy="215" rx="14" ry="4" fill="none" stroke="#4ecdc4" stroke-width="1" opacity="0.5" transform="rotate(-20 340 215)"/>
+  <!-- Planet - purple, middle orbit top -->
+  <circle cx="540" cy="256" r="8" fill="url(#planet2)" filter="url(#planetShadow)"/>
+  <!-- Planet - orange/red, inner orbit right -->
+  <circle cx="920" cy="240" r="7" fill="url(#planet3)" filter="url(#planetShadow)"/>
+  <!-- Planet - small rocky, bottom left -->
+  <circle cx="460" cy="400" r="5" fill="#888" filter="url(#planetShadow)"/>
+  <circle cx="460" cy="399" r="3" fill="#aaa" opacity="0.5"/>
+  <!-- Planet - gas giant, bottom right -->
+  <circle cx="820" cy="390" r="12" fill="#c4b5fd" opacity="0.7" filter="url(#planetShadow)"/>
+  <ellipse cx="820" cy="390" rx="18" ry="3" fill="none" stroke="#ffd93d" stroke-width="1.5" opacity="0.4"/>
+  <path d="M810,386 C815,384 825,384 830,386" fill="none" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+  <path d="M812,392 C817,394 823,394 828,392" fill="none" stroke="#4ecdc4" stroke-width="1" opacity="0.3"/>
+  <!-- Planet at crossover point -->
+  <circle cx="640" cy="300" r="6" fill="#a8e06c" filter="url(#planetShadow)"/>
+  <circle cx="639" cy="299" r="3" fill="#c8f08c" opacity="0.5"/>
+  <!-- Comet trail -->
+  <g opacity="0.3">
+    <circle cx="300" cy="400" r="2" fill="#fff" filter="url(#orbitGlow)"/>
+    <line x1="302" y1="398" x2="325" y2="385" stroke="#fff" stroke-width="1" opacity="0.5"/>
+    <line x1="302" y1="399" x2="330" y2="390" stroke="#4ecdc4" stroke-width="0.5" opacity="0.3"/>
+  </g>
+  <!-- Title -->
+  <text x="640" y="560" text-anchor="middle" font-family="'Courier New', monospace" font-size="40" font-weight="bold" fill="#ffffff" letter-spacing="12" opacity="0.9">INFINITE CRAFT</text>
+</svg>

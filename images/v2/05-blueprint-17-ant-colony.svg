@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a3d6a" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="soil" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="0.5" fill="#2a3d6a" opacity="0.5"/>
+      <circle cx="9" cy="9" r="0.3" fill="#2a3d6a" opacity="0.3"/>
+      <circle cx="6" cy="1" r="0.4" fill="#2a3d6a" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="640" fill="#1a2744"/>
+  <rect width="1280" height="640" fill="url(#grid)" opacity="0.3"/>
+
+  <!-- Title -->
+  <text x="640" y="45" fill="white" font-family="monospace" font-size="42" font-weight="bold" text-anchor="middle" letter-spacing="8">INFINITE CRAFT</text>
+  <line x1="300" y1="57" x2="980" y2="57" stroke="#a8e06c" stroke-width="2"/>
+  <text x="640" y="75" fill="#6eaadc" font-family="monospace" font-size="14" text-anchor="middle" letter-spacing="3">UNDERGROUND COLONY CROSS-SECTION</text>
+
+  <!-- Ground surface -->
+  <path d="M 0 130 Q 100 120 200 130 Q 350 145 500 130 Q 640 115 780 130 Q 920 145 1080 130 Q 1200 120 1280 130" fill="none" stroke="#a8e06c" stroke-width="2.5"/>
+
+  <!-- Ground fill below surface -->
+  <rect x="0" y="130" width="1280" height="510" fill="url(#soil)" opacity="0.5"/>
+
+  <!-- Surface features -->
+  <!-- Mound/entrance -->
+  <path d="M 580 130 Q 600 100 640 95 Q 680 100 700 130" fill="none" stroke="#a8e06c" stroke-width="2"/>
+  <text x="640" y="90" fill="#a8e06c" font-family="monospace" font-size="9" text-anchor="middle">MAIN ENTRANCE</text>
+
+  <!-- Small surface plants -->
+  <line x1="200" y1="130" x2="200" y2="115" stroke="#a8e06c" stroke-width="1"/>
+  <line x1="195" y1="120" x2="200" y2="115" stroke="#a8e06c" stroke-width="1"/>
+  <line x1="205" y1="120" x2="200" y2="115" stroke="#a8e06c" stroke-width="1"/>
+  <line x1="900" y1="130" x2="900" y2="110" stroke="#a8e06c" stroke-width="1"/>
+  <line x1="893" y1="118" x2="900" y2="110" stroke="#a8e06c" stroke-width="1"/>
+  <line x1="907" y1="118" x2="900" y2="110" stroke="#a8e06c" stroke-width="1"/>
+
+  <!-- Main entrance tunnel -->
+  <path d="M 640 130 L 640 200" fill="none" stroke="#6eaadc" stroke-width="8" opacity="0.3"/>
+  <path d="M 640 130 L 640 200" fill="none" stroke="#ff6b35" stroke-width="2"/>
+
+  <!-- Tunnel network -->
+  <!-- Main vertical shaft -->
+  <path d="M 640 200 L 640 350" fill="none" stroke="#ff6b35" stroke-width="2"/>
+
+  <!-- Branch left upper -->
+  <path d="M 640 220 Q 500 220 400 260" fill="none" stroke="#ff6b35" stroke-width="2"/>
+  <path d="M 400 260 Q 300 290 250 320" fill="none" stroke="#ff6b35" stroke-width="2"/>
+
+  <!-- Branch right upper -->
+  <path d="M 640 240 Q 800 250 900 280" fill="none" stroke="#4ecdc4" stroke-width="2"/>
+  <path d="M 900 280 Q 1000 310 1050 350" fill="none" stroke="#4ecdc4" stroke-width="2"/>
+
+  <!-- Branch left middle -->
+  <path d="M 640 300 Q 520 310 400 360" fill="none" stroke="#a8e06c" stroke-width="2"/>
+  <path d="M 400 360 L 300 400" fill="none" stroke="#a8e06c" stroke-width="2"/>
+
+  <!-- Branch right lower -->
+  <path d="M 640 350 Q 750 380 850 420" fill="none" stroke="#c4b5fd" stroke-width="2"/>
+
+  <!-- Deep tunnels -->
+  <path d="M 640 350 L 640 480" fill="none" stroke="#ffd93d" stroke-width="2"/>
+  <path d="M 640 430 Q 500 450 380 500" fill="none" stroke="#ffd93d" stroke-width="2"/>
+  <path d="M 640 480 Q 750 500 850 530" fill="none" stroke="#ffd93d" stroke-width="2"/>
+
+  <!-- Chambers -->
+  <!-- Fire Chamber (Queen) -->
+  <ellipse cx="250" cy="320" rx="60" ry="35" fill="#1a2744" stroke="#ff6b35" stroke-width="2"/>
+  <text x="250" y="316" fill="#ff6b35" font-family="monospace" font-size="11" text-anchor="middle" font-weight="bold">FIRE</text>
+  <text x="250" y="332" fill="#ff6b35" font-family="monospace" font-size="8" text-anchor="middle">QUEEN CHAMBER</text>
+
+  <!-- Water Chamber (Nursery) -->
+  <ellipse cx="900" cy="280" rx="55" ry="30" fill="#1a2744" stroke="#4ecdc4" stroke-width="2"/>
+  <text x="900" y="276" fill="#4ecdc4" font-family="monospace" font-size="11" text-anchor="middle" font-weight="bold">WATER</text>
+  <text x="900" y="292" fill="#4ecdc4" font-family="monospace" font-size="8" text-anchor="middle">NURSERY</text>
+
+  <!-- Earth Chamber (Storage) -->
+  <ellipse cx="1050" cy="350" rx="55" ry="30" fill="#1a2744" stroke="#4ecdc4" stroke-width="1.5"/>
+  <text x="1050" y="346" fill="#4ecdc4" font-family="monospace" font-size="9" text-anchor="middle">WATER</text>
+  <text x="1050" y="360" fill="#4ecdc4" font-family="monospace" font-size="7" text-anchor="middle">RESERVE</text>
+
+  <!-- Wind Chamber (Ventilation) -->
+  <ellipse cx="300" cy="400" rx="55" ry="30" fill="#1a2744" stroke="#a8e06c" stroke-width="2"/>
+  <text x="300" y="396" fill="#a8e06c" font-family="monospace" font-size="11" text-anchor="middle" font-weight="bold">EARTH</text>
+  <text x="300" y="412" fill="#a8e06c" font-family="monospace" font-size="8" text-anchor="middle">FOOD STORE</text>
+
+  <!-- Combination Lab -->
+  <ellipse cx="850" cy="420" rx="55" ry="35" fill="#1a2744" stroke="#c4b5fd" stroke-width="2"/>
+  <text x="850" y="416" fill="#c4b5fd" font-family="monospace" font-size="10" text-anchor="middle" font-weight="bold">WIND</text>
+  <text x="850" y="432" fill="#c4b5fd" font-family="monospace" font-size="8" text-anchor="middle">VENTILATION</text>
+
+  <!-- Deep storage -->
+  <ellipse cx="380" cy="500" rx="60" ry="35" fill="#1a2744" stroke="#ffd93d" stroke-width="2"/>
+  <text x="380" y="496" fill="#ffd93d" font-family="monospace" font-size="10" text-anchor="middle" font-weight="bold">CRAFT</text>
+  <text x="380" y="512" fill="#ffd93d" font-family="monospace" font-size="8" text-anchor="middle">COMBINATION LAB</text>
+
+  <!-- Output chamber -->
+  <ellipse cx="850" cy="530" rx="65" ry="35" fill="#1a2744" stroke="#ff6b35" stroke-width="2.5"/>
+  <text x="850" y="526" fill="white" font-family="monospace" font-size="11" text-anchor="middle" font-weight="bold">NEW ELEMENTS</text>
+  <text x="850" y="542" fill="#ff6b35" font-family="monospace" font-size="8" text-anchor="middle">DEEP STORAGE</text>
+
+  <!-- Small ant symbols -->
+  <g fill="#ffd93d" opacity="0.6">
+    <ellipse cx="580" cy="180" rx="3" ry="2"/>
+    <ellipse cx="550" cy="215" rx="3" ry="2"/>
+    <ellipse cx="700" cy="250" rx="3" ry="2"/>
+    <ellipse cx="500" cy="310" rx="3" ry="2"/>
+    <ellipse cx="750" cy="390" rx="3" ry="2"/>
+    <ellipse cx="500" cy="460" rx="3" ry="2"/>
+  </g>
+
+  <!-- Depth markers (right side) -->
+  <line x1="1200" y1="130" x2="1200" y2="580" stroke="#6eaadc" stroke-width="0.8"/>
+  <g fill="#6eaadc" font-family="monospace" font-size="8">
+    <line x1="1195" y1="130" x2="1205" y2="130" stroke="#6eaadc" stroke-width="0.8"/>
+    <text x="1210" y="134">0m</text>
+    <line x1="1195" y1="230" x2="1205" y2="230" stroke="#6eaadc" stroke-width="0.8"/>
+    <text x="1210" y="234">-2m</text>
+    <line x1="1195" y1="330" x2="1205" y2="330" stroke="#6eaadc" stroke-width="0.8"/>
+    <text x="1210" y="334">-4m</text>
+    <line x1="1195" y1="430" x2="1205" y2="430" stroke="#6eaadc" stroke-width="0.8"/>
+    <text x="1210" y="434">-6m</text>
+    <line x1="1195" y1="530" x2="1205" y2="530" stroke="#6eaadc" stroke-width="0.8"/>
+    <text x="1210" y="534">-8m</text>
+  </g>
+
+  <!-- Legend -->
+  <rect x="40" y="510" width="200" height="110" fill="#1a2744" stroke="#6eaadc" stroke-width="1" rx="3"/>
+  <text x="140" y="530" fill="white" font-family="monospace" font-size="10" text-anchor="middle" font-weight="bold">TUNNEL LEGEND</text>
+  <line x1="60" y1="545" x2="100" y2="545" stroke="#ff6b35" stroke-width="2"/>
+  <text x="110" y="549" fill="#ff6b35" font-family="monospace" font-size="8">PRIMARY</text>
+  <line x1="60" y1="560" x2="100" y2="560" stroke="#4ecdc4" stroke-width="2"/>
+  <text x="110" y="564" fill="#4ecdc4" font-family="monospace" font-size="8">NURSERY</text>
+  <line x1="60" y1="575" x2="100" y2="575" stroke="#a8e06c" stroke-width="2"/>
+  <text x="110" y="579" fill="#a8e06c" font-family="monospace" font-size="8">STORAGE</text>
+  <line x1="60" y1="590" x2="100" y2="590" stroke="#c4b5fd" stroke-width="2"/>
+  <text x="110" y="594" fill="#c4b5fd" font-family="monospace" font-size="8">VENTILATION</text>
+  <line x1="60" y1="605" x2="100" y2="605" stroke="#ffd93d" stroke-width="2"/>
+  <text x="110" y="609" fill="#ffd93d" font-family="monospace" font-size="8">DEEP/CRAFT</text>
+
+  <!-- Corner marks -->
+  <path d="M 20 20 L 20 45 M 20 20 L 45 20" stroke="#a8e06c" stroke-width="2" fill="none"/>
+  <path d="M 1260 20 L 1260 45 M 1260 20 L 1235 20" stroke="#a8e06c" stroke-width="2" fill="none"/>
+  <path d="M 20 620 L 20 595 M 20 620 L 45 620" stroke="#a8e06c" stroke-width="2" fill="none"/>
+  <path d="M 1260 620 L 1260 595 M 1260 620 L 1235 620" stroke="#a8e06c" stroke-width="2" fill="none"/>
+</svg>

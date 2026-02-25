@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="prGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="prSoft">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <filter id="prBeam">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="prismFace1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a2a" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0a0a15" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="prismFace2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#15152a" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#080815" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="#040406"/>
+
+  <!-- Incoming white beam from left -->
+  <line x1="0" y1="310" x2="540" y2="310" stroke="white" stroke-opacity="0.6" stroke-width="3" filter="url(#prBeam)"/>
+  <line x1="0" y1="310" x2="540" y2="310" stroke="white" stroke-opacity="0.15" stroke-width="10" filter="url(#prSoft)"/>
+  <!-- Beam glow -->
+  <line x1="0" y1="310" x2="540" y2="310" stroke="white" stroke-opacity="0.03" stroke-width="40" filter="url(#prSoft)"/>
+
+  <!-- Glass prism (triangle) -->
+  <polygon points="540,200 540,420 700,310" fill="url(#prismFace1)" stroke="white" stroke-opacity="0.12" stroke-width="1"/>
+  <!-- Prism internal refraction hint -->
+  <polygon points="545,210 545,410 690,310" fill="none" stroke="white" stroke-opacity="0.03" stroke-width="1"/>
+  <!-- Prism edge highlight -->
+  <line x1="540" y1="200" x2="700" y2="310" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
+  <line x1="540" y1="420" x2="700" y2="310" stroke="white" stroke-opacity="0.08" stroke-width="1"/>
+  <line x1="540" y1="200" x2="540" y2="420" stroke="white" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Refracted spectrum beams emerging from prism -->
+  <!-- Orange -->
+  <line x1="700" y1="310" x2="1280" y2="140" stroke="#ff6b35" stroke-opacity="0.7" stroke-width="2.5" filter="url(#prGlow)"/>
+  <line x1="700" y1="310" x2="1280" y2="140" stroke="#ff6b35" stroke-opacity="0.1" stroke-width="12" filter="url(#prSoft)"/>
+
+  <!-- Yellow -->
+  <line x1="700" y1="310" x2="1280" y2="220" stroke="#ffd93d" stroke-opacity="0.65" stroke-width="2.5" filter="url(#prGlow)"/>
+  <line x1="700" y1="310" x2="1280" y2="220" stroke="#ffd93d" stroke-opacity="0.08" stroke-width="12" filter="url(#prSoft)"/>
+
+  <!-- Green -->
+  <line x1="700" y1="310" x2="1280" y2="300" stroke="#a8e06c" stroke-opacity="0.6" stroke-width="2.5" filter="url(#prGlow)"/>
+  <line x1="700" y1="310" x2="1280" y2="300" stroke="#a8e06c" stroke-opacity="0.08" stroke-width="12" filter="url(#prSoft)"/>
+
+  <!-- Teal -->
+  <line x1="700" y1="310" x2="1280" y2="390" stroke="#4ecdc4" stroke-opacity="0.6" stroke-width="2.5" filter="url(#prGlow)"/>
+  <line x1="700" y1="310" x2="1280" y2="390" stroke="#4ecdc4" stroke-opacity="0.08" stroke-width="12" filter="url(#prSoft)"/>
+
+  <!-- Purple -->
+  <line x1="700" y1="310" x2="1280" y2="480" stroke="#c4b5fd" stroke-opacity="0.6" stroke-width="2.5" filter="url(#prGlow)"/>
+  <line x1="700" y1="310" x2="1280" y2="480" stroke="#c4b5fd" stroke-opacity="0.08" stroke-width="12" filter="url(#prSoft)"/>
+
+  <!-- Spectrum glow on right side -->
+  <ellipse cx="1100" cy="310" rx="200" ry="200" fill="#ff6b35" opacity="0.015" filter="url(#prSoft)"/>
+  <ellipse cx="1100" cy="310" rx="180" ry="180" fill="#4ecdc4" opacity="0.01" filter="url(#prSoft)"/>
+
+  <!-- Element emojis riding the spectrum beams -->
+  <text x="1050" y="170" font-size="32" text-anchor="middle" opacity="0.6">🔥</text>
+  <text x="1100" y="310" font-size="30" text-anchor="middle" opacity="0.55">🌍</text>
+  <text x="1080" y="400" font-size="32" text-anchor="middle" opacity="0.55">💧</text>
+  <text x="1050" y="490" font-size="28" text-anchor="middle" opacity="0.5">💨</text>
+
+  <!-- Subtle light point at refraction origin -->
+  <circle cx="700" cy="310" r="4" fill="white" opacity="0.4" filter="url(#prGlow)"/>
+
+  <!-- Title -->
+  <text x="640" y="580" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="56" font-weight="800" fill="white" text-anchor="middle" letter-spacing="18" opacity="0.9">INFINITE CRAFT</text>
+  <text x="640" y="615" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" letter-spacing="8" opacity="0.25">SPECTRUM</text>
+</svg>

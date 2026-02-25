@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg12" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87642a"/>
+      <stop offset="8%" stop-color="#5a3a1a"/>
+      <stop offset="15%" stop-color="#2a1a0a"/>
+      <stop offset="100%" stop-color="#0a0800"/>
+    </linearGradient>
+    <linearGradient id="soil12" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2a1a"/>
+      <stop offset="100%" stop-color="#1a0d00"/>
+    </linearGradient>
+    <filter id="rootGlow"><feGaussianBlur stdDeviation="2"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg12)"/>
+  <!-- Ground line -->
+  <line x1="0" y1="95" x2="1280" y2="95" stroke="#5a3a1a" stroke-width="2" opacity="0.6"/>
+  <!-- Tree trunk above ground -->
+  <path d="M620,95 L615,60 Q618,30 630,10 Q640,0 650,10 Q662,30 665,60 L660,95" fill="#4a2a0a" stroke="#6a4a2a" stroke-width="1"/>
+  <!-- Small branches above -->
+  <g fill="none" stroke="#4a2a0a" stroke-width="2.5" stroke-linecap="round">
+    <path d="M625,50 Q600,30 580,15"/>
+    <path d="M655,50 Q680,30 700,15"/>
+    <path d="M618,70 Q590,55 560,50"/>
+    <path d="M662,70 Q690,55 720,50"/>
+  </g>
+  <!-- Tiny leaf clusters -->
+  <g fill="#a8e06c" opacity="0.7">
+    <circle cx="580" cy="12" r="8"/><circle cx="570" cy="18" r="6"/>
+    <circle cx="700" cy="12" r="8"/><circle cx="710" cy="18" r="6"/>
+    <circle cx="555" cy="47" r="7"/><circle cx="547" cy="53" r="5"/>
+    <circle cx="725" cy="47" r="7"/><circle cx="733" cy="53" r="5"/>
+  </g>
+  <!-- Main tap roots -->
+  <g fill="none" stroke="#a8e06c" stroke-linecap="round" filter="url(#rootGlow)" opacity="0.85">
+    <!-- Central taproot -->
+    <path d="M640,95 L638,150 Q636,200 640,260 Q644,320 635,400 Q628,480 640,560 Q645,590 640,630" stroke-width="7"/>
+    <!-- Major lateral roots -->
+    <path d="M640,120 Q580,130 480,140 Q380,150 280,170 Q200,185 120,180" stroke-width="5"/>
+    <path d="M640,120 Q700,130 800,140 Q900,150 1000,170 Q1080,185 1160,180" stroke-width="5"/>
+    <path d="M638,200 Q560,220 440,240 Q340,255 240,280 Q160,300 80,290" stroke-width="4.5"/>
+    <path d="M640,200 Q720,220 840,240 Q940,255 1040,280 Q1120,300 1200,290" stroke-width="4.5"/>
+    <path d="M636,320 Q560,340 440,360 Q340,375 230,400" stroke-width="4"/>
+    <path d="M640,320 Q720,340 840,360 Q940,375 1050,400" stroke-width="4"/>
+    <path d="M635,440 Q570,460 470,480 Q380,495 300,520" stroke-width="3"/>
+    <path d="M640,440 Q710,460 810,480 Q900,495 980,520" stroke-width="3"/>
+  </g>
+  <!-- Secondary roots -->
+  <g fill="none" stroke="#a8e06c" stroke-width="2" stroke-linecap="round" opacity="0.6">
+    <path d="M480,140 Q460,170 420,190 Q380,210 340,200"/>
+    <path d="M280,170 Q260,200 220,210 Q180,220 140,210"/>
+    <path d="M800,140 Q820,170 860,190 Q900,210 940,200"/>
+    <path d="M1000,170 Q1020,200 1060,210 Q1100,220 1140,210"/>
+    <path d="M440,240 Q420,270 380,285 Q340,300 300,290"/>
+    <path d="M840,240 Q860,270 900,285 Q940,300 980,290"/>
+    <path d="M440,360 Q420,390 380,400 Q340,410 300,400"/>
+    <path d="M840,360 Q860,390 900,400 Q940,410 980,400"/>
+    <path d="M640,260 Q610,280 600,310"/>
+    <path d="M640,260 Q670,280 680,310"/>
+    <path d="M470,480 Q450,510 410,520"/>
+    <path d="M810,480 Q830,510 870,520"/>
+  </g>
+  <!-- Fine root hairs -->
+  <g fill="none" stroke="#a8e06c" stroke-width="0.8" stroke-linecap="round" opacity="0.3">
+    <path d="M340,200 Q320,195 300,205"/><path d="M140,210 Q120,200 100,210"/>
+    <path d="M940,200 Q960,195 980,205"/><path d="M1140,210 Q1160,200 1180,210"/>
+    <path d="M300,290 Q280,285 260,295"/><path d="M980,290 Q1000,285 1020,295"/>
+    <path d="M300,400 Q280,395 260,405"/><path d="M980,400 Q1000,395 1020,405"/>
+    <path d="M120,180 Q100,175 80,185"/><path d="M1160,180 Q1180,175 1200,185"/>
+    <path d="M80,290 Q60,285 40,295"/><path d="M1200,290 Q1220,285 1240,295"/>
+    <path d="M230,400 Q210,395 190,405"/><path d="M1050,400 Q1070,395 1090,405"/>
+    <path d="M300,520 Q280,530 260,520"/><path d="M980,520 Q1000,530 1020,520"/>
+    <path d="M600,310 Q580,320 570,340"/><path d="M680,310 Q700,320 710,340"/>
+    <path d="M410,520 Q390,530 370,520"/><path d="M870,520 Q890,530 910,520"/>
+  </g>
+  <!-- Root tip nodules -->
+  <g fill="#ff6b35" opacity="0.5">
+    <circle cx="120" cy="180" r="3"/><circle cx="1160" cy="180" r="3"/>
+    <circle cx="80" cy="290" r="3"/><circle cx="1200" cy="290" r="3"/>
+    <circle cx="230" cy="400" r="2.5"/><circle cx="1050" cy="400" r="2.5"/>
+    <circle cx="300" cy="520" r="2.5"/><circle cx="980" cy="520" r="2.5"/>
+    <circle cx="640" cy="630" r="3.5"/>
+    <circle cx="340" cy="200" r="2"/><circle cx="940" cy="200" r="2"/>
+    <circle cx="300" cy="290" r="2"/><circle cx="980" cy="290" r="2"/>
+  </g>
+  <!-- Soil particles -->
+  <g fill="#5a3a1a" opacity="0.15">
+    <circle cx="150" cy="250" r="12"/><circle cx="350" cy="320" r="15"/>
+    <circle cx="550" cy="430" r="10"/><circle cx="750" cy="200" r="13"/>
+    <circle cx="950" cy="350" r="11"/><circle cx="1100" cy="250" r="14"/>
+    <circle cx="200" cy="500" r="10"/><circle cx="450" cy="550" r="12"/>
+    <circle cx="830" cy="550" r="11"/><circle cx="1050" cy="500" r="10"/>
+  </g>
+  <!-- Title -->
+  <text x="640" y="320" font-family="Georgia, serif" font-size="68" font-weight="bold" fill="#ffd93d" text-anchor="middle" dominant-baseline="central" opacity="0.85" filter="url(#rootGlow)">INFINITE CRAFT</text>
+  <text x="640" y="375" font-family="Georgia, serif" font-size="15" fill="#a8e06c" text-anchor="middle" letter-spacing="8" opacity="0.5">ROOT SYSTEM</text>
+</svg>

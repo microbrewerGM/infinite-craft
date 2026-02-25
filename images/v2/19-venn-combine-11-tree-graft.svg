@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="tg-glow">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="tg-soft">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <radialGradient id="tg-life" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a8e06c" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0a0a14" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a14"/>
+  <ellipse cx="640" cy="340" rx="300" ry="200" fill="url(#tg-life)" opacity="0.4"/>
+
+  <!-- Left branch (orange tree) -->
+  <g>
+    <!-- Main branch -->
+    <path d="M 200 550 Q 250 480 300 420 Q 360 350 420 310 Q 500 260 560 250 Q 600 245 620 245" fill="none" stroke="#ff6b35" stroke-width="14" stroke-linecap="round" opacity="0.8"/>
+    <path d="M 200 550 Q 250 480 300 420 Q 360 350 420 310 Q 500 260 560 250 Q 600 245 620 245" fill="none" stroke="#ff6b35" stroke-width="8" stroke-linecap="round" opacity="0.5"/>
+    <!-- Sub-branches -->
+    <path d="M 320 400 Q 290 350 270 290" fill="none" stroke="#ff6b35" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 400 330 Q 370 280 360 230" fill="none" stroke="#ff6b35" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+    <path d="M 470 290 Q 450 240 460 190" fill="none" stroke="#ff6b35" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+    <!-- Leaves -->
+    <ellipse cx="260" cy="280" rx="20" ry="12" fill="#ff6b35" opacity="0.3" transform="rotate(-30, 260, 280)"/>
+    <ellipse cx="350" cy="220" rx="18" ry="10" fill="#ff6b35" opacity="0.3" transform="rotate(-20, 350, 220)"/>
+    <ellipse cx="455" cy="180" rx="16" ry="9" fill="#ff6b35" opacity="0.25" transform="rotate(-10, 455, 180)"/>
+  </g>
+
+  <!-- Right branch (teal tree) -->
+  <g>
+    <path d="M 1080 550 Q 1030 480 980 420 Q 920 350 860 310 Q 780 260 720 250 Q 680 245 660 245" fill="none" stroke="#4ecdc4" stroke-width="14" stroke-linecap="round" opacity="0.8"/>
+    <path d="M 1080 550 Q 1030 480 980 420 Q 920 350 860 310 Q 780 260 720 250 Q 680 245 660 245" fill="none" stroke="#4ecdc4" stroke-width="8" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 960 400 Q 990 350 1010 290" fill="none" stroke="#4ecdc4" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 880 330 Q 910 280 920 230" fill="none" stroke="#4ecdc4" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+    <path d="M 810 290 Q 830 240 820 190" fill="none" stroke="#4ecdc4" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+    <ellipse cx="1020" cy="280" rx="20" ry="12" fill="#4ecdc4" opacity="0.3" transform="rotate(30, 1020, 280)"/>
+    <ellipse cx="930" cy="220" rx="18" ry="10" fill="#4ecdc4" opacity="0.3" transform="rotate(20, 930, 220)"/>
+    <ellipse cx="825" cy="180" rx="16" ry="9" fill="#4ecdc4" opacity="0.25" transform="rotate(10, 825, 180)"/>
+  </g>
+
+  <!-- Graft junction point -->
+  <g transform="translate(640, 245)">
+    <!-- Binding wrap -->
+    <rect x="-25" y="-15" width="50" height="30" rx="5" fill="none" stroke="#a8e06c" stroke-width="2" opacity="0.6"/>
+    <line x1="-20" y1="-10" x2="-20" y2="10" stroke="#a8e06c" stroke-width="1.5" opacity="0.4"/>
+    <line x1="-10" y1="-12" x2="-10" y2="12" stroke="#a8e06c" stroke-width="1.5" opacity="0.4"/>
+    <line x1="0" y1="-13" x2="0" y2="13" stroke="#a8e06c" stroke-width="1.5" opacity="0.4"/>
+    <line x1="10" y1="-12" x2="10" y2="12" stroke="#a8e06c" stroke-width="1.5" opacity="0.4"/>
+    <line x1="20" y1="-10" x2="20" y2="10" stroke="#a8e06c" stroke-width="1.5" opacity="0.4"/>
+    <!-- Glow -->
+    <ellipse cx="0" cy="0" rx="35" ry="20" fill="#a8e06c" opacity="0.15" filter="url(#tg-glow)"/>
+  </g>
+
+  <!-- New growth from graft point (upward) -->
+  <path d="M 640 230 Q 640 200 635 170 Q 630 140 640 110" fill="none" stroke="#a8e06c" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M 637 160 Q 620 140 610 120" fill="none" stroke="#a8e06c" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 643 150 Q 660 130 670 115" fill="none" stroke="#a8e06c" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+  <!-- New leaves (mixed colors) -->
+  <ellipse cx="605" cy="115" rx="15" ry="8" fill="#a8e06c" opacity="0.5" transform="rotate(-40, 605, 115)"/>
+  <ellipse cx="675" cy="110" rx="15" ry="8" fill="#ffd93d" opacity="0.4" transform="rotate(40, 675, 110)"/>
+  <ellipse cx="640" cy="105" rx="14" ry="8" fill="#c4b5fd" opacity="0.35"/>
+  <!-- Bloom -->
+  <circle cx="640" cy="100" r="8" fill="#ffd93d" opacity="0.3"/>
+  <circle cx="640" cy="100" r="4" fill="#fff" opacity="0.4"/>
+
+  <!-- Floating particles -->
+  <circle cx="620" cy="180" r="2" fill="#a8e06c" opacity="0.4"/>
+  <circle cx="660" cy="190" r="1.5" fill="#ffd93d" opacity="0.3"/>
+  <circle cx="640" cy="150" r="1.5" fill="#fff" opacity="0.3"/>
+
+  <!-- Title -->
+  <text x="640" y="580" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="bold" fill="white" letter-spacing="12">INFINITE CRAFT</text>
+  <text x="640" y="620" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#a8e06c" opacity="0.6" letter-spacing="4">TREE GRAFT</text>
+</svg>

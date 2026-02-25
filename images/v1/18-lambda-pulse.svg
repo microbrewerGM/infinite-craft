@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#0d0d0d"/>
+  <!-- Pulse/heartbeat line -->
+  <g fill="none" stroke-width="2" stroke-linecap="round">
+    <!-- Flat line -->
+    <path d="M0,320 H400" stroke="#222"/>
+    <!-- Pulse -->
+    <path d="M400,320 L440,320 L460,200 L480,440 L500,180 L520,400 L540,220 L560,380 L580,280 L600,320" stroke="#4ecdc4"/>
+    <!-- Flat line continuing -->
+    <path d="M600,320 H880" stroke="#222"/>
+    <!-- Second smaller pulse -->
+    <path d="M880,320 L900,320 L910,260 L920,380 L930,240 L940,360 L950,300 L960,320" stroke="#4ecdc4" stroke-opacity="0.5"/>
+    <!-- Flat line -->
+    <path d="M960,320 H1280" stroke="#222"/>
+  </g>
+  <!-- Glow behind main pulse -->
+  <ellipse cx="500" cy="320" rx="120" ry="80" fill="#4ecdc4" opacity="0.03"/>
+  <!-- Lambda symbol -->
+  <text x="640" y="200" font-family="Georgia, serif" font-size="100" fill="#4ecdc4" text-anchor="middle" opacity="0.08">&#x03BB;</text>
+  <!-- Title -->
+  <text x="640" y="500" font-family="'Helvetica Neue', sans-serif" font-size="56" fill="white" text-anchor="middle" font-weight="700">INFINITE CRAFT</text>
+  <line x1="480" y1="520" x2="800" y2="520" stroke="#4ecdc4" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="640" y="550" font-family="'Helvetica Neue', sans-serif" font-size="15" fill="#4ecdc4" text-anchor="middle" letter-spacing="6" opacity="0.7">PULSE EXPLORER</text>
+  <!-- Stats subtle -->
+  <text x="640" y="600" font-family="'Courier New', monospace" font-size="11" fill="#333" text-anchor="middle">&#x03BB; every 4h &#x2022; 8,500+ elements &#x2022; $0/mo</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <radialGradient id="pulse" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0f0c29" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="640" fill="#030014"/>
+  <!-- Neural web: organic branching network with pulsing synapses -->
+  <g stroke-linecap="round">
+    <!-- Dendrite branches from center -->
+    <path d="M640,320 Q500,200 350,150" stroke="#ff6b35" stroke-width="3" fill="none" stroke-opacity="0.4"/>
+    <path d="M640,320 Q550,250 380,280" stroke="#ff6b35" stroke-width="2" fill="none" stroke-opacity="0.3"/>
+    <path d="M640,320 Q500,380 300,420" stroke="#4ecdc4" stroke-width="3" fill="none" stroke-opacity="0.4"/>
+    <path d="M640,320 Q700,200 900,120" stroke="#c4b5fd" stroke-width="3" fill="none" stroke-opacity="0.4"/>
+    <path d="M640,320 Q750,280 950,300" stroke="#a8e06c" stroke-width="2" fill="none" stroke-opacity="0.3"/>
+    <path d="M640,320 Q720,420 920,500" stroke="#ffd93d" stroke-width="3" fill="none" stroke-opacity="0.4"/>
+    <path d="M640,320 Q580,400 480,520" stroke="#4ecdc4" stroke-width="2" fill="none" stroke-opacity="0.3"/>
+    <!-- Sub-branches -->
+    <path d="M350,150 Q280,100 200,80" stroke="#ff6b35" stroke-width="1" fill="none" stroke-opacity="0.2"/>
+    <path d="M350,150 Q320,200 250,220" stroke="#ff6b35" stroke-width="1" fill="none" stroke-opacity="0.15"/>
+    <path d="M900,120 Q960,80 1050,60" stroke="#c4b5fd" stroke-width="1" fill="none" stroke-opacity="0.2"/>
+    <path d="M900,120 Q940,170 1020,180" stroke="#c4b5fd" stroke-width="1" fill="none" stroke-opacity="0.15"/>
+    <path d="M920,500 Q980,530 1060,540" stroke="#ffd93d" stroke-width="1" fill="none" stroke-opacity="0.2"/>
+    <path d="M300,420 Q230,460 160,480" stroke="#4ecdc4" stroke-width="1" fill="none" stroke-opacity="0.2"/>
+  </g>
+  <!-- Synapse glow points -->
+  <circle cx="350" cy="150" r="12" fill="url(#pulse)"/>
+  <circle cx="300" cy="420" r="10" fill="#4ecdc4" opacity="0.15"/>
+  <circle cx="900" cy="120" r="11" fill="#c4b5fd" opacity="0.12"/>
+  <circle cx="920" cy="500" r="10" fill="#ffd93d" opacity="0.12"/>
+  <!-- Core neuron -->
+  <circle cx="640" cy="320" r="30" fill="#ff6b35" opacity="0.08"/>
+  <circle cx="640" cy="320" r="15" fill="#ff6b35" opacity="0.15"/>
+  <circle cx="640" cy="320" r="5" fill="white" opacity="0.9"/>
+  <!-- Synapse dots -->
+  <circle cx="350" cy="150" r="4" fill="#ff6b35" opacity="0.8"/>
+  <circle cx="380" cy="280" r="3" fill="#ff6b35" opacity="0.5"/>
+  <circle cx="300" cy="420" r="4" fill="#4ecdc4" opacity="0.7"/>
+  <circle cx="900" cy="120" r="4" fill="#c4b5fd" opacity="0.7"/>
+  <circle cx="950" cy="300" r="3" fill="#a8e06c" opacity="0.5"/>
+  <circle cx="920" cy="500" r="4" fill="#ffd93d" opacity="0.7"/>
+  <circle cx="480" cy="520" r="3" fill="#4ecdc4" opacity="0.5"/>
+  <text x="640" y="570" font-family="'Helvetica Neue', sans-serif" font-size="44" fill="white" text-anchor="middle" font-weight="200" letter-spacing="14">INFINITE CRAFT</text>
+  <text x="640" y="605" font-family="'Helvetica Neue', sans-serif" font-size="13" fill="#ff6b35" text-anchor="middle" letter-spacing="5">NEURAL DISCOVERY</text>
+</svg>

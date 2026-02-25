@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="lab-paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3"/>
+      <feDiffuseLighting lighting-color="#f8f8f5" surfaceScale="0.8">
+        <feDistantLight azimuth="45" elevation="60"/>
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <!-- Lab notebook background (graph paper) -->
+  <rect width="1280" height="640" fill="#f8f8f5"/>
+  <!-- Grid lines -->
+  <g stroke="#d0dce0" stroke-width="0.5" opacity="0.4">
+    <!-- Vertical lines every 20px -->
+    <line x1="100" y1="0" x2="100" y2="640"/><line x1="120" y1="0" x2="120" y2="640"/>
+    <line x1="140" y1="0" x2="140" y2="640"/><line x1="160" y1="0" x2="160" y2="640"/>
+    <line x1="180" y1="0" x2="180" y2="640"/><line x1="200" y1="0" x2="200" y2="640"/>
+    <line x1="220" y1="0" x2="220" y2="640"/><line x1="240" y1="0" x2="240" y2="640"/>
+    <line x1="260" y1="0" x2="260" y2="640"/><line x1="280" y1="0" x2="280" y2="640"/>
+    <line x1="300" y1="0" x2="300" y2="640"/><line x1="320" y1="0" x2="320" y2="640"/>
+    <line x1="340" y1="0" x2="340" y2="640"/><line x1="360" y1="0" x2="360" y2="640"/>
+    <line x1="380" y1="0" x2="380" y2="640"/><line x1="400" y1="0" x2="400" y2="640"/>
+    <line x1="420" y1="0" x2="420" y2="640"/><line x1="440" y1="0" x2="440" y2="640"/>
+    <line x1="460" y1="0" x2="460" y2="640"/><line x1="480" y1="0" x2="480" y2="640"/>
+    <line x1="500" y1="0" x2="500" y2="640"/><line x1="520" y1="0" x2="520" y2="640"/>
+    <line x1="540" y1="0" x2="540" y2="640"/><line x1="560" y1="0" x2="560" y2="640"/>
+    <line x1="580" y1="0" x2="580" y2="640"/><line x1="600" y1="0" x2="600" y2="640"/>
+    <line x1="620" y1="0" x2="620" y2="640"/><line x1="640" y1="0" x2="640" y2="640"/>
+    <line x1="660" y1="0" x2="660" y2="640"/><line x1="680" y1="0" x2="680" y2="640"/>
+    <line x1="700" y1="0" x2="700" y2="640"/><line x1="720" y1="0" x2="720" y2="640"/>
+    <line x1="740" y1="0" x2="740" y2="640"/><line x1="760" y1="0" x2="760" y2="640"/>
+    <line x1="780" y1="0" x2="780" y2="640"/><line x1="800" y1="0" x2="800" y2="640"/>
+    <!-- Horizontal lines every 20px -->
+    <line x1="0" y1="20" x2="1280" y2="20"/><line x1="0" y1="40" x2="1280" y2="40"/>
+    <line x1="0" y1="60" x2="1280" y2="60"/><line x1="0" y1="80" x2="1280" y2="80"/>
+    <line x1="0" y1="100" x2="1280" y2="100"/><line x1="0" y1="120" x2="1280" y2="120"/>
+    <line x1="0" y1="140" x2="1280" y2="140"/><line x1="0" y1="160" x2="1280" y2="160"/>
+    <line x1="0" y1="180" x2="1280" y2="180"/><line x1="0" y1="200" x2="1280" y2="200"/>
+    <line x1="0" y1="220" x2="1280" y2="220"/><line x1="0" y1="240" x2="1280" y2="240"/>
+    <line x1="0" y1="260" x2="1280" y2="260"/><line x1="0" y1="280" x2="1280" y2="280"/>
+    <line x1="0" y1="300" x2="1280" y2="300"/><line x1="0" y1="320" x2="1280" y2="320"/>
+    <line x1="0" y1="340" x2="1280" y2="340"/><line x1="0" y1="360" x2="1280" y2="360"/>
+    <line x1="0" y1="380" x2="1280" y2="380"/><line x1="0" y1="400" x2="1280" y2="400"/>
+    <line x1="0" y1="420" x2="1280" y2="420"/><line x1="0" y1="440" x2="1280" y2="440"/>
+    <line x1="0" y1="460" x2="1280" y2="460"/><line x1="0" y1="480" x2="1280" y2="480"/>
+    <line x1="0" y1="500" x2="1280" y2="500"/><line x1="0" y1="520" x2="1280" y2="520"/>
+    <line x1="0" y1="540" x2="1280" y2="540"/><line x1="0" y1="560" x2="1280" y2="560"/>
+    <line x1="0" y1="580" x2="1280" y2="580"/><line x1="0" y1="600" x2="1280" y2="600"/>
+    <line x1="0" y1="620" x2="1280" y2="620"/>
+  </g>
+  <!-- Left margin -->
+  <line x1="90" y1="0" x2="90" y2="640" stroke="#e0a0a0" stroke-width="1.5"/>
+  <!-- Header block -->
+  <rect x="95" y="8" width="600" height="55" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="105" y="30" font-family="'Segoe Print', cursive" font-size="14" fill="#333">Lab: Elemental Synthesis</text>
+  <text x="105" y="50" font-family="'Segoe Print', cursive" font-size="14" fill="#333">Date: Feb 24, 2026</text>
+  <text x="400" y="30" font-family="'Segoe Print', cursive" font-size="14" fill="#333">Notebook: IC-047</text>
+  <text x="400" y="50" font-family="'Segoe Print', cursive" font-size="14" fill="#333">Researcher: [REDACTED]</text>
+  <!-- Title -->
+  <text x="640" y="95" font-family="'Segoe Print', cursive" font-size="32" fill="#333" text-anchor="middle" text-decoration="underline">INFINITE CRAFT</text>
+  <text x="640" y="118" font-family="'Segoe Print', cursive" font-size="16" fill="#666" text-anchor="middle">Experiment Series 47: Base Element Combinations</text>
+  <!-- Experiment entries -->
+  <g font-family="'Segoe Print', cursive" font-size="16" fill="#333">
+    <!-- Exp 1 -->
+    <text x="105" y="155" fill="#4ecdc4" font-weight="bold">Exp 47.1</text>
+    <text x="105" y="178">Reagents: H2O (Water) + Ignis (Fire)</text>
+    <text x="105" y="198">Result: Steam (gaseous) -- T=100C, P=1atm</text>
+    <text x="105" y="218" fill="#a8e06c">Status: CONFIRMED</text>
+    <!-- Exp 2 -->
+    <text x="105" y="255" fill="#4ecdc4" font-weight="bold">Exp 47.2</text>
+    <text x="105" y="278">Reagents: Terra (Earth) + Ventus (Wind)</text>
+    <text x="105" y="298">Result: Dust (particulate) -- 10-50um grain</text>
+    <text x="105" y="318" fill="#a8e06c">Status: CONFIRMED</text>
+    <!-- Exp 3 -->
+    <text x="105" y="355" fill="#4ecdc4" font-weight="bold">Exp 47.3</text>
+    <text x="105" y="378">Reagents: Ignis (Fire) + Terra (Earth)</text>
+    <text x="105" y="398">Result: Lava (molten silicate) -- T=1200C</text>
+    <text x="105" y="418" fill="#ff6b35">Status: CAUTION - extreme temp!</text>
+    <!-- Exp 4 (failed) -->
+    <text x="105" y="455" fill="#4ecdc4" font-weight="bold">Exp 47.4</text>
+    <text x="105" y="478" fill="#999" text-decoration="line-through">Reagents: Wind + Wind = Hurricane?</text>
+    <text x="105" y="498" fill="#ff6b35">Status: FAILED - no reaction observed</text>
+  </g>
+  <!-- Flask doodle -->
+  <g transform="translate(850, 150)" stroke="#4ecdc4" stroke-width="2" fill="none">
+    <path d="M30 0 L30 40 L5 90 L55 90 L30 40"/>
+    <ellipse cx="30" cy="90" rx="25" ry="8"/>
+    <line x1="22" y1="0" x2="38" y2="0"/>
+    <!-- Bubbles -->
+    <circle cx="25" cy="65" r="3" fill="#4ecdc4" opacity="0.3"/>
+    <circle cx="35" cy="55" r="4" fill="#4ecdc4" opacity="0.3"/>
+    <circle cx="30" cy="72" r="2" fill="#4ecdc4" opacity="0.3"/>
+  </g>
+  <!-- Data table sketch -->
+  <g transform="translate(800, 280)" font-family="'Segoe Print', cursive" font-size="12" fill="#333">
+    <rect width="400" height="180" fill="none" stroke="#666" stroke-width="1"/>
+    <line x1="0" y1="25" x2="400" y2="25" stroke="#666"/>
+    <line x1="100" y1="0" x2="100" y2="180" stroke="#666"/>
+    <line x1="200" y1="0" x2="200" y2="180" stroke="#666"/>
+    <line x1="300" y1="0" x2="300" y2="180" stroke="#666"/>
+    <text x="50" y="18" text-anchor="middle" font-weight="bold">Input A</text>
+    <text x="150" y="18" text-anchor="middle" font-weight="bold">Input B</text>
+    <text x="250" y="18" text-anchor="middle" font-weight="bold">Output</text>
+    <text x="350" y="18" text-anchor="middle" font-weight="bold">Valid</text>
+    <text x="50" y="50" text-anchor="middle">Water</text>
+    <text x="150" y="50" text-anchor="middle">Fire</text>
+    <text x="250" y="50" text-anchor="middle">Steam</text>
+    <text x="350" y="50" text-anchor="middle" fill="#a8e06c">Y</text>
+    <text x="50" y="80" text-anchor="middle">Earth</text>
+    <text x="150" y="80" text-anchor="middle">Wind</text>
+    <text x="250" y="80" text-anchor="middle">Dust</text>
+    <text x="350" y="80" text-anchor="middle" fill="#a8e06c">Y</text>
+    <text x="50" y="110" text-anchor="middle">Fire</text>
+    <text x="150" y="110" text-anchor="middle">Earth</text>
+    <text x="250" y="110" text-anchor="middle">Lava</text>
+    <text x="350" y="110" text-anchor="middle" fill="#a8e06c">Y</text>
+    <text x="50" y="140" text-anchor="middle">Lava</text>
+    <text x="150" y="140" text-anchor="middle">Water</text>
+    <text x="250" y="140" text-anchor="middle">Stone</text>
+    <text x="350" y="140" text-anchor="middle" fill="#a8e06c">Y</text>
+    <text x="50" y="170" text-anchor="middle">Wind</text>
+    <text x="150" y="170" text-anchor="middle">Wind</text>
+    <text x="250" y="170" text-anchor="middle">???</text>
+    <text x="350" y="170" text-anchor="middle" fill="#ff6b35">N</text>
+  </g>
+  <!-- Biohazard/safety sticker -->
+  <g transform="translate(1100, 520)">
+    <rect width="130" height="80" fill="#ffd93d" stroke="#333" stroke-width="2" rx="5"/>
+    <text x="65" y="35" font-family="Arial, sans-serif" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">SAFETY NOTE</text>
+    <text x="65" y="52" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">Wear goggles when</text>
+    <text x="65" y="65" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">combining Lava</text>
+  </g>
+  <!-- Page number -->
+  <text x="1240" y="625" font-family="'Segoe Print', cursive" font-size="14" fill="#888" text-anchor="end">p. 94</text>
+</svg>

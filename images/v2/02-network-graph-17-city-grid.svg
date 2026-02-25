@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg17" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="100%" stop-color="#0a0f1a"/>
+    </linearGradient>
+    <filter id="streetGlow"><feGaussianBlur stdDeviation="2"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="intersectionGlow"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg17)"/>
+  <!-- Perspective grid - aerial city view with slight perspective -->
+  <!-- Horizontal streets -->
+  <g stroke="#ff6b35" stroke-width="0.8" opacity="0.2">
+    <line x1="40" y1="80" x2="1240" y2="80"/>
+    <line x1="40" y1="160" x2="1240" y2="160"/>
+    <line x1="40" y1="240" x2="1240" y2="240"/>
+    <line x1="40" y1="320" x2="1240" y2="320"/>
+    <line x1="40" y1="400" x2="1240" y2="400"/>
+    <line x1="40" y1="480" x2="1240" y2="480"/>
+    <line x1="40" y1="560" x2="1240" y2="560"/>
+  </g>
+  <!-- Vertical streets -->
+  <g stroke="#4ecdc4" stroke-width="0.8" opacity="0.2">
+    <line x1="120" y1="20" x2="120" y2="620"/>
+    <line x1="240" y1="20" x2="240" y2="620"/>
+    <line x1="360" y1="20" x2="360" y2="620"/>
+    <line x1="480" y1="20" x2="480" y2="620"/>
+    <line x1="600" y1="20" x2="600" y2="620"/>
+    <line x1="720" y1="20" x2="720" y2="620"/>
+    <line x1="840" y1="20" x2="840" y2="620"/>
+    <line x1="960" y1="20" x2="960" y2="620"/>
+    <line x1="1080" y1="20" x2="1080" y2="620"/>
+    <line x1="1200" y1="20" x2="1200" y2="620"/>
+  </g>
+  <!-- Diagonal avenues -->
+  <g stroke="#ffd93d" stroke-width="0.6" opacity="0.12">
+    <line x1="0" y1="0" x2="1280" y2="640"/>
+    <line x1="0" y1="640" x2="1280" y2="0"/>
+    <line x1="0" y1="320" x2="640" y2="0"/>
+    <line x1="640" y1="640" x2="1280" y2="320"/>
+    <line x1="0" y1="320" x2="640" y2="640"/>
+    <line x1="640" y1="0" x2="1280" y2="320"/>
+  </g>
+  <!-- City blocks (dark rectangles) -->
+  <g fill="#0a1020" opacity="0.5">
+    <rect x="125" y="85" width="110" height="70" rx="2"/>
+    <rect x="245" y="85" width="110" height="70" rx="2"/>
+    <rect x="365" y="85" width="110" height="70" rx="2"/>
+    <rect x="605" y="85" width="110" height="70" rx="2"/>
+    <rect x="845" y="85" width="110" height="70" rx="2"/>
+    <rect x="965" y="85" width="110" height="70" rx="2"/>
+    <rect x="125" y="165" width="110" height="70" rx="2"/>
+    <rect x="485" y="165" width="110" height="70" rx="2"/>
+    <rect x="725" y="165" width="110" height="70" rx="2"/>
+    <rect x="1085" y="165" width="110" height="70" rx="2"/>
+    <rect x="245" y="405" width="110" height="70" rx="2"/>
+    <rect x="485" y="405" width="110" height="70" rx="2"/>
+    <rect x="725" y="405" width="110" height="70" rx="2"/>
+    <rect x="965" y="405" width="110" height="70" rx="2"/>
+    <rect x="125" y="485" width="110" height="70" rx="2"/>
+    <rect x="365" y="485" width="110" height="70" rx="2"/>
+    <rect x="605" y="485" width="110" height="70" rx="2"/>
+    <rect x="845" y="485" width="110" height="70" rx="2"/>
+    <rect x="1085" y="485" width="110" height="70" rx="2"/>
+  </g>
+  <!-- Glowing intersections -->
+  <g filter="url(#intersectionGlow)">
+    <!-- Major intersections -->
+    <circle cx="480" cy="240" r="8" fill="#ff6b35" opacity="0.4"/>
+    <circle cx="720" cy="240" r="8" fill="#ffd93d" opacity="0.4"/>
+    <circle cx="600" cy="320" r="10" fill="#4ecdc4" opacity="0.45"/>
+    <circle cx="480" cy="400" r="8" fill="#c4b5fd" opacity="0.4"/>
+    <circle cx="720" cy="400" r="8" fill="#a8e06c" opacity="0.4"/>
+    <circle cx="360" cy="320" r="7" fill="#ff6b35" opacity="0.35"/>
+    <circle cx="840" cy="320" r="7" fill="#ff6b35" opacity="0.35"/>
+    <circle cx="600" cy="160" r="7" fill="#ffd93d" opacity="0.3"/>
+    <circle cx="600" cy="480" r="7" fill="#ffd93d" opacity="0.3"/>
+    <!-- Secondary -->
+    <circle cx="240" cy="240" r="5" fill="#4ecdc4" opacity="0.25"/>
+    <circle cx="960" cy="240" r="5" fill="#4ecdc4" opacity="0.25"/>
+    <circle cx="240" cy="400" r="5" fill="#c4b5fd" opacity="0.25"/>
+    <circle cx="960" cy="400" r="5" fill="#c4b5fd" opacity="0.25"/>
+    <circle cx="120" cy="320" r="5" fill="#a8e06c" opacity="0.2"/>
+    <circle cx="1080" cy="320" r="5" fill="#a8e06c" opacity="0.2"/>
+  </g>
+  <!-- Bright intersection dots -->
+  <g>
+    <circle cx="480" cy="240" r="3" fill="#ff6b35" opacity="0.9"/>
+    <circle cx="720" cy="240" r="3" fill="#ffd93d" opacity="0.9"/>
+    <circle cx="600" cy="320" r="4" fill="#4ecdc4" opacity="0.95"/>
+    <circle cx="480" cy="400" r="3" fill="#c4b5fd" opacity="0.9"/>
+    <circle cx="720" cy="400" r="3" fill="#a8e06c" opacity="0.9"/>
+    <circle cx="360" cy="320" r="2.5" fill="#ff6b35" opacity="0.8"/>
+    <circle cx="840" cy="320" r="2.5" fill="#ff6b35" opacity="0.8"/>
+    <circle cx="600" cy="160" r="2.5" fill="#ffd93d" opacity="0.8"/>
+    <circle cx="600" cy="480" r="2.5" fill="#ffd93d" opacity="0.8"/>
+    <circle cx="240" cy="240" r="2" fill="#4ecdc4" opacity="0.7"/>
+    <circle cx="960" cy="240" r="2" fill="#4ecdc4" opacity="0.7"/>
+    <circle cx="240" cy="400" r="2" fill="#c4b5fd" opacity="0.7"/>
+    <circle cx="960" cy="400" r="2" fill="#c4b5fd" opacity="0.7"/>
+    <circle cx="240" cy="320" r="2" fill="white" opacity="0.5"/>
+    <circle cx="360" cy="240" r="2" fill="white" opacity="0.5"/>
+    <circle cx="480" cy="320" r="2" fill="white" opacity="0.5"/>
+    <circle cx="600" cy="240" r="2" fill="white" opacity="0.5"/>
+    <circle cx="720" cy="320" r="2" fill="white" opacity="0.5"/>
+    <circle cx="840" cy="240" r="2" fill="white" opacity="0.5"/>
+    <circle cx="960" cy="320" r="2" fill="white" opacity="0.5"/>
+    <circle cx="360" cy="400" r="2" fill="white" opacity="0.5"/>
+    <circle cx="600" cy="400" r="2" fill="white" opacity="0.5"/>
+    <circle cx="840" cy="400" r="2" fill="white" opacity="0.5"/>
+  </g>
+  <!-- Moving car lights (tiny elongated dots) -->
+  <g fill="#ffd93d" opacity="0.6">
+    <ellipse cx="190" cy="160" rx="4" ry="1.5"/><ellipse cx="530" cy="80" rx="4" ry="1.5"/>
+    <ellipse cx="900" cy="480" rx="4" ry="1.5"/><ellipse cx="680" cy="560" rx="4" ry="1.5"/>
+  </g>
+  <g fill="#ff6b35" opacity="0.5">
+    <ellipse cx="360" cy="530" rx="1.5" ry="4"/><ellipse cx="840" cy="130" rx="1.5" ry="4"/>
+    <ellipse cx="1080" cy="440" rx="1.5" ry="4"/><ellipse cx="120" cy="200" rx="1.5" ry="4"/>
+  </g>
+  <!-- Title -->
+  <text x="640" y="310" font-family="'Helvetica Neue', Arial, sans-serif" font-size="68" font-weight="800" fill="white" text-anchor="middle" dominant-baseline="central" letter-spacing="4" opacity="0.9" filter="url(#streetGlow)">INFINITE CRAFT</text>
+  <text x="640" y="362" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#ffd93d" text-anchor="middle" letter-spacing="10" opacity="0.45">CITY GRID</text>
+</svg>

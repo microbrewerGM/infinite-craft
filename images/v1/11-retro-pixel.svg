@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#2b2d42"/>
+  <!-- Pixel grid pattern -->
+  <g fill="#3a3c55" opacity="0.3">
+    <rect x="0" y="0" width="32" height="32"/><rect x="64" y="0" width="32" height="32"/>
+    <rect x="128" y="0" width="32" height="32"/><rect x="192" y="0" width="32" height="32"/>
+    <rect x="32" y="32" width="32" height="32"/><rect x="96" y="32" width="32" height="32"/>
+    <rect x="160" y="32" width="32" height="32"/><rect x="224" y="32" width="32" height="32"/>
+  </g>
+  <!-- Pixelated elements as colored blocks -->
+  <g>
+    <!-- Fire block -->
+    <rect x="380" y="200" width="80" height="80" fill="#ef233c" rx="0"/>
+    <rect x="396" y="216" width="48" height="48" fill="#d90429"/>
+    <text x="420" y="305" font-family="'Press Start 2P', 'Courier New', monospace" font-size="10" fill="#ef233c" text-anchor="middle">FIRE</text>
+    <!-- Plus -->
+    <text x="500" y="252" font-family="'Press Start 2P', monospace" font-size="24" fill="#edf2f4" text-anchor="middle">+</text>
+    <!-- Water block -->
+    <rect x="540" y="200" width="80" height="80" fill="#0096c7" rx="0"/>
+    <rect x="556" y="216" width="48" height="48" fill="#0077b6"/>
+    <text x="580" y="305" font-family="'Press Start 2P', 'Courier New', monospace" font-size="10" fill="#0096c7" text-anchor="middle">WATER</text>
+    <!-- Equals -->
+    <text x="660" y="252" font-family="'Press Start 2P', monospace" font-size="24" fill="#edf2f4" text-anchor="middle">=</text>
+    <!-- Result block (glowing) -->
+    <rect x="700" y="200" width="80" height="80" fill="#ffd60a" rx="0"/>
+    <rect x="716" y="216" width="48" height="48" fill="#ffb703"/>
+    <rect x="696" y="196" width="88" height="88" fill="none" stroke="#ffd60a" stroke-width="2" stroke-opacity="0.5"/>
+    <text x="740" y="305" font-family="'Press Start 2P', 'Courier New', monospace" font-size="10" fill="#ffd60a" text-anchor="middle">STEAM</text>
+    <!-- Question block -->
+    <text x="820" y="252" font-family="'Press Start 2P', monospace" font-size="24" fill="#555" text-anchor="middle">&#x2192;</text>
+    <rect x="860" y="200" width="80" height="80" fill="#555" rx="0"/>
+    <text x="900" y="252" font-family="'Press Start 2P', 'Courier New', monospace" font-size="20" fill="#888" text-anchor="middle">?</text>
+  </g>
+  <!-- Title -->
+  <text x="640" y="440" font-family="'Press Start 2P', 'Courier New', monospace" font-size="36" fill="#edf2f4" text-anchor="middle">INFINITE CRAFT</text>
+  <text x="640" y="480" font-family="'Press Start 2P', 'Courier New', monospace" font-size="12" fill="#8d99ae" text-anchor="middle">PULSE EXPLORER</text>
+  <!-- Score display -->
+  <text x="640" y="560" font-family="'Press Start 2P', 'Courier New', monospace" font-size="14" fill="#ffd60a" text-anchor="middle">SCORE: 008579</text>
+  <text x="640" y="585" font-family="'Press Start 2P', 'Courier New', monospace" font-size="10" fill="#555" text-anchor="middle">PRESS START</text>
+</svg>

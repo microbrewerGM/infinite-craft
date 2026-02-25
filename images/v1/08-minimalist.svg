@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#fafaf9"/>
+  <!-- Simple equation -->
+  <g font-family="'Helvetica Neue', sans-serif" text-anchor="middle">
+    <circle cx="400" cy="280" r="50" fill="none" stroke="#333" stroke-width="2"/>
+    <text x="400" y="288" font-size="18" fill="#333">Water</text>
+    <text x="500" y="290" font-size="36" fill="#999">+</text>
+    <circle cx="600" cy="280" r="50" fill="none" stroke="#333" stroke-width="2"/>
+    <text x="600" y="288" font-size="18" fill="#333">Fire</text>
+    <text x="700" y="290" font-size="36" fill="#999">=</text>
+    <circle cx="800" cy="280" r="50" fill="#333"/>
+    <text x="800" y="288" font-size="18" fill="white" font-weight="bold">Steam</text>
+    <!-- Arrow to infinity -->
+    <text x="880" y="290" font-size="24" fill="#ccc">&#x2192;</text>
+    <text x="960" y="290" font-size="24" fill="#ddd">&#x2192;</text>
+    <text x="1040" y="290" font-size="24" fill="#eee">&#x2192;</text>
+    <text x="1100" y="292" font-size="28" fill="#ddd">&#x221E;</text>
+  </g>
+  <text x="640" y="460" font-family="'Helvetica Neue', sans-serif" font-size="52" fill="#1a1a1a" text-anchor="middle" font-weight="200">Infinite Craft</text>
+  <text x="640" y="500" font-family="'Helvetica Neue', sans-serif" font-size="16" fill="#999" text-anchor="middle" font-weight="300">Autonomous element discovery, endlessly</text>
+</svg>

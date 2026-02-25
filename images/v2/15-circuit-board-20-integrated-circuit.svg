@@ -1,0 +1,197 @@
+<svg viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="ic-shadow">
+      <feDropShadow dx="4" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+    <filter id="ic-glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="ic-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="30%" stop-color="#1a1a1a"/>
+      <stop offset="70%" stop-color="#222"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="pin-metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ccc"/>
+      <stop offset="50%" stop-color="#aaa"/>
+      <stop offset="100%" stop-color="#bbb"/>
+    </linearGradient>
+    <pattern id="datasheet-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="none"/>
+      <line x1="0" y1="40" x2="40" y2="40" stroke="#e0e0e0" stroke-width="0.3"/>
+      <line x1="40" y1="0" x2="40" y2="40" stroke="#e0e0e0" stroke-width="0.3"/>
+    </pattern>
+  </defs>
+  <!-- Datasheet white background -->
+  <rect width="1280" height="640" fill="#f8f8f5"/>
+  <rect width="1280" height="640" fill="url(#datasheet-grid)"/>
+  <!-- Title block (top) -->
+  <rect x="40" y="20" width="1200" height="60" fill="#0a1628" rx="3"/>
+  <text x="640" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#fff" font-weight="bold" letter-spacing="6">INFINITE CRAFT</text>
+  <text x="640" y="70" text-anchor="middle" font-family="'Courier New', monospace" font-size="12" fill="#4ecdc4" letter-spacing="3">IC-2026 ELEMENT COMBINATION PROCESSOR</text>
+  <!-- IC Package - large DIP-28 style -->
+  <rect x="400" y="130" width="480" height="380" rx="5" fill="url(#ic-body)" filter="url(#ic-shadow)"/>
+  <!-- Pin 1 notch -->
+  <circle cx="430" cy="145" r="10" fill="#333" stroke="#444" stroke-width="1"/>
+  <!-- Pin 1 dot -->
+  <circle cx="430" cy="145" r="3" fill="#555"/>
+  <!-- IC top label text -->
+  <text x="640" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#888" font-weight="bold" letter-spacing="4">INFINITE</text>
+  <text x="640" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#888" font-weight="bold" letter-spacing="4">CRAFT</text>
+  <text x="640" y="310" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" fill="#666">IC-2026-DIP28</text>
+  <text x="640" y="335" text-anchor="middle" font-family="'Courier New', monospace" font-size="11" fill="#555">ELEMENT COMBINER</text>
+  <text x="640" y="360" text-anchor="middle" font-family="'Courier New', monospace" font-size="10" fill="#555">2026 LOT: A4E7F2</text>
+  <!-- Date code / logo -->
+  <text x="640" y="400" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#444">MADE IN SILICON VALLEY</text>
+  <!-- Left side pins (1-14) -->
+  <g>
+    <!-- Pin 1 -->
+    <rect x="370" y="150" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="158" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">1</text>
+    <text x="290" y="158" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#ff6b35" font-weight="bold">FIRE_IN</text>
+    <!-- Pin 2 -->
+    <rect x="370" y="175" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="183" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">2</text>
+    <text x="290" y="183" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#4ecdc4" font-weight="bold">WATER_IN</text>
+    <!-- Pin 3 -->
+    <rect x="370" y="200" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="208" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">3</text>
+    <text x="290" y="208" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#a8e06c" font-weight="bold">EARTH_IN</text>
+    <!-- Pin 4 -->
+    <rect x="370" y="225" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="233" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">4</text>
+    <text x="290" y="233" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#c4b5fd" font-weight="bold">WIND_IN</text>
+    <!-- Pin 5 -->
+    <rect x="370" y="250" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="258" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">5</text>
+    <text x="290" y="258" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#888">CLK</text>
+    <!-- Pin 6 -->
+    <rect x="370" y="275" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="283" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">6</text>
+    <text x="290" y="283" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#888">COMBINE</text>
+    <!-- Pin 7 -->
+    <rect x="370" y="300" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="308" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">7</text>
+    <text x="290" y="308" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#888">RESET</text>
+    <!-- Pin 8 -->
+    <rect x="370" y="325" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="333" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">8</text>
+    <text x="290" y="333" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#888">SDA</text>
+    <!-- Pin 9 -->
+    <rect x="370" y="350" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="358" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">9</text>
+    <text x="290" y="358" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#888">SCL</text>
+    <!-- Pin 10 -->
+    <rect x="370" y="375" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="383" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">10</text>
+    <text x="290" y="383" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#888">CS</text>
+    <!-- Pin 11 -->
+    <rect x="370" y="400" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="408" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">11</text>
+    <text x="290" y="408" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#888">INT</text>
+    <!-- Pin 12 -->
+    <rect x="370" y="425" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="433" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">12</text>
+    <text x="290" y="433" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#888">NC</text>
+    <!-- Pin 13 -->
+    <rect x="370" y="450" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="458" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">13</text>
+    <text x="290" y="458" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#888">NC</text>
+    <!-- Pin 14 - GND -->
+    <rect x="370" y="475" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="360" y="483" text-anchor="end" font-family="'Courier New', monospace" font-size="10" fill="#333">14</text>
+    <text x="290" y="483" text-anchor="end" font-family="'Courier New', monospace" font-size="9" fill="#333" font-weight="bold">GND</text>
+  </g>
+  <!-- Right side pins (15-28, bottom to top) -->
+  <g>
+    <!-- Pin 15 -->
+    <rect x="875" y="475" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="483" font-family="'Courier New', monospace" font-size="10" fill="#333">15</text>
+    <text x="990" y="483" font-family="'Courier New', monospace" font-size="9" fill="#888">NC</text>
+    <!-- Pin 16 -->
+    <rect x="875" y="450" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="458" font-family="'Courier New', monospace" font-size="10" fill="#333">16</text>
+    <text x="990" y="458" font-family="'Courier New', monospace" font-size="9" fill="#888">NC</text>
+    <!-- Pin 17 -->
+    <rect x="875" y="425" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="433" font-family="'Courier New', monospace" font-size="10" fill="#333">17</text>
+    <text x="990" y="433" font-family="'Courier New', monospace" font-size="9" fill="#888">STATUS</text>
+    <!-- Pin 18 -->
+    <rect x="875" y="400" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="408" font-family="'Courier New', monospace" font-size="10" fill="#333">18</text>
+    <text x="990" y="408" font-family="'Courier New', monospace" font-size="9" fill="#888">READY</text>
+    <!-- Pin 19 -->
+    <rect x="875" y="375" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="383" font-family="'Courier New', monospace" font-size="10" fill="#333">19</text>
+    <text x="990" y="383" font-family="'Courier New', monospace" font-size="9" fill="#888">BUSY</text>
+    <!-- Pin 20 -->
+    <rect x="875" y="350" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="358" font-family="'Courier New', monospace" font-size="10" fill="#333">20</text>
+    <text x="990" y="358" font-family="'Courier New', monospace" font-size="9" fill="#888">ERROR</text>
+    <!-- Pin 21 -->
+    <rect x="875" y="325" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="333" font-family="'Courier New', monospace" font-size="10" fill="#333">21</text>
+    <text x="990" y="333" font-family="'Courier New', monospace" font-size="9" fill="#888">DATA[7]</text>
+    <!-- Pin 22 -->
+    <rect x="875" y="300" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="308" font-family="'Courier New', monospace" font-size="10" fill="#333">22</text>
+    <text x="990" y="308" font-family="'Courier New', monospace" font-size="9" fill="#888">DATA[6:4]</text>
+    <!-- Pin 23 -->
+    <rect x="875" y="275" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="283" font-family="'Courier New', monospace" font-size="10" fill="#333">23</text>
+    <text x="990" y="283" font-family="'Courier New', monospace" font-size="9" fill="#888">DATA[3:0]</text>
+    <!-- Pin 24 -->
+    <rect x="875" y="250" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="258" font-family="'Courier New', monospace" font-size="10" fill="#333">24</text>
+    <text x="990" y="258" font-family="'Courier New', monospace" font-size="9" fill="#888">RESULT_RDY</text>
+    <!-- Pin 25 -->
+    <rect x="875" y="225" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="233" font-family="'Courier New', monospace" font-size="10" fill="#333">25</text>
+    <text x="990" y="233" font-family="'Courier New', monospace" font-size="9" fill="#ffd93d" font-weight="bold">RESULT_OUT</text>
+    <!-- Pin 26 -->
+    <rect x="875" y="200" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="208" font-family="'Courier New', monospace" font-size="10" fill="#333">26</text>
+    <text x="990" y="208" font-family="'Courier New', monospace" font-size="9" fill="#888">XTAL1</text>
+    <!-- Pin 27 -->
+    <rect x="875" y="175" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="183" font-family="'Courier New', monospace" font-size="10" fill="#333">27</text>
+    <text x="990" y="183" font-family="'Courier New', monospace" font-size="9" fill="#888">XTAL2</text>
+    <!-- Pin 28 - VCC -->
+    <rect x="875" y="150" width="35" height="10" fill="url(#pin-metal)"/>
+    <text x="920" y="158" font-family="'Courier New', monospace" font-size="10" fill="#333">28</text>
+    <text x="990" y="158" font-family="'Courier New', monospace" font-size="9" fill="#ff6b35" font-weight="bold">VCC (+5V)</text>
+  </g>
+  <!-- Specs table -->
+  <rect x="60" y="530" width="500" height="90" fill="none" stroke="#ccc" stroke-width="1"/>
+  <line x1="60" y1="548" x2="560" y2="548" stroke="#ccc" stroke-width="0.5"/>
+  <text x="310" y="545" text-anchor="middle" font-family="'Courier New', monospace" font-size="11" fill="#333" font-weight="bold">SPECIFICATIONS</text>
+  <g font-family="'Courier New', monospace" font-size="9" fill="#555">
+    <text x="75" y="565">VCC: 3.3-5.5V</text>
+    <text x="75" y="580">FREQ: 0-20MHz</text>
+    <text x="75" y="595">TEMP: -40 to 85C</text>
+    <text x="75" y="610">PKG: DIP-28</text>
+    <text x="230" y="565">I/O: 4 element + 8 data</text>
+    <text x="230" y="580">PROTOCOL: I2C/SPI</text>
+    <text x="230" y="595">COMBINATIONS: 2^32</text>
+    <text x="230" y="610">LATENCY: 10us/combo</text>
+    <text x="420" y="565">CACHE: 256 results</text>
+    <text x="420" y="580">FLASH: 64KB recipes</text>
+    <text x="420" y="595">SRAM: 2KB working</text>
+    <text x="420" y="610">PROCESS: 180nm CMOS</text>
+  </g>
+  <!-- Datasheet part number -->
+  <rect x="720" y="530" width="520" height="90" fill="none" stroke="#ccc" stroke-width="1"/>
+  <line x1="720" y1="548" x2="1240" y2="548" stroke="#ccc" stroke-width="0.5"/>
+  <text x="980" y="545" text-anchor="middle" font-family="'Courier New', monospace" font-size="11" fill="#333" font-weight="bold">ORDERING INFORMATION</text>
+  <g font-family="'Courier New', monospace" font-size="9" fill="#555">
+    <text x="735" y="565">IC-2026-DIP28    DIP package</text>
+    <text x="735" y="580">IC-2026-SOIC28   SOIC package</text>
+    <text x="735" y="595">IC-2026-QFN32    QFN package</text>
+    <text x="735" y="610">IC-2026-BGA49    BGA package</text>
+    <text x="1020" y="565">Datasheet Rev 2.0</text>
+    <text x="1020" y="580">Date: 2026-02-24</text>
+    <text x="1020" y="595">infinite-craft.phenomsec.com</text>
+  </g>
+</svg>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="bhGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="bhSoft">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+    <filter id="bhLens">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <radialGradient id="bhCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#000" stop-opacity="1"/>
+      <stop offset="80%" stop-color="#000" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="accretion" cx="50%" cy="50%" r="50%">
+      <stop offset="50%" stop-color="transparent"/>
+      <stop offset="65%" stop-color="#ff6b35" stop-opacity="0.6"/>
+      <stop offset="75%" stop-color="#ffd93d" stop-opacity="0.4"/>
+      <stop offset="85%" stop-color="#ff6b35" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="640" fill="#020202"/>
+
+  <!-- Distant distorted stars (gravitational lensing) -->
+  <circle cx="440" cy="200" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="500" cy="150" r="1" fill="white" opacity="0.5"/>
+  <circle cx="780" cy="160" r="1.2" fill="white" opacity="0.55"/>
+  <circle cx="840" cy="210" r="1" fill="white" opacity="0.5"/>
+  <circle cx="200" cy="300" r="0.8" fill="white" opacity="0.4"/>
+  <circle cx="1080" cy="280" r="0.9" fill="white" opacity="0.4"/>
+  <circle cx="300" cy="450" r="1" fill="white" opacity="0.35"/>
+  <circle cx="1000" cy="420" r="0.8" fill="white" opacity="0.3"/>
+  <circle cx="150" cy="150" r="1.2" fill="white" opacity="0.5"/>
+  <circle cx="1150" cy="170" r="1" fill="white" opacity="0.45"/>
+
+  <!-- Einstein ring / lensed light -->
+  <circle cx="640" cy="300" r="155" fill="none" stroke="#ffd93d" stroke-opacity="0.15" stroke-width="3" filter="url(#bhGlow)"/>
+  <circle cx="640" cy="300" r="160" fill="none" stroke="#ff6b35" stroke-opacity="0.08" stroke-width="5" filter="url(#bhSoft)"/>
+
+  <!-- Accretion disk - elliptical to show perspective -->
+  <ellipse cx="640" cy="300" rx="200" ry="60" fill="none" stroke="#ff6b35" stroke-opacity="0.5" stroke-width="15" filter="url(#bhGlow)"/>
+  <ellipse cx="640" cy="300" rx="200" ry="60" fill="none" stroke="#ffd93d" stroke-opacity="0.3" stroke-width="8" filter="url(#bhLens)"/>
+  <ellipse cx="640" cy="300" rx="170" ry="50" fill="none" stroke="#ff6b35" stroke-opacity="0.2" stroke-width="20" filter="url(#bhSoft)"/>
+
+  <!-- Top arc of accretion disk (in front of hole) -->
+  <path d="M440,300 Q540,240 640,235 Q740,240 840,300" fill="none" stroke="#ffd93d" stroke-opacity="0.4" stroke-width="6" filter="url(#bhGlow)"/>
+  <path d="M460,300 Q550,250 640,245 Q730,250 820,300" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="3" filter="url(#bhGlow)"/>
+
+  <!-- Black hole center -->
+  <circle cx="640" cy="300" r="80" fill="#000"/>
+  <circle cx="640" cy="300" r="85" fill="url(#bhCenter)"/>
+
+  <!-- Photon sphere glow -->
+  <circle cx="640" cy="300" r="90" fill="none" stroke="#ff6b35" stroke-opacity="0.3" stroke-width="2" filter="url(#bhGlow)"/>
+  <circle cx="640" cy="300" r="95" fill="none" stroke="#ffd93d" stroke-opacity="0.1" stroke-width="4" filter="url(#bhSoft)"/>
+
+  <!-- Elements being pulled toward the black hole -->
+  <g filter="url(#bhGlow)">
+    <text x="420" y="230" font-size="28" text-anchor="middle" opacity="0.7" transform="rotate(-15,420,230)">🔥</text>
+    <text x="860" cy="240" y="240" font-size="26" text-anchor="middle" opacity="0.6" transform="rotate(12,860,240)">💧</text>
+    <text x="500" y="400" font-size="24" text-anchor="middle" opacity="0.55" transform="rotate(20,500,400)">🌍</text>
+    <text x="790" y="390" font-size="22" text-anchor="middle" opacity="0.5" transform="rotate(-10,790,390)">💨</text>
+  </g>
+
+  <!-- Stretched/spaghettified light streaks -->
+  <line x1="380" y1="250" x2="540" y2="280" stroke="#ff6b35" stroke-opacity="0.15" stroke-width="1" filter="url(#bhLens)"/>
+  <line x1="900" y1="260" x2="740" y2="285" stroke="#4ecdc4" stroke-opacity="0.12" stroke-width="1" filter="url(#bhLens)"/>
+  <line x1="450" y1="400" x2="570" y2="350" stroke="#a8e06c" stroke-opacity="0.1" stroke-width="1" filter="url(#bhLens)"/>
+  <line x1="840" y1="380" x2="720" y2="340" stroke="#c4b5fd" stroke-opacity="0.1" stroke-width="1" filter="url(#bhLens)"/>
+
+  <!-- Title -->
+  <text x="640" y="560" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="56" font-weight="800" fill="white" text-anchor="middle" letter-spacing="18" opacity="0.9">INFINITE CRAFT</text>
+  <text x="640" y="595" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ff6b35" text-anchor="middle" letter-spacing="8" opacity="0.35">EVENT HORIZON</text>
+</svg>

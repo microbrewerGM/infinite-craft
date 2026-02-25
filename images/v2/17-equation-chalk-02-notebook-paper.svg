@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="pencil">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="paper-texture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" result="noise"/>
+      <feDiffuseLighting in="noise" lighting-color="#f8f4e8" surfaceScale="1.5">
+        <feDistantLight azimuth="45" elevation="55"/>
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <!-- Paper background -->
+  <rect width="1280" height="640" fill="#f8f4e8"/>
+  <!-- Paper texture overlay -->
+  <rect width="1280" height="640" filter="url(#paper-texture)" opacity="0.3"/>
+  <!-- Red margin line -->
+  <line x1="120" y1="0" x2="120" y2="640" stroke="#e8a0a0" stroke-width="2"/>
+  <!-- Hole punches -->
+  <circle cx="45" cy="120" r="18" fill="#ddd" stroke="#bbb" stroke-width="1"/>
+  <circle cx="45" cy="320" r="18" fill="#ddd" stroke="#bbb" stroke-width="1"/>
+  <circle cx="45" cy="520" r="18" fill="#ddd" stroke="#bbb" stroke-width="1"/>
+  <!-- Blue ruled lines -->
+  <g stroke="#b8cce4" stroke-width="1" opacity="0.7">
+    <line x1="80" y1="80" x2="1240" y2="80"/>
+    <line x1="80" y1="112" x2="1240" y2="112"/>
+    <line x1="80" y1="144" x2="1240" y2="144"/>
+    <line x1="80" y1="176" x2="1240" y2="176"/>
+    <line x1="80" y1="208" x2="1240" y2="208"/>
+    <line x1="80" y1="240" x2="1240" y2="240"/>
+    <line x1="80" y1="272" x2="1240" y2="272"/>
+    <line x1="80" y1="304" x2="1240" y2="304"/>
+    <line x1="80" y1="336" x2="1240" y2="336"/>
+    <line x1="80" y1="368" x2="1240" y2="368"/>
+    <line x1="80" y1="400" x2="1240" y2="400"/>
+    <line x1="80" y1="432" x2="1240" y2="432"/>
+    <line x1="80" y1="464" x2="1240" y2="464"/>
+    <line x1="80" y1="496" x2="1240" y2="496"/>
+    <line x1="80" y1="528" x2="1240" y2="528"/>
+    <line x1="80" y1="560" x2="1240" y2="560"/>
+    <line x1="80" y1="592" x2="1240" y2="592"/>
+  </g>
+  <!-- Title in pencil -->
+  <text x="640" y="75" font-family="'Segoe Print', 'Comic Sans MS', cursive" font-size="40" fill="#444" text-anchor="middle" font-weight="bold" filter="url(#pencil)">INFINITE CRAFT</text>
+  <text x="1180" y="75" font-family="'Segoe Print', cursive" font-size="18" fill="#888">pg. 47</text>
+  <!-- Date -->
+  <text x="145" y="110" font-family="'Segoe Print', cursive" font-size="20" fill="#555" filter="url(#pencil)">Feb 24, 2026 - Element Combinations</text>
+  <!-- Equations in pencil handwriting -->
+  <text x="145" y="175" font-family="'Segoe Print', cursive" font-size="26" fill="#444" filter="url(#pencil)">1) Water + Fire = Steam  &#10003;</text>
+  <text x="145" y="207" font-family="'Segoe Print', cursive" font-size="26" fill="#444" filter="url(#pencil)">2) Earth + Wind = Dust  &#10003;</text>
+  <text x="145" y="239" font-family="'Segoe Print', cursive" font-size="26" fill="#444" filter="url(#pencil)">3) Fire + Earth = Lava  &#10003;</text>
+  <text x="145" y="271" font-family="'Segoe Print', cursive" font-size="26" fill="#999" filter="url(#pencil)" text-decoration="line-through">4) Wind + Wind = Hurricane??</text>
+  <text x="145" y="303" font-family="'Segoe Print', cursive" font-size="26" fill="#444" filter="url(#pencil)">5) Lava + Water = Stone  &#10003;</text>
+  <text x="145" y="335" font-family="'Segoe Print', cursive" font-size="26" fill="#444" filter="url(#pencil)">6) Steam + Earth = Geyser</text>
+  <text x="145" y="367" font-family="'Segoe Print', cursive" font-size="26" fill="#444" filter="url(#pencil)">7) Dust + Water = Clay  &#10003;</text>
+  <text x="145" y="399" font-family="'Segoe Print', cursive" font-size="26" fill="#444" filter="url(#pencil)">8) Stone + Fire = Metal</text>
+  <!-- Margin doodle -->
+  <text x="145" y="463" font-family="'Segoe Print', cursive" font-size="22" fill="#4ecdc4" filter="url(#pencil)">* try: Metal + Water = Rust?</text>
+  <!-- Star doodle in margin -->
+  <polygon points="85,180 90,195 105,195 93,205 97,220 85,210 73,220 77,205 65,195 80,195" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
+  <!-- Arrow and note -->
+  <text x="700" y="175" font-family="'Segoe Print', cursive" font-size="22" fill="#ff6b35" filter="url(#pencil)">&lt;-- classic!</text>
+  <!-- Bottom scribble -->
+  <text x="145" y="527" font-family="'Segoe Print', cursive" font-size="20" fill="#c4b5fd" filter="url(#pencil)">TODO: explore all 4-element chains...</text>
+  <text x="145" y="559" font-family="'Segoe Print', cursive" font-size="20" fill="#888" filter="url(#pencil)">combinations discovered so far: 1,247</text>
+  <!-- Eraser smudge -->
+  <ellipse cx="800" cy="270" rx="80" ry="15" fill="#f0ece0" opacity="0.7"/>
+  <!-- Paper curl bottom right -->
+  <path d="M1280 600 Q1260 610 1250 640 L1280 640 Z" fill="#e8e0d0"/>
+</svg>

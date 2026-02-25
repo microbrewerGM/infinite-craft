@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg9" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg9)"/>
+  <!-- Decorative circles -->
+  <circle cx="200" cy="320" r="300" fill="white" opacity="0.03"/>
+  <circle cx="1080" cy="320" r="250" fill="white" opacity="0.03"/>
+  <circle cx="640" cy="100" r="200" fill="white" opacity="0.02"/>
+  <!-- Title -->
+  <text x="640" y="260" font-family="'Helvetica Neue', sans-serif" font-size="80" fill="white" text-anchor="middle" font-weight="bold">Infinite Craft</text>
+  <text x="640" y="320" font-family="'Helvetica Neue', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="300" opacity="0.8">Pulse Explorer</text>
+  <!-- Stats bar -->
+  <g font-family="'Helvetica Neue', sans-serif" text-anchor="middle" fill="white">
+    <text x="380" y="430" font-size="42" font-weight="bold">8.5K+</text>
+    <text x="380" y="460" font-size="14" opacity="0.7">Elements</text>
+    <text x="640" y="430" font-size="42" font-weight="bold">49K+</text>
+    <text x="640" y="460" font-size="14" opacity="0.7">Recipes</text>
+    <text x="900" y="430" font-size="42" font-weight="bold">$0</text>
+    <text x="900" y="460" font-size="14" opacity="0.7">/month</text>
+  </g>
+  <!-- Tagline -->
+  <text x="640" y="560" font-family="'Helvetica Neue', sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.6">Serverless element-combination explorer for neal.fun</text>
+</svg>

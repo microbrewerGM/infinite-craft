@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <radialGradient id="atom-glow-l" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#ff6b35" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="atom-glow-r" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ecdc4" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#4ecdc4" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#4ecdc4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fusion-center" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="20%" stop-color="#ffd93d"/>
+      <stop offset="60%" stop-color="#ff6b35" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0a0a14" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="plasma-blur">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="intense-glow">
+      <feGaussianBlur stdDeviation="12"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a14"/>
+
+  <!-- Background energy field -->
+  <ellipse cx="640" cy="340" rx="300" ry="200" fill="url(#fusion-center)" opacity="0.2"/>
+
+  <!-- Left atom with electron orbits -->
+  <g transform="translate(380, 340)">
+    <circle cx="0" cy="0" r="80" fill="url(#atom-glow-l)" opacity="0.5"/>
+    <circle cx="0" cy="0" r="30" fill="#ff6b35" opacity="0.9"/>
+    <circle cx="0" cy="0" r="32" fill="none" stroke="#ff6b35" stroke-width="1" opacity="0.6"/>
+    <!-- Electron orbits -->
+    <ellipse cx="0" cy="0" rx="70" ry="25" fill="none" stroke="#ff6b35" stroke-width="1.5" opacity="0.4" transform="rotate(-30)"/>
+    <ellipse cx="0" cy="0" rx="70" ry="25" fill="none" stroke="#ff6b35" stroke-width="1.5" opacity="0.4" transform="rotate(30)"/>
+    <ellipse cx="0" cy="0" rx="70" ry="25" fill="none" stroke="#ff6b35" stroke-width="1.5" opacity="0.4" transform="rotate(90)"/>
+    <!-- Electrons -->
+    <circle cx="60" cy="-18" r="4" fill="#ffd93d"/>
+    <circle cx="-50" cy="30" r="4" fill="#ffd93d"/>
+    <circle cx="0" cy="-70" r="4" fill="#ffd93d"/>
+    <!-- Motion lines -->
+    <path d="M 40 0 Q 60 -10 100 -5 Q 140 0 180 10" fill="none" stroke="#ff6b35" stroke-width="2" opacity="0.5" stroke-dasharray="8 4"/>
+  </g>
+
+  <!-- Right atom with electron orbits -->
+  <g transform="translate(900, 340)">
+    <circle cx="0" cy="0" r="80" fill="url(#atom-glow-r)" opacity="0.5"/>
+    <circle cx="0" cy="0" r="30" fill="#4ecdc4" opacity="0.9"/>
+    <circle cx="0" cy="0" r="32" fill="none" stroke="#4ecdc4" stroke-width="1" opacity="0.6"/>
+    <ellipse cx="0" cy="0" rx="70" ry="25" fill="none" stroke="#4ecdc4" stroke-width="1.5" opacity="0.4" transform="rotate(-45)"/>
+    <ellipse cx="0" cy="0" rx="70" ry="25" fill="none" stroke="#4ecdc4" stroke-width="1.5" opacity="0.4" transform="rotate(45)"/>
+    <ellipse cx="0" cy="0" rx="70" ry="25" fill="none" stroke="#4ecdc4" stroke-width="1.5" opacity="0.4" transform="rotate(0)"/>
+    <circle cx="-55" cy="20" r="4" fill="#a8e06c"/>
+    <circle cx="40" cy="-35" r="4" fill="#a8e06c"/>
+    <circle cx="70" cy="5" r="4" fill="#a8e06c"/>
+    <path d="M -40 0 Q -60 10 -100 5 Q -140 0 -180 -10" fill="none" stroke="#4ecdc4" stroke-width="2" opacity="0.5" stroke-dasharray="8 4"/>
+  </g>
+
+  <!-- Central collision / fusion point -->
+  <g transform="translate(640, 340)">
+    <circle cx="0" cy="0" r="50" fill="url(#fusion-center)" opacity="0.9" filter="url(#plasma-blur)"/>
+    <circle cx="0" cy="0" r="25" fill="#fff" opacity="0.9"/>
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.6"/>
+    <!-- Energy rays -->
+    <line x1="0" y1="-50" x2="0" y2="-120" stroke="#ffd93d" stroke-width="2" opacity="0.5"/>
+    <line x1="35" y1="-35" x2="85" y2="-85" stroke="#ffd93d" stroke-width="2" opacity="0.4"/>
+    <line x1="50" y1="0" x2="120" y2="0" stroke="#a8e06c" stroke-width="2" opacity="0.4"/>
+    <line x1="35" y1="35" x2="85" y2="85" stroke="#ffd93d" stroke-width="2" opacity="0.3"/>
+    <line x1="0" y1="50" x2="0" y2="120" stroke="#a8e06c" stroke-width="2" opacity="0.5"/>
+    <line x1="-35" y1="35" x2="-85" y2="85" stroke="#ffd93d" stroke-width="2" opacity="0.3"/>
+    <line x1="-50" y1="0" x2="-120" y2="0" stroke="#a8e06c" stroke-width="2" opacity="0.4"/>
+    <line x1="-35" y1="-35" x2="-85" y2="-85" stroke="#ffd93d" stroke-width="2" opacity="0.4"/>
+    <!-- Scattered particles -->
+    <circle cx="70" cy="-60" r="2" fill="#fff" opacity="0.7"/>
+    <circle cx="-80" cy="50" r="2.5" fill="#ffd93d" opacity="0.6"/>
+    <circle cx="90" cy="40" r="1.5" fill="#c4b5fd" opacity="0.5"/>
+    <circle cx="-60" cy="-70" r="2" fill="#a8e06c" opacity="0.6"/>
+  </g>
+
+  <!-- Title -->
+  <text x="640" y="80" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="bold" fill="white" letter-spacing="12">INFINITE CRAFT</text>
+  <text x="640" y="610" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#ffd93d" opacity="0.6" letter-spacing="4">FUSION REACTOR</text>
+</svg>

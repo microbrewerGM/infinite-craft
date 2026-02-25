@@ -1,4 +1,4 @@
-# Infinite Craft Pulse Explorer — Deployment Guide
+# Infinite Craft Explorer — Deployment Guide
 
 ## Architecture
 

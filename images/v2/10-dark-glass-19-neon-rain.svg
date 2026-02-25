@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="nrGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="nrSoft">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+    <filter id="nrReflect">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <linearGradient id="rainBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080810"/>
+      <stop offset="100%" stop-color="#060608"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#rainBg)"/>
+
+  <!-- Neon light sources (off screen, reflected in rain) -->
+  <ellipse cx="200" cy="0" rx="150" ry="80" fill="#ff6b35" opacity="0.04" filter="url(#nrSoft)"/>
+  <ellipse cx="500" cy="0" rx="120" ry="70" fill="#4ecdc4" opacity="0.04" filter="url(#nrSoft)"/>
+  <ellipse cx="800" cy="0" rx="130" ry="75" fill="#c4b5fd" opacity="0.04" filter="url(#nrSoft)"/>
+  <ellipse cx="1100" cy="0" rx="140" ry="80" fill="#a8e06c" opacity="0.035" filter="url(#nrSoft)"/>
+
+  <!-- Rain streaks catching neon colors -->
+  <!-- Orange-lit rain -->
+  <line x1="120" y1="0" x2="110" y2="120" stroke="#ff6b35" stroke-opacity="0.15" stroke-width="1"/>
+  <line x1="160" y1="40" x2="150" y2="200" stroke="#ff6b35" stroke-opacity="0.12" stroke-width="0.8"/>
+  <line x1="200" y1="0" x2="190" y2="160" stroke="#ff6b35" stroke-opacity="0.18" stroke-width="1"/>
+  <line x1="240" y1="60" x2="230" y2="250" stroke="#ff6b35" stroke-opacity="0.1" stroke-width="0.8"/>
+  <line x1="180" y1="200" x2="170" y2="380" stroke="#ff6b35" stroke-opacity="0.08" stroke-width="0.7"/>
+  <line x1="220" y1="280" x2="210" y2="480" stroke="#ff6b35" stroke-opacity="0.06" stroke-width="0.7"/>
+  <line x1="140" y1="320" x2="130" y2="520" stroke="#ff6b35" stroke-opacity="0.05" stroke-width="0.6"/>
+  <line x1="260" y1="150" x2="250" y2="350" stroke="#ff6b35" stroke-opacity="0.07" stroke-width="0.7"/>
+  <line x1="280" y1="0" x2="270" y2="140" stroke="#ff6b35" stroke-opacity="0.1" stroke-width="0.8"/>
+
+  <!-- Teal-lit rain -->
+  <line x1="420" y1="0" x2="410" y2="140" stroke="#4ecdc4" stroke-opacity="0.15" stroke-width="1"/>
+  <line x1="460" y1="50" x2="450" y2="220" stroke="#4ecdc4" stroke-opacity="0.12" stroke-width="0.8"/>
+  <line x1="500" y1="0" x2="490" y2="180" stroke="#4ecdc4" stroke-opacity="0.18" stroke-width="1"/>
+  <line x1="540" y1="30" x2="530" y2="200" stroke="#4ecdc4" stroke-opacity="0.1" stroke-width="0.8"/>
+  <line x1="480" y1="220" x2="470" y2="420" stroke="#4ecdc4" stroke-opacity="0.08" stroke-width="0.7"/>
+  <line x1="520" y1="250" x2="510" y2="450" stroke="#4ecdc4" stroke-opacity="0.06" stroke-width="0.7"/>
+  <line x1="440" y1="300" x2="430" y2="500" stroke="#4ecdc4" stroke-opacity="0.05" stroke-width="0.6"/>
+  <line x1="560" y1="100" x2="550" y2="300" stroke="#4ecdc4" stroke-opacity="0.07" stroke-width="0.7"/>
+  <line x1="580" y1="0" x2="570" y2="120" stroke="#4ecdc4" stroke-opacity="0.09" stroke-width="0.8"/>
+
+  <!-- Purple-lit rain -->
+  <line x1="720" y1="0" x2="710" y2="150" stroke="#c4b5fd" stroke-opacity="0.15" stroke-width="1"/>
+  <line x1="760" y1="40" x2="750" y2="210" stroke="#c4b5fd" stroke-opacity="0.12" stroke-width="0.8"/>
+  <line x1="800" y1="0" x2="790" y2="170" stroke="#c4b5fd" stroke-opacity="0.18" stroke-width="1"/>
+  <line x1="840" y1="60" x2="830" y2="240" stroke="#c4b5fd" stroke-opacity="0.1" stroke-width="0.8"/>
+  <line x1="780" y1="200" x2="770" y2="400" stroke="#c4b5fd" stroke-opacity="0.08" stroke-width="0.7"/>
+  <line x1="820" y1="280" x2="810" y2="480" stroke="#c4b5fd" stroke-opacity="0.06" stroke-width="0.7"/>
+  <line x1="740" y1="320" x2="730" y2="520" stroke="#c4b5fd" stroke-opacity="0.05" stroke-width="0.6"/>
+  <line x1="860" y1="120" x2="850" y2="320" stroke="#c4b5fd" stroke-opacity="0.07" stroke-width="0.7"/>
+  <line x1="880" y1="0" x2="870" y2="130" stroke="#c4b5fd" stroke-opacity="0.09" stroke-width="0.8"/>
+
+  <!-- Green-lit rain -->
+  <line x1="1020" y1="0" x2="1010" y2="140" stroke="#a8e06c" stroke-opacity="0.14" stroke-width="1"/>
+  <line x1="1060" y1="50" x2="1050" y2="220" stroke="#a8e06c" stroke-opacity="0.11" stroke-width="0.8"/>
+  <line x1="1100" y1="0" x2="1090" y2="160" stroke="#a8e06c" stroke-opacity="0.16" stroke-width="1"/>
+  <line x1="1140" y1="30" x2="1130" y2="200" stroke="#a8e06c" stroke-opacity="0.1" stroke-width="0.8"/>
+  <line x1="1080" y1="210" x2="1070" y2="410" stroke="#a8e06c" stroke-opacity="0.07" stroke-width="0.7"/>
+  <line x1="1120" y1="260" x2="1110" y2="460" stroke="#a8e06c" stroke-opacity="0.06" stroke-width="0.7"/>
+  <line x1="1040" y1="300" x2="1030" y2="500" stroke="#a8e06c" stroke-opacity="0.05" stroke-width="0.6"/>
+  <line x1="1160" y1="100" x2="1150" y2="300" stroke="#a8e06c" stroke-opacity="0.07" stroke-width="0.7"/>
+
+  <!-- Neutral rain (throughout) -->
+  <line x1="50" y1="100" x2="40" y2="400" stroke="white" stroke-opacity="0.03" stroke-width="0.5"/>
+  <line x1="330" y1="0" x2="320" y2="350" stroke="white" stroke-opacity="0.03" stroke-width="0.5"/>
+  <line x1="640" y1="80" x2="630" y2="430" stroke="white" stroke-opacity="0.03" stroke-width="0.5"/>
+  <line x1="950" y1="0" x2="940" y2="380" stroke="white" stroke-opacity="0.03" stroke-width="0.5"/>
+  <line x1="1220" y1="60" x2="1210" y2="420" stroke="white" stroke-opacity="0.03" stroke-width="0.5"/>
+
+  <!-- Wet ground reflections -->
+  <rect x="0" y="540" width="1280" height="100" fill="#060608"/>
+  <line x1="0" y1="540" x2="1280" y2="540" stroke="white" stroke-opacity="0.02" stroke-width="1"/>
+  <!-- Neon reflections in puddles -->
+  <ellipse cx="200" cy="580" rx="80" ry="15" fill="#ff6b35" opacity="0.04" filter="url(#nrReflect)"/>
+  <ellipse cx="500" cy="575" rx="70" ry="12" fill="#4ecdc4" opacity="0.04" filter="url(#nrReflect)"/>
+  <ellipse cx="800" cy="580" rx="75" ry="14" fill="#c4b5fd" opacity="0.04" filter="url(#nrReflect)"/>
+  <ellipse cx="1100" cy="575" rx="80" ry="13" fill="#a8e06c" opacity="0.035" filter="url(#nrReflect)"/>
+
+  <!-- Element emojis in the rain -->
+  <text x="200" y="380" font-size="38" text-anchor="middle" opacity="0.5" filter="url(#nrGlow)">🔥</text>
+  <text x="500" y="360" font-size="36" text-anchor="middle" opacity="0.5" filter="url(#nrGlow)">💧</text>
+  <text x="800" y="370" font-size="38" text-anchor="middle" opacity="0.5" filter="url(#nrGlow)">🌍</text>
+  <text x="1100" y="365" font-size="34" text-anchor="middle" opacity="0.45" filter="url(#nrGlow)">💨</text>
+
+  <!-- Title -->
+  <text x="640" y="490" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="56" font-weight="800" fill="white" text-anchor="middle" letter-spacing="18" opacity="0.9" filter="url(#nrGlow)">INFINITE CRAFT</text>
+  <text x="640" y="525" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#c4b5fd" text-anchor="middle" letter-spacing="8" opacity="0.3">NEON RAIN</text>
+</svg>

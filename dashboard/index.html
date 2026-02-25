@@ -474,7 +474,7 @@ function renderGraph() {
   nodeEls.append('circle')
     .attr('class', d => 'node-circle' + (d.generation===0 && !d._inferred?' base':''))
     .attr('r', nodeRadius)
-    .attr('fill', d => genColor(d.generation))
+    .attr('fill', d => d._inferred ? '#555' : genColor(d.generation))
     .attr('opacity', d => d._inferred ? 0.5 : 1);
   nodeEls.append('text').attr('class','node-label')
     .attr('dy', d => d._inferred ? -6 : -(4 + nodeRadius(d)))
@@ -496,7 +496,7 @@ function renderGraph() {
     tooltip.appendChild(document.createElement('br'));
     tooltip.appendChild(el('span', {style: {color: '#a5b4fc'}, textContent: d.recipe}));
     tooltip.appendChild(document.createElement('br'));
-    tooltip.appendChild(el('span', {style: {color: '#888'}, textContent: 'Generation ' + d.generation}));
+    tooltip.appendChild(el('span', {style: {color: '#888'}, textContent: d._inferred ? 'Generation unknown' : 'Generation ' + d.generation}));
     if (d.is_new) { tooltip.appendChild(document.createElement('br')); tooltip.appendChild(el('span', {style: {color: '#f59e0b'}, textContent: 'First Discovery'})); }
     tooltip.classList.add('visible');
     tooltip.style.left = event.clientX + 12 + 'px';
@@ -691,8 +691,8 @@ function showDetailPanel(id) {
 
   // Meta
   card.appendChild(el('div', {className: 'card-meta'}, [
-    el('div', null, ['Generation: ', el('span', {textContent: String(node.generation), style: {color: genColor(node.generation)}})]),
-    el('div', null, ['Recipe: ', el('span', {textContent: node.recipe})]),
+    el('div', null, ['Generation: ', el('span', {textContent: node._inferred ? 'unknown' : String(node.generation), style: {color: node._inferred ? '#555' : genColor(node.generation)}})]),
+    el('div', null, ['Recipe: ', el('span', {textContent: node._inferred ? 'not loaded' : node.recipe})]),
   ]));
 
   // Action buttons → open full overlay
@@ -756,7 +756,7 @@ async function openChainOverlay(id, mode) {
   // Update meta
   const metaEl = document.getElementById('chain-meta');
   metaEl.replaceChildren();
-  metaEl.appendChild(el('span', {textContent: 'Gen ' + (node.generation || 0), style: {color: genColor(node.generation || 0)}}));
+  metaEl.appendChild(el('span', {textContent: node._inferred ? 'Gen ?' : 'Gen ' + (node.generation || 0), style: {color: node._inferred ? '#555' : genColor(node.generation || 0)}}));
   metaEl.appendChild(el('span', {textContent: chainNodes.size + ' nodes'}));
   metaEl.appendChild(el('span', {textContent: chainEdges.length + ' edges'}));
 

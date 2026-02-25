@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="br-glow">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <linearGradient id="br-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a14"/>
+      <stop offset="100%" stop-color="#111128"/>
+    </linearGradient>
+    <radialGradient id="br-light" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#ffd93d" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0a0a14" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#br-sky)"/>
+  <rect width="1280" height="640" fill="url(#br-light)"/>
+
+  <!-- Stars -->
+  <circle cx="200" cy="80" r="1" fill="#fff" opacity="0.4"/>
+  <circle cx="500" cy="50" r="1.5" fill="#fff" opacity="0.3"/>
+  <circle cx="800" cy="70" r="1" fill="#fff" opacity="0.45"/>
+  <circle cx="1050" cy="90" r="1.5" fill="#fff" opacity="0.3"/>
+  <circle cx="350" cy="120" r="1" fill="#fff" opacity="0.25"/>
+  <circle cx="950" cy="130" r="1" fill="#fff" opacity="0.3"/>
+
+  <!-- Left cliff -->
+  <path d="M 0 350 L 0 640 L 400 640 L 400 380 Q 390 340 350 320 Q 300 300 250 310 Q 180 330 120 345 Q 60 355 0 350 Z" fill="#1a1a2e" stroke="#ff6b35" stroke-width="1" opacity="0.9"/>
+  <path d="M 0 350 Q 60 355 120 345 Q 180 330 250 310 Q 300 300 350 320 Q 390 340 400 380" fill="none" stroke="#ff6b35" stroke-width="2" opacity="0.6"/>
+  <!-- Cliff texture -->
+  <line x1="100" y1="380" x2="120" y2="500" stroke="#ff6b35" stroke-width="1" opacity="0.15"/>
+  <line x1="200" y1="350" x2="210" y2="480" stroke="#ff6b35" stroke-width="1" opacity="0.12"/>
+  <line x1="320" y1="340" x2="330" y2="450" stroke="#ff6b35" stroke-width="1" opacity="0.1"/>
+  <!-- Label -->
+  <text x="200" y="500" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="20" fill="#ff6b35" opacity="0.4">Element A</text>
+
+  <!-- Right cliff -->
+  <path d="M 1280 350 L 1280 640 L 880 640 L 880 380 Q 890 340 930 320 Q 980 300 1030 310 Q 1100 330 1160 345 Q 1220 355 1280 350 Z" fill="#1a1a2e" stroke="#4ecdc4" stroke-width="1" opacity="0.9"/>
+  <path d="M 1280 350 Q 1220 355 1160 345 Q 1100 330 1030 310 Q 980 300 930 320 Q 890 340 880 380" fill="none" stroke="#4ecdc4" stroke-width="2" opacity="0.6"/>
+  <line x1="1180" y1="380" x2="1160" y2="500" stroke="#4ecdc4" stroke-width="1" opacity="0.15"/>
+  <line x1="1080" y1="350" x2="1070" y2="480" stroke="#4ecdc4" stroke-width="1" opacity="0.12"/>
+  <line x1="960" y1="340" x2="950" y2="450" stroke="#4ecdc4" stroke-width="1" opacity="0.1"/>
+  <text x="1080" y="500" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="20" fill="#4ecdc4" opacity="0.4">Element B</text>
+
+  <!-- Bridge -->
+  <!-- Main deck -->
+  <rect x="390" y="340" width="500" height="12" rx="2" fill="#a8e06c" opacity="0.7"/>
+  <rect x="390" y="340" width="500" height="12" rx="2" fill="none" stroke="#a8e06c" stroke-width="1" opacity="0.5"/>
+  <!-- Bridge glow -->
+  <rect x="400" y="344" width="480" height="4" fill="#a8e06c" opacity="0.2" filter="url(#br-glow)"/>
+
+  <!-- Arch supports -->
+  <path d="M 420 340 Q 520 260 640 250 Q 760 260 860 340" fill="none" stroke="#ffd93d" stroke-width="3" opacity="0.5"/>
+  <!-- Cables from arch -->
+  <line x1="470" y1="310" x2="470" y2="340" stroke="#ffd93d" stroke-width="1.5" opacity="0.4"/>
+  <line x1="530" y1="280" x2="530" y2="340" stroke="#ffd93d" stroke-width="1.5" opacity="0.4"/>
+  <line x1="590" y1="262" x2="590" y2="340" stroke="#ffd93d" stroke-width="1.5" opacity="0.4"/>
+  <line x1="640" y1="250" x2="640" y2="340" stroke="#ffd93d" stroke-width="1.5" opacity="0.4"/>
+  <line x1="690" y1="262" x2="690" y2="340" stroke="#ffd93d" stroke-width="1.5" opacity="0.4"/>
+  <line x1="750" y1="280" x2="750" y2="340" stroke="#ffd93d" stroke-width="1.5" opacity="0.4"/>
+  <line x1="810" y1="310" x2="810" y2="340" stroke="#ffd93d" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Railing -->
+  <line x1="400" y1="335" x2="880" y2="335" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+  <!-- Railing posts -->
+  <line x1="430" y1="330" x2="430" y2="340" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+  <line x1="490" y1="330" x2="490" y2="340" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+  <line x1="550" y1="330" x2="550" y2="340" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+  <line x1="610" y1="330" x2="610" y2="340" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+  <line x1="670" y1="330" x2="670" y2="340" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+  <line x1="730" y1="330" x2="730" y2="340" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+  <line x1="790" y1="330" x2="790" y2="340" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+  <line x1="850" y1="330" x2="850" y2="340" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+
+  <!-- Depth/abyss below -->
+  <path d="M 400 450 Q 640 520 880 450" fill="none" stroke="#c4b5fd" stroke-width="1" opacity="0.08"/>
+  <path d="M 400 500 Q 640 560 880 500" fill="none" stroke="#c4b5fd" stroke-width="1" opacity="0.05"/>
+
+  <!-- Title -->
+  <text x="640" y="180" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="bold" fill="white" letter-spacing="12">INFINITE CRAFT</text>
+  <text x="640" y="620" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#a8e06c" opacity="0.6" letter-spacing="4">BRIDGE SPAN</text>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <radialGradient id="bg10" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#1a0a20"/>
+      <stop offset="100%" stop-color="#08040c"/>
+    </radialGradient>
+    <filter id="glow10">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg10)"/>
+  <g transform="translate(640,320)">
+    <!-- Outer rings -->
+    <circle r="280" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.15"/>
+    <circle r="270" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.2"/>
+    <circle r="260" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.15"/>
+    <!-- Petal ring 1 (outermost) - 16 petals -->
+    <g fill="none" stroke="#c4b5fd" stroke-width="0.8" opacity="0.3">
+      <ellipse rx="15" ry="45" transform="translate(0,-230) rotate(0)"/>
+      <ellipse rx="15" ry="45" transform="rotate(22.5) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(45) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(67.5) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(90) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(112.5) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(135) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(157.5) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(180) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(202.5) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(225) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(247.5) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(270) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(292.5) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(315) translate(0,-230)"/>
+      <ellipse rx="15" ry="45" transform="rotate(337.5) translate(0,-230)"/>
+    </g>
+    <!-- Inner ring -->
+    <circle r="190" fill="none" stroke="#c9a96e" stroke-width="0.8" opacity="0.3"/>
+    <!-- Petal ring 2 - 12 petals -->
+    <g fill="none" stroke="#4ecdc4" stroke-width="0.8" opacity="0.35">
+      <ellipse rx="18" ry="50" transform="translate(0,-155) rotate(0)"/>
+      <ellipse rx="18" ry="50" transform="rotate(30) translate(0,-155)"/>
+      <ellipse rx="18" ry="50" transform="rotate(60) translate(0,-155)"/>
+      <ellipse rx="18" ry="50" transform="rotate(90) translate(0,-155)"/>
+      <ellipse rx="18" ry="50" transform="rotate(120) translate(0,-155)"/>
+      <ellipse rx="18" ry="50" transform="rotate(150) translate(0,-155)"/>
+      <ellipse rx="18" ry="50" transform="rotate(180) translate(0,-155)"/>
+      <ellipse rx="18" ry="50" transform="rotate(210) translate(0,-155)"/>
+      <ellipse rx="18" ry="50" transform="rotate(240) translate(0,-155)"/>
+      <ellipse rx="18" ry="50" transform="rotate(270) translate(0,-155)"/>
+      <ellipse rx="18" ry="50" transform="rotate(300) translate(0,-155)"/>
+      <ellipse rx="18" ry="50" transform="rotate(330) translate(0,-155)"/>
+    </g>
+    <circle r="110" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.25"/>
+    <!-- Petal ring 3 - 8 petals -->
+    <g fill="none" stroke="#ff6b35" stroke-width="1" opacity="0.35">
+      <ellipse rx="20" ry="40" transform="translate(0,-80) rotate(0)"/>
+      <ellipse rx="20" ry="40" transform="rotate(45) translate(0,-80)"/>
+      <ellipse rx="20" ry="40" transform="rotate(90) translate(0,-80)"/>
+      <ellipse rx="20" ry="40" transform="rotate(135) translate(0,-80)"/>
+      <ellipse rx="20" ry="40" transform="rotate(180) translate(0,-80)"/>
+      <ellipse rx="20" ry="40" transform="rotate(225) translate(0,-80)"/>
+      <ellipse rx="20" ry="40" transform="rotate(270) translate(0,-80)"/>
+      <ellipse rx="20" ry="40" transform="rotate(315) translate(0,-80)"/>
+    </g>
+    <circle r="45" fill="none" stroke="#ffd93d" stroke-width="1" opacity="0.4"/>
+    <!-- Center lotus / 4 petals -->
+    <g fill="none" stroke="#a8e06c" stroke-width="1.2" opacity="0.5">
+      <ellipse rx="12" ry="25" transform="translate(0,-22)"/>
+      <ellipse rx="12" ry="25" transform="rotate(90) translate(0,-22)"/>
+      <ellipse rx="12" ry="25" transform="rotate(180) translate(0,-22)"/>
+      <ellipse rx="12" ry="25" transform="rotate(270) translate(0,-22)"/>
+    </g>
+    <!-- Central dot -->
+    <circle r="6" fill="#ffd93d" opacity="0.5" filter="url(#glow10)"/>
+    <!-- Element dots at cardinal points -->
+    <circle cx="0" cy="-195" r="5" fill="#ff6b35" opacity="0.5" filter="url(#glow10)"/>
+    <circle cx="195" cy="0" r="5" fill="#4ecdc4" opacity="0.5" filter="url(#glow10)"/>
+    <circle cx="0" cy="195" r="5" fill="#a8e06c" opacity="0.5" filter="url(#glow10)"/>
+    <circle cx="-195" cy="0" r="5" fill="#c4b5fd" opacity="0.5" filter="url(#glow10)"/>
+  </g>
+  <!-- Title -->
+  <text x="640" y="42" text-anchor="middle" font-family="serif" font-size="36" fill="#c9a96e" letter-spacing="10" filter="url(#glow10)">INFINITE CRAFT</text>
+  <text x="640" y="630" text-anchor="middle" font-family="serif" font-size="10" fill="#c9a96e" opacity="0.4" letter-spacing="6">WHEEL OF CREATION</text>
+</svg>

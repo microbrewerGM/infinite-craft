@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#1a1512"/>
+  <!-- Concentric rings representing generations -->
+  <g fill="none" stroke-width="1.5">
+    <circle cx="640" cy="300" r="30" stroke="#ff6b35" stroke-opacity="0.8"/>
+    <circle cx="640" cy="300" r="55" stroke="#e85d26" stroke-opacity="0.6"/>
+    <circle cx="640" cy="300" r="80" stroke="#d14f1e" stroke-opacity="0.5"/>
+    <circle cx="640" cy="300" r="105" stroke="#b94317" stroke-opacity="0.4"/>
+    <circle cx="640" cy="300" r="130" stroke="#a03810" stroke-opacity="0.35"/>
+    <circle cx="640" cy="300" r="155" stroke="#882e0a" stroke-opacity="0.3"/>
+    <circle cx="640" cy="300" r="180" stroke="#703" stroke-opacity="0.25"/>
+    <circle cx="640" cy="300" r="205" stroke="#581f03" stroke-opacity="0.2"/>
+    <circle cx="640" cy="300" r="230" stroke="#411602" stroke-opacity="0.15"/>
+    <circle cx="640" cy="300" r="255" stroke="#2a0e01" stroke-opacity="0.1"/>
+  </g>
+  <!-- Generation labels -->
+  <g font-family="Georgia, serif" fill="#c9a96e" font-size="10" opacity="0.5">
+    <text x="640" y="275" text-anchor="middle">Gen 0</text>
+    <text x="640" y="250" text-anchor="middle">Gen 1</text>
+    <text x="640" y="225" text-anchor="middle">Gen 2</text>
+    <text x="640" y="200" text-anchor="middle">Gen 3</text>
+  </g>
+  <!-- Core elements -->
+  <g font-family="Georgia, serif" font-size="11" fill="#ff6b35">
+    <text x="622" y="298" text-anchor="middle">&#x1F525;</text>
+    <text x="658" y="298" text-anchor="middle">&#x1F4A7;</text>
+    <text x="640" y="315" text-anchor="middle">&#x1F30D;</text>
+    <text x="640" y="290" text-anchor="middle">&#x1F4A8;</text>
+  </g>
+  <!-- Title -->
+  <text x="640" y="555" font-family="Georgia, serif" font-size="44" fill="#c9a96e" text-anchor="middle" letter-spacing="4">INFINITE CRAFT</text>
+  <text x="640" y="590" font-family="Georgia, serif" font-size="14" fill="#8b7355" text-anchor="middle">Generations of Discovery</text>
+</svg>

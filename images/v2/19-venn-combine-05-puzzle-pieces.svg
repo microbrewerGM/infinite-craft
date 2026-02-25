@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="pz-glow">
+      <feGaussianBlur stdDeviation="10"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <radialGradient id="pz-center" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd93d" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0a0a14" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="pz-soft">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a14"/>
+  <ellipse cx="640" cy="340" rx="300" ry="200" fill="url(#pz-center)" opacity="0.3"/>
+
+  <!-- Left puzzle piece (orange) -->
+  <g transform="translate(420, 320)">
+    <!-- Puzzle shape: square with tab on right, socket on top -->
+    <path d="M -80 -80 L -80 -30 Q -105 -20 -105 0 Q -105 20 -80 30 L -80 80 L -30 80 Q -20 105 0 105 Q 20 105 30 80 L 80 80 L 80 30 Q 105 20 105 0 Q 105 -20 80 -30 L 80 -80 L 30 -80 Q 20 -105 0 -105 Q -20 -105 -30 -80 Z" fill="#ff6b35" opacity="0.85" stroke="#ff6b35" stroke-width="2"/>
+    <!-- Inner detail -->
+    <path d="M -80 -80 L -80 -30 Q -105 -20 -105 0 Q -105 20 -80 30 L -80 80 L -30 80 Q -20 105 0 105 Q 20 105 30 80 L 80 80 L 80 30 Q 105 20 105 0 Q 105 -20 80 -30 L 80 -80 L 30 -80 Q 20 -105 0 -105 Q -20 -105 -30 -80 Z" fill="none" stroke="#fff" stroke-width="1" opacity="0.2"/>
+    <!-- Shine -->
+    <ellipse cx="-20" cy="-30" rx="25" ry="20" fill="#fff" opacity="0.1"/>
+    <!-- Motion lines -->
+    <line x1="120" y1="0" x2="160" y2="0" stroke="#ff6b35" stroke-width="2" opacity="0.4"/>
+    <line x1="115" y1="-20" x2="150" y2="-25" stroke="#ff6b35" stroke-width="1.5" opacity="0.3"/>
+    <line x1="115" y1="20" x2="150" y2="25" stroke="#ff6b35" stroke-width="1.5" opacity="0.3"/>
+  </g>
+
+  <!-- Right puzzle piece (teal) -->
+  <g transform="translate(860, 320)">
+    <path d="M -80 -80 L -80 -30 Q -105 -20 -105 0 Q -105 20 -80 30 L -80 80 L -30 80 Q -20 105 0 105 Q 20 105 30 80 L 80 80 L 80 30 Q 105 20 105 0 Q 105 -20 80 -30 L 80 -80 L 30 -80 Q 20 -105 0 -105 Q -20 -105 -30 -80 Z" fill="#4ecdc4" opacity="0.85" stroke="#4ecdc4" stroke-width="2"/>
+    <path d="M -80 -80 L -80 -30 Q -105 -20 -105 0 Q -105 20 -80 30 L -80 80 L -30 80 Q -20 105 0 105 Q 20 105 30 80 L 80 80 L 80 30 Q 105 20 105 0 Q 105 -20 80 -30 L 80 -80 L 30 -80 Q 20 -105 0 -105 Q -20 -105 -30 -80 Z" fill="none" stroke="#fff" stroke-width="1" opacity="0.2"/>
+    <ellipse cx="-20" cy="-30" rx="25" ry="20" fill="#fff" opacity="0.1"/>
+    <!-- Motion lines -->
+    <line x1="-120" y1="0" x2="-160" y2="0" stroke="#4ecdc4" stroke-width="2" opacity="0.4"/>
+    <line x1="-115" y1="-20" x2="-150" y2="-25" stroke="#4ecdc4" stroke-width="1.5" opacity="0.3"/>
+    <line x1="-115" y1="20" x2="-150" y2="25" stroke="#4ecdc4" stroke-width="1.5" opacity="0.3"/>
+  </g>
+
+  <!-- Central spark where they'll connect -->
+  <g transform="translate(640, 320)">
+    <circle cx="0" cy="0" r="30" fill="#ffd93d" opacity="0.15" filter="url(#pz-soft)"/>
+    <!-- Spark lines -->
+    <line x1="-15" y1="0" x2="15" y2="0" stroke="#ffd93d" stroke-width="2" opacity="0.7"/>
+    <line x1="0" y1="-15" x2="0" y2="15" stroke="#ffd93d" stroke-width="2" opacity="0.7"/>
+    <line x1="-10" y1="-10" x2="10" y2="10" stroke="#ffd93d" stroke-width="1.5" opacity="0.5"/>
+    <line x1="10" y1="-10" x2="-10" y2="10" stroke="#ffd93d" stroke-width="1.5" opacity="0.5"/>
+    <!-- Particles -->
+    <circle cx="20" cy="-18" r="2" fill="#fff" opacity="0.6"/>
+    <circle cx="-18" cy="15" r="2" fill="#a8e06c" opacity="0.5"/>
+    <circle cx="15" cy="20" r="1.5" fill="#c4b5fd" opacity="0.5"/>
+    <circle cx="-22" cy="-12" r="1.5" fill="#ffd93d" opacity="0.6"/>
+  </g>
+
+  <!-- Scattered small puzzle outlines in background -->
+  <path d="M 180 160 L 180 175 Q 170 178 170 185 Q 170 192 180 195 L 180 210 L 195 210 Q 198 220 205 220 Q 212 220 215 210 L 230 210 L 230 195 Q 240 192 240 185 Q 240 178 230 175 L 230 160 Z" fill="none" stroke="#c4b5fd" stroke-width="1" opacity="0.15"/>
+  <path d="M 1050 450 L 1050 465 Q 1040 468 1040 475 Q 1040 482 1050 485 L 1050 500 L 1065 500 Q 1068 510 1075 510 Q 1082 510 1085 500 L 1100 500 L 1100 485 Q 1110 482 1110 475 Q 1110 468 1100 465 L 1100 450 Z" fill="none" stroke="#a8e06c" stroke-width="1" opacity="0.12"/>
+  <path d="M 100 450 L 100 460 Q 93 462 93 468 Q 93 474 100 476 L 100 486 L 110 486 Q 112 493 118 493 Q 124 493 126 486 L 136 486 L 136 476 Q 143 474 143 468 Q 143 462 136 460 L 136 450 Z" fill="none" stroke="#ff6b35" stroke-width="1" opacity="0.1"/>
+
+  <!-- Title -->
+  <text x="640" y="80" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="bold" fill="white" letter-spacing="12">INFINITE CRAFT</text>
+  <text x="640" y="610" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#ffd93d" opacity="0.6" letter-spacing="4">PUZZLE PIECES</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="snake1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a8e06c"/>
+      <stop offset="50%" stop-color="#4ecdc4"/>
+      <stop offset="100%" stop-color="#a8e06c"/>
+    </linearGradient>
+    <linearGradient id="snake2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="50%" stop-color="#ffd93d"/>
+      <stop offset="100%" stop-color="#ff6b35"/>
+    </linearGradient>
+    <filter id="snakeGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="scales1" width="12" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">
+      <path d="M6,0 C9,3 9,7 6,10 C3,7 3,3 6,0Z" fill="none" stroke="#4ecdc4" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+    <pattern id="scales2" width="12" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-15)">
+      <path d="M6,0 C9,3 9,7 6,10 C3,7 3,3 6,0Z" fill="none" stroke="#ff6b35" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a0a"/>
+  <!-- Subtle ground texture -->
+  <ellipse cx="640" cy="500" rx="600" ry="80" fill="#1a1a1a" opacity="0.3"/>
+  <!-- Snake 1 (green/teal) - goes OVER at center top, UNDER at center bottom -->
+  <!-- Body shadow -->
+  <path d="M270,300 C270,185 395,148 475,205 C530,245 565,282 640,282 C715,282 750,245 805,205 C885,148 1010,185 1010,300" fill="none" stroke="#000" stroke-width="30" opacity="0.2"/>
+  <!-- Body -->
+  <path d="M270,300 C270,185 395,148 475,205 C530,245 565,282 640,282 C715,282 750,245 805,205 C885,148 1010,185 1010,300" fill="none" stroke="url(#snake1)" stroke-width="24" stroke-linecap="round" filter="url(#snakeGlow)"/>
+  <!-- Belly stripe -->
+  <path d="M270,300 C270,188 395,152 475,208 C530,247 565,283 640,283" fill="none" stroke="#fff" stroke-width="6" opacity="0.15"/>
+  <path d="M640,283 C715,283 750,247 805,208 C885,152 1010,188 1010,300" fill="none" stroke="#fff" stroke-width="6" opacity="0.15"/>
+  <!-- Scale texture overlay -->
+  <path d="M270,300 C270,185 395,148 475,205 C530,245 565,282 640,282 C715,282 750,245 805,205 C885,148 1010,185 1010,300" fill="none" stroke="url(#scales1)" stroke-width="22"/>
+  <!-- Snake 1 head (right side) -->
+  <ellipse cx="1010" cy="300" rx="18" ry="14" fill="#a8e06c" filter="url(#snakeGlow)"/>
+  <ellipse cx="1010" cy="300" rx="16" ry="12" fill="#4ecdc4" opacity="0.5"/>
+  <circle cx="1018" cy="294" r="3" fill="#ffd93d"/><circle cx="1018" cy="294" r="1.5" fill="#000"/>
+  <!-- Forked tongue -->
+  <path d="M1028,300 L1042,296 M1028,300 L1042,304" fill="none" stroke="#ff6b35" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Snake 2 (orange/gold) - goes UNDER at center top, OVER at center bottom -->
+  <!-- Cover center for crossing effect -->
+  <rect x="618" y="268" width="44" height="18" fill="#0a0a0a"/>
+  <!-- Body shadow -->
+  <path d="M1010,300 C1010,415 885,452 805,395 C750,355 715,318 640,318 C565,318 530,355 475,395 C395,452 270,415 270,300" fill="none" stroke="#000" stroke-width="30" opacity="0.2"/>
+  <!-- Body -->
+  <path d="M1010,300 C1010,415 885,452 805,395 C750,355 715,318 640,318 C565,318 530,355 475,395 C395,452 270,415 270,300" fill="none" stroke="url(#snake2)" stroke-width="24" stroke-linecap="round" filter="url(#snakeGlow)"/>
+  <!-- Belly stripe -->
+  <path d="M1010,300 C1010,412 885,448 805,392 C750,353 715,317 640,317" fill="none" stroke="#fff" stroke-width="6" opacity="0.15"/>
+  <path d="M640,317 C565,317 530,353 475,392 C395,448 270,412 270,300" fill="none" stroke="#fff" stroke-width="6" opacity="0.15"/>
+  <!-- Scale texture -->
+  <path d="M1010,300 C1010,415 885,452 805,395 C750,355 715,318 640,318 C565,318 530,355 475,395 C395,452 270,415 270,300" fill="none" stroke="url(#scales2)" stroke-width="22"/>
+  <!-- Cover center bottom for crossing effect (snake 2 goes OVER here) -->
+  <rect x="618" y="314" width="44" height="18" fill="#0a0a0a"/>
+  <path d="M622,318 C632,318 642,318 658,318" fill="none" stroke="url(#snake2)" stroke-width="24" stroke-linecap="round"/>
+  <!-- Snake 2 head (left side) -->
+  <ellipse cx="270" cy="300" rx="18" ry="14" fill="#ff6b35" filter="url(#snakeGlow)"/>
+  <ellipse cx="270" cy="300" rx="16" ry="12" fill="#ffd93d" opacity="0.5"/>
+  <circle cx="262" cy="294" r="3" fill="#a8e06c"/><circle cx="262" cy="294" r="1.5" fill="#000"/>
+  <!-- Forked tongue -->
+  <path d="M252,300 L238,296 M252,300 L238,304" fill="none" stroke="#ff6b35" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Title -->
+  <text x="640" y="560" text-anchor="middle" font-family="'Courier New', monospace" font-size="40" font-weight="bold" fill="#ffffff" letter-spacing="12" opacity="0.9">INFINITE CRAFT</text>
+</svg>

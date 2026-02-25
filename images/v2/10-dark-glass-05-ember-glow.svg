@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="emberGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softEmber">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+    <radialGradient id="emberCenter" cx="50%" cy="80%" r="60%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="640" fill="#080404"/>
+
+  <!-- Warm ambient glow from below -->
+  <rect width="1280" height="640" fill="url(#emberCenter)"/>
+  <ellipse cx="640" cy="620" rx="500" ry="100" fill="#ff6b35" opacity="0.04" filter="url(#softEmber)"/>
+
+  <!-- Ember bed at bottom -->
+  <ellipse cx="400" cy="580" rx="8" ry="4" fill="#ff6b35" opacity="0.9" filter="url(#emberGlow)"/>
+  <ellipse cx="430" cy="575" rx="6" ry="3" fill="#ffd93d" opacity="0.8" filter="url(#emberGlow)"/>
+  <ellipse cx="460" cy="582" rx="7" ry="3.5" fill="#ff6b35" opacity="0.7" filter="url(#emberGlow)"/>
+  <ellipse cx="500" cy="578" rx="5" ry="2.5" fill="#ffd93d" opacity="0.85" filter="url(#emberGlow)"/>
+  <ellipse cx="540" cy="584" rx="8" ry="4" fill="#ff6b35" opacity="0.75" filter="url(#emberGlow)"/>
+  <ellipse cx="580" cy="576" rx="6" ry="3" fill="#ffd93d" opacity="0.7" filter="url(#emberGlow)"/>
+  <ellipse cx="620" cy="580" rx="9" ry="4.5" fill="#ff6b35" opacity="0.9" filter="url(#emberGlow)"/>
+  <ellipse cx="660" cy="577" rx="5" ry="2.5" fill="#ffd93d" opacity="0.8" filter="url(#emberGlow)"/>
+  <ellipse cx="700" cy="583" rx="7" ry="3.5" fill="#ff6b35" opacity="0.7" filter="url(#emberGlow)"/>
+  <ellipse cx="740" cy="579" rx="6" ry="3" fill="#ffd93d" opacity="0.75" filter="url(#emberGlow)"/>
+  <ellipse cx="780" cy="581" rx="8" ry="4" fill="#ff6b35" opacity="0.85" filter="url(#emberGlow)"/>
+  <ellipse cx="820" cy="576" rx="5" ry="2.5" fill="#ffd93d" opacity="0.7" filter="url(#emberGlow)"/>
+  <ellipse cx="860" cy="582" rx="7" ry="3.5" fill="#ff6b35" opacity="0.8" filter="url(#emberGlow)"/>
+
+  <!-- Rising embers / sparks -->
+  <circle cx="450" cy="500" r="2.5" fill="#ff6b35" opacity="0.9" filter="url(#emberGlow)"/>
+  <circle cx="520" cy="440" r="2" fill="#ffd93d" opacity="0.8" filter="url(#emberGlow)"/>
+  <circle cx="580" cy="380" r="1.8" fill="#ff6b35" opacity="0.7" filter="url(#emberGlow)"/>
+  <circle cx="640" cy="320" r="1.5" fill="#ffd93d" opacity="0.6" filter="url(#emberGlow)"/>
+  <circle cx="700" cy="260" r="1.2" fill="#ff6b35" opacity="0.5" filter="url(#emberGlow)"/>
+  <circle cx="750" cy="200" r="1" fill="#ffd93d" opacity="0.4" filter="url(#emberGlow)"/>
+  <circle cx="490" cy="350" r="2" fill="#ff6b35" opacity="0.65" filter="url(#emberGlow)"/>
+  <circle cx="680" cy="410" r="2.2" fill="#ffd93d" opacity="0.75" filter="url(#emberGlow)"/>
+  <circle cx="760" cy="460" r="1.8" fill="#ff6b35" opacity="0.7" filter="url(#emberGlow)"/>
+  <circle cx="550" cy="290" r="1.5" fill="#ffd93d" opacity="0.55" filter="url(#emberGlow)"/>
+  <circle cx="620" cy="220" r="1.2" fill="#ff6b35" opacity="0.45" filter="url(#emberGlow)"/>
+  <circle cx="810" cy="350" r="1.8" fill="#ffd93d" opacity="0.5" filter="url(#emberGlow)"/>
+  <circle cx="420" cy="420" r="2.5" fill="#ff6b35" opacity="0.6" filter="url(#emberGlow)"/>
+  <circle cx="850" cy="480" r="2" fill="#ffd93d" opacity="0.65" filter="url(#emberGlow)"/>
+  <circle cx="500" cy="170" r="1" fill="#ff6b35" opacity="0.35" filter="url(#emberGlow)"/>
+  <circle cx="680" cy="150" r="0.8" fill="#ffd93d" opacity="0.3" filter="url(#emberGlow)"/>
+
+  <!-- Element emojis glowing in the embers -->
+  <text x="480" y="545" font-size="40" text-anchor="middle" opacity="0.8" filter="url(#emberGlow)">🔥</text>
+  <text x="580" y="535" font-size="36" text-anchor="middle" opacity="0.6" filter="url(#emberGlow)">💧</text>
+  <text x="700" y="540" font-size="38" text-anchor="middle" opacity="0.7" filter="url(#emberGlow)">🌍</text>
+  <text x="800" y="545" font-size="34" text-anchor="middle" opacity="0.6" filter="url(#emberGlow)">💨</text>
+
+  <!-- Title -->
+  <text x="640" y="100" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="58" font-weight="800" fill="#ff6b35" text-anchor="middle" letter-spacing="16" opacity="0.9" filter="url(#emberGlow)">INFINITE CRAFT</text>
+  <text x="640" y="135" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffd93d" text-anchor="middle" letter-spacing="8" opacity="0.35">STILL BURNING</text>
+</svg>

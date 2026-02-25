@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg18" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1008"/>
+      <stop offset="100%" stop-color="#0e0804"/>
+    </linearGradient>
+    <filter id="glow18">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
+      <feBlend in="SourceGraphic" in2="mono" mode="multiply"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg18)"/>
+  <!-- Sandy ground texture -->
+  <rect width="1280" height="640" fill="#c9a96e" opacity="0.02"/>
+  <!-- Border pattern - stepped geometric border -->
+  <g fill="none" stroke-width="2" opacity="0.5">
+    <!-- Outer border -->
+    <rect x="80" y="30" width="1120" height="580" stroke="#ff6b35"/>
+    <rect x="90" y="40" width="1100" height="560" stroke="#c9a96e" stroke-width="1"/>
+    <!-- Step pattern on top border -->
+    <path d="M120,30 L120,20 L140,20 L140,30 M160,30 L160,20 L180,20 L180,30 M200,30 L200,20 L220,20 L220,30" stroke="#ff6b35" stroke-width="1.5"/>
+    <path d="M1060,30 L1060,20 L1080,20 L1080,30 M1100,30 L1100,20 L1120,20 L1120,30 M1140,30 L1140,20 L1160,20 L1160,30" stroke="#ff6b35" stroke-width="1.5"/>
+    <!-- Step pattern on bottom -->
+    <path d="M120,610 L120,620 L140,620 L140,610 M160,610 L160,620 L180,620 L180,610 M200,610 L200,620 L220,620 L220,610" stroke="#ff6b35" stroke-width="1.5"/>
+    <path d="M1060,610 L1060,620 L1080,620 L1080,610 M1100,610 L1100,620 L1120,620 L1120,610 M1140,610 L1140,620 L1160,620 L1160,610" stroke="#ff6b35" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(640,330)">
+    <!-- Central diamond/rhombus -->
+    <polygon points="0,-180 220,0 0,180 -220,0" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.5"/>
+    <polygon points="0,-150 185,0 0,150 -185,0" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.3"/>
+    <!-- Four directional figures (cardinal directions) -->
+    <!-- East - Fire (triangle pointing right) -->
+    <g transform="translate(180,0)">
+      <polygon points="0,-25 30,0 0,25" fill="none" stroke="#ff6b35" stroke-width="2" opacity="0.6"/>
+      <line x1="0" y1="-25" x2="0" y2="25" stroke="#ff6b35" stroke-width="1" opacity="0.4"/>
+      <circle cx="10" cy="0" r="4" fill="#ff6b35" opacity="0.3"/>
+    </g>
+    <!-- West - Water (triangle pointing left) -->
+    <g transform="translate(-180,0)">
+      <polygon points="0,-25 -30,0 0,25" fill="none" stroke="#4ecdc4" stroke-width="2" opacity="0.6"/>
+      <line x1="0" y1="-25" x2="0" y2="25" stroke="#4ecdc4" stroke-width="1" opacity="0.4"/>
+      <circle cx="-10" cy="0" r="4" fill="#4ecdc4" opacity="0.3"/>
+    </g>
+    <!-- North - Air (triangle pointing up) -->
+    <g transform="translate(0,-145)">
+      <polygon points="-25,0 0,-30 25,0" fill="none" stroke="#c4b5fd" stroke-width="2" opacity="0.6"/>
+      <line x1="-25" y1="0" x2="25" y2="0" stroke="#c4b5fd" stroke-width="1" opacity="0.4"/>
+      <circle cx="0" cy="-10" r="4" fill="#c4b5fd" opacity="0.3"/>
+    </g>
+    <!-- South - Earth (triangle pointing down) -->
+    <g transform="translate(0,145)">
+      <polygon points="-25,0 0,30 25,0" fill="none" stroke="#a8e06c" stroke-width="2" opacity="0.6"/>
+      <line x1="-25" y1="0" x2="25" y2="0" stroke="#a8e06c" stroke-width="1" opacity="0.4"/>
+      <circle cx="0" cy="10" r="4" fill="#a8e06c" opacity="0.3"/>
+    </g>
+    <!-- Central cross pattern -->
+    <line x1="0" y1="-110" x2="0" y2="110" stroke="#c9a96e" stroke-width="1.5" opacity="0.4"/>
+    <line x1="-140" y1="0" x2="140" y2="0" stroke="#c9a96e" stroke-width="1.5" opacity="0.4"/>
+    <!-- Diagonal lines -->
+    <line x1="-100" y1="-100" x2="100" y2="100" stroke="#c9a96e" stroke-width="0.8" opacity="0.2"/>
+    <line x1="-100" y1="100" x2="100" y2="-100" stroke="#c9a96e" stroke-width="0.8" opacity="0.2"/>
+    <!-- Central circle (sun/balance) -->
+    <circle r="40" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.5"/>
+    <circle r="30" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.3"/>
+    <!-- Four small circles at intermediate positions -->
+    <circle cx="80" cy="-80" r="15" fill="none" stroke="#ff6b35" stroke-width="1" opacity="0.3"/>
+    <circle cx="80" cy="80" r="15" fill="none" stroke="#4ecdc4" stroke-width="1" opacity="0.3"/>
+    <circle cx="-80" cy="80" r="15" fill="none" stroke="#a8e06c" stroke-width="1" opacity="0.3"/>
+    <circle cx="-80" cy="-80" r="15" fill="none" stroke="#c4b5fd" stroke-width="1" opacity="0.3"/>
+    <!-- Center dot -->
+    <circle r="6" fill="#ffd93d" opacity="0.4"/>
+    <!-- Stepped rainbow bars (Navajo yei style) -->
+    <g opacity="0.3">
+      <rect x="-3" y="-70" width="6" height="10" fill="#ff6b35"/>
+      <rect x="-3" y="-58" width="6" height="10" fill="#ffd93d"/>
+      <rect x="-3" y="-46" width="6" height="10" fill="#a8e06c"/>
+      <rect x="-3" y="46" width="6" height="10" fill="#4ecdc4"/>
+      <rect x="-3" y="58" width="6" height="10" fill="#c4b5fd"/>
+      <rect x="-3" y="70" width="6" height="10" fill="#ff6b35"/>
+    </g>
+  </g>
+  <!-- Title -->
+  <text x="640" y="58" text-anchor="middle" font-family="serif" font-size="38" fill="#c9a96e" letter-spacing="10" filter="url(#glow18)">INFINITE CRAFT</text>
+  <text x="640" y="620" text-anchor="middle" font-family="serif" font-size="10" fill="#c9a96e" opacity="0.4" letter-spacing="5">HOZHO NAHASDLII</text>
+</svg>

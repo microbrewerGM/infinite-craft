@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-DynamoDB backup and restore for Infinite Craft Pulse Explorer.
+DynamoDB backup and restore for Infinite Craft Explorer.
 
 Usage:
   # Backup all tables

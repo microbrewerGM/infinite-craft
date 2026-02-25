@@ -1,0 +1,129 @@
+<svg viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="640" fill="#0f0f23"/>
+  <!-- Scanline effect -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="1280" y2="0" stroke="white" stroke-width="1"/><line x1="0" y1="4" x2="1280" y2="4" stroke="white" stroke-width="1"/><line x1="0" y1="8" x2="1280" y2="8" stroke="white" stroke-width="1"/><line x1="0" y1="12" x2="1280" y2="12" stroke="white" stroke-width="1"/><line x1="0" y1="16" x2="1280" y2="16" stroke="white" stroke-width="1"/>
+  </g>
+  <!-- Pixel element cards -->
+  <g font-family="monospace">
+    <!-- Row 1 -->
+    <g transform="translate(80,40)">
+      <rect width="80" height="80" fill="#ff6b35"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#ff6b35" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#ff6b35">001</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#ff6b35">Wa</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#ff6b35" opacity="0.7">WATER</text>
+    </g>
+    <g transform="translate(170,40)">
+      <rect width="80" height="80" fill="#4ecdc4"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#4ecdc4" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#4ecdc4">002</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#4ecdc4">Fi</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#4ecdc4" opacity="0.7">FIRE</text>
+    </g>
+    <g transform="translate(260,40)">
+      <rect width="80" height="80" fill="#a8e06c"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#a8e06c" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#a8e06c">003</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#a8e06c">Ea</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#a8e06c" opacity="0.7">EARTH</text>
+    </g>
+    <g transform="translate(350,40)">
+      <rect width="80" height="80" fill="#ffd93d"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#ffd93d" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#ffd93d">004</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#ffd93d">Wi</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#ffd93d" opacity="0.7">WIND</text>
+    </g>
+    <g transform="translate(440,40)">
+      <rect width="80" height="80" fill="#c4b5fd"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#c4b5fd" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#c4b5fd">005</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#c4b5fd">St</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#c4b5fd" opacity="0.7">STEAM</text>
+    </g>
+    <g transform="translate(530,40)">
+      <rect width="80" height="80" fill="#ff6b35"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#ff6b35" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#ff6b35">006</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#ff6b35">Lv</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#ff6b35" opacity="0.7">LAVA</text>
+    </g>
+    <g transform="translate(620,40)">
+      <rect width="80" height="80" fill="#4ecdc4"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#4ecdc4" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#4ecdc4">007</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#4ecdc4">Ic</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#4ecdc4" opacity="0.7">ICE</text>
+    </g>
+    <g transform="translate(710,40)">
+      <rect width="80" height="80" fill="#a8e06c"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#a8e06c" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#a8e06c">008</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#a8e06c">Mu</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#a8e06c" opacity="0.7">MUD</text>
+    </g>
+    <g transform="translate(800,40)">
+      <rect width="80" height="80" fill="#ffd93d"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#ffd93d" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#ffd93d">009</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#ffd93d">Sm</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#ffd93d" opacity="0.7">SMOKE</text>
+    </g>
+    <g transform="translate(890,40)">
+      <rect width="80" height="80" fill="#c4b5fd"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#c4b5fd" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#c4b5fd">010</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#c4b5fd">Du</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#c4b5fd" opacity="0.7">DUST</text>
+    </g>
+    <g transform="translate(980,40)">
+      <rect width="80" height="80" fill="#ff6b35"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#ff6b35" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#ff6b35">011</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#ff6b35">Pl</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#ff6b35" opacity="0.7">PLANT</text>
+    </g>
+    <g transform="translate(1070,40)">
+      <rect width="80" height="80" fill="#4ecdc4"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#4ecdc4" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#4ecdc4">012</text>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#4ecdc4">Vo</text>
+      <text x="40" y="68" text-anchor="middle" font-size="9" fill="#4ecdc4" opacity="0.7">VOLCANO</text>
+    </g>
+    <!-- Row 2 -->
+    <g transform="translate(80,130)">
+      <rect width="80" height="80" fill="#a8e06c"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#a8e06c" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#a8e06c">013</text><text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#a8e06c">Gl</text><text x="40" y="68" text-anchor="middle" font-size="9" fill="#a8e06c" opacity="0.7">GLASS</text>
+    </g>
+    <g transform="translate(170,130)">
+      <rect width="80" height="80" fill="#ffd93d"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#ffd93d" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#ffd93d">014</text><text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#ffd93d">Rn</text><text x="40" y="68" text-anchor="middle" font-size="9" fill="#ffd93d" opacity="0.7">RAIN</text>
+    </g>
+    <g transform="translate(260,130)">
+      <rect width="80" height="80" fill="#c4b5fd"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#c4b5fd" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#c4b5fd">015</text><text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#c4b5fd">Sn</text><text x="40" y="68" text-anchor="middle" font-size="9" fill="#c4b5fd" opacity="0.7">SNOW</text>
+    </g>
+    <g transform="translate(350,130)">
+      <rect width="80" height="80" fill="#ff6b35"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#ff6b35" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#ff6b35">016</text><text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#ff6b35">Cr</text><text x="40" y="68" text-anchor="middle" font-size="9" fill="#ff6b35" opacity="0.7">CRYSTAL</text>
+    </g>
+    <g transform="translate(440,130)">
+      <rect width="80" height="80" fill="#4ecdc4"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#4ecdc4" opacity="0.15"/>
+      <text x="8" y="18" font-size="10" fill="#4ecdc4">017</text><text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#4ecdc4">Pg</text><text x="40" y="68" text-anchor="middle" font-size="9" fill="#4ecdc4" opacity="0.7">PENGUIN</text>
+    </g>
+    <g transform="translate(530,130)" opacity="0.6">
+      <rect width="80" height="80" fill="#a8e06c"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#a8e06c" opacity="0.15"/>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#a8e06c">Lk</text>
+    </g>
+    <g transform="translate(620,130)" opacity="0.4">
+      <rect width="80" height="80" fill="#ffd93d"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#ffd93d" opacity="0.15"/>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#ffd93d">Hy</text>
+    </g>
+    <g transform="translate(710,130)" opacity="0.25">
+      <rect width="80" height="80" fill="#c4b5fd"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/><rect x="4" y="4" width="72" height="72" fill="#c4b5fd" opacity="0.15"/>
+      <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#c4b5fd">Nv</text>
+    </g>
+    <g transform="translate(800,130)" opacity="0.15">
+      <rect width="80" height="80" fill="#ff6b35"/><rect x="2" y="2" width="76" height="76" fill="#0f0f23"/>
+      <text x="40" y="52" text-anchor="middle" font-size="20" fill="#ff6b35">...</text>
+    </g>
+  </g>
+  <!-- Pixel art title -->
+  <text x="640" y="380" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ecdc4" letter-spacing="4">LEVEL 01 -- SELECT ELEMENT</text>
+  <text x="640" y="460" text-anchor="middle" font-family="monospace" font-size="64" font-weight="bold" fill="white" letter-spacing="4">INFINITE CRAFT</text>
+  <text x="640" y="510" text-anchor="middle" font-family="monospace" font-size="16" fill="#a8e06c">INSERT COIN TO CONTINUE</text>
+  <!-- Score -->
+  <text x="640" y="560" text-anchor="middle" font-family="monospace" font-size="14" fill="#ffd93d">HI-SCORE: 8,579</text>
+  <text x="640" y="580" text-anchor="middle" font-family="monospace" font-size="11" fill="#555">elements discovered</text>
+  <!-- Blinking cursor -->
+  <rect x="614" y="595" width="52" height="3" fill="#ff6b35" opacity="0.8"/>
+</svg>

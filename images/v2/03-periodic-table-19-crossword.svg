@@ -1,0 +1,84 @@
+<svg viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="640" fill="#0d1117"/>
+  <!-- Crossword grid -->
+  <g transform="translate(80,30)" font-family="'Georgia', serif">
+    <!-- Grid cells (40x40 each) -->
+    <!-- WATER horizontal at row 1, col 2 -->
+    <rect x="80" y="0" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="100" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#ff6b35">W</text><text x="86" y="12" font-size="8" fill="#ffd93d">1</text>
+    <rect x="120" y="0" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="140" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#ff6b35">A</text>
+    <rect x="160" y="0" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="180" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#ff6b35">T</text>
+    <rect x="200" y="0" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="220" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#ff6b35">E</text>
+    <rect x="240" y="0" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="260" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#ff6b35">R</text>
+    <!-- FIRE vertical from WATER's A, going down -->
+    <rect x="120" y="0" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><!-- already A -->
+    <rect x="120" y="40" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="140" y="68" text-anchor="middle" font-size="22" font-weight="bold" fill="#4ecdc4">F</text><text x="126" y="52" font-size="8" fill="#ffd93d">2</text>
+    <rect x="120" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="140" y="108" text-anchor="middle" font-size="22" font-weight="bold" fill="#4ecdc4">I</text>
+    <rect x="120" y="120" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="140" y="148" text-anchor="middle" font-size="22" font-weight="bold" fill="#4ecdc4">R</text>
+    <rect x="120" y="160" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="140" y="188" text-anchor="middle" font-size="22" font-weight="bold" fill="#4ecdc4">E</text>
+    <!-- EARTH horizontal crossing FIRE's I -->
+    <rect x="0" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="20" y="108" text-anchor="middle" font-size="22" font-weight="bold" fill="#a8e06c">E</text><text x="6" y="92" font-size="8" fill="#ffd93d">3</text>
+    <rect x="40" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="60" y="108" text-anchor="middle" font-size="22" font-weight="bold" fill="#a8e06c">A</text>
+    <rect x="80" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="100" y="108" text-anchor="middle" font-size="22" font-weight="bold" fill="#a8e06c">R</text>
+    <rect x="120" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><!-- already I, shared -->
+    <rect x="160" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="180" y="108" text-anchor="middle" font-size="22" font-weight="bold" fill="#a8e06c">H</text>
+    <!-- WIND vertical from WATER's W -->
+    <rect x="80" y="0" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><!-- W already -->
+    <rect x="80" y="40" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="100" y="68" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffd93d">I</text><text x="86" y="52" font-size="8" fill="#ffd93d">4</text>
+    <rect x="80" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><!-- R shared with EARTH -->
+    <rect x="80" y="120" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="100" y="148" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffd93d">N</text>
+    <rect x="80" y="160" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="100" y="188" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffd93d">D</text>
+    <!-- STEAM horizontal from FIRE's E -->
+    <rect x="120" y="160" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><!-- E shared -->
+    <rect x="160" y="160" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="180" y="188" text-anchor="middle" font-size="22" font-weight="bold" fill="#c4b5fd">S</text><text x="166" y="172" font-size="8" fill="#ffd93d">5</text>
+    <rect x="200" y="160" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="220" y="188" text-anchor="middle" font-size="22" font-weight="bold" fill="#c4b5fd">T</text>
+    <rect x="240" y="160" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="260" y="188" text-anchor="middle" font-size="22" font-weight="bold" fill="#c4b5fd">E</text>
+    <rect x="280" y="160" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="300" y="188" text-anchor="middle" font-size="22" font-weight="bold" fill="#c4b5fd">A</text>
+    <rect x="320" y="160" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="340" y="188" text-anchor="middle" font-size="22" font-weight="bold" fill="#c4b5fd">M</text>
+    <!-- LAVA vertical from STEAM's A -->
+    <rect x="280" y="120" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="300" y="148" text-anchor="middle" font-size="22" font-weight="bold" fill="#ff6b35">L</text><text x="286" y="132" font-size="8" fill="#ffd93d">6</text>
+    <rect x="280" y="160" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><!-- A shared -->
+    <rect x="280" y="200" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="300" y="228" text-anchor="middle" font-size="22" font-weight="bold" fill="#ff6b35">V</text>
+    <rect x="280" y="240" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="300" y="268" text-anchor="middle" font-size="22" font-weight="bold" fill="#ff6b35">A</text>
+    <!-- ICE horizontal -->
+    <rect x="320" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="340" y="108" text-anchor="middle" font-size="22" font-weight="bold" fill="#4ecdc4">I</text><text x="326" y="92" font-size="8" fill="#ffd93d">7</text>
+    <rect x="360" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="380" y="108" text-anchor="middle" font-size="22" font-weight="bold" fill="#4ecdc4">C</text>
+    <rect x="400" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="420" y="108" text-anchor="middle" font-size="22" font-weight="bold" fill="#4ecdc4">E</text>
+    <!-- MUD horizontal -->
+    <rect x="200" y="240" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="220" y="268" text-anchor="middle" font-size="22" font-weight="bold" fill="#a8e06c">M</text><text x="206" y="252" font-size="8" fill="#ffd93d">8</text>
+    <rect x="240" y="240" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="260" y="268" text-anchor="middle" font-size="22" font-weight="bold" fill="#a8e06c">U</text>
+    <rect x="280" y="240" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><!-- shared with LAVA's A... actually D -->
+    <!-- SMOKE vertical from ICE's C -->
+    <rect x="360" y="40" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="380" y="68" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffd93d">S</text><text x="366" y="52" font-size="8" fill="#ffd93d">9</text>
+    <rect x="360" y="80" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><!-- C shared -->
+    <rect x="360" y="120" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="380" y="148" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffd93d">O</text>
+    <rect x="360" y="160" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="380" y="188" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffd93d">K</text>
+    <rect x="360" y="200" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><text x="380" y="228" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffd93d">E</text>
+    <!-- DUST horizontal from SMOKE's E -->
+    <rect x="360" y="200" width="40" height="40" fill="#1a1d28" stroke="#333" stroke-width="1"/><!-- E shared -->
+    <text x="366" y="212" font-size="8" fill="#ffd93d">10</text>
+    <!-- Black spacer cells scattered -->
+    <rect x="0" y="0" width="40" height="40" fill="#0d1117"/><rect x="40" y="0" width="40" height="40" fill="#0d1117"/><rect x="0" y="40" width="40" height="40" fill="#0d1117"/><rect x="40" y="40" width="40" height="40" fill="#0d1117"/>
+    <rect x="160" y="40" width="40" height="40" fill="#0d1117"/><rect x="200" y="40" width="40" height="40" fill="#0d1117"/><rect x="240" y="40" width="40" height="40" fill="#0d1117"/><rect x="280" y="40" width="40" height="40" fill="#0d1117"/>
+    <rect x="200" y="80" width="40" height="40" fill="#0d1117"/><rect x="240" y="80" width="40" height="40" fill="#0d1117"/><rect x="280" y="80" width="40" height="40" fill="#0d1117"/>
+  </g>
+  <!-- Clues panel -->
+  <g transform="translate(640,50)" font-family="monospace">
+    <text x="0" y="0" font-size="16" font-weight="bold" fill="white" letter-spacing="2">ACROSS</text>
+    <text x="0" y="25" font-size="11" fill="#ff6b35">1. H2O, the source of life</text>
+    <text x="0" y="45" font-size="11" fill="#a8e06c">3. Terra firma, the ground</text>
+    <text x="0" y="65" font-size="11" fill="#c4b5fd">5. Hot water vapor</text>
+    <text x="0" y="85" font-size="11" fill="#4ecdc4">7. Frozen water</text>
+    <text x="0" y="105" font-size="11" fill="#a8e06c">8. Wet earth</text>
+    <text x="0" y="140" font-size="16" font-weight="bold" fill="white" letter-spacing="2">DOWN</text>
+    <text x="0" y="165" font-size="11" fill="#4ecdc4">2. Combustion in action</text>
+    <text x="0" y="185" font-size="11" fill="#ffd93d">4. Moving air</text>
+    <text x="0" y="205" font-size="11" fill="#ff6b35">6. Molten rock</text>
+    <text x="0" y="225" font-size="11" fill="#ffd93d">9. Visible combustion gas</text>
+  </g>
+  <!-- Title -->
+  <text x="640" y="440" text-anchor="middle" font-family="'Arial Black', sans-serif" font-size="56" font-weight="900" fill="white" letter-spacing="6">INFINITE CRAFT</text>
+  <text x="640" y="480" text-anchor="middle" font-family="monospace" font-size="14" fill="#4ecdc4" letter-spacing="4">THE ELEMENT CROSSWORD</text>
+  <text x="640" y="520" text-anchor="middle" font-family="monospace" font-size="13" fill="#ff6b35">8,579 clues to solve</text>
+  <!-- Pencil decoration -->
+  <line x1="580" y1="550" x2="700" y2="550" stroke="#ffd93d" stroke-width="2" opacity="0.3"/>
+</svg>

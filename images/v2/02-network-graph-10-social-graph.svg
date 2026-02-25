@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg10" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+    <filter id="glow10"><feGaussianBlur stdDeviation="2"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg10)"/>
+  <!-- Connection lines (behind people) -->
+  <g stroke-width="1.5" opacity="0.3" fill="none">
+    <line x1="200" y1="160" x2="400" y2="120" stroke="#ff6b35"/>
+    <line x1="200" y1="160" x2="350" y2="300" stroke="#4ecdc4"/>
+    <line x1="400" y1="120" x2="640" y2="180" stroke="#c4b5fd"/>
+    <line x1="400" y1="120" x2="350" y2="300" stroke="#ffd93d"/>
+    <line x1="640" y1="180" x2="880" y2="120" stroke="#ff6b35"/>
+    <line x1="640" y1="180" x2="640" y2="340" stroke="#a8e06c"/>
+    <line x1="640" y1="180" x2="500" y2="320" stroke="#4ecdc4"/>
+    <line x1="880" y1="120" x2="1050" y2="200" stroke="#c4b5fd"/>
+    <line x1="350" y1="300" x2="500" y2="320" stroke="#ff6b35"/>
+    <line x1="500" y1="320" x2="640" y2="340" stroke="#ffd93d"/>
+    <line x1="640" y1="340" x2="800" y2="320" stroke="#4ecdc4"/>
+    <line x1="800" y1="320" x2="1050" y2="200" stroke="#a8e06c"/>
+    <line x1="350" y1="300" x2="250" y2="460" stroke="#c4b5fd"/>
+    <line x1="500" y1="320" x2="450" y2="480" stroke="#ffd93d"/>
+    <line x1="640" y1="340" x2="640" y2="500" stroke="#ff6b35"/>
+    <line x1="800" y1="320" x2="850" y2="480" stroke="#4ecdc4"/>
+    <line x1="1050" y1="200" x2="1100" y2="380" stroke="#ff6b35"/>
+    <line x1="250" y1="460" x2="450" y2="480" stroke="#a8e06c"/>
+    <line x1="450" y1="480" x2="640" y2="500" stroke="#c4b5fd"/>
+    <line x1="640" y1="500" x2="850" y2="480" stroke="#ffd93d"/>
+    <line x1="850" y1="480" x2="1100" y2="380" stroke="#ff6b35"/>
+    <line x1="100" y1="320" x2="200" y2="160" stroke="#ffd93d"/>
+    <line x1="100" y1="320" x2="250" y2="460" stroke="#ff6b35"/>
+    <line x1="1180" y1="320" x2="1050" y2="200" stroke="#4ecdc4"/>
+    <line x1="1180" y1="320" x2="1100" y2="380" stroke="#c4b5fd"/>
+    <line x1="150" y1="540" x2="250" y2="460" stroke="#4ecdc4"/>
+    <line x1="1050" y1="550" x2="1100" y2="380" stroke="#a8e06c"/>
+    <line x1="1050" y1="550" x2="850" y2="480" stroke="#ffd93d"/>
+  </g>
+  <!-- Stronger central connections -->
+  <g stroke-width="2.5" opacity="0.15" fill="none">
+    <line x1="400" y1="120" x2="640" y2="340" stroke="#4ecdc4"/>
+    <line x1="640" y1="180" x2="800" y2="320" stroke="#ff6b35"/>
+    <line x1="350" y1="300" x2="640" y2="340" stroke="#ffd93d"/>
+    <line x1="640" y1="340" x2="1050" y2="200" stroke="#c4b5fd"/>
+  </g>
+  <!-- Person icons (head + body silhouette) -->
+  <g filter="url(#glow10)">
+    <!-- Each person: circle head + arc body -->
+    <g fill="#ff6b35"><circle cx="200" cy="150" r="12"/><path d="M185,165 Q200,185 215,165" fill="none" stroke="#ff6b35" stroke-width="3"/></g>
+    <g fill="#4ecdc4"><circle cx="400" cy="110" r="14"/><path d="M383,127 Q400,150 417,127" fill="none" stroke="#4ecdc4" stroke-width="3.5"/></g>
+    <g fill="#ffd93d"><circle cx="640" cy="168" r="16"/><path d="M620,188 Q640,215 660,188" fill="none" stroke="#ffd93d" stroke-width="4"/></g>
+    <g fill="#c4b5fd"><circle cx="880" cy="110" r="13"/><path d="M864,126 Q880,148 896,126" fill="none" stroke="#c4b5fd" stroke-width="3"/></g>
+    <g fill="#a8e06c"><circle cx="1050" cy="190" r="13"/><path d="M1034,206 Q1050,228 1066,206" fill="none" stroke="#a8e06c" stroke-width="3"/></g>
+    <g fill="#ff6b35"><circle cx="350" cy="290" r="13"/><path d="M334,306 Q350,328 366,306" fill="none" stroke="#ff6b35" stroke-width="3"/></g>
+    <g fill="#4ecdc4"><circle cx="500" cy="310" r="12"/><path d="M485,325 Q500,345 515,325" fill="none" stroke="#4ecdc4" stroke-width="3"/></g>
+    <g fill="#ffd93d"><circle cx="640" cy="330" r="14"/><path d="M623,347 Q640,370 657,347" fill="none" stroke="#ffd93d" stroke-width="3.5"/></g>
+    <g fill="#c4b5fd"><circle cx="800" cy="310" r="12"/><path d="M785,325 Q800,345 815,325" fill="none" stroke="#c4b5fd" stroke-width="3"/></g>
+    <g fill="#a8e06c"><circle cx="250" cy="450" r="11"/><path d="M236,464 Q250,484 264,464" fill="none" stroke="#a8e06c" stroke-width="2.5"/></g>
+    <g fill="#ff6b35"><circle cx="450" cy="470" r="12"/><path d="M435,485 Q450,505 465,485" fill="none" stroke="#ff6b35" stroke-width="3"/></g>
+    <g fill="#4ecdc4"><circle cx="640" cy="490" r="13"/><path d="M624,506 Q640,528 656,506" fill="none" stroke="#4ecdc4" stroke-width="3"/></g>
+    <g fill="#ffd93d"><circle cx="850" cy="470" r="12"/><path d="M835,485 Q850,505 865,485" fill="none" stroke="#ffd93d" stroke-width="3"/></g>
+    <g fill="#c4b5fd"><circle cx="1100" cy="370" r="12"/><path d="M1085,385 Q1100,405 1115,385" fill="none" stroke="#c4b5fd" stroke-width="3"/></g>
+    <g fill="#a8e06c"><circle cx="100" cy="310" r="10"/><path d="M87,323 Q100,340 113,323" fill="none" stroke="#a8e06c" stroke-width="2.5"/></g>
+    <g fill="#ff6b35"><circle cx="1180" cy="310" r="10"/><path d="M1167,323 Q1180,340 1193,323" fill="none" stroke="#ff6b35" stroke-width="2.5"/></g>
+    <g fill="#c4b5fd"><circle cx="150" cy="530" r="9"/><path d="M138,542 Q150,558 162,542" fill="none" stroke="#c4b5fd" stroke-width="2"/></g>
+    <g fill="#ffd93d"><circle cx="1050" cy="540" r="10"/><path d="M1037,553 Q1050,570 1063,553" fill="none" stroke="#ffd93d" stroke-width="2.5"/></g>
+  </g>
+  <!-- Title -->
+  <text x="640" y="320" font-family="'Segoe UI', Tahoma, sans-serif" font-size="64" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central" opacity="0.92">INFINITE CRAFT</text>
+  <text x="640" y="370" font-family="'Segoe UI', Tahoma, sans-serif" font-size="15" fill="#4ecdc4" text-anchor="middle" letter-spacing="8" opacity="0.5">SOCIAL GRAPH</text>
+</svg>

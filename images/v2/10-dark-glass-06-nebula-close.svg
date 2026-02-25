@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="nebBlur">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <filter id="nebMed">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <filter id="nebFine">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="nebNoise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="6" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="60"/>
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#050208"/>
+
+  <!-- Deep nebula gas clouds -->
+  <ellipse cx="400" cy="300" rx="350" ry="250" fill="#c4b5fd" opacity="0.06" filter="url(#nebBlur)"/>
+  <ellipse cx="800" cy="350" rx="400" ry="280" fill="#ff6b35" opacity="0.05" filter="url(#nebBlur)"/>
+  <ellipse cx="600" cy="250" rx="300" ry="200" fill="#4ecdc4" opacity="0.04" filter="url(#nebBlur)"/>
+
+  <!-- Medium detail gas -->
+  <ellipse cx="350" cy="280" rx="180" ry="120" fill="#c4b5fd" opacity="0.1" filter="url(#nebMed)"/>
+  <ellipse cx="550" cy="350" rx="200" ry="140" fill="#ff6b35" opacity="0.08" filter="url(#nebMed)"/>
+  <ellipse cx="750" cy="250" rx="160" ry="110" fill="#4ecdc4" opacity="0.09" filter="url(#nebMed)"/>
+  <ellipse cx="950" cy="320" rx="170" ry="130" fill="#a8e06c" opacity="0.06" filter="url(#nebMed)"/>
+
+  <!-- Finer detail wisps -->
+  <path d="M200,200 Q350,150 500,250 Q650,350 800,280 Q950,210 1100,300" stroke="#c4b5fd" stroke-opacity="0.12" fill="none" stroke-width="60" filter="url(#nebNoise)"/>
+  <path d="M100,350 Q300,250 500,350 Q700,450 900,350 Q1100,250 1250,320" stroke="#ff6b35" stroke-opacity="0.1" fill="none" stroke-width="50" filter="url(#nebNoise)"/>
+  <path d="M150,400 Q400,300 650,380 Q900,460 1150,360" stroke="#4ecdc4" stroke-opacity="0.08" fill="none" stroke-width="40" filter="url(#nebNoise)"/>
+
+  <!-- Dark dust lanes -->
+  <path d="M0,320 Q300,280 600,340 Q900,400 1280,350" stroke="#000" stroke-opacity="0.4" fill="none" stroke-width="30" filter="url(#nebMed)"/>
+
+  <!-- Stars embedded in nebula -->
+  <circle cx="320" cy="220" r="1.5" fill="white" opacity="0.9" filter="url(#starGlow)"/>
+  <circle cx="550" cy="180" r="1" fill="white" opacity="0.7"/>
+  <circle cx="680" cy="300" r="1.2" fill="white" opacity="0.8" filter="url(#starGlow)"/>
+  <circle cx="890" cy="240" r="1.8" fill="#ffd93d" opacity="0.9" filter="url(#starGlow)"/>
+  <circle cx="1050" cy="280" r="1" fill="white" opacity="0.6"/>
+  <circle cx="150" cy="350" r="1.3" fill="white" opacity="0.7" filter="url(#starGlow)"/>
+  <circle cx="450" cy="400" r="0.8" fill="white" opacity="0.5"/>
+  <circle cx="750" cy="150" r="1.5" fill="white" opacity="0.8" filter="url(#starGlow)"/>
+  <circle cx="1000" cy="400" r="1" fill="white" opacity="0.6"/>
+  <circle cx="200" cy="480" r="0.8" fill="white" opacity="0.4"/>
+
+  <!-- Element emojis as bright stars -->
+  <text x="320" y="230" font-size="30" text-anchor="middle" opacity="0.7">🔥</text>
+  <text x="580" y="310" font-size="28" text-anchor="middle" opacity="0.6">💧</text>
+  <text x="800" y="260" font-size="30" text-anchor="middle" opacity="0.65">🌍</text>
+  <text x="1000" y="340" font-size="26" text-anchor="middle" opacity="0.55">💨</text>
+
+  <!-- Title -->
+  <text x="640" y="570" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="54" font-weight="800" fill="white" text-anchor="middle" letter-spacing="16" opacity="0.9">INFINITE CRAFT</text>
+  <text x="640" y="605" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#c4b5fd" text-anchor="middle" letter-spacing="8" opacity="0.35">COSMIC ELEMENTS</text>
+</svg>

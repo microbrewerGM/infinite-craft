@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="oilBlur">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="oilSheen">
+      <feTurbulence type="turbulence" baseFrequency="0.008 0.015" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="30"/>
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <linearGradient id="sheen1" x1="0" y1="0" x2="1" y2="0.5">
+      <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#c4b5fd" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#4ecdc4" stop-opacity="0.25"/>
+      <stop offset="75%" stop-color="#ff6b35" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sheen2" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#a8e06c" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#ffd93d" stop-opacity="0.2"/>
+      <stop offset="60%" stop-color="#c4b5fd" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4ecdc4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sheen3" x1="0" y1="0.3" x2="1" y2="0.7">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#ffd93d" stop-opacity="0.15"/>
+      <stop offset="65%" stop-color="#a8e06c" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#4ecdc4" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#080808"/>
+
+  <!-- Oil surface base -->
+  <rect width="1280" height="640" fill="#0a0a0a"/>
+
+  <!-- Iridescent bands -->
+  <path d="M-50,200 Q200,150 450,220 Q700,290 950,200 Q1100,160 1330,230" stroke="none" fill="url(#sheen1)" filter="url(#oilSheen)">
+    <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M-50,200 Q200,150 450,220 Q700,290 950,200 Q1100,160 1330,230;M-50,210 Q200,170 450,200 Q700,270 950,210 Q1100,180 1330,220;M-50,200 Q200,150 450,220 Q700,290 950,200 Q1100,160 1330,230"/>
+  </path>
+  <ellipse cx="640" cy="300" rx="600" ry="150" fill="url(#sheen1)" opacity="0.5" filter="url(#oilBlur)"/>
+
+  <path d="M-50,350 Q300,280 550,370 Q800,440 1050,350 Q1200,300 1330,370" stroke="none" fill="url(#sheen2)" filter="url(#oilSheen)"/>
+  <ellipse cx="500" cy="380" rx="400" ry="120" fill="url(#sheen2)" opacity="0.4" filter="url(#oilBlur)"/>
+
+  <path d="M-50,450 Q250,400 500,460 Q750,510 1000,440 Q1150,400 1330,460" stroke="none" fill="url(#sheen3)" filter="url(#oilSheen)"/>
+  <ellipse cx="800" cy="200" rx="350" ry="100" fill="url(#sheen3)" opacity="0.35" filter="url(#oilBlur)"/>
+
+  <!-- Thin rainbow edge lines -->
+  <path d="M100,250 Q400,200 700,260 Q1000,320 1200,250" stroke="#c4b5fd" stroke-opacity="0.15" fill="none" stroke-width="1" filter="url(#oilBlur)"/>
+  <path d="M100,260 Q400,210 700,270 Q1000,330 1200,260" stroke="#4ecdc4" stroke-opacity="0.12" fill="none" stroke-width="1" filter="url(#oilBlur)"/>
+  <path d="M100,270 Q400,220 700,280 Q1000,340 1200,270" stroke="#a8e06c" stroke-opacity="0.1" fill="none" stroke-width="1" filter="url(#oilBlur)"/>
+  <path d="M100,280 Q400,230 700,290 Q1000,350 1200,280" stroke="#ffd93d" stroke-opacity="0.1" fill="none" stroke-width="1" filter="url(#oilBlur)"/>
+  <path d="M100,290 Q400,240 700,300 Q1000,360 1200,290" stroke="#ff6b35" stroke-opacity="0.1" fill="none" stroke-width="1" filter="url(#oilBlur)"/>
+
+  <!-- Element emojis reflected in oil -->
+  <text x="280" y="300" font-size="42" text-anchor="middle" opacity="0.5">🔥</text>
+  <text x="500" y="340" font-size="38" text-anchor="middle" opacity="0.45">💧</text>
+  <text x="780" y="310" font-size="40" text-anchor="middle" opacity="0.5">🌍</text>
+  <text x="1000" y="350" font-size="36" text-anchor="middle" opacity="0.4">💨</text>
+
+  <!-- Title -->
+  <text x="640" y="120" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="56" font-weight="800" fill="white" text-anchor="middle" letter-spacing="18" opacity="0.9" filter="url(#textGlow)">INFINITE CRAFT</text>
+  <text x="640" y="155" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#c4b5fd" text-anchor="middle" letter-spacing="8" opacity="0.3">IRIDESCENT</text>
+</svg>

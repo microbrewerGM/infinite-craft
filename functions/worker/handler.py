@@ -1,5 +1,5 @@
 """
-Infinite Craft Worker Lambda — Self-coordinating pulse explorer.
+Infinite Craft Worker Lambda — Self-coordinating element explorer.
 
 Triggered by EventBridge on a schedule. Each invocation:
 1. Reads config from SSM Parameter Store

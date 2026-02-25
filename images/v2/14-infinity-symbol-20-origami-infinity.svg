@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="paper1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a2a3a"/>
+      <stop offset="100%" stop-color="#1a1a2a"/>
+    </linearGradient>
+    <linearGradient id="paper2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1e2e"/>
+      <stop offset="100%" stop-color="#14141e"/>
+    </linearGradient>
+    <linearGradient id="paper3" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#252535"/>
+      <stop offset="100%" stop-color="#181828"/>
+    </linearGradient>
+    <filter id="origamiShadow">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="foldHighlight">
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a0a"/>
+  <!-- Subtle paper texture background -->
+  <rect width="1280" height="640" fill="#0c0c0c" opacity="0.5"/>
+  <!-- LEFT LOOP - Origami facets -->
+  <!-- Top-left facet -->
+  <polygon points="270,300 320,200 420,180 370,270" fill="url(#paper1)" stroke="#4ecdc4" stroke-width="0.8" opacity="0.7" filter="url(#origamiShadow)"/>
+  <line x1="270" y1="300" x2="420" y2="180" stroke="#4ecdc4" stroke-width="0.5" opacity="0.3"/>
+  <!-- Top facet -->
+  <polygon points="420,180 530,200 500,270 370,270" fill="url(#paper2)" stroke="#4ecdc4" stroke-width="0.8" opacity="0.65" filter="url(#origamiShadow)"/>
+  <!-- Upper-middle-left facet -->
+  <polygon points="370,270 500,270 560,280 440,290" fill="url(#paper3)" stroke="#4ecdc4" stroke-width="0.8" opacity="0.6"/>
+  <!-- To center facet -->
+  <polygon points="440,290 560,280 640,282 580,295" fill="url(#paper1)" stroke="#ff6b35" stroke-width="0.8" opacity="0.55"/>
+  <!-- Bottom-approach facet -->
+  <polygon points="270,300 370,270 440,290 350,310" fill="url(#paper2)" stroke="#c4b5fd" stroke-width="0.8" opacity="0.6"/>
+  <!-- Lower-left facet -->
+  <polygon points="270,300 350,310 440,340 320,380" fill="url(#paper3)" stroke="#c4b5fd" stroke-width="0.8" opacity="0.55" filter="url(#origamiShadow)"/>
+  <!-- Bottom-left facet -->
+  <polygon points="320,380 440,340 530,370 420,420" fill="url(#paper1)" stroke="#c4b5fd" stroke-width="0.8" opacity="0.5"/>
+  <!-- Bottom facet -->
+  <polygon points="420,420 530,370 580,340 500,390" fill="url(#paper2)" stroke="#ffd93d" stroke-width="0.8" opacity="0.5"/>
+  <!-- Bottom-to-center facet -->
+  <polygon points="500,390 580,340 640,318 580,355" fill="url(#paper3)" stroke="#ffd93d" stroke-width="0.8" opacity="0.45"/>
+  <!-- Left inner facet -->
+  <polygon points="350,310 440,290 580,295 440,340" fill="url(#paper1)" stroke="#a8e06c" stroke-width="0.5" opacity="0.4"/>
+  <polygon points="440,340 580,295 640,300 580,340" fill="url(#paper2)" stroke="#a8e06c" stroke-width="0.5" opacity="0.35"/>
+
+  <!-- RIGHT LOOP - Origami facets (mirror concept) -->
+  <!-- Top-right facet -->
+  <polygon points="1010,300 960,200 860,180 910,270" fill="url(#paper1)" stroke="#ff6b35" stroke-width="0.8" opacity="0.7" filter="url(#origamiShadow)"/>
+  <line x1="1010" y1="300" x2="860" y2="180" stroke="#ff6b35" stroke-width="0.5" opacity="0.3"/>
+  <!-- Top facet -->
+  <polygon points="860,180 750,200 780,270 910,270" fill="url(#paper3)" stroke="#ff6b35" stroke-width="0.8" opacity="0.65" filter="url(#origamiShadow)"/>
+  <!-- Upper-middle-right facet -->
+  <polygon points="910,270 780,270 720,280 840,290" fill="url(#paper2)" stroke="#ff6b35" stroke-width="0.8" opacity="0.6"/>
+  <!-- To center facet -->
+  <polygon points="840,290 720,280 640,282 700,295" fill="url(#paper1)" stroke="#4ecdc4" stroke-width="0.8" opacity="0.55"/>
+  <!-- Bottom-approach -->
+  <polygon points="1010,300 910,270 840,290 930,310" fill="url(#paper3)" stroke="#ffd93d" stroke-width="0.8" opacity="0.6"/>
+  <!-- Lower-right facet -->
+  <polygon points="1010,300 930,310 840,340 960,380" fill="url(#paper2)" stroke="#ffd93d" stroke-width="0.8" opacity="0.55" filter="url(#origamiShadow)"/>
+  <!-- Bottom-right facet -->
+  <polygon points="960,380 840,340 750,370 860,420" fill="url(#paper1)" stroke="#ffd93d" stroke-width="0.8" opacity="0.5"/>
+  <!-- Bottom facet -->
+  <polygon points="860,420 750,370 700,340 780,390" fill="url(#paper3)" stroke="#a8e06c" stroke-width="0.8" opacity="0.5"/>
+  <!-- Bottom-to-center facet -->
+  <polygon points="780,390 700,340 640,318 700,355" fill="url(#paper2)" stroke="#a8e06c" stroke-width="0.8" opacity="0.45"/>
+  <!-- Right inner facets -->
+  <polygon points="930,310 840,290 700,295 840,340" fill="url(#paper3)" stroke="#c4b5fd" stroke-width="0.5" opacity="0.4"/>
+  <polygon points="840,340 700,295 640,300 700,340" fill="url(#paper1)" stroke="#c4b5fd" stroke-width="0.5" opacity="0.35"/>
+
+  <!-- Fold crease highlights -->
+  <g stroke="#fff" stroke-width="0.8" opacity="0.15" filter="url(#foldHighlight)">
+    <!-- Left loop creases -->
+    <line x1="370" y1="270" x2="440" y2="290"/>
+    <line x1="440" y1="290" x2="580" y2="295"/>
+    <line x1="440" y1="290" x2="440" y2="340"/>
+    <line x1="580" y1="295" x2="580" y2="340"/>
+    <!-- Right loop creases -->
+    <line x1="910" y1="270" x2="840" y2="290"/>
+    <line x1="840" y1="290" x2="700" y2="295"/>
+    <line x1="840" y1="290" x2="840" y2="340"/>
+    <line x1="700" y1="295" x2="700" y2="340"/>
+    <!-- Center crease -->
+    <line x1="640" y1="282" x2="640" y2="318"/>
+  </g>
+  <!-- Colored edge accents -->
+  <g filter="url(#foldHighlight)" opacity="0.5">
+    <circle cx="270" cy="300" r="4" fill="#4ecdc4"/>
+    <circle cx="1010" cy="300" r="4" fill="#ff6b35"/>
+    <circle cx="640" cy="282" r="3" fill="#ffd93d"/>
+    <circle cx="640" cy="318" r="3" fill="#c4b5fd"/>
+    <circle cx="420" cy="180" r="3" fill="#a8e06c"/>
+    <circle cx="860" cy="180" r="3" fill="#a8e06c"/>
+    <circle cx="420" cy="420" r="3" fill="#ff6b35"/>
+    <circle cx="860" cy="420" r="3" fill="#4ecdc4"/>
+  </g>
+  <!-- Floating paper crane silhouettes (tiny) -->
+  <g opacity="0.1" fill="#fff">
+    <path d="M150,150 L160,140 L165,150 L160,148 Z" transform="rotate(-10 157 145)"/>
+    <path d="M1120,140 L1130,130 L1135,140 L1130,138 Z" transform="rotate(5 1127 135)"/>
+    <path d="M200,480 L210,470 L215,480 L210,478 Z" transform="rotate(15 207 475)"/>
+    <path d="M1080,490 L1090,480 L1095,490 L1090,488 Z" transform="rotate(-8 1087 485)"/>
+  </g>
+  <!-- Title -->
+  <text x="640" y="558" text-anchor="middle" font-family="'Courier New', monospace" font-size="40" font-weight="bold" fill="#ffffff" letter-spacing="12" opacity="0.85">INFINITE CRAFT</text>
+  <text x="640" y="558" text-anchor="middle" font-family="'Courier New', monospace" font-size="40" font-weight="bold" fill="#c4b5fd" letter-spacing="12" opacity="0.15">INFINITE CRAFT</text>
+</svg>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg14" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#0a0a1a"/>
+    </linearGradient>
+    <filter id="softGlow14">
+      <feGaussianBlur stdDeviation="3"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="bubbleShadow">
+      <feGaussianBlur stdDeviation="5" result="shadow"/>
+      <feOffset dx="2" dy="3"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg14)"/>
+  <!-- Connection lines between bubbles -->
+  <g fill="none" stroke-width="2" opacity="0.2" stroke-dasharray="6,4">
+    <path d="M250,180 Q350,200 430,240" stroke="#c4b5fd"/>
+    <path d="M430,240 Q540,280 640,260" stroke="#4ecdc4"/>
+    <path d="M640,260 Q750,240 850,200" stroke="#ff6b35"/>
+    <path d="M850,200 Q950,170 1030,180" stroke="#ffd93d"/>
+    <path d="M250,180 Q200,280 220,380" stroke="#a8e06c"/>
+    <path d="M430,240 Q400,340 380,420" stroke="#ff6b35"/>
+    <path d="M640,260 Q640,350 640,430" stroke="#c4b5fd"/>
+    <path d="M850,200 Q870,310 880,400" stroke="#4ecdc4"/>
+    <path d="M1030,180 Q1060,280 1060,370" stroke="#a8e06c"/>
+    <path d="M220,380 Q300,410 380,420" stroke="#ffd93d"/>
+    <path d="M380,420 Q510,440 640,430" stroke="#c4b5fd"/>
+    <path d="M640,430 Q760,440 880,400" stroke="#ff6b35"/>
+    <path d="M880,400 Q980,380 1060,370" stroke="#ffd93d"/>
+    <path d="M220,380 Q200,480 250,540" stroke="#4ecdc4"/>
+    <path d="M640,430 Q640,500 640,560" stroke="#a8e06c"/>
+    <path d="M1060,370 Q1080,460 1050,530" stroke="#c4b5fd"/>
+  </g>
+  <!-- Thought bubble trailing dots -->
+  <g opacity="0.3">
+    <circle cx="280" cy="195" r="4" fill="#c4b5fd"/><circle cx="310" cy="210" r="5" fill="#c4b5fd"/>
+    <circle cx="800" cy="195" r="4" fill="#ff6b35"/><circle cx="770" cy="205" r="5" fill="#ff6b35"/>
+    <circle cx="195" cy="340" r="4" fill="#a8e06c"/><circle cx="205" cy="310" r="5" fill="#a8e06c"/>
+    <circle cx="610" cy="390" r="4" fill="#c4b5fd"/><circle cx="620" cy="360" r="5" fill="#c4b5fd"/>
+    <circle cx="910" cy="350" r="4" fill="#4ecdc4"/><circle cx="900" cy="330" r="5" fill="#4ecdc4"/>
+  </g>
+  <!-- Main thought bubbles -->
+  <g filter="url(#bubbleShadow)">
+    <!-- Bubble 1 - top left -->
+    <ellipse cx="250" cy="160" rx="80" ry="50" fill="none" stroke="#c4b5fd" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="250" cy="160" rx="80" ry="50" fill="#c4b5fd" opacity="0.06"/>
+    <!-- Bubble 2 -->
+    <ellipse cx="430" cy="220" rx="70" ry="45" fill="none" stroke="#4ecdc4" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="430" cy="220" rx="70" ry="45" fill="#4ecdc4" opacity="0.06"/>
+    <!-- Bubble 3 - center top -->
+    <ellipse cx="640" cy="240" rx="90" ry="55" fill="none" stroke="#ff6b35" stroke-width="2.5" opacity="0.7"/>
+    <ellipse cx="640" cy="240" rx="90" ry="55" fill="#ff6b35" opacity="0.06"/>
+    <!-- Bubble 4 -->
+    <ellipse cx="850" cy="180" rx="75" ry="48" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="850" cy="180" rx="75" ry="48" fill="#ffd93d" opacity="0.06"/>
+    <!-- Bubble 5 -->
+    <ellipse cx="1030" cy="165" rx="65" ry="42" fill="none" stroke="#a8e06c" stroke-width="1.8" opacity="0.5"/>
+    <ellipse cx="1030" cy="165" rx="65" ry="42" fill="#a8e06c" opacity="0.05"/>
+    <!-- Bubble 6 - mid left -->
+    <ellipse cx="220" cy="390" rx="70" ry="45" fill="none" stroke="#a8e06c" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="220" cy="390" rx="70" ry="45" fill="#a8e06c" opacity="0.06"/>
+    <!-- Bubble 7 -->
+    <ellipse cx="380" cy="430" rx="75" ry="45" fill="none" stroke="#ff6b35" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="380" cy="430" rx="75" ry="45" fill="#ff6b35" opacity="0.06"/>
+    <!-- Bubble 8 - center -->
+    <ellipse cx="640" cy="430" rx="85" ry="50" fill="none" stroke="#c4b5fd" stroke-width="2.5" opacity="0.7"/>
+    <ellipse cx="640" cy="430" rx="85" ry="50" fill="#c4b5fd" opacity="0.06"/>
+    <!-- Bubble 9 -->
+    <ellipse cx="880" cy="410" rx="70" ry="42" fill="none" stroke="#4ecdc4" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="880" cy="410" rx="70" ry="42" fill="#4ecdc4" opacity="0.06"/>
+    <!-- Bubble 10 -->
+    <ellipse cx="1060" cy="380" rx="65" ry="40" fill="none" stroke="#ffd93d" stroke-width="1.8" opacity="0.5"/>
+    <ellipse cx="1060" cy="380" rx="65" ry="40" fill="#ffd93d" opacity="0.05"/>
+    <!-- Bottom bubbles -->
+    <ellipse cx="250" cy="550" rx="55" ry="35" fill="none" stroke="#4ecdc4" stroke-width="1.5" opacity="0.4"/>
+    <ellipse cx="640" cy="570" rx="60" ry="38" fill="none" stroke="#a8e06c" stroke-width="1.5" opacity="0.4"/>
+    <ellipse cx="1050" cy="540" rx="55" ry="35" fill="none" stroke="#c4b5fd" stroke-width="1.5" opacity="0.4"/>
+  </g>
+  <!-- Text snippets inside bubbles -->
+  <g font-family="'Comic Sans MS', cursive, sans-serif" font-size="11" opacity="0.35" fill="white" text-anchor="middle">
+    <text x="250" y="157">idea?</text>
+    <text x="430" y="218">what if...</text>
+    <text x="850" y="178">eureka!</text>
+    <text x="1030" y="163">hmm</text>
+    <text x="220" y="388">maybe</text>
+    <text x="380" y="428">connect</text>
+    <text x="880" y="408">think</text>
+    <text x="1060" y="378">link</text>
+  </g>
+  <!-- Title -->
+  <text x="640" y="325" font-family="'Comic Sans MS', cursive, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central" filter="url(#softGlow14)" opacity="0.9">INFINITE CRAFT</text>
+  <text x="640" y="378" font-family="'Comic Sans MS', cursive, sans-serif" font-size="14" fill="#c4b5fd" text-anchor="middle" letter-spacing="6" opacity="0.5">CONNECTED THOUGHTS</text>
+</svg>

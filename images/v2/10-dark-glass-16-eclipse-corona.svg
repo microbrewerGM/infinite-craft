@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="ecGlow">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="ecSoft">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+    <filter id="ecCorona">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+    <radialGradient id="coronaGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="55%" stop-color="transparent"/>
+      <stop offset="65%" stop-color="#ff6b35" stop-opacity="0.5"/>
+      <stop offset="75%" stop-color="#ffd93d" stop-opacity="0.3"/>
+      <stop offset="85%" stop-color="#ff6b35" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <radialGradient id="coronaOuter" cx="50%" cy="50%" r="50%">
+      <stop offset="50%" stop-color="transparent"/>
+      <stop offset="60%" stop-color="#ff6b35" stop-opacity="0.08"/>
+      <stop offset="80%" stop-color="#ffd93d" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="640" fill="#020202"/>
+
+  <!-- Stars -->
+  <circle cx="100" cy="80" r="0.8" fill="white" opacity="0.5"/>
+  <circle cx="250" cy="200" r="0.6" fill="white" opacity="0.4"/>
+  <circle cx="380" cy="100" r="1" fill="white" opacity="0.5"/>
+  <circle cx="500" cy="500" r="0.7" fill="white" opacity="0.35"/>
+  <circle cx="180" cy="400" r="0.8" fill="white" opacity="0.3"/>
+  <circle cx="900" cy="80" r="0.9" fill="white" opacity="0.45"/>
+  <circle cx="1050" cy="200" r="0.7" fill="white" opacity="0.4"/>
+  <circle cx="1150" cy="400" r="0.8" fill="white" opacity="0.35"/>
+  <circle cx="800" cy="520" r="0.6" fill="white" opacity="0.3"/>
+  <circle cx="1200" cy="100" r="1" fill="white" opacity="0.45"/>
+  <circle cx="350" cy="500" r="0.5" fill="white" opacity="0.25"/>
+  <circle cx="1000" cy="450" r="0.7" fill="white" opacity="0.3"/>
+
+  <!-- Outer corona glow -->
+  <circle cx="640" cy="290" r="250" fill="url(#coronaOuter)" filter="url(#ecSoft)"/>
+
+  <!-- Corona streamers -->
+  <g filter="url(#ecCorona)" opacity="0.5">
+    <line x1="640" y1="290" x2="400" y2="150" stroke="#ff6b35" stroke-opacity="0.2" stroke-width="3"/>
+    <line x1="640" y1="290" x2="880" y2="140" stroke="#ffd93d" stroke-opacity="0.15" stroke-width="3"/>
+    <line x1="640" y1="290" x2="450" y2="420" stroke="#ff6b35" stroke-opacity="0.15" stroke-width="2"/>
+    <line x1="640" y1="290" x2="840" y2="440" stroke="#ffd93d" stroke-opacity="0.12" stroke-width="2"/>
+    <line x1="640" y1="290" x2="380" y2="290" stroke="#ff6b35" stroke-opacity="0.1" stroke-width="2"/>
+    <line x1="640" y1="290" x2="900" y2="280" stroke="#ffd93d" stroke-opacity="0.1" stroke-width="2"/>
+    <line x1="640" y1="290" x2="540" y2="100" stroke="#ff6b35" stroke-opacity="0.12" stroke-width="2"/>
+    <line x1="640" y1="290" x2="750" y2="100" stroke="#ffd93d" stroke-opacity="0.12" stroke-width="2"/>
+  </g>
+
+  <!-- Main corona ring -->
+  <circle cx="640" cy="290" r="130" fill="url(#coronaGrad)" filter="url(#ecGlow)"/>
+
+  <!-- Inner corona bright edge -->
+  <circle cx="640" cy="290" r="100" fill="none" stroke="#ffd93d" stroke-opacity="0.6" stroke-width="3" filter="url(#ecGlow)"/>
+  <circle cx="640" cy="290" r="102" fill="none" stroke="#ff6b35" stroke-opacity="0.3" stroke-width="5" filter="url(#ecGlow)"/>
+  <circle cx="640" cy="290" r="105" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
+
+  <!-- Diamond ring effect (bright point) -->
+  <circle cx="720" cy="215" r="6" fill="white" opacity="0.9" filter="url(#ecGlow)"/>
+  <circle cx="720" cy="215" r="2" fill="white"/>
+
+  <!-- Dark disk (moon) -->
+  <circle cx="640" cy="290" r="95" fill="#010101"/>
+
+  <!-- Prominences -->
+  <path d="M555,230 Q540,210 560,200 Q570,195 565,220" stroke="#ff6b35" stroke-opacity="0.4" fill="none" stroke-width="2" filter="url(#ecGlow)"/>
+  <path d="M700,360 Q720,380 710,390 Q700,395 705,370" stroke="#ffd93d" stroke-opacity="0.3" fill="none" stroke-width="2" filter="url(#ecGlow)"/>
+
+  <!-- Element emojis in the corona -->
+  <text x="500" y="200" font-size="30" text-anchor="middle" opacity="0.5" filter="url(#ecGlow)">🔥</text>
+  <text x="780" y="220" font-size="28" text-anchor="middle" opacity="0.45" filter="url(#ecGlow)">💧</text>
+  <text x="520" y="400" font-size="28" text-anchor="middle" opacity="0.4" filter="url(#ecGlow)">🌍</text>
+  <text x="770" y="390" font-size="26" text-anchor="middle" opacity="0.4" filter="url(#ecGlow)">💨</text>
+
+  <!-- Title -->
+  <text x="640" y="540" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="56" font-weight="800" fill="white" text-anchor="middle" letter-spacing="18" opacity="0.9">INFINITE CRAFT</text>
+  <text x="640" y="575" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffd93d" text-anchor="middle" letter-spacing="8" opacity="0.35">TOTAL ECLIPSE</text>
+</svg>

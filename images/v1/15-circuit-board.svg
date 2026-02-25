@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#0a1628"/>
+  <!-- Circuit traces -->
+  <g stroke="#1a3a5c" stroke-width="2" fill="none">
+    <path d="M0 200 H300 V320 H500"/>
+    <path d="M0 440 H200 V320 H500"/>
+    <path d="M500 320 H640"/>
+    <path d="M640 320 H780"/>
+    <path d="M780 320 H980 V200 H1280"/>
+    <path d="M780 320 H1080 V440 H1280"/>
+    <path d="M640 320 V160 H440 V80"/>
+    <path d="M640 320 V480 H840 V560"/>
+    <path d="M300 200 V120 H500 V200"/>
+    <path d="M980 200 V120 H800 V200"/>
+  </g>
+  <!-- Solder points -->
+  <g fill="#1a3a5c">
+    <circle cx="300" cy="200" r="5"/><circle cx="200" cy="440" r="5"/>
+    <circle cx="500" cy="320" r="5"/><circle cx="780" cy="320" r="5"/>
+    <circle cx="980" cy="200" r="5"/><circle cx="1080" cy="440" r="5"/>
+    <circle cx="440" cy="80" r="5"/><circle cx="840" cy="560" r="5"/>
+    <circle cx="500" cy="200" r="5"/><circle cx="800" cy="200" r="5"/>
+  </g>
+  <!-- Element chips -->
+  <rect x="260" y="175" width="80" height="50" rx="4" fill="#0d2240" stroke="#ff6b35" stroke-width="1.5"/>
+  <text x="300" y="205" font-family="'Courier New', monospace" font-size="11" fill="#ff6b35" text-anchor="middle">FIRE</text>
+  <rect x="160" y="415" width="80" height="50" rx="4" fill="#0d2240" stroke="#4ecdc4" stroke-width="1.5"/>
+  <text x="200" y="445" font-family="'Courier New', monospace" font-size="11" fill="#4ecdc4" text-anchor="middle">WATER</text>
+  <rect x="940" y="175" width="80" height="50" rx="4" fill="#0d2240" stroke="#a8e06c" stroke-width="1.5"/>
+  <text x="980" y="205" font-family="'Courier New', monospace" font-size="11" fill="#a8e06c" text-anchor="middle">EARTH</text>
+  <rect x="1040" y="415" width="80" height="50" rx="4" fill="#0d2240" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="1080" y="445" font-family="'Courier New', monospace" font-size="11" fill="#c4b5fd" text-anchor="middle">WIND</text>
+  <!-- Central processor -->
+  <rect x="570" y="270" width="140" height="100" rx="4" fill="#0d2240" stroke="#ffd93d" stroke-width="2"/>
+  <text x="640" y="310" font-family="'Courier New', monospace" font-size="10" fill="#ffd93d" text-anchor="middle">PULSE</text>
+  <text x="640" y="330" font-family="'Courier New', monospace" font-size="10" fill="#ffd93d" text-anchor="middle">EXPLORER</text>
+  <text x="640" y="355" font-family="'Courier New', monospace" font-size="8" fill="#555" text-anchor="middle">v1.0</text>
+  <!-- Glowing center -->
+  <circle cx="640" cy="320" r="60" fill="#ffd93d" opacity="0.02"/>
+  <!-- Title -->
+  <text x="640" y="570" font-family="'Courier New', monospace" font-size="40" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="4">INFINITE CRAFT</text>
+  <text x="640" y="600" font-family="'Courier New', monospace" font-size="12" fill="#1a3a5c" text-anchor="middle">SERVERLESS ELEMENT DISCOVERY ENGINE</text>
+</svg>

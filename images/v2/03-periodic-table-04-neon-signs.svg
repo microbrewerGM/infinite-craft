@@ -1,0 +1,60 @@
+<svg viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neon-orange">
+      <feGaussianBlur stdDeviation="4" result="blur1"/>
+      <feGaussianBlur stdDeviation="8" result="blur2"/>
+      <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="neon-teal">
+      <feGaussianBlur stdDeviation="4" result="blur1"/>
+      <feGaussianBlur stdDeviation="8" result="blur2"/>
+      <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="neon-green">
+      <feGaussianBlur stdDeviation="3" result="blur1"/>
+      <feGaussianBlur stdDeviation="6" result="blur2"/>
+      <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="neon-purple">
+      <feGaussianBlur stdDeviation="4" result="blur1"/>
+      <feGaussianBlur stdDeviation="10" result="blur2"/>
+      <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a0a"/>
+  <!-- Brick wall texture -->
+  <g opacity="0.08" stroke="#333" stroke-width="1" fill="none">
+    <rect x="0" y="0" width="120" height="40"/><rect x="120" y="0" width="120" height="40"/><rect x="240" y="0" width="120" height="40"/><rect x="360" y="0" width="120" height="40"/><rect x="480" y="0" width="120" height="40"/><rect x="600" y="0" width="120" height="40"/><rect x="720" y="0" width="120" height="40"/><rect x="840" y="0" width="120" height="40"/><rect x="960" y="0" width="120" height="40"/><rect x="1080" y="0" width="120" height="40"/><rect x="1200" y="0" width="120" height="40"/>
+    <rect x="60" y="40" width="120" height="40"/><rect x="180" y="40" width="120" height="40"/><rect x="300" y="40" width="120" height="40"/><rect x="420" y="40" width="120" height="40"/><rect x="540" y="40" width="120" height="40"/><rect x="660" y="40" width="120" height="40"/><rect x="780" y="40" width="120" height="40"/><rect x="900" y="40" width="120" height="40"/><rect x="1020" y="40" width="120" height="40"/><rect x="1140" y="40" width="120" height="40"/>
+    <rect x="0" y="80" width="120" height="40"/><rect x="120" y="80" width="120" height="40"/><rect x="240" y="80" width="120" height="40"/><rect x="360" y="80" width="120" height="40"/><rect x="480" y="80" width="120" height="40"/><rect x="600" y="80" width="120" height="40"/><rect x="720" y="80" width="120" height="40"/><rect x="840" y="80" width="120" height="40"/><rect x="960" y="80" width="120" height="40"/><rect x="1080" y="80" width="120" height="40"/><rect x="1200" y="80" width="120" height="40"/>
+    <rect x="60" y="120" width="120" height="40"/><rect x="180" y="120" width="120" height="40"/><rect x="300" y="120" width="120" height="40"/><rect x="420" y="120" width="120" height="40"/><rect x="540" y="120" width="120" height="40"/><rect x="660" y="120" width="120" height="40"/><rect x="780" y="120" width="120" height="40"/><rect x="900" y="120" width="120" height="40"/><rect x="1020" y="120" width="120" height="40"/><rect x="1140" y="120" width="120" height="40"/>
+    <rect x="0" y="160" width="120" height="40"/><rect x="120" y="160" width="120" height="40"/><rect x="240" y="160" width="120" height="40"/><rect x="360" y="160" width="120" height="40"/><rect x="480" y="160" width="120" height="40"/><rect x="600" y="160" width="120" height="40"/><rect x="720" y="160" width="120" height="40"/><rect x="840" y="160" width="120" height="40"/><rect x="960" y="160" width="120" height="40"/><rect x="1080" y="160" width="120" height="40"/><rect x="1200" y="160" width="120" height="40"/>
+    <rect x="60" y="200" width="120" height="40"/><rect x="180" y="200" width="120" height="40"/><rect x="300" y="200" width="120" height="40"/><rect x="420" y="200" width="120" height="40"/><rect x="540" y="200" width="120" height="40"/><rect x="660" y="200" width="120" height="40"/><rect x="780" y="200" width="120" height="40"/><rect x="900" y="200" width="120" height="40"/><rect x="1020" y="200" width="120" height="40"/><rect x="1140" y="200" width="120" height="40"/>
+  </g>
+  <!-- Neon element signs -->
+  <g filter="url(#neon-orange)">
+    <text x="120" y="180" font-family="'Arial', sans-serif" font-size="72" font-weight="bold" fill="#ff6b35">Wa</text>
+    <text x="850" y="280" font-family="'Arial', sans-serif" font-size="48" font-weight="bold" fill="#ff6b35">Lv</text>
+    <text x="1050" y="450" font-family="'Arial', sans-serif" font-size="40" font-weight="bold" fill="#ff6b35">Sm</text>
+  </g>
+  <g filter="url(#neon-teal)">
+    <text x="340" y="140" font-family="'Arial', sans-serif" font-size="56" font-weight="bold" fill="#4ecdc4">Fi</text>
+    <text x="600" y="340" font-family="'Arial', sans-serif" font-size="44" font-weight="bold" fill="#4ecdc4">Ic</text>
+    <text x="180" y="420" font-family="'Arial', sans-serif" font-size="36" font-weight="bold" fill="#4ecdc4">Rn</text>
+  </g>
+  <g filter="url(#neon-green)">
+    <text x="550" y="160" font-family="'Arial', sans-serif" font-size="60" font-weight="bold" fill="#a8e06c">Ea</text>
+    <text x="1000" y="170" font-family="'Arial', sans-serif" font-size="42" font-weight="bold" fill="#a8e06c">Mu</text>
+    <text x="400" y="430" font-family="'Arial', sans-serif" font-size="38" font-weight="bold" fill="#a8e06c">Pl</text>
+  </g>
+  <g filter="url(#neon-purple)">
+    <text x="800" y="150" font-family="'Arial', sans-serif" font-size="50" font-weight="bold" fill="#c4b5fd">Wi</text>
+    <text x="280" y="310" font-family="'Arial', sans-serif" font-size="46" font-weight="bold" fill="#c4b5fd">St</text>
+    <text x="750" y="450" font-family="'Arial', sans-serif" font-size="34" font-weight="bold" fill="#c4b5fd">Du</text>
+  </g>
+  <!-- Neon title -->
+  <g filter="url(#neon-orange)">
+    <text x="640" y="570" text-anchor="middle" font-family="'Arial', sans-serif" font-size="56" font-weight="bold" fill="#ff6b35" letter-spacing="10">INFINITE CRAFT</text>
+  </g>
+  <text x="640" y="610" text-anchor="middle" font-family="monospace" font-size="14" fill="#ffd93d" opacity="0.8">8,579 elements discovered</text>
+</svg>

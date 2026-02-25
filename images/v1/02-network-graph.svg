@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0c29"/>
+      <stop offset="50%" stop-color="#302b63"/>
+      <stop offset="100%" stop-color="#24243e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg2)"/>
+  <!-- Network edges -->
+  <g stroke="#4ecdc4" stroke-opacity="0.15" stroke-width="1">
+    <line x1="200" y1="100" x2="400" y2="200"/>
+    <line x1="400" y1="200" x2="640" y2="280"/>
+    <line x1="640" y1="280" x2="900" y2="180"/>
+    <line x1="900" y1="180" x2="1100" y2="250"/>
+    <line x1="300" y1="350" x2="500" y2="300"/>
+    <line x1="500" y1="300" x2="640" y2="280"/>
+    <line x1="640" y1="280" x2="800" y2="350"/>
+    <line x1="800" y1="350" x2="1000" y2="400"/>
+    <line x1="150" y1="450" x2="350" y2="400"/>
+    <line x1="350" y1="400" x2="500" y2="300"/>
+    <line x1="640" y1="280" x2="750" y2="450"/>
+    <line x1="750" y1="450" x2="950" y2="500"/>
+    <line x1="400" y1="200" x2="300" y2="350"/>
+    <line x1="900" y1="180" x2="800" y2="350"/>
+    <line x1="640" y1="280" x2="640" y2="150"/>
+    <line x1="640" y1="150" x2="500" y2="80"/>
+    <line x1="640" y1="150" x2="780" y2="80"/>
+  </g>
+  <!-- Nodes -->
+  <g>
+    <circle cx="200" cy="100" r="6" fill="#ff6b35" opacity="0.6"/>
+    <circle cx="400" cy="200" r="8" fill="#4ecdc4" opacity="0.7"/>
+    <circle cx="640" cy="280" r="14" fill="white" opacity="0.9"/>
+    <circle cx="900" cy="180" r="7" fill="#a8e06c" opacity="0.6"/>
+    <circle cx="1100" cy="250" r="5" fill="#c4b5fd" opacity="0.5"/>
+    <circle cx="300" cy="350" r="6" fill="#ff6b35" opacity="0.5"/>
+    <circle cx="500" cy="300" r="9" fill="#ffd93d" opacity="0.7"/>
+    <circle cx="800" cy="350" r="7" fill="#4ecdc4" opacity="0.6"/>
+    <circle cx="1000" cy="400" r="5" fill="#a8e06c" opacity="0.5"/>
+    <circle cx="150" cy="450" r="4" fill="#c4b5fd" opacity="0.4"/>
+    <circle cx="350" cy="400" r="6" fill="#ff6b35" opacity="0.5"/>
+    <circle cx="750" cy="450" r="6" fill="#ffd93d" opacity="0.5"/>
+    <circle cx="950" cy="500" r="4" fill="#4ecdc4" opacity="0.4"/>
+    <circle cx="640" cy="150" r="10" fill="#c4b5fd" opacity="0.8"/>
+    <circle cx="500" cy="80" r="5" fill="#a8e06c" opacity="0.5"/>
+    <circle cx="780" cy="80" r="5" fill="#ff6b35" opacity="0.5"/>
+  </g>
+  <!-- Title -->
+  <text x="640" y="560" font-family="'Helvetica Neue', sans-serif" font-size="48" fill="white" text-anchor="middle" font-weight="300" letter-spacing="12">INFINITE CRAFT</text>
+  <text x="640" y="595" font-family="'Helvetica Neue', sans-serif" font-size="15" fill="#4ecdc4" text-anchor="middle" letter-spacing="6">PULSE EXPLORER</text>
+</svg>

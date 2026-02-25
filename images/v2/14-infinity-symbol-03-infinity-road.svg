@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="60%" stop-color="#0a0a1a"/>
+      <stop offset="100%" stop-color="#0f1022"/>
+    </linearGradient>
+    <linearGradient id="roadSurface" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="50%" stop-color="#2a2a3e"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <filter id="roadGlow">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#sky)"/>
+  <!-- Stars -->
+  <g opacity="0.6">
+    <circle cx="100" cy="60" r="1.2" fill="#fff"/><circle cx="250" cy="90" r="0.8" fill="#fff"/>
+    <circle cx="400" cy="40" r="1" fill="#fff"/><circle cx="550" cy="75" r="1.3" fill="#fff"/>
+    <circle cx="700" cy="50" r="0.9" fill="#fff"/><circle cx="850" cy="85" r="1.1" fill="#fff"/>
+    <circle cx="1000" cy="55" r="1" fill="#fff"/><circle cx="1150" cy="70" r="0.8" fill="#fff"/>
+    <circle cx="180" cy="130" r="0.7" fill="#ffd93d"/><circle cx="480" cy="110" r="0.9" fill="#4ecdc4"/>
+    <circle cx="780" cy="120" r="0.8" fill="#c4b5fd"/><circle cx="1080" cy="105" r="1" fill="#ffd93d"/>
+    <circle cx="320" cy="45" r="0.6" fill="#fff"/><circle cx="920" cy="35" r="0.7" fill="#fff"/>
+    <circle cx="640" cy="25" r="1.5" fill="#ffd93d" filter="url(#starGlow)"/>
+  </g>
+  <!-- Road surface - infinity shape -->
+  <path d="M240,310 C240,200 370,160 450,215 C510,255 560,290 640,290 C720,290 770,255 830,215 C910,160 1040,200 1040,310 C1040,420 910,460 830,405 C770,365 720,330 640,330 C560,330 510,365 450,405 C370,460 240,420 240,310Z" fill="#1a1a2e" stroke="none"/>
+  <!-- Road edges (guardrails) -->
+  <path d="M240,310 C240,195 375,155 455,212 C515,252 562,288 640,288 C718,288 765,252 825,212 C905,155 1040,195 1040,310 C1040,425 905,465 825,408 C765,368 718,332 640,332 C562,332 515,368 455,408 C375,465 240,425 240,310Z" fill="none" stroke="#ff6b35" stroke-width="3" opacity="0.6"/>
+  <path d="M260,310 C260,205 385,168 460,220 C518,258 564,292 640,292 C716,292 762,258 820,220 C895,168 1020,205 1020,310 C1020,415 895,452 820,400 C762,362 716,328 640,328 C564,328 518,362 460,400 C385,452 260,415 260,310Z" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.3"/>
+  <!-- Center dashed line -->
+  <path d="M260,310 C260,205 385,168 460,220 C518,258 564,292 640,292" fill="none" stroke="#ffd93d" stroke-width="2.5" stroke-dasharray="20,15" opacity="0.7"/>
+  <path d="M640,292 C716,292 762,258 820,220 C895,168 1020,205 1020,310" fill="none" stroke="#ffd93d" stroke-width="2.5" stroke-dasharray="20,15" opacity="0.7"/>
+  <path d="M1020,310 C1020,415 895,452 820,400 C762,362 716,328 640,328" fill="none" stroke="#ffd93d" stroke-width="2.5" stroke-dasharray="20,15" opacity="0.7"/>
+  <path d="M640,328 C564,328 518,362 460,400 C385,452 260,415 260,310" fill="none" stroke="#ffd93d" stroke-width="2.5" stroke-dasharray="20,15" opacity="0.7"/>
+  <!-- Headlight glow on left loop -->
+  <ellipse cx="330" cy="310" rx="50" ry="30" fill="#ffd93d" opacity="0.05"/>
+  <ellipse cx="330" cy="310" rx="25" ry="15" fill="#ffd93d" opacity="0.08"/>
+  <!-- Taillight glow on right loop -->
+  <ellipse cx="950" cy="310" rx="50" ry="30" fill="#ff6b35" opacity="0.05"/>
+  <ellipse cx="950" cy="310" rx="25" ry="15" fill="#ff6b35" opacity="0.08"/>
+  <!-- Car headlights (two dots) -->
+  <circle cx="326" cy="307" r="3" fill="#ffd93d" filter="url(#starGlow)"/>
+  <circle cx="334" cy="307" r="3" fill="#ffd93d" filter="url(#starGlow)"/>
+  <!-- Car taillights -->
+  <circle cx="946" cy="313" r="3" fill="#ff6b35" filter="url(#starGlow)"/>
+  <circle cx="954" cy="313" r="3" fill="#ff6b35" filter="url(#starGlow)"/>
+  <!-- Streetlights along path -->
+  <g opacity="0.4">
+    <line x1="380" y1="250" x2="380" y2="230" stroke="#888" stroke-width="1.5"/>
+    <circle cx="380" cy="228" r="3" fill="#ffd93d" opacity="0.6"/>
+    <line x1="520" y1="275" x2="520" y2="255" stroke="#888" stroke-width="1.5"/>
+    <circle cx="520" cy="253" r="3" fill="#ffd93d" opacity="0.6"/>
+    <line x1="760" y1="275" x2="760" y2="255" stroke="#888" stroke-width="1.5"/>
+    <circle cx="760" cy="253" r="3" fill="#ffd93d" opacity="0.6"/>
+    <line x1="900" y1="250" x2="900" y2="230" stroke="#888" stroke-width="1.5"/>
+    <circle cx="900" cy="228" r="3" fill="#ffd93d" opacity="0.6"/>
+  </g>
+  <!-- Horizon mountains silhouette -->
+  <path d="M0,480 L120,430 L250,460 L380,410 L500,445 L640,400 L780,445 L900,410 L1030,460 L1160,430 L1280,480 L1280,640 L0,640Z" fill="#0f0f1a" opacity="0.5"/>
+  <!-- Title -->
+  <text x="640" y="565" text-anchor="middle" font-family="'Courier New', monospace" font-size="42" font-weight="bold" fill="#ffffff" letter-spacing="10" opacity="0.9">INFINITE CRAFT</text>
+  <line x1="350" y1="578" x2="930" y2="578" stroke="#ff6b35" stroke-width="1" opacity="0.4"/>
+</svg>

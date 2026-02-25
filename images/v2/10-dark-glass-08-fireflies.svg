@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="ffGlow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="ffSoft">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <radialGradient id="ffDot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd93d" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#ffd93d" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffd93d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ffDotGreen" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a8e06c" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#a8e06c" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#a8e06c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="640" fill="#040604"/>
+
+  <!-- Very subtle tree silhouettes -->
+  <path d="M0,640 L0,300 Q20,250 40,300 Q50,200 70,280 Q80,240 100,300 L100,640Z" fill="#060806" opacity="0.8"/>
+  <path d="M1180,640 L1180,280 Q1200,220 1220,280 Q1230,200 1250,270 Q1260,230 1280,290 L1280,640Z" fill="#060806" opacity="0.8"/>
+  <path d="M80,640 L80,350 Q100,310 120,350 Q130,280 150,340 L150,640Z" fill="#050705" opacity="0.6"/>
+  <path d="M1100,640 L1100,320 Q1120,270 1140,320 Q1150,260 1170,310 L1170,640Z" fill="#050705" opacity="0.6"/>
+
+  <!-- Fireflies - scattered points of warm light -->
+  <!-- Layer 1: bright close fireflies -->
+  <circle cx="200" cy="250" r="5" fill="url(#ffDot)" filter="url(#ffGlow)"/>
+  <circle cx="380" cy="180" r="4.5" fill="url(#ffDotGreen)" filter="url(#ffGlow)"/>
+  <circle cx="520" cy="300" r="5.5" fill="url(#ffDot)" filter="url(#ffGlow)"/>
+  <circle cx="700" cy="220" r="4" fill="url(#ffDotGreen)" filter="url(#ffGlow)"/>
+  <circle cx="850" cy="280" r="5" fill="url(#ffDot)" filter="url(#ffGlow)"/>
+  <circle cx="1000" cy="200" r="4.5" fill="url(#ffDotGreen)" filter="url(#ffGlow)"/>
+  <circle cx="1120" cy="320" r="5" fill="url(#ffDot)" filter="url(#ffGlow)"/>
+  <circle cx="300" cy="400" r="4" fill="url(#ffDot)" filter="url(#ffGlow)"/>
+  <circle cx="600" cy="420" r="5" fill="url(#ffDotGreen)" filter="url(#ffGlow)"/>
+  <circle cx="900" cy="380" r="4.5" fill="url(#ffDot)" filter="url(#ffGlow)"/>
+
+  <!-- Layer 2: medium fireflies -->
+  <circle cx="150" cy="350" r="3" fill="url(#ffDotGreen)" filter="url(#ffGlow)" opacity="0.7"/>
+  <circle cx="340" cy="300" r="3.5" fill="url(#ffDot)" filter="url(#ffGlow)" opacity="0.7"/>
+  <circle cx="460" cy="450" r="3" fill="url(#ffDotGreen)" filter="url(#ffGlow)" opacity="0.7"/>
+  <circle cx="640" cy="150" r="3.5" fill="url(#ffDot)" filter="url(#ffGlow)" opacity="0.7"/>
+  <circle cx="780" cy="400" r="3" fill="url(#ffDotGreen)" filter="url(#ffGlow)" opacity="0.7"/>
+  <circle cx="960" cy="300" r="3.5" fill="url(#ffDot)" filter="url(#ffGlow)" opacity="0.7"/>
+  <circle cx="1080" cy="180" r="3" fill="url(#ffDotGreen)" filter="url(#ffGlow)" opacity="0.7"/>
+
+  <!-- Layer 3: distant dim fireflies -->
+  <circle cx="120" cy="200" r="2" fill="url(#ffDot)" filter="url(#ffGlow)" opacity="0.4"/>
+  <circle cx="250" cy="480" r="1.8" fill="url(#ffDotGreen)" filter="url(#ffGlow)" opacity="0.4"/>
+  <circle cx="420" cy="120" r="2" fill="url(#ffDot)" filter="url(#ffGlow)" opacity="0.35"/>
+  <circle cx="560" cy="500" r="1.5" fill="url(#ffDotGreen)" filter="url(#ffGlow)" opacity="0.35"/>
+  <circle cx="720" cy="480" r="2" fill="url(#ffDot)" filter="url(#ffGlow)" opacity="0.4"/>
+  <circle cx="880" cy="120" r="1.8" fill="url(#ffDotGreen)" filter="url(#ffGlow)" opacity="0.3"/>
+  <circle cx="1020" cy="450" r="2" fill="url(#ffDot)" filter="url(#ffGlow)" opacity="0.35"/>
+  <circle cx="1150" cy="450" r="1.5" fill="url(#ffDotGreen)" filter="url(#ffGlow)" opacity="0.3"/>
+
+  <!-- Ambient glow pools -->
+  <circle cx="500" cy="300" r="80" fill="#ffd93d" opacity="0.02" filter="url(#ffSoft)"/>
+  <circle cx="800" cy="280" r="70" fill="#a8e06c" opacity="0.02" filter="url(#ffSoft)"/>
+
+  <!-- Element emojis as large fireflies -->
+  <text x="280" y="260" font-size="32" text-anchor="middle" opacity="0.65">🔥</text>
+  <text x="540" y="310" font-size="30" text-anchor="middle" opacity="0.6">💧</text>
+  <text x="780" y="230" font-size="32" text-anchor="middle" opacity="0.6">🌍</text>
+  <text x="1020" y="210" font-size="30" text-anchor="middle" opacity="0.55">💨</text>
+
+  <!-- Title -->
+  <text x="640" y="575" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="54" font-weight="800" fill="#ffd93d" text-anchor="middle" letter-spacing="16" opacity="0.85" filter="url(#ffGlow)">INFINITE CRAFT</text>
+  <text x="640" y="610" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#a8e06c" text-anchor="middle" letter-spacing="8" opacity="0.35">POINTS OF LIGHT</text>
+</svg>

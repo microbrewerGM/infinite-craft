@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="watercolor">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="watercolorHeavy">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="5" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="paperTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="4" seed="1"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply" result="paper"/>
+    </filter>
+    <filter id="wcBlur">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="wcBlurLight">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="splatter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" seed="15" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8"/>
+    </filter>
+  </defs>
+  <!-- Paper background -->
+  <rect width="1280" height="640" fill="#0a0a0a"/>
+  <rect width="1280" height="640" fill="#0e0e0e" filter="url(#paperTexture)" opacity="0.3"/>
+  <!-- Watercolor wash background bleeds -->
+  <ellipse cx="380" cy="280" rx="250" ry="200" fill="#ff6b35" opacity="0.03" filter="url(#wcBlur)"/>
+  <ellipse cx="900" cy="280" rx="250" ry="200" fill="#4ecdc4" opacity="0.03" filter="url(#wcBlur)"/>
+  <ellipse cx="640" cy="300" rx="150" ry="100" fill="#c4b5fd" opacity="0.02" filter="url(#wcBlur)"/>
+  <!-- First wash - broad orange stroke -->
+  <path d="M260,300 C260,180 390,140 475,205 C535,248 568,285 640,285 C712,285 745,248 805,205 C890,140 1020,180 1020,300" fill="none" stroke="#ff6b35" stroke-width="35" stroke-linecap="round" opacity="0.2" filter="url(#watercolorHeavy)"/>
+  <!-- Second wash - teal -->
+  <path d="M1020,300 C1020,420 890,460 805,395 C745,352 712,315 640,315 C568,315 535,352 475,395 C390,460 260,420 260,300" fill="none" stroke="#4ecdc4" stroke-width="35" stroke-linecap="round" opacity="0.2" filter="url(#watercolorHeavy)"/>
+  <!-- Third wash layer - more saturated, thinner -->
+  <path d="M270,300 C270,188 395,152 478,212 C533,250 568,286 640,286" fill="none" stroke="#ff6b35" stroke-width="18" stroke-linecap="round" opacity="0.35" filter="url(#watercolor)"/>
+  <path d="M640,286 C712,286 747,250 802,212 C885,152 1010,188 1010,300" fill="none" stroke="#ffd93d" stroke-width="18" stroke-linecap="round" opacity="0.3" filter="url(#watercolor)"/>
+  <path d="M1010,300 C1010,412 885,448 802,388 C747,350 712,314 640,314" fill="none" stroke="#4ecdc4" stroke-width="18" stroke-linecap="round" opacity="0.35" filter="url(#watercolor)"/>
+  <path d="M640,314 C568,314 533,350 478,388 C395,448 270,412 270,300" fill="none" stroke="#c4b5fd" stroke-width="18" stroke-linecap="round" opacity="0.3" filter="url(#watercolor)"/>
+  <!-- Detail strokes - concentrated color -->
+  <path d="M280,300 C280,195 400,160 478,215 C535,255 568,288 640,288" fill="none" stroke="#ff6b35" stroke-width="6" stroke-linecap="round" opacity="0.6" filter="url(#watercolor)"/>
+  <path d="M640,288 C712,288 745,255 802,215 C880,160 1000,195 1000,300" fill="none" stroke="#ffd93d" stroke-width="6" stroke-linecap="round" opacity="0.55" filter="url(#watercolor)"/>
+  <path d="M1000,300 C1000,405 880,440 802,385 C745,345 712,312 640,312" fill="none" stroke="#4ecdc4" stroke-width="6" stroke-linecap="round" opacity="0.6" filter="url(#watercolor)"/>
+  <path d="M640,312 C568,312 535,345 478,385 C400,440 280,405 280,300" fill="none" stroke="#c4b5fd" stroke-width="6" stroke-linecap="round" opacity="0.55" filter="url(#watercolor)"/>
+  <!-- Paint splatters -->
+  <g filter="url(#splatter)">
+    <circle cx="310" cy="220" r="8" fill="#ff6b35" opacity="0.15"/>
+    <circle cx="350" cy="195" r="5" fill="#ffd93d" opacity="0.12"/>
+    <circle cx="520" cy="250" r="6" fill="#ff6b35" opacity="0.1"/>
+    <circle cx="760" cy="250" r="6" fill="#ffd93d" opacity="0.1"/>
+    <circle cx="930" cy="195" r="5" fill="#4ecdc4" opacity="0.12"/>
+    <circle cx="970" cy="220" r="8" fill="#4ecdc4" opacity="0.15"/>
+    <circle cx="350" cy="405" r="7" fill="#c4b5fd" opacity="0.12"/>
+    <circle cx="930" cy="405" r="7" fill="#a8e06c" opacity="0.12"/>
+  </g>
+  <!-- Drip effects -->
+  <g opacity="0.15" filter="url(#watercolor)">
+    <path d="M300,240 L298,270 L296,290" stroke="#ff6b35" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M420,190 L418,215" stroke="#ffd93d" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <path d="M960,240 L962,265" stroke="#4ecdc4" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <path d="M860,190 L862,210" stroke="#4ecdc4" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+  <!-- Tiny splatter dots -->
+  <g opacity="0.25">
+    <circle cx="280" cy="250" r="2" fill="#ff6b35" filter="url(#splatter)"/>
+    <circle cx="340" cy="180" r="1.5" fill="#ffd93d" filter="url(#splatter)"/>
+    <circle cx="450" cy="195" r="1.8" fill="#ff6b35" filter="url(#splatter)"/>
+    <circle cx="830" cy="195" r="1.8" fill="#4ecdc4" filter="url(#splatter)"/>
+    <circle cx="940" cy="180" r="1.5" fill="#a8e06c" filter="url(#splatter)"/>
+    <circle cx="1000" cy="250" r="2" fill="#4ecdc4" filter="url(#splatter)"/>
+    <circle cx="500" cy="390" r="1.5" fill="#c4b5fd" filter="url(#splatter)"/>
+    <circle cx="780" cy="390" r="1.5" fill="#c4b5fd" filter="url(#splatter)"/>
+  </g>
+  <!-- Title with watercolor feel -->
+  <text x="640" y="560" text-anchor="middle" font-family="'Georgia', serif" font-size="42" font-weight="normal" fill="#ffffff" letter-spacing="10" opacity="0.8" font-style="italic" filter="url(#wcBlurLight)">INFINITE CRAFT</text>
+  <text x="640" y="560" text-anchor="middle" font-family="'Georgia', serif" font-size="42" font-weight="normal" fill="#ffffff" letter-spacing="10" opacity="0.5" font-style="italic">INFINITE CRAFT</text>
+</svg>

@@ -1,0 +1,162 @@
+<svg viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="board-shadow">
+      <feDropShadow dx="3" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <linearGradient id="arduino-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00878F"/>
+      <stop offset="100%" stop-color="#006C75"/>
+    </linearGradient>
+  </defs>
+  <!-- Dark desk background -->
+  <rect width="1280" height="640" fill="#1a1815"/>
+  <!-- Arduino Uno board -->
+  <rect x="80" y="80" width="500" height="480" rx="8" fill="url(#arduino-blue)" filter="url(#board-shadow)"/>
+  <!-- Board edge details -->
+  <rect x="85" y="85" width="490" height="470" rx="6" fill="none" stroke="#00a0a0" stroke-width="0.5" opacity="0.3"/>
+  <!-- USB connector -->
+  <rect x="65" y="130" width="40" height="50" rx="3" fill="#aaa" stroke="#888" stroke-width="1"/>
+  <rect x="70" y="138" width="25" height="34" fill="#333"/>
+  <!-- Power jack -->
+  <rect x="65" y="420" width="40" height="35" rx="5" fill="#222" stroke="#555" stroke-width="1"/>
+  <circle cx="85" cy="437" r="6" fill="#111" stroke="#444" stroke-width="1"/>
+  <!-- Crystal oscillator -->
+  <rect x="250" y="260" width="30" height="12" rx="2" fill="#c0c0c0" stroke="#999" stroke-width="0.5"/>
+  <text x="265" y="269" text-anchor="middle" font-family="'Courier New', monospace" font-size="5" fill="#555">16MHz</text>
+  <!-- ATmega328P chip -->
+  <rect x="200" y="290" width="100" height="100" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <circle cx="215" cy="305" r="5" fill="#222" stroke="#444" stroke-width="0.5"/>
+  <text x="250" y="345" text-anchor="middle" font-family="'Courier New', monospace" font-size="7" fill="#666">ATMEGA</text>
+  <text x="250" y="356" text-anchor="middle" font-family="'Courier New', monospace" font-size="7" fill="#666">328P</text>
+  <!-- IC pins -->
+  <g fill="#aaa">
+    <rect x="192" y="300" width="10" height="3"/><rect x="192" y="312" width="10" height="3"/><rect x="192" y="324" width="10" height="3"/><rect x="192" y="336" width="10" height="3"/><rect x="192" y="348" width="10" height="3"/><rect x="192" y="360" width="10" height="3"/><rect x="192" y="372" width="10" height="3"/><rect x="192" y="384" width="10" height="3"/>
+    <rect x="298" y="300" width="10" height="3"/><rect x="298" y="312" width="10" height="3"/><rect x="298" y="324" width="10" height="3"/><rect x="298" y="336" width="10" height="3"/><rect x="298" y="348" width="10" height="3"/><rect x="298" y="360" width="10" height="3"/><rect x="298" y="372" width="10" height="3"/><rect x="298" y="384" width="10" height="3"/>
+    <rect x="210" y="388" width="3" height="10"/><rect x="222" y="388" width="3" height="10"/><rect x="234" y="388" width="3" height="10"/><rect x="246" y="388" width="3" height="10"/><rect x="258" y="388" width="3" height="10"/><rect x="270" y="388" width="3" height="10"/><rect x="282" y="388" width="3" height="10"/>
+  </g>
+  <!-- Digital pin headers (top) -->
+  <g>
+    <rect x="150" y="82" width="380" height="15" fill="#111" rx="1"/>
+    <g fill="#c8a030">
+      <rect x="160" y="84" width="6" height="11"/><rect x="175" y="84" width="6" height="11"/><rect x="190" y="84" width="6" height="11"/><rect x="205" y="84" width="6" height="11"/><rect x="220" y="84" width="6" height="11"/><rect x="235" y="84" width="6" height="11"/><rect x="250" y="84" width="6" height="11"/><rect x="265" y="84" width="6" height="11"/><rect x="280" y="84" width="6" height="11"/><rect x="295" y="84" width="6" height="11"/><rect x="310" y="84" width="6" height="11"/><rect x="325" y="84" width="6" height="11"/><rect x="340" y="84" width="6" height="11"/><rect x="355" y="84" width="6" height="11"/>
+    </g>
+    <g font-family="'Courier New', monospace" font-size="6" fill="#aaa">
+      <text x="163" y="108">0</text><text x="178" y="108">1</text><text x="193" y="108">2</text><text x="206" y="108">~3</text><text x="223" y="108">4</text><text x="236" y="108">~5</text><text x="251" y="108">~6</text><text x="268" y="108">7</text><text x="283" y="108">8</text><text x="296" y="108">~9</text><text x="308" y="108">~10</text><text x="323" y="108">~11</text><text x="340" y="108">12</text><text x="355" y="108">13</text>
+    </g>
+  </g>
+  <!-- Analog pin headers (bottom) -->
+  <g>
+    <rect x="150" y="543" width="200" height="15" fill="#111" rx="1"/>
+    <g fill="#c8a030">
+      <rect x="160" y="545" width="6" height="11"/><rect x="175" y="545" width="6" height="11"/><rect x="190" y="545" width="6" height="11"/><rect x="205" y="545" width="6" height="11"/><rect x="220" y="545" width="6" height="11"/><rect x="235" y="545" width="6" height="11"/>
+    </g>
+    <g font-family="'Courier New', monospace" font-size="6" fill="#aaa">
+      <text x="160" y="540">A0</text><text x="175" y="540">A1</text><text x="190" y="540">A2</text><text x="205" y="540">A3</text><text x="220" y="540">A4</text><text x="235" y="540">A5</text>
+    </g>
+  </g>
+  <!-- Power header -->
+  <rect x="380" y="543" width="120" height="15" fill="#111" rx="1"/>
+  <g fill="#c8a030">
+    <rect x="390" y="545" width="6" height="11"/><rect x="405" y="545" width="6" height="11"/><rect x="420" y="545" width="6" height="11"/><rect x="435" y="545" width="6" height="11"/><rect x="450" y="545" width="6" height="11"/><rect x="465" y="545" width="6" height="11"/>
+  </g>
+  <g font-family="'Courier New', monospace" font-size="6" fill="#aaa">
+    <text x="385" y="540">RST</text><text x="403" y="540">3V3</text><text x="420" y="540">5V</text><text x="435" y="540">GND</text><text x="452" y="540">GND</text><text x="465" y="540">VIN</text>
+  </g>
+  <!-- LEDs -->
+  <circle cx="500" cy="130" r="5" fill="#a8e06c" opacity="0.9"/>
+  <text x="512" y="134" font-family="'Courier New', monospace" font-size="6" fill="#aaa">ON</text>
+  <circle cx="500" cy="150" r="4" fill="#ff6b35" opacity="0.7"/>
+  <text x="512" y="154" font-family="'Courier New', monospace" font-size="6" fill="#aaa">L</text>
+  <circle cx="500" cy="166" r="4" fill="#ffd93d" opacity="0.6"/>
+  <text x="512" y="170" font-family="'Courier New', monospace" font-size="6" fill="#aaa">TX</text>
+  <circle cx="500" cy="182" r="4" fill="#4ecdc4" opacity="0.6"/>
+  <text x="512" y="186" font-family="'Courier New', monospace" font-size="6" fill="#aaa">RX</text>
+  <!-- Reset button -->
+  <circle cx="480" cy="230" r="10" fill="#ddd" stroke="#aaa" stroke-width="1"/>
+  <text x="480" y="250" text-anchor="middle" font-family="'Courier New', monospace" font-size="6" fill="#aaa">RESET</text>
+  <!-- Arduino logo text -->
+  <text x="120" y="250" font-family="Arial, sans-serif" font-size="14" fill="#00d0d0" opacity="0.3" font-weight="bold">ARDUINO UNO</text>
+  <!-- Silkscreen text -->
+  <text x="400" y="470" font-family="'Courier New', monospace" font-size="7" fill="#00a0a0" opacity="0.4">MADE IN ITALY</text>
+  <!-- Connected components on the right side -->
+  <!-- Breadboard mini -->
+  <rect x="660" y="100" width="280" height="200" rx="4" fill="#f0ead8" filter="url(#board-shadow)"/>
+  <rect x="660" y="195" width="280" height="10" fill="#e0d8c0"/>
+  <!-- Breadboard holes (simplified) -->
+  <g fill="#444" opacity="0.3">
+    <circle cx="680" cy="130" r="2"/><circle cx="695" cy="130" r="2"/><circle cx="710" cy="130" r="2"/><circle cx="725" cy="130" r="2"/><circle cx="740" cy="130" r="2"/><circle cx="755" cy="130" r="2"/><circle cx="770" cy="130" r="2"/><circle cx="785" cy="130" r="2"/><circle cx="800" cy="130" r="2"/><circle cx="815" cy="130" r="2"/><circle cx="830" cy="130" r="2"/><circle cx="845" cy="130" r="2"/><circle cx="860" cy="130" r="2"/><circle cx="875" cy="130" r="2"/><circle cx="890" cy="130" r="2"/><circle cx="905" cy="130" r="2"/><circle cx="920" cy="130" r="2"/>
+    <circle cx="680" cy="145" r="2"/><circle cx="695" cy="145" r="2"/><circle cx="710" cy="145" r="2"/><circle cx="725" cy="145" r="2"/><circle cx="740" cy="145" r="2"/><circle cx="755" cy="145" r="2"/><circle cx="770" cy="145" r="2"/><circle cx="785" cy="145" r="2"/><circle cx="800" cy="145" r="2"/><circle cx="815" cy="145" r="2"/><circle cx="830" cy="145" r="2"/><circle cx="845" cy="145" r="2"/><circle cx="860" cy="145" r="2"/><circle cx="875" cy="145" r="2"/><circle cx="890" cy="145" r="2"/><circle cx="905" cy="145" r="2"/><circle cx="920" cy="145" r="2"/>
+    <circle cx="680" cy="160" r="2"/><circle cx="695" cy="160" r="2"/><circle cx="710" cy="160" r="2"/><circle cx="725" cy="160" r="2"/><circle cx="740" cy="160" r="2"/><circle cx="755" cy="160" r="2"/><circle cx="770" cy="160" r="2"/><circle cx="785" cy="160" r="2"/><circle cx="800" cy="160" r="2"/><circle cx="815" cy="160" r="2"/><circle cx="830" cy="160" r="2"/><circle cx="845" cy="160" r="2"/><circle cx="860" cy="160" r="2"/><circle cx="875" cy="160" r="2"/><circle cx="890" cy="160" r="2"/><circle cx="905" cy="160" r="2"/><circle cx="920" cy="160" r="2"/>
+    <circle cx="680" cy="175" r="2"/><circle cx="695" cy="175" r="2"/><circle cx="710" cy="175" r="2"/><circle cx="725" cy="175" r="2"/><circle cx="740" cy="175" r="2"/><circle cx="755" cy="175" r="2"/><circle cx="770" cy="175" r="2"/><circle cx="785" cy="175" r="2"/><circle cx="800" cy="175" r="2"/><circle cx="815" cy="175" r="2"/><circle cx="830" cy="175" r="2"/><circle cx="845" cy="175" r="2"/><circle cx="860" cy="175" r="2"/><circle cx="875" cy="175" r="2"/><circle cx="890" cy="175" r="2"/><circle cx="905" cy="175" r="2"/><circle cx="920" cy="175" r="2"/>
+    <circle cx="680" cy="220" r="2"/><circle cx="695" cy="220" r="2"/><circle cx="710" cy="220" r="2"/><circle cx="725" cy="220" r="2"/><circle cx="740" cy="220" r="2"/><circle cx="755" cy="220" r="2"/><circle cx="770" cy="220" r="2"/><circle cx="785" cy="220" r="2"/><circle cx="800" cy="220" r="2"/><circle cx="815" cy="220" r="2"/><circle cx="830" cy="220" r="2"/><circle cx="845" cy="220" r="2"/><circle cx="860" cy="220" r="2"/><circle cx="875" cy="220" r="2"/><circle cx="890" cy="220" r="2"/><circle cx="905" cy="220" r="2"/><circle cx="920" cy="220" r="2"/>
+    <circle cx="680" cy="235" r="2"/><circle cx="695" cy="235" r="2"/><circle cx="710" cy="235" r="2"/><circle cx="725" cy="235" r="2"/><circle cx="740" cy="235" r="2"/><circle cx="755" cy="235" r="2"/><circle cx="770" cy="235" r="2"/><circle cx="785" cy="235" r="2"/><circle cx="800" cy="235" r="2"/><circle cx="815" cy="235" r="2"/><circle cx="830" cy="235" r="2"/><circle cx="845" cy="235" r="2"/><circle cx="860" cy="235" r="2"/><circle cx="875" cy="235" r="2"/><circle cx="890" cy="235" r="2"/><circle cx="905" cy="235" r="2"/><circle cx="920" cy="235" r="2"/>
+    <circle cx="680" cy="250" r="2"/><circle cx="695" cy="250" r="2"/><circle cx="710" cy="250" r="2"/><circle cx="725" cy="250" r="2"/><circle cx="740" cy="250" r="2"/><circle cx="755" cy="250" r="2"/><circle cx="770" cy="250" r="2"/><circle cx="785" cy="250" r="2"/><circle cx="800" cy="250" r="2"/><circle cx="815" cy="250" r="2"/><circle cx="830" cy="250" r="2"/><circle cx="845" cy="250" r="2"/><circle cx="860" cy="250" r="2"/><circle cx="875" cy="250" r="2"/><circle cx="890" cy="250" r="2"/><circle cx="905" cy="250" r="2"/><circle cx="920" cy="250" r="2"/>
+    <circle cx="680" cy="265" r="2"/><circle cx="695" cy="265" r="2"/><circle cx="710" cy="265" r="2"/><circle cx="725" cy="265" r="2"/><circle cx="740" cy="265" r="2"/><circle cx="755" cy="265" r="2"/><circle cx="770" cy="265" r="2"/><circle cx="785" cy="265" r="2"/><circle cx="800" cy="265" r="2"/><circle cx="815" cy="265" r="2"/><circle cx="830" cy="265" r="2"/><circle cx="845" cy="265" r="2"/><circle cx="860" cy="265" r="2"/><circle cx="875" cy="265" r="2"/><circle cx="890" cy="265" r="2"/><circle cx="905" cy="265" r="2"/><circle cx="920" cy="265" r="2"/>
+    <circle cx="680" cy="280" r="2"/><circle cx="695" cy="280" r="2"/><circle cx="710" cy="280" r="2"/><circle cx="725" cy="280" r="2"/><circle cx="740" cy="280" r="2"/><circle cx="755" cy="280" r="2"/><circle cx="770" cy="280" r="2"/><circle cx="785" cy="280" r="2"/><circle cx="800" cy="280" r="2"/><circle cx="815" cy="280" r="2"/><circle cx="830" cy="280" r="2"/><circle cx="845" cy="280" r="2"/><circle cx="860" cy="280" r="2"/><circle cx="875" cy="280" r="2"/><circle cx="890" cy="280" r="2"/><circle cx="905" cy="280" r="2"/><circle cx="920" cy="280" r="2"/>
+  </g>
+  <!-- LEDs on breadboard -->
+  <circle cx="710" cy="160" r="5" fill="#ff6b35" opacity="0.9"/>
+  <circle cx="770" cy="160" r="5" fill="#4ecdc4" opacity="0.9"/>
+  <circle cx="830" cy="160" r="5" fill="#a8e06c" opacity="0.9"/>
+  <circle cx="890" cy="160" r="5" fill="#c4b5fd" opacity="0.9"/>
+  <!-- Resistors on breadboard -->
+  <rect x="705" y="220" width="20" height="6" rx="2" fill="#8B6914"/><rect x="765" y="220" width="20" height="6" rx="2" fill="#8B6914"/><rect x="825" y="220" width="20" height="6" rx="2" fill="#8B6914"/><rect x="885" y="220" width="20" height="6" rx="2" fill="#8B6914"/>
+  <!-- Jumper wires from Arduino to breadboard -->
+  <path d="M235,84 C235,60 710,50 710,100" stroke="#ff6b35" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M265,84 C265,40 770,40 770,100" stroke="#4ecdc4" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M295,84 C295,30 830,30 830,100" stroke="#a8e06c" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M325,84 C325,20 890,20 890,100" stroke="#c4b5fd" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- GND wire -->
+  <path d="M450,558 C450,580 680,590 680,290" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Servo motor -->
+  <rect x="680" y="380" width="80" height="60" rx="5" fill="#333" stroke="#555" stroke-width="1" filter="url(#board-shadow)"/>
+  <rect x="745" y="400" width="20" height="8" fill="#666"/>
+  <circle cx="755" cy="404" r="6" fill="#444" stroke="#666" stroke-width="1"/>
+  <text x="720" y="415" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#888">SERVO</text>
+  <!-- Servo wires -->
+  <path d="M680,395 C650,395 580,400 580,260 C580,120 250,110 250,84" stroke="#ff6b35" stroke-width="2" fill="none"/>
+  <path d="M680,405 C640,405 630,440 620,520 C610,560 450,558 450,558" stroke="#222" stroke-width="2" fill="none"/>
+  <path d="M680,415 C650,415 600,460 575,520 C560,555 435,558 435,558" stroke="#ffd93d" stroke-width="2" fill="none"/>
+  <!-- Temperature sensor -->
+  <rect x="850" y="380" width="40" height="50" rx="3" fill="#222" filter="url(#board-shadow)"/>
+  <text x="870" y="410" text-anchor="middle" font-family="'Courier New', monospace" font-size="7" fill="#aaa">TMP</text>
+  <text x="870" y="422" text-anchor="middle" font-family="'Courier New', monospace" font-size="7" fill="#aaa">36</text>
+  <!-- Sensor pins -->
+  <line x1="858" y1="430" x2="858" y2="450" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="870" y1="430" x2="870" y2="450" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="882" y1="430" x2="882" y2="450" stroke="#aaa" stroke-width="1.5"/>
+  <!-- Code panel -->
+  <rect x="980" y="80" width="270" height="480" rx="5" fill="#1e1e1e" filter="url(#board-shadow)"/>
+  <rect x="980" y="80" width="270" height="25" fill="#2d2d2d" rx="5"/>
+  <text x="1115" y="97" text-anchor="middle" font-family="'Courier New', monospace" font-size="10" fill="#888">infinite_craft.ino</text>
+  <!-- Code content -->
+  <g font-family="'Courier New', monospace" font-size="9">
+    <text x="995" y="125" fill="#c4b5fd">// Infinite Craft</text>
+    <text x="995" y="140" fill="#c4b5fd">// Element Combiner</text>
+    <text x="995" y="165" fill="#4ecdc4">#define</text><text x="1055" y="165" fill="#ff6b35"> FIRE</text><text x="1090" y="165" fill="#a8e06c"> 9</text>
+    <text x="995" y="180" fill="#4ecdc4">#define</text><text x="1055" y="180" fill="#ff6b35"> WATER</text><text x="1100" y="180" fill="#a8e06c"> 10</text>
+    <text x="995" y="195" fill="#4ecdc4">#define</text><text x="1055" y="195" fill="#ff6b35"> EARTH</text><text x="1100" y="195" fill="#a8e06c"> 11</text>
+    <text x="995" y="210" fill="#4ecdc4">#define</text><text x="1055" y="210" fill="#ff6b35"> WIND</text><text x="1095" y="210" fill="#a8e06c"> 12</text>
+    <text x="995" y="240" fill="#c4b5fd">void</text><text x="1030" y="240" fill="#ffd93d"> setup</text><text x="1070" y="240" fill="#fff">() {</text>
+    <text x="1010" y="255" fill="#fff">pinMode(FIRE,</text><text x="1115" y="255" fill="#a8e06c">OUTPUT</text><text x="1155" y="255" fill="#fff">);</text>
+    <text x="1010" y="270" fill="#fff">pinMode(WATER,</text><text x="1125" y="270" fill="#a8e06c">OUTPUT</text><text x="1165" y="270" fill="#fff">);</text>
+    <text x="1010" y="285" fill="#fff">pinMode(EARTH,</text><text x="1125" y="285" fill="#a8e06c">OUTPUT</text><text x="1165" y="285" fill="#fff">);</text>
+    <text x="1010" y="300" fill="#fff">pinMode(WIND,</text><text x="1120" y="300" fill="#a8e06c">OUTPUT</text><text x="1160" y="300" fill="#fff">);</text>
+    <text x="995" y="315" fill="#fff">}</text>
+    <text x="995" y="345" fill="#c4b5fd">void</text><text x="1030" y="345" fill="#ffd93d"> loop</text><text x="1060" y="345" fill="#fff">() {</text>
+    <text x="1010" y="360" fill="#ffd93d">combine</text><text x="1060" y="360" fill="#fff">(FIRE, WATER);</text>
+    <text x="1010" y="375" fill="#ffd93d">combine</text><text x="1060" y="375" fill="#fff">(EARTH, WIND);</text>
+    <text x="1010" y="390" fill="#4ecdc4">delay</text><text x="1045" y="390" fill="#fff">(</text><text x="1050" y="390" fill="#a8e06c">1000</text><text x="1080" y="390" fill="#fff">);</text>
+    <text x="995" y="405" fill="#fff">}</text>
+    <text x="995" y="435" fill="#c4b5fd">void</text><text x="1030" y="435" fill="#ffd93d"> combine</text><text x="1085" y="435" fill="#fff">(</text><text x="1090" y="435" fill="#c4b5fd">int</text><text x="1110" y="435" fill="#fff"> a,</text>
+    <text x="1010" y="450" fill="#c4b5fd">int</text><text x="1030" y="450" fill="#fff"> b) {</text>
+    <text x="1010" y="465" fill="#fff">digitalWrite(a,</text><text x="1120" y="465" fill="#a8e06c">HIGH</text><text x="1150" y="465" fill="#fff">);</text>
+    <text x="1010" y="480" fill="#fff">digitalWrite(b,</text><text x="1120" y="480" fill="#a8e06c">HIGH</text><text x="1150" y="480" fill="#fff">);</text>
+    <text x="1010" y="495" fill="#4ecdc4">delay</text><text x="1045" y="495" fill="#fff">(</text><text x="1050" y="495" fill="#a8e06c">500</text><text x="1075" y="495" fill="#fff">);</text>
+    <text x="1010" y="510" fill="#fff">digitalWrite(a,</text><text x="1120" y="510" fill="#a8e06c">LOW</text><text x="1145" y="510" fill="#fff">);</text>
+    <text x="1010" y="525" fill="#fff">digitalWrite(b,</text><text x="1120" y="525" fill="#a8e06c">LOW</text><text x="1145" y="525" fill="#fff">);</text>
+    <text x="995" y="540" fill="#fff">}</text>
+  </g>
+  <!-- Title -->
+  <text x="640" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" fill="#fff" font-weight="bold" letter-spacing="6">INFINITE CRAFT</text>
+</svg>

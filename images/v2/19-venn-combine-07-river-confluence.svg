@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="rv-orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="rv-teal" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ecdc4" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#4ecdc4" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="rv-merge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8e06c" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#a8e06c" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="rv-blur">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="rv-soft">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a14"/>
+
+  <!-- Terrain - dark land masses -->
+  <!-- Left bank upper -->
+  <path d="M 0 0 L 0 280 Q 100 260 200 250 Q 350 230 450 260 Q 520 280 560 320 L 640 360 L 640 0 Z" fill="#111122" opacity="0.6"/>
+  <!-- Right bank upper -->
+  <path d="M 1280 0 L 1280 280 Q 1180 260 1080 250 Q 930 230 830 260 Q 760 280 720 320 L 640 360 L 640 0 Z" fill="#111122" opacity="0.6"/>
+  <!-- Lower land -->
+  <path d="M 0 640 L 0 480 Q 200 500 350 480 Q 500 460 560 440 L 640 420 L 720 440 Q 780 460 930 480 Q 1080 500 1280 480 L 1280 640 Z" fill="#111122" opacity="0.6"/>
+
+  <!-- Left river (orange) -->
+  <path d="M 0 290 Q 100 270 200 265 Q 350 250 450 275 Q 520 295 580 340 Q 610 355 640 370" fill="none" stroke="#ff6b35" stroke-width="60" opacity="0.15" filter="url(#rv-blur)"/>
+  <path d="M 0 290 Q 100 270 200 265 Q 350 250 450 275 Q 520 295 580 340 Q 610 355 640 370" fill="none" stroke="#ff6b35" stroke-width="35" opacity="0.5"/>
+  <!-- River surface shimmer -->
+  <path d="M 100 275 Q 200 260 300 258 Q 400 260 480 282" fill="none" stroke="#ff6b35" stroke-width="1.5" opacity="0.4"/>
+  <path d="M 150 290 Q 250 278 350 275 Q 420 280 480 295" fill="none" stroke="#fff" stroke-width="1" opacity="0.15"/>
+
+  <!-- Right river (teal) -->
+  <path d="M 1280 290 Q 1180 270 1080 265 Q 930 250 830 275 Q 760 295 700 340 Q 670 355 640 370" fill="none" stroke="#4ecdc4" stroke-width="60" opacity="0.15" filter="url(#rv-blur)"/>
+  <path d="M 1280 290 Q 1180 270 1080 265 Q 930 250 830 275 Q 760 295 700 340 Q 670 355 640 370" fill="none" stroke="#4ecdc4" stroke-width="35" opacity="0.5"/>
+  <path d="M 1180 275 Q 1080 260 980 258 Q 880 260 800 282" fill="none" stroke="#4ecdc4" stroke-width="1.5" opacity="0.4"/>
+  <path d="M 1130 290 Q 1030 278 930 275 Q 860 280 800 295" fill="none" stroke="#fff" stroke-width="1" opacity="0.15"/>
+
+  <!-- Merged river (green) flowing down -->
+  <path d="M 640 370 Q 640 400 640 430 Q 640 460 640 640" fill="none" stroke="#a8e06c" stroke-width="70" opacity="0.12" filter="url(#rv-blur)"/>
+  <path d="M 640 370 Q 640 400 640 430 Q 640 460 640 640" fill="none" stroke="#a8e06c" stroke-width="40" opacity="0.45"/>
+  <!-- Merge turbulence -->
+  <circle cx="640" cy="380" r="20" fill="#ffd93d" opacity="0.1" filter="url(#rv-soft)"/>
+  <circle cx="630" cy="390" r="5" fill="#fff" opacity="0.2"/>
+  <circle cx="650" cy="385" r="4" fill="#fff" opacity="0.15"/>
+  <circle cx="640" cy="400" r="3" fill="#ffd93d" opacity="0.2"/>
+  <!-- Ripple lines -->
+  <ellipse cx="640" cy="375" rx="30" ry="8" fill="none" stroke="#fff" stroke-width="1" opacity="0.15"/>
+  <ellipse cx="640" cy="385" rx="25" ry="6" fill="none" stroke="#a8e06c" stroke-width="1" opacity="0.2"/>
+
+  <!-- Surface shimmer on merged -->
+  <path d="M 640 420 Q 640 480 640 550" fill="none" stroke="#fff" stroke-width="1" opacity="0.1"/>
+
+  <!-- Title -->
+  <text x="640" y="80" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="bold" fill="white" letter-spacing="12">INFINITE CRAFT</text>
+  <text x="640" y="610" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#a8e06c" opacity="0.6" letter-spacing="4">RIVER CONFLUENCE</text>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="celtic1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="33%" stop-color="#4ecdc4"/>
+      <stop offset="66%" stop-color="#c4b5fd"/>
+      <stop offset="100%" stop-color="#a8e06c"/>
+    </linearGradient>
+    <linearGradient id="celtic2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd93d"/>
+      <stop offset="100%" stop-color="#ff6b35"/>
+    </linearGradient>
+    <filter id="celticGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="celticBg" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="none"/>
+      <circle cx="20" cy="20" r="1" fill="#4ecdc4" opacity="0.05"/>
+      <path d="M0,20 L40,20 M20,0 L20,40" stroke="#c4b5fd" stroke-width="0.3" opacity="0.03"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a0a"/>
+  <rect width="1280" height="640" fill="url(#celticBg)"/>
+  <!-- Outer border knot decoration -->
+  <rect x="60" y="40" width="1160" height="560" rx="20" fill="none" stroke="#4ecdc4" stroke-width="1" opacity="0.15"/>
+  <rect x="68" y="48" width="1144" height="544" rx="16" fill="none" stroke="#ff6b35" stroke-width="0.5" opacity="0.1"/>
+  <!-- Shadow layer -->
+  <path d="M280,300 C280,180 400,140 480,200 C530,235 560,275 640,275 C720,275 750,235 800,200 C880,140 1000,180 1000,300 C1000,420 880,460 800,400 C750,365 720,325 640,325 C560,325 530,365 480,400 C400,460 280,420 280,300Z" fill="none" stroke="#000" stroke-width="38" opacity="0.3"/>
+  <!-- Back strand - goes behind at crossings -->
+  <path d="M280,300 C280,185 395,145 475,200 C528,237 558,278 635,278" fill="none" stroke="#ff6b35" stroke-width="26" stroke-linecap="round" opacity="0.85"/>
+  <path d="M645,322 C720,322 750,365 800,400 C880,460 1000,420 1000,300" fill="none" stroke="#a8e06c" stroke-width="26" stroke-linecap="round" opacity="0.85"/>
+  <!-- Knotwork crossover covers -->
+  <rect x="610" y="268" width="60" height="10" fill="#0a0a0a" opacity="0.95"/>
+  <rect x="610" y="322" width="60" height="10" fill="#0a0a0a" opacity="0.95"/>
+  <!-- Front strand - goes over at crossings -->
+  <path d="M645,278 C720,278 750,237 800,200 C880,145 1000,185 1000,300" fill="none" stroke="#4ecdc4" stroke-width="26" stroke-linecap="round" opacity="0.85"/>
+  <path d="M280,300 C280,415 395,455 475,400 C528,363 558,322 635,322" fill="none" stroke="#c4b5fd" stroke-width="26" stroke-linecap="round" opacity="0.85"/>
+  <!-- Highlight edges on strands -->
+  <path d="M285,295 C285,185 398,148 478,202 C530,238 560,276 637,276" fill="none" stroke="#fff" stroke-width="2" opacity="0.4"/>
+  <path d="M647,276 C722,276 752,238 802,202 C882,148 995,185 995,295" fill="none" stroke="#fff" stroke-width="2" opacity="0.4"/>
+  <path d="M285,305 C285,415 398,452 478,398 C530,362 560,324 637,324" fill="none" stroke="#fff" stroke-width="2" opacity="0.3"/>
+  <path d="M647,324 C722,324 752,362 802,398 C882,452 995,415 995,305" fill="none" stroke="#fff" stroke-width="2" opacity="0.3"/>
+  <!-- Inner strand detail lines -->
+  <path d="M290,300 C290,192 400,155 478,208 C530,242 560,280 638,280" fill="none" stroke="url(#celtic2)" stroke-width="1.5" opacity="0.5" stroke-dasharray="4,6"/>
+  <path d="M642,280 C718,280 748,242 798,208 C878,155 990,192 990,300" fill="none" stroke="url(#celtic2)" stroke-width="1.5" opacity="0.5" stroke-dasharray="4,6"/>
+  <!-- Celtic corner ornaments -->
+  <g opacity="0.2">
+    <circle cx="120" cy="100" r="15" fill="none" stroke="#ffd93d" stroke-width="1.5"/>
+    <circle cx="120" cy="100" r="8" fill="none" stroke="#ff6b35" stroke-width="1"/>
+    <circle cx="1160" cy="100" r="15" fill="none" stroke="#ffd93d" stroke-width="1.5"/>
+    <circle cx="1160" cy="100" r="8" fill="none" stroke="#ff6b35" stroke-width="1"/>
+    <circle cx="120" cy="540" r="15" fill="none" stroke="#ffd93d" stroke-width="1.5"/>
+    <circle cx="120" cy="540" r="8" fill="none" stroke="#ff6b35" stroke-width="1"/>
+    <circle cx="1160" cy="540" r="15" fill="none" stroke="#ffd93d" stroke-width="1.5"/>
+    <circle cx="1160" cy="540" r="8" fill="none" stroke="#ff6b35" stroke-width="1"/>
+  </g>
+  <!-- Knot accent points -->
+  <circle cx="280" cy="300" r="8" fill="#ff6b35" opacity="0.9" filter="url(#celticGlow)"/>
+  <circle cx="1000" cy="300" r="8" fill="#4ecdc4" opacity="0.9" filter="url(#celticGlow)"/>
+  <circle cx="475" cy="200" r="5" fill="#ffd93d" opacity="0.8"/>
+  <circle cx="805" cy="200" r="5" fill="#a8e06c" opacity="0.8"/>
+  <circle cx="475" cy="400" r="5" fill="#c4b5fd" opacity="0.8"/>
+  <circle cx="805" cy="400" r="5" fill="#ffd93d" opacity="0.8"/>
+  <!-- Title -->
+  <text x="640" y="555" text-anchor="middle" font-family="'Georgia', serif" font-size="40" font-weight="bold" fill="#ffffff" letter-spacing="14" opacity="0.9">INFINITE CRAFT</text>
+  <text x="640" y="555" text-anchor="middle" font-family="'Georgia', serif" font-size="40" font-weight="bold" fill="url(#celtic1)" letter-spacing="14" opacity="0.2">INFINITE CRAFT</text>
+</svg>

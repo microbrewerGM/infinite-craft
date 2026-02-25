@@ -1,0 +1,79 @@
+<svg viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="bio-glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="cell-bg" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#0f1a0a"/>
+      <stop offset="100%" stop-color="#050a04"/>
+    </radialGradient>
+    <radialGradient id="nucleus" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#a8e06c"/>
+      <stop offset="40%" stop-color="#6aad3a"/>
+      <stop offset="100%" stop-color="#2d5a12"/>
+    </radialGradient>
+    <filter id="membrane">
+      <feTurbulence baseFrequency="0.015" numOctaves="3" seed="5"/>
+      <feDisplacementMap in="SourceGraphic" scale="8"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#cell-bg)"/>
+  <!-- Background cellular texture -->
+  <g opacity="0.1">
+    <circle cx="100" cy="100" r="80" fill="none" stroke="#a8e06c" stroke-width="1"/>
+    <circle cx="300" cy="50" r="60" fill="none" stroke="#4ecdc4" stroke-width="1"/>
+    <circle cx="1000" cy="80" r="70" fill="none" stroke="#a8e06c" stroke-width="1"/>
+    <circle cx="1200" cy="150" r="50" fill="none" stroke="#4ecdc4" stroke-width="1"/>
+    <circle cx="150" cy="550" r="65" fill="none" stroke="#a8e06c" stroke-width="1"/>
+    <circle cx="1100" cy="520" r="75" fill="none" stroke="#4ecdc4" stroke-width="1"/>
+  </g>
+  <!-- Organic neural pathways - dendrites -->
+  <path d="M120,320 C180,310 220,280 280,290 S360,260 420,270 S500,250 540,270" stroke="#a8e06c" stroke-width="4" fill="none" filter="url(#bio-glow)" opacity="0.8" stroke-linecap="round"/>
+  <path d="M120,320 C180,340 230,370 290,355 S370,380 430,365 S510,390 550,370" stroke="#a8e06c" stroke-width="3" fill="none" filter="url(#bio-glow)" opacity="0.6" stroke-linecap="round"/>
+  <path d="M120,260 C170,250 210,220 260,230 S340,200 400,220" stroke="#4ecdc4" stroke-width="2.5" fill="none" filter="url(#bio-glow)" opacity="0.6" stroke-linecap="round"/>
+  <path d="M120,400 C180,420 230,450 300,430 S390,460 440,440" stroke="#4ecdc4" stroke-width="2.5" fill="none" filter="url(#bio-glow)" opacity="0.6" stroke-linecap="round"/>
+  <!-- Right side dendrites -->
+  <path d="M740,270 C800,250 860,260 920,280 S1000,290 1060,310 S1120,315 1160,320" stroke="#a8e06c" stroke-width="4" fill="none" filter="url(#bio-glow)" opacity="0.8" stroke-linecap="round"/>
+  <path d="M730,370 C790,390 850,365 920,355 S1000,340 1060,330 S1120,325 1160,320" stroke="#a8e06c" stroke-width="3" fill="none" filter="url(#bio-glow)" opacity="0.6" stroke-linecap="round"/>
+  <path d="M800,220 C850,200 900,210 960,230 S1040,240 1100,260" stroke="#4ecdc4" stroke-width="2.5" fill="none" filter="url(#bio-glow)" opacity="0.6" stroke-linecap="round"/>
+  <path d="M800,440 C860,460 920,440 980,420 S1060,400 1120,390" stroke="#4ecdc4" stroke-width="2.5" fill="none" filter="url(#bio-glow)" opacity="0.6" stroke-linecap="round"/>
+  <!-- Top/bottom branches -->
+  <path d="M500,120 C520,160 550,200 570,250" stroke="#c4b5fd" stroke-width="2" fill="none" filter="url(#bio-glow)" opacity="0.5" stroke-linecap="round"/>
+  <path d="M640,100 V200" stroke="#c4b5fd" stroke-width="2" fill="none" filter="url(#bio-glow)" opacity="0.5" stroke-linecap="round"/>
+  <path d="M780,120 C760,160 730,200 710,250" stroke="#c4b5fd" stroke-width="2" fill="none" filter="url(#bio-glow)" opacity="0.5" stroke-linecap="round"/>
+  <path d="M500,520 C520,480 550,440 570,390" stroke="#ff6b35" stroke-width="2" fill="none" filter="url(#bio-glow)" opacity="0.5" stroke-linecap="round"/>
+  <path d="M640,540 V440" stroke="#ff6b35" stroke-width="2" fill="none" filter="url(#bio-glow)" opacity="0.5" stroke-linecap="round"/>
+  <path d="M780,520 C760,480 730,440 710,390" stroke="#ff6b35" stroke-width="2" fill="none" filter="url(#bio-glow)" opacity="0.5" stroke-linecap="round"/>
+  <!-- Central nucleus / cell body -->
+  <ellipse cx="640" cy="320" rx="100" ry="80" fill="url(#nucleus)" opacity="0.3" filter="url(#bio-glow)"/>
+  <ellipse cx="640" cy="320" rx="70" ry="55" fill="none" stroke="#a8e06c" stroke-width="2" opacity="0.6" filter="url(#bio-glow)"/>
+  <ellipse cx="640" cy="320" rx="40" ry="30" fill="#a8e06c" opacity="0.15" filter="url(#bio-glow)"/>
+  <!-- Synaptic vesicles -->
+  <circle cx="560" cy="280" r="5" fill="#ffd93d" opacity="0.7" filter="url(#bio-glow)"/>
+  <circle cx="580" cy="260" r="4" fill="#ffd93d" opacity="0.5" filter="url(#bio-glow)"/>
+  <circle cx="700" cy="290" r="5" fill="#ffd93d" opacity="0.7" filter="url(#bio-glow)"/>
+  <circle cx="720" cy="270" r="4" fill="#ffd93d" opacity="0.5" filter="url(#bio-glow)"/>
+  <circle cx="600" cy="370" r="4" fill="#ffd93d" opacity="0.6" filter="url(#bio-glow)"/>
+  <circle cx="680" cy="365" r="4" fill="#ffd93d" opacity="0.6" filter="url(#bio-glow)"/>
+  <!-- Element organism labels -->
+  <g filter="url(#bio-glow)">
+    <ellipse cx="120" cy="320" rx="45" ry="22" fill="none" stroke="#ff6b35" stroke-width="1.5" opacity="0.7"/>
+    <text x="120" y="326" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ff6b35" font-style="italic">Fire</text>
+  </g>
+  <g filter="url(#bio-glow)">
+    <ellipse cx="1160" cy="320" rx="45" ry="22" fill="none" stroke="#4ecdc4" stroke-width="1.5" opacity="0.7"/>
+    <text x="1160" y="326" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#4ecdc4" font-style="italic">Water</text>
+  </g>
+  <g filter="url(#bio-glow)">
+    <ellipse cx="640" cy="100" rx="45" ry="22" fill="none" stroke="#c4b5fd" stroke-width="1.5" opacity="0.7"/>
+    <text x="640" y="106" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#c4b5fd" font-style="italic">Wind</text>
+  </g>
+  <g filter="url(#bio-glow)">
+    <ellipse cx="640" cy="540" rx="45" ry="22" fill="none" stroke="#a8e06c" stroke-width="1.5" opacity="0.7"/>
+    <text x="640" y="546" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#a8e06c" font-style="italic">Earth</text>
+  </g>
+  <!-- Title -->
+  <text x="640" y="325" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#fff" font-weight="bold" letter-spacing="4" filter="url(#bio-glow)">INFINITE CRAFT</text>
+  <text x="640" y="350" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#a8e06c" font-style="italic" letter-spacing="3" filter="url(#bio-glow)">bio-neural network</text>
+</svg>

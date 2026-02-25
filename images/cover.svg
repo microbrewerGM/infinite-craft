@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="blobGlow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#ff6b35" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ecdc4" stop-opacity="0.85"/>
+      <stop offset="70%" stop-color="#4ecdc4" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#4ecdc4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a8e06c" stop-opacity="0.85"/>
+      <stop offset="70%" stop-color="#a8e06c" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#a8e06c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob4" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.85"/>
+      <stop offset="70%" stop-color="#c4b5fd" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#c4b5fd" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob5" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd93d" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#ffd93d" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ffd93d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="640" fill="#050505"/>
+
+  <!-- Ambient glow on background -->
+  <ellipse cx="300" cy="400" rx="200" ry="150" fill="#ff6b35" opacity="0.05" filter="url(#softGlow)"/>
+  <ellipse cx="900" cy="200" rx="180" ry="160" fill="#4ecdc4" opacity="0.04" filter="url(#softGlow)"/>
+
+  <!-- Large floating blobs -->
+  <ellipse cx="250" cy="180" rx="110" ry="130" fill="url(#blob1)" filter="url(#blobGlow)"/>
+  <ellipse cx="520" cy="380" rx="95" ry="120" fill="url(#blob2)" filter="url(#blobGlow)"/>
+  <ellipse cx="780" cy="150" rx="80" ry="105" fill="url(#blob3)" filter="url(#blobGlow)"/>
+  <ellipse cx="1050" cy="340" rx="100" ry="125" fill="url(#blob4)" filter="url(#blobGlow)"/>
+
+  <!-- Smaller blobs -->
+  <ellipse cx="380" cy="480" rx="55" ry="70" fill="url(#blob5)" filter="url(#blobGlow)"/>
+  <ellipse cx="680" cy="420" rx="60" ry="80" fill="url(#blob1)" filter="url(#blobGlow)" opacity="0.6"/>
+  <ellipse cx="150" cy="450" rx="45" ry="60" fill="url(#blob2)" filter="url(#blobGlow)" opacity="0.5"/>
+  <ellipse cx="950" cy="120" rx="50" ry="65" fill="url(#blob3)" filter="url(#blobGlow)" opacity="0.55"/>
+  <ellipse cx="1180" cy="200" rx="40" ry="55" fill="url(#blob5)" filter="url(#blobGlow)" opacity="0.5"/>
+
+  <!-- Tiny blobs -->
+  <circle cx="440" cy="120" r="25" fill="url(#blob4)" filter="url(#blobGlow)" opacity="0.4"/>
+  <circle cx="850" cy="500" r="30" fill="url(#blob1)" filter="url(#blobGlow)" opacity="0.35"/>
+  <circle cx="1120" cy="480" r="22" fill="url(#blob2)" filter="url(#blobGlow)" opacity="0.4"/>
+  <circle cx="100" cy="300" r="28" fill="url(#blob5)" filter="url(#blobGlow)" opacity="0.3"/>
+
+  <!-- Element emojis floating in blobs -->
+  <text x="250" y="195" font-size="44" text-anchor="middle">🔥</text>
+  <text x="520" y="395" font-size="44" text-anchor="middle">💧</text>
+  <text x="780" y="165" font-size="44" text-anchor="middle">🌍</text>
+  <text x="1050" y="355" font-size="44" text-anchor="middle">💨</text>
+
+  <!-- Title -->
+  <text x="640" y="575" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="54" font-weight="800" fill="white" text-anchor="middle" letter-spacing="16" opacity="0.9">INFINITE CRAFT</text>
+  <text x="640" y="610" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" letter-spacing="8" opacity="0.35">COMBINE EVERYTHING</text>
+</svg>

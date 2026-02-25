@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <filter id="candleGlow">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <filter id="flameGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="candleLight" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#ffd93d" stop-opacity="0.12"/>
+      <stop offset="30%" stop-color="#ff6b35" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flameGrad" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="40%" stop-color="#ffd93d"/>
+      <stop offset="80%" stop-color="white" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="waxGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2520"/>
+      <stop offset="100%" stop-color="#1a1815"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="#060504"/>
+
+  <!-- Candle light radiance -->
+  <circle cx="640" cy="280" r="350" fill="url(#candleLight)"/>
+  <circle cx="640" cy="280" r="200" fill="#ffd93d" opacity="0.03" filter="url(#candleGlow)"/>
+
+  <!-- Candle body -->
+  <rect x="625" y="340" width="30" height="180" rx="2" fill="url(#waxGrad)"/>
+  <!-- Wax drips -->
+  <path d="M625,380 Q620,400 622,420 Q625,425 625,420" fill="#2a2520"/>
+  <path d="M655,360 Q660,380 658,400 Q655,405 655,400" fill="#2a2520"/>
+  <!-- Wick -->
+  <line x1="640" y1="340" x2="640" y2="310" stroke="#333" stroke-width="2"/>
+
+  <!-- Flame -->
+  <path d="M640,310 Q630,280 635,260 Q638,245 640,240 Q642,245 645,260 Q650,280 640,310Z" fill="url(#flameGrad)" filter="url(#flameGlow)" opacity="0.95"/>
+  <!-- Inner flame -->
+  <path d="M640,305 Q635,285 637,270 Q639,260 640,258 Q641,260 643,270 Q645,285 640,305Z" fill="white" opacity="0.5"/>
+
+  <!-- Light illuminating element cards floating nearby -->
+  <!-- Fire card -->
+  <g opacity="0.7">
+    <rect x="350" y="250" width="100" height="120" rx="10" fill="white" fill-opacity="0.04" stroke="#ff6b35" stroke-opacity="0.2" stroke-width="1"/>
+    <text x="400" y="310" font-size="40" text-anchor="middle">🔥</text>
+    <text x="400" y="355" font-family="Arial, sans-serif" font-size="11" fill="#ff6b35" text-anchor="middle" opacity="0.6">Fire</text>
+  </g>
+  <!-- Water card -->
+  <g opacity="0.6">
+    <rect x="460" y="180" width="100" height="120" rx="10" fill="white" fill-opacity="0.03" stroke="#4ecdc4" stroke-opacity="0.15" stroke-width="1"/>
+    <text x="510" y="240" font-size="40" text-anchor="middle">💧</text>
+    <text x="510" y="285" font-family="Arial, sans-serif" font-size="11" fill="#4ecdc4" text-anchor="middle" opacity="0.5">Water</text>
+  </g>
+  <!-- Earth card -->
+  <g opacity="0.6">
+    <rect x="720" y="190" width="100" height="120" rx="10" fill="white" fill-opacity="0.03" stroke="#a8e06c" stroke-opacity="0.15" stroke-width="1"/>
+    <text x="770" y="250" font-size="40" text-anchor="middle">🌍</text>
+    <text x="770" y="295" font-family="Arial, sans-serif" font-size="11" fill="#a8e06c" text-anchor="middle" opacity="0.5">Earth</text>
+  </g>
+  <!-- Wind card -->
+  <g opacity="0.55">
+    <rect x="830" y="260" width="100" height="120" rx="10" fill="white" fill-opacity="0.03" stroke="#c4b5fd" stroke-opacity="0.15" stroke-width="1"/>
+    <text x="880" y="320" font-size="40" text-anchor="middle">💨</text>
+    <text x="880" y="365" font-family="Arial, sans-serif" font-size="11" fill="#c4b5fd" text-anchor="middle" opacity="0.5">Wind</text>
+  </g>
+
+  <!-- Candle holder / surface -->
+  <ellipse cx="640" cy="520" rx="60" ry="8" fill="#1a1815" stroke="#2a2520" stroke-width="1"/>
+  <rect x="615" y="516" width="50" height="6" rx="3" fill="#1a1815"/>
+
+  <!-- Title -->
+  <text x="640" y="590" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="800" fill="#ffd93d" text-anchor="middle" letter-spacing="16" opacity="0.85" filter="url(#flameGlow)">INFINITE CRAFT</text>
+  <text x="640" y="622" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#ff6b35" text-anchor="middle" letter-spacing="6" opacity="0.3">ILLUMINATED</text>
+</svg>
