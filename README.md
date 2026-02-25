@@ -5,122 +5,114 @@
 </p>
 
 <p align="center">
-  <a href="https://infinite-craft.phenomsec.com"><strong>Live Dashboard</strong></a>
+  <a href="https://infinite-craft.phenomsec.com"><strong>Live Dashboard</strong></a> · <a href="HOWTO.md">Deploy Your Own</a> · <a href="DEPLOY.md">Full Deployment Guide</a>
 </p>
 
-A fully serverless element-combination explorer for [Infinite Craft](https://neal.fun/infinite-craft/) by Neal Agarwal. Self-coordinating Lambda workers autonomously discover new elements, persist results to DynamoDB, and serve a real-time dashboard via CloudFront.
+---
 
-## How It Works
+Start with four elements. Combine everything. See how far the rabbit hole goes.
 
-Infinite Craft starts with four base elements (Water, Fire, Wind, Earth) and lets you combine any two to create new ones. The API is deterministic and tracks global "first discoveries."
+[Infinite Craft](https://neal.fun/infinite-craft/) by Neal Agarwal gives you **Water**, **Fire**, **Wind**, and **Earth**. Combine any two and something new appears. Water + Fire = Steam. Earth + Wind = Dust. Steam + Earth = Mud. Mud + Fire = Brick. Brick + Brick = Wall...
 
-This project automates exploration:
+**But what happens if you just... keep going?**
 
-1. **Worker Lambdas** fire on an EventBridge schedule (every 4 hours)
-2. Each worker loads known elements from DynamoDB, generates untried pairs using a rotating strategy (BFS, random, anchor sweep), and calls the neal.fun API
-3. Results are saved with conditional writes to prevent duplicate work across concurrent workers
-4. A **read-only API Lambda** serves the dashboard with current stats, element lists, dependency chains, and worker run history
-5. A **static dashboard** (single HTML file) visualizes the exploration graph, analytics, and worker activity
+This project answers that question with an army of autonomous serverless workers that explore the combinatorial space 24/7, running on AWS Free Tier for $0/month.
 
-## Architecture
+## The Numbers (So Far)
 
-```
-EventBridge (rate 4h)
-    |
-    v
-Worker Lambda ──> DynamoDB (discoveries, recipes, tried-pairs, worker-runs)
-                      ^
-                      |
-CloudFront ──> API Lambda (read-only)
-    |
-    v
-S3 (dashboard/index.html)
-```
+| | |
+|---|---|
+| **8,579** | elements discovered |
+| **48,847** | recipes cataloged |
+| **506** | first-ever global discoveries |
+| **63** | deepest generation reached |
+| **$0.00** | monthly AWS cost |
 
-All infrastructure is defined in a single SAM template. Total cost: **$0/month** on AWS Free Tier.
+The workers pulse every 4 hours, trying new combinations and logging everything. The element space appears to be effectively infinite — every session finds new things.
 
-## Features
+## Down the Rabbit Hole
 
-- **D3.js force-directed graph** with clickable nodes, generation coloring, and 4 node-size modes
-- **Full dependency chain viewer** with critical path highlighting and build order
-- **Analytics dashboard** with generation distribution, name length distribution, and top ingredients charts
-- **First discoveries tracker** with persistent discovery numbering
-- **Worker run history** with expandable detail cards and efficiency metrics
-- **Server-side search** across the full element database
-- **AIMD rate limiting** that adapts to API throttling
+It starts normal enough. Water + Fire = Steam. Sure. Earth + Fire = Lava. Fine.
 
-## Project Structure
+Then things get... creative.
 
-```
-template.yaml              SAM infrastructure (Lambda, DynamoDB, CloudFront, API Gateway, etc.)
-samconfig.toml.example     Deployment config template
-.env.example               Environment variable defaults
-DEPLOY.md                  Detailed deployment guide
-functions/
-  worker/handler.py        Self-coordinating exploration worker
-  api/handler.py           Read-only API for the dashboard
-dashboard/
-  index.html               Single-page dashboard (vanilla JS + D3.js)
-scripts/
-  deploy-dashboard.sh      S3 sync + CloudFront invalidation
-  backup-restore.py        DynamoDB backup and restore
-iam/
-  deployer-policy.json     Least-privilege IAM policy for CI/CD deployer
-  setup-deployer.sh        IAM user creation script
-```
+| Recipe | Result | Gen |
+|--------|--------|:---:|
+| Dusty Wind + Swamp Thing | Dusty Swamp Thing | 8 |
+| Hawaiian Cider + Apple Oedipus | Apple Oedipus Rex | 7 |
+| Soup-er Nova + Luke Skywalker | Luke Soup-er Nova | 9 |
+| Iphone 15 Pro Max + Apollo 13 | Apollo 15 Pro Max | 12 |
+| Landscape + Self-Portrait | Landscape with a Corpse | 12 |
+| Steampunk Optimus Prime + Motown | Steamotown Prime | 15 |
+| Anubis + Brexit | Anubexit | 33 |
+| Chocolate Gandalf + Liberia | Chocolate Jesus | 43 |
+| Pink Crunk + Bumblebee Conch | Pink Bumblebee Conch | 60 |
 
-## Deployment
+Generation 60. That means it took 60 layers of combination, building on building on building, to reach "Pink Bumblebee Conch." Starting from water.
 
-### Prerequisites
+## First Discoveries
 
-- AWS CLI v2 with configured credentials
-- [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
-- Python 3.12+
+When you find an element that no one in the world has ever created before, Infinite Craft marks it with a special badge. Our explorers have found **506** of these.
 
-### Quick Start
+Some highlights we discovered first:
 
-```bash
-# Set up environment
-cp .env.example .env
-# Edit .env: set your AWS profile, region, etc.
+| Discovery | Recipe | Gen |
+|-----------|--------|:---:|
+| Darth Icewind | iWind + Darth Iceberg | 5 |
+| Steamotown Prime | Steampunk Optimus Prime + Motown | 15 |
+| Shadow Celtics | Boston Celtics + Shadow Mario | 26 |
+| Bumblebee Conch | Conch + Bumblebee Shark | 39 |
+| Gandalf the Spartacus | Gandalf Best + Spartacus | 41 |
+| Pink Bumblebee Conch | Pink Crunk + Bumblebee Conch | 60 |
 
-# Copy and edit the SAM config
-cp samconfig.toml.example samconfig.toml
-# Edit samconfig.toml: set your AWS profile, domain, and certificate ARN
+Nobody had ever combined "Gandalf Best" with "Spartacus" before us. We live in the best timeline.
 
-# Build and deploy
-sam build
-sam deploy
+## The Most Prolific Ingredients
 
-# Deploy the dashboard
-./scripts/deploy-dashboard.sh
-```
+Some elements are the glue that holds the craft universe together:
 
-See [DEPLOY.md](DEPLOY.md) for the full walkthrough including ACM certificate setup and DNS configuration.
+| Element | Recipes | Gen |
+|---------|:-------:|:---:|
+| Fire | 785 | 0 |
+| Water | 533 | 0 |
+| Earth | 516 | 0 |
+| Wind | 383 | 0 |
+| Dusty Wind | 145 | 1 |
+| Painter | 135 | 1 |
+| Drumstick | 121 | 2 |
+| Malaria | 107 | 4 |
+| Crocodile | 105 | 4 |
+| Aphrodite | 78 | 4 |
 
-## Configuration
+"Malaria" is in the top 10 most useful ingredients. Somehow it combines with 107 other things to make new elements. Don't ask.
 
-Runtime config lives in SSM Parameter Store and can be changed without redeploying:
+## How Deep Does It Go?
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `/infcft/{stage}/strategy` | `bfs` | Exploration strategy: `bfs`, `random`, `anchor`, `rotate` |
-| `/infcft/{stage}/rate-limit-delay` | `3.0` | Initial delay between API calls (seconds) |
-| `/infcft/{stage}/max-duration` | `840` | Max worker runtime (seconds, 14 min) |
-| `/infcft/{stage}/workers-per-pulse` | `4` | Concurrent workers per scheduled pulse |
+Elements have **generations** — how many combination steps it took to create them from the four base elements. Generation 0 is Water/Fire/Wind/Earth. Generation 1 is everything you can make directly from those.
 
-```bash
-aws ssm put-parameter --name "/infcft/${STAGE}/strategy" --value "rotate" --type String --overwrite
-```
+Our deepest discovery so far: **Generation 63**.
 
-## Security
+The generation distribution has a fascinating double-peak pattern — a spike at generation 1 (simple combinations), a valley around generation 15-20, and then a second wave of complex elements stretching out to generation 63. The element space doesn't peter out — it opens back up.
 
-- API Gateway: GET-only, throttled (100 burst / 50 sustained)
-- S3: Origin Access Control only, no public access
-- Lambda IAM: worker has CRUD, API has read-only with explicit write deny
-- DynamoDB: conditional writes prevent duplicate work
-- CloudFront: HSTS, CSP, X-Frame-Options, TLS 1.2 minimum
-- Top-level exception handling in both Lambdas (no stack trace leaks)
+## The Dashboard
+
+The [live dashboard](https://infinite-craft.phenomsec.com) shows everything in real time:
+
+- **Force-directed graph** — see how elements connect, colored by generation
+- **Dependency chains** — trace any element back to its Water/Fire/Wind/Earth origins
+- **Analytics** — generation distribution, name lengths, most-used ingredients
+- **Worker activity** — watch the explorers work in near real-time
+- **Search** — look up any element across the full database
+
+## Under the Hood
+
+Fully serverless on AWS. No servers to manage, no bills to pay.
+
+Self-coordinating Lambda workers fire every 4 hours, pick a strategy (breadth-first, random, or anchor sweep), try new element combinations against the neal.fun API, and save everything to DynamoDB. A read-only API serves the dashboard through CloudFront.
+
+The whole thing runs on AWS Free Tier. Zero dollars. Forever.
+
+Want to run your own? See [HOWTO.md](HOWTO.md) for setup instructions.
 
 ## License
 
