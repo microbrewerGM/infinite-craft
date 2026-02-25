@@ -1,0 +1,628 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Infinite Craft Pulse Explorer — Zero-dollar serverless deployment.
+  Self-coordinating Lambda workers explore element combinations,
+  persist to DynamoDB, served via read-only CloudFront dashboard.
+
+Parameters:
+  Stage:
+    Type: String
+    Default: dev
+    AllowedValues: [dev, prod]
+    Description: Deployment stage (dev uses CloudFront domain, prod uses custom domain)
+  DomainName:
+    Type: String
+    Default: ''
+    Description: Custom domain for prod (e.g. app.example.com). Required when Stage=prod.
+  CertificateArn:
+    Type: String
+    Default: ''
+    Description: ACM certificate ARN in us-east-1 for the custom domain. Required when Stage=prod.
+
+Conditions:
+  IsProd: !Equals [!Ref Stage, prod]
+  HasCustomDomain: !And
+    - !Condition IsProd
+    - !Not [!Equals [!Ref DomainName, '']]
+    - !Not [!Equals [!Ref CertificateArn, '']]
+
+Globals:
+  Function:
+    Runtime: python3.12
+    MemorySize: 256
+    Timeout: 120
+    Tags:
+      app: InfiniteCraft
+    Environment:
+      Variables:
+        DISCOVERIES_TABLE: !Ref DiscoveriesTable
+        RECIPES_TABLE: !Ref RecipesTable
+        TRIED_PAIRS_TABLE: !Ref TriedPairsTable
+        WORKER_RUNS_TABLE: !Ref WorkerRunsTable
+        STAGE: !Ref Stage
+
+Resources:
+
+  # ============================================================
+  # DynamoDB Tables (On-Demand billing — Free Tier eligible)
+  # ============================================================
+
+  DiscoveriesTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: !Sub infcft-discoveries-${Stage}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: element
+          AttributeType: S
+      KeySchema:
+        - AttributeName: element
+          KeyType: HASH
+      SSESpecification:
+        SSEEnabled: true
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      Tags:
+        - Key: app
+          Value: InfiniteCraft
+
+  RecipesTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: !Sub infcft-recipes-${Stage}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pair_key
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pair_key
+          KeyType: HASH
+      SSESpecification:
+        SSEEnabled: true
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      Tags:
+        - Key: app
+          Value: InfiniteCraft
+
+  TriedPairsTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: !Sub infcft-tried-pairs-${Stage}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pair_key
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pair_key
+          KeyType: HASH
+      SSESpecification:
+        SSEEnabled: true
+      Tags:
+        - Key: app
+          Value: InfiniteCraft
+
+  WorkerRunsTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: !Sub infcft-worker-runs-${Stage}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: run_id
+          AttributeType: S
+        - AttributeName: started_at
+          AttributeType: S
+      KeySchema:
+        - AttributeName: run_id
+          KeyType: HASH
+        - AttributeName: started_at
+          KeyType: RANGE
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+      SSESpecification:
+        SSEEnabled: true
+      Tags:
+        - Key: app
+          Value: InfiniteCraft
+
+  # ============================================================
+  # SSM Parameters (runtime config — no redeploy to change)
+  # SECURITY: These are non-sensitive config values only.
+  # Never store secrets (API keys, tokens) here — use SecureString
+  # parameters created via CLI, not CloudFormation.
+  # ============================================================
+
+  ScheduleParam:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub /infcft/${Stage}/schedule
+      Type: String
+      Value: 'rate(4 hours)'
+      Description: EventBridge schedule for worker pulses
+      Tags:
+        app: InfiniteCraft
+
+  WorkersPerPulseParam:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub /infcft/${Stage}/workers-per-pulse
+      Type: String
+      Value: '4'
+      Description: Number of concurrent Lambda workers per pulse
+      Tags:
+        app: InfiniteCraft
+
+  StrategyParam:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub /infcft/${Stage}/strategy
+      Type: String
+      Value: bfs
+      Description: Exploration strategy (bfs, anchor, random, deep)
+      Tags:
+        app: InfiniteCraft
+
+  RateLimitDelayParam:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub /infcft/${Stage}/rate-limit-delay
+      Type: String
+      Value: '3.0'
+      Description: Initial rate limit delay in seconds
+      Tags:
+        app: InfiniteCraft
+
+  MaxDurationParam:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub /infcft/${Stage}/max-duration
+      Type: String
+      Value: '840'
+      Description: Max worker execution time in seconds (14 min, leaves 1 min buffer)
+      Tags:
+        app: InfiniteCraft
+
+  # ============================================================
+  # IAM Roles — Explicit least-privilege (secure by design)
+  # ============================================================
+
+  WorkerExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub infcft-worker-role-${Stage}
+      Tags:
+        - Key: app
+          Value: InfiniteCraft
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: WorkerDynamoDBAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: DiscoveriesScanAndWrite
+                Effect: Allow
+                Action:
+                  - dynamodb:Scan
+                  - dynamodb:PutItem
+                  - dynamodb:GetItem
+                Resource: !GetAtt DiscoveriesTable.Arn
+              - Sid: RecipesWrite
+                Effect: Allow
+                Action: dynamodb:PutItem
+                Resource: !GetAtt RecipesTable.Arn
+              - Sid: TriedPairsScanAndWrite
+                Effect: Allow
+                Action:
+                  - dynamodb:Scan
+                  - dynamodb:PutItem
+                Resource: !GetAtt TriedPairsTable.Arn
+              - Sid: WorkerRunsWrite
+                Effect: Allow
+                Action: dynamodb:PutItem
+                Resource: !GetAtt WorkerRunsTable.Arn
+        - PolicyName: WorkerSSMRead
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ssm:GetParameter
+                  - ssm:GetParameters
+                  - ssm:GetParametersByPath
+                Resource: !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/infcft/${Stage}/*
+        - PolicyName: WorkerLogs
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: CreateLogGroup
+                Effect: Allow
+                Action: logs:CreateLogGroup
+                Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/infcft-worker-${Stage}
+              - Sid: WriteLogEvents
+                Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/infcft-worker-${Stage}:*
+
+  ApiExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub infcft-api-role-${Stage}
+      Tags:
+        - Key: app
+          Value: InfiniteCraft
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: ApiDynamoDBReadOnly
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: DynamoDBReadOnly
+                Effect: Allow
+                Action:
+                  - dynamodb:GetItem
+                  - dynamodb:Query
+                  - dynamodb:Scan
+                  - dynamodb:BatchGetItem
+                Resource:
+                  - !GetAtt DiscoveriesTable.Arn
+                  - !GetAtt RecipesTable.Arn
+                  - !GetAtt WorkerRunsTable.Arn
+              - Sid: DenyDynamoDBWrite
+                Effect: Deny
+                Action:
+                  - dynamodb:PutItem
+                  - dynamodb:UpdateItem
+                  - dynamodb:DeleteItem
+                  - dynamodb:BatchWriteItem
+                Resource: '*'
+        - PolicyName: ApiLogs
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: CreateLogGroup
+                Effect: Allow
+                Action: logs:CreateLogGroup
+                Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/infcft-api-${Stage}
+              - Sid: WriteLogEvents
+                Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/infcft-api-${Stage}:*
+
+  # ============================================================
+  # Worker Lambda (self-coordinating, EventBridge triggered)
+  # ============================================================
+
+  WorkerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub infcft-worker-${Stage}
+      Handler: handler.lambda_handler
+      CodeUri: functions/worker/
+      Timeout: 900  # 15 min max
+      MemorySize: 256
+      Role: !GetAtt WorkerExecutionRole.Arn
+      Environment:
+        Variables:
+          SSM_PREFIX: !Sub /infcft/${Stage}
+      Events:
+        ScheduledPulse:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 hours)
+            Description: Periodic exploration pulse
+            Enabled: true
+            Input: '{"source": "scheduled"}'
+
+  # ============================================================
+  # API Lambda (read-only DynamoDB access)
+  # ============================================================
+
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub infcft-api-${Stage}
+      Handler: handler.lambda_handler
+      CodeUri: functions/api/
+      Timeout: 10
+      MemorySize: 128
+      Role: !GetAtt ApiExecutionRole.Arn
+      Environment:
+        Variables:
+          ALLOWED_ORIGINS: !If
+            - HasCustomDomain
+            - !Sub 'https://${DomainName}'
+            - '*'  # Dev: allow all origins (CloudFront domain not known at deploy time)
+      Events:
+        GetState:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGateway
+            Path: /api/state
+            Method: GET
+        GetDiscoveries:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGateway
+            Path: /api/discoveries
+            Method: GET
+        GetDiscoveryDetail:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGateway
+            Path: /api/discoveries/{element}
+            Method: GET
+        GetChain:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGateway
+            Path: /api/chain/{element}
+            Method: GET
+        GetFirstDiscoveries:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGateway
+            Path: /api/first-discoveries
+            Method: GET
+        GetWorkers:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGateway
+            Path: /api/workers
+            Method: GET
+
+  # ============================================================
+  # API Gateway (GET-only, throttled)
+  # ============================================================
+
+  ApiGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub infcft-api-${Stage}
+      StageName: !Ref Stage
+      Tags:
+        app: InfiniteCraft
+      Cors:
+        AllowMethods: "'GET,OPTIONS'"
+        AllowHeaders: "'Content-Type'"
+        AllowOrigin: "'*'"  # Lambda enforces specific origin via ALLOWED_ORIGINS env var
+      MethodSettings:
+        - ResourcePath: /*
+          HttpMethod: '*'
+          ThrottlingBurstLimit: 100
+          ThrottlingRateLimit: 50
+
+  # ============================================================
+  # S3 Bucket (dashboard static hosting, OAC only)
+  # ============================================================
+
+  DashboardBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub infcft-dashboard-${Stage}-${AWS::AccountId}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      Tags:
+        - Key: app
+          Value: InfiniteCraft
+
+  # CloudFront access logging bucket:
+  # Create manually, then uncomment Logging block in CloudFrontDistribution below.
+  # See README for instructions.
+
+  DashboardBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref DashboardBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowCloudFrontOAC
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action: s3:GetObject
+            Resource: !Sub '${DashboardBucket.Arn}/*'
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub 'arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}'
+
+  # ============================================================
+  # CloudFront Distribution + OAC
+  # ============================================================
+
+  CloudFrontOAC:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: !Sub infcft-oac-${Stage}
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+
+  ResponseHeadersPolicy:
+    Type: AWS::CloudFront::ResponseHeadersPolicy
+    Properties:
+      ResponseHeadersPolicyConfig:
+        Name: !Sub infcft-security-headers-${Stage}
+        SecurityHeadersConfig:
+          StrictTransportSecurity:
+            AccessControlMaxAgeSec: 31536000
+            IncludeSubdomains: true
+            Override: true
+            Preload: true
+          ContentTypeOptions:
+            Override: true
+          FrameOptions:
+            FrameOption: DENY
+            Override: true
+          XSSProtection:
+            ModeBlock: true
+            Override: true
+            Protection: true
+          ContentSecurityPolicy:
+            ContentSecurityPolicy: >-
+              default-src 'self';
+              script-src 'self' 'unsafe-inline' https://d3js.org;
+              style-src 'self' 'unsafe-inline';
+              connect-src 'self';
+              img-src 'self' data:;
+              font-src 'self'
+            Override: true
+
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      Tags:
+        - Key: app
+          Value: InfiniteCraft
+      DistributionConfig:
+        Enabled: true
+        DefaultRootObject: index.html
+        HttpVersion: http2and3
+        PriceClass: PriceClass_100  # Cheapest — US/EU/Asia only
+        # Logging: (enable after creating access logs bucket manually)
+        #   Bucket: !Sub 'infcft-access-logs-${Stage}-${AWS::AccountId}.s3.amazonaws.com'
+        #   IncludeCookies: false
+        #   Prefix: cloudfront/
+        Comment: !Sub 'Infinite Craft Dashboard (${Stage})'
+        Aliases: !If
+          - HasCustomDomain
+          - [!Ref DomainName]
+          - !Ref AWS::NoValue
+        ViewerCertificate: !If
+          - HasCustomDomain
+          - AcmCertificateArn: !Ref CertificateArn
+            SslSupportMethod: sni-only
+            MinimumProtocolVersion: TLSv1.2_2021
+          - CloudFrontDefaultCertificate: true
+            MinimumProtocolVersion: TLSv1.2_2021
+        Origins:
+          - Id: S3Origin
+            DomainName: !GetAtt DashboardBucket.RegionalDomainName
+            OriginAccessControlId: !Ref CloudFrontOAC
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+          - Id: ApiOrigin
+            DomainName: !Sub '${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com'
+            OriginPath: !Sub '/${Stage}'
+            CustomOriginConfig:
+              HTTPSPort: 443
+              OriginProtocolPolicy: https-only
+              OriginSSLProtocols: [TLSv1.2]
+        DefaultCacheBehavior:
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6  # CachingOptimized
+          ResponseHeadersPolicyId: !Ref ResponseHeadersPolicy
+          Compress: true
+        CacheBehaviors:
+          - PathPattern: /api/*
+            TargetOriginId: ApiOrigin
+            ViewerProtocolPolicy: redirect-to-https
+            CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad  # CachingDisabled — Lambda sets Cache-Control headers for client caching
+            OriginRequestPolicyId: b689b0a8-53d0-40ab-baf2-68738e2966ac  # AllViewerExceptHostHeader
+            AllowedMethods: [GET, HEAD, OPTIONS]
+            CachedMethods: [GET, HEAD]
+            ResponseHeadersPolicyId: !Ref ResponseHeadersPolicy
+            Compress: true
+
+  # ============================================================
+  # CloudWatch Log Groups (30-day retention for security forensics)
+  # ============================================================
+
+  WorkerLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/infcft-worker-${Stage}
+      RetentionInDays: 30
+      Tags:
+        - Key: app
+          Value: InfiniteCraft
+
+  ApiLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/infcft-api-${Stage}
+      RetentionInDays: 30
+      Tags:
+        - Key: app
+          Value: InfiniteCraft
+
+Outputs:
+  CloudFrontDomain:
+    Description: CloudFront distribution domain name
+    Value: !GetAtt CloudFrontDistribution.DomainName
+
+  CloudFrontDistributionId:
+    Description: CloudFront distribution ID (for invalidations)
+    Value: !Ref CloudFrontDistribution
+
+  ApiUrl:
+    Description: API Gateway endpoint URL
+    Value: !Sub 'https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/${Stage}'
+
+  DashboardUrl:
+    Description: Dashboard URL
+    Value: !If
+      - HasCustomDomain
+      - !Sub 'https://${DomainName}'
+      - !Sub 'https://${CloudFrontDistribution.DomainName}'
+
+  DashboardBucketName:
+    Description: S3 bucket for dashboard files
+    Value: !Ref DashboardBucket
+
+  WorkerFunctionArn:
+    Description: Worker Lambda ARN
+    Value: !GetAtt WorkerFunction.Arn
+
+  ApiFunctionArn:
+    Description: API Lambda ARN
+    Value: !GetAtt ApiFunction.Arn
+
+  DiscoveriesTableName:
+    Description: DynamoDB discoveries table
+    Value: !Ref DiscoveriesTable
+
+  RecipesTableName:
+    Description: DynamoDB recipes table
+    Value: !Ref RecipesTable
+
+  ACMCertInstructions:
+    Condition: IsProd
+    Description: >
+      For prod deployment, create an ACM certificate in us-east-1 for your domain,
+      validate via DNS, then pass the ARN as CertificateArn parameter.
+    Value: !Sub >-
+      Run: aws acm request-certificate --domain-name ${DomainName}
+      --validation-method DNS --region us-east-1
+      Then add the CNAME validation record in your DNS provider.

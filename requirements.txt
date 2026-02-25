@@ -1,0 +1,3 @@
+# Lambda functions use only stdlib + boto3 (provided in Lambda runtime).
+# This file is for local development and the migration script.
+boto3>=1.34.0,<2.0.0

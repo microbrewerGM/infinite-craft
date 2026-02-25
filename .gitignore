@@ -1,0 +1,32 @@
+# SAM build artifacts
+.aws-sam/
+
+# Deployment config (contains account-specific values)
+samconfig.toml
+packaged.yaml
+.env
+
+# Development local data
+craft_files/
+
+# Claude Code project data
+.claude/
+CLAUDE.md
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Tools
+.playwright-mcp/
+.forge/
+
+# Backups (large data exports)
+backups/
+
+# Repo management (private repo only)
+.gitignore.public
+.github/

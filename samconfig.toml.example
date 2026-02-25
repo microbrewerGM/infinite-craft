@@ -1,0 +1,12 @@
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "infcft-prod"
+resolve_s3 = true
+s3_prefix = "infcft-sam"
+region = "YOUR_REGION"
+confirm_changeset = true
+capabilities = "CAPABILITY_NAMED_IAM"
+profile = "your-aws-profile"
+parameter_overrides = "Stage=prod DomainName=your-domain.example.com CertificateArn=arn:aws:acm:us-east-1:YOUR_ACCOUNT_ID:certificate/YOUR_CERT_ID"
+tags = "app=InfiniteCraft"
