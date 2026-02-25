@@ -75,7 +75,7 @@ Runtime config lives in SSM Parameter Store and can be changed without redeployi
 | `/infcft/{stage}/strategy` | `bfs` | Exploration strategy: `bfs`, `random`, `anchor`, `rotate` |
 | `/infcft/{stage}/rate-limit-delay` | `3.0` | Initial delay between API calls (seconds) |
 | `/infcft/{stage}/max-duration` | `840` | Max worker runtime (seconds, 14 min) |
-| `/infcft/{stage}/workers-per-pulse` | `4` | Concurrent workers per scheduled pulse |
+| `/infcft/{stage}/workers-per-pulse` | `1` | Concurrent workers per scheduled pulse |
 
 ```bash
 aws ssm put-parameter --name "/infcft/${STAGE}/strategy" --value "rotate" --type String --overwrite

@@ -153,7 +153,7 @@ Resources:
     Properties:
       Name: !Sub /infcft/${Stage}/workers-per-pulse
       Type: String
-      Value: '4'
+      Value: '1'
       Description: Number of concurrent Lambda workers per pulse
       Tags:
         app: InfiniteCraft
@@ -163,8 +163,8 @@ Resources:
     Properties:
       Name: !Sub /infcft/${Stage}/strategy
       Type: String
-      Value: bfs
-      Description: Exploration strategy (bfs, anchor, random, deep)
+      Value: rotate
+      Description: Exploration strategy (bfs, anchor, random, rotate)
       Tags:
         app: InfiniteCraft
 
@@ -228,9 +228,11 @@ Resources:
                   - dynamodb:Scan
                   - dynamodb:PutItem
                 Resource: !GetAtt TriedPairsTable.Arn
-              - Sid: WorkerRunsWrite
+              - Sid: WorkerRunsAccess
                 Effect: Allow
-                Action: dynamodb:PutItem
+                Action:
+                  - dynamodb:PutItem
+                  - dynamodb:Scan
                 Resource: !GetAtt WorkerRunsTable.Arn
         - PolicyName: WorkerSSMRead
           PolicyDocument:

@@ -81,7 +81,7 @@ def _load_config():
         "strategy": "rotate",
         "rate_limit_delay": 3.0,
         "max_duration": 840,
-        "workers_per_pulse": 4,
+        "workers_per_pulse": 1,
     }
     try:
         resp = ssm.get_parameters_by_path(

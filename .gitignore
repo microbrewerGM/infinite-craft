@@ -29,6 +29,7 @@ backups/
 
 # Private content
 blogs/
+docs/support_manual/
 
 # Repo management (private repo only)
 .gitignore.public
