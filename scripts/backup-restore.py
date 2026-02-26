@@ -51,8 +51,6 @@ def _load_env():
                     os.environ.setdefault(key.strip(), value.strip())
 
 
-_load_env()
-
 # ── Table configuration ─────────────────────────────────────
 
 TABLES = {
@@ -202,7 +200,6 @@ def restore_table(dynamo, table_name, input_path, dry_run=False):
 
     table = dynamo.Table(table_name)
     written = 0
-    skipped = 0
 
     with table.batch_writer() as writer:
         for i, item in enumerate(items):
@@ -365,6 +362,7 @@ def main():
     sub.add_parser("list", help="List available backups")
 
     args = parser.parse_args()
+    _load_env()
 
     if args.command == "backup":
         run_backup(args)

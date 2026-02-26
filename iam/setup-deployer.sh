@@ -10,23 +10,37 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ENV_FILE="${SCRIPT_DIR}/../.env"
 
-# Load .env if present
+# Load .env if present (line-by-line parsing, no eval/source)
 if [ -f "$ENV_FILE" ]; then
-  set -a
-  # shellcheck disable=SC1090
-  source "$ENV_FILE"
-  set +a
+  while IFS= read -r line || [ -n "$line" ]; do
+    line="${line%%#*}"
+    if [[ "$line" =~ ^([A-Za-z_][A-Za-z0-9_]*)=(.*)$ ]]; then
+      key="${BASH_REMATCH[1]}"
+      val="${BASH_REMATCH[2]}"
+      val="${val%\"}" ; val="${val#\"}"
+      val="${val%\'}" ; val="${val#\'}"
+      export "${key}=${val}"
+    fi
+  done < "$ENV_FILE"
 fi
 
 ADMIN_PROFILE="${1:?Usage: $0 <admin-profile>}"
 POLICY_NAME="infcft-deployer"
 USER_NAME="${DEPLOYER_USER:-infcft-deployer}"
 ACCOUNT_ID=$(aws sts get-caller-identity --profile "$ADMIN_PROFILE" --query Account --output text)
+REGION="${AWS_REGION:-us-west-1}"
 POLICY_ARN="arn:aws:iam::${ACCOUNT_ID}:policy/${POLICY_NAME}"
 
 echo "==> Account: $ACCOUNT_ID"
+echo "==> Region: $REGION"
 echo "==> User: $USER_NAME"
 echo "==> Policy: $POLICY_NAME"
+
+# Substitute placeholders in policy template
+RESOLVED_POLICY=$(sed \
+  -e "s/YOUR_ACCOUNT_ID/${ACCOUNT_ID}/g" \
+  -e "s/YOUR_REGION/${REGION}/g" \
+  "${SCRIPT_DIR}/deployer-policy.json")
 
 # Check if policy exists
 if aws iam get-policy --policy-arn "$POLICY_ARN" --profile "$ADMIN_PROFILE" 2>/dev/null; then
@@ -42,14 +56,14 @@ if aws iam get-policy --policy-arn "$POLICY_ARN" --profile "$ADMIN_PROFILE" 2>/d
     fi
     aws iam create-policy-version \
         --policy-arn "$POLICY_ARN" \
-        --policy-document "file://${SCRIPT_DIR}/deployer-policy.json" \
+        --policy-document "$RESOLVED_POLICY" \
         --set-as-default \
         --profile "$ADMIN_PROFILE"
 else
     echo "==> Creating policy..."
     aws iam create-policy \
         --policy-name "$POLICY_NAME" \
-        --policy-document "file://${SCRIPT_DIR}/deployer-policy.json" \
+        --policy-document "$RESOLVED_POLICY" \
         --description "Least-privilege deployer policy for Infinite Craft serverless stack" \
         --profile "$ADMIN_PROFILE"
 fi

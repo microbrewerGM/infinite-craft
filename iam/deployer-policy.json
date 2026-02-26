@@ -95,22 +95,9 @@
         "lambda:DeleteFunctionConcurrency",
         "lambda:AddPermission",
         "lambda:RemovePermission",
-        "lambda:GetPolicy",
-        "lambda:InvokeFunction"
+        "lambda:GetPolicy"
       ],
       "Resource": "arn:aws:lambda:YOUR_REGION:YOUR_ACCOUNT_ID:function:infcft-*"
-    },
-    {
-      "Sid": "LambdaEventSourceMapping",
-      "Effect": "Allow",
-      "Action": [
-        "lambda:CreateEventSourceMapping",
-        "lambda:DeleteEventSourceMapping",
-        "lambda:GetEventSourceMapping",
-        "lambda:ListEventSourceMappings",
-        "lambda:UpdateEventSourceMapping"
-      ],
-      "Resource": "*"
     },
     {
       "Sid": "APIGateway",
@@ -145,19 +132,20 @@
         "dynamodb:UpdateContinuousBackups",
         "dynamodb:DescribeContinuousBackups"
       ],
-      "Resource": "arn:aws:dynamodb:YOUR_REGION:YOUR_ACCOUNT_ID:table/infcft-*"
+      "Resource": [
+        "arn:aws:dynamodb:YOUR_REGION:YOUR_ACCOUNT_ID:table/infcft-*",
+        "arn:aws:dynamodb:YOUR_REGION:YOUR_ACCOUNT_ID:table/infcft-*/index/*"
+      ]
     },
     {
-      "Sid": "DynamoDBDataAccess",
+      "Sid": "CloudWatchAlarms",
       "Effect": "Allow",
       "Action": [
-        "dynamodb:PutItem",
-        "dynamodb:GetItem",
-        "dynamodb:Scan",
-        "dynamodb:Query",
-        "dynamodb:BatchWriteItem"
+        "cloudwatch:PutMetricAlarm",
+        "cloudwatch:DeleteAlarms",
+        "cloudwatch:DescribeAlarms"
       ],
-      "Resource": "arn:aws:dynamodb:YOUR_REGION:YOUR_ACCOUNT_ID:table/infcft-*"
+      "Resource": "arn:aws:cloudwatch:YOUR_REGION:YOUR_ACCOUNT_ID:alarm:infcft-*"
     },
     {
       "Sid": "IAMRolesForLambda",
@@ -258,7 +246,6 @@
       "Action": [
         "acm:RequestCertificate",
         "acm:DescribeCertificate",
-        "acm:DeleteCertificate",
         "acm:ListCertificates",
         "acm:AddTagsToCertificate"
       ],

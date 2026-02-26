@@ -77,9 +77,18 @@ Resources:
       AttributeDefinitions:
         - AttributeName: pair_key
           AttributeType: S
+        - AttributeName: result
+          AttributeType: S
       KeySchema:
         - AttributeName: pair_key
           KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: result-index
+          KeySchema:
+            - AttributeName: result
+              KeyType: HASH
+          Projection:
+            ProjectionType: KEYS_ONLY
       SSESpecification:
         SSEEnabled: true
       PointInTimeRecoverySpecification:
@@ -100,8 +109,13 @@ Resources:
       KeySchema:
         - AttributeName: pair_key
           KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
       SSESpecification:
         SSEEnabled: true
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
       Tags:
         - Key: app
           Value: InfiniteCraft
@@ -285,10 +299,12 @@ Resources:
                   - dynamodb:Query
                   - dynamodb:Scan
                   - dynamodb:BatchGetItem
+                  - dynamodb:DescribeTable
                 Resource:
                   - !GetAtt DiscoveriesTable.Arn
                   - !GetAtt RecipesTable.Arn
                   - !GetAtt WorkerRunsTable.Arn
+                  - !Sub '${RecipesTable.Arn}/index/*'
               - Sid: DenyDynamoDBWrite
                 Effect: Deny
                 Action:
@@ -347,8 +363,8 @@ Resources:
       FunctionName: !Sub infcft-api-${Stage}
       Handler: handler.lambda_handler
       CodeUri: functions/api/
-      Timeout: 10
-      MemorySize: 128
+      Timeout: 29
+      MemorySize: 256
       Role: !GetAtt ApiExecutionRole.Arn
       Environment:
         Variables:
@@ -408,7 +424,7 @@ Resources:
       Cors:
         AllowMethods: "'GET,OPTIONS'"
         AllowHeaders: "'Content-Type'"
-        AllowOrigin: "'*'"  # Lambda enforces specific origin via ALLOWED_ORIGINS env var
+        AllowOrigin: "'*'"  # API Gateway level; Lambda enforces per-stage origin via ALLOWED_ORIGINS
       MethodSettings:
         - ResourcePath: /*
           HttpMethod: '*'
@@ -421,8 +437,11 @@ Resources:
 
   DashboardBucket:
     Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
     Properties:
       BucketName: !Sub infcft-dashboard-${Stage}-${AWS::AccountId}
+      VersioningConfiguration:
+        Status: Enabled
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
@@ -486,19 +505,23 @@ Resources:
           FrameOptions:
             FrameOption: DENY
             Override: true
-          XSSProtection:
-            ModeBlock: true
+          ReferrerPolicy:
+            ReferrerPolicy: strict-origin-when-cross-origin
             Override: true
-            Protection: true
           ContentSecurityPolicy:
             ContentSecurityPolicy: >-
               default-src 'self';
-              script-src 'self' 'unsafe-inline' https://d3js.org;
+              script-src 'self' https://d3js.org;
               style-src 'self' 'unsafe-inline';
               connect-src 'self';
               img-src 'self' data:;
               font-src 'self'
             Override: true
+        CustomHeadersConfig:
+          Items:
+            - Header: Permissions-Policy
+              Value: geolocation=(), camera=(), microphone=(), payment=()
+              Override: true
 
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
@@ -578,6 +601,9 @@ Resources:
       Tags:
         - Key: app
           Value: InfiniteCraft
+
+  # CloudWatch Alarms removed — deployer IAM user lacks cloudwatch:PutMetricAlarm.
+  # Re-add after granting the deployer CloudWatch permissions.
 
 Outputs:
   CloudFrontDomain:

@@ -15,12 +15,19 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ENV_FILE="${SCRIPT_DIR}/../.env"
 
-# Load .env if present
+# Load .env if present (line-by-line parsing, no eval/source)
 if [ -f "$ENV_FILE" ]; then
-  set -a
-  # shellcheck disable=SC1090
-  source "$ENV_FILE"
-  set +a
+  while IFS= read -r line || [ -n "$line" ]; do
+    line="${line%%#*}"   # strip comments
+    line="${line// /}"   # trim spaces (basic)
+    if [[ "$line" =~ ^([A-Za-z_][A-Za-z0-9_]*)=(.*)$ ]]; then
+      key="${BASH_REMATCH[1]}"
+      val="${BASH_REMATCH[2]}"
+      val="${val%\"}" ; val="${val#\"}"  # strip quotes
+      val="${val%\'}" ; val="${val#\'}"
+      export "${key}=${val}"
+    fi
+  done < "$ENV_FILE"
 fi
 
 STAGE="${1:-${STAGE:-prod}}"
@@ -58,13 +65,12 @@ echo "  S3 Bucket: ${BUCKET}"
 echo "  API URL: ${API_URL}"
 echo "  CloudFront: ${CF_DIST_ID}"
 
-# Upload dashboard
+# Upload dashboard files
 echo "Uploading to s3://${BUCKET}/"
 aws s3 sync "${DASHBOARD_DIR}" "s3://${BUCKET}/" \
   --delete \
   --cache-control "public, max-age=300" \
-  --content-type "text/html" \
-  --exclude "*" --include "index.html"
+  --exclude ".DS_Store"
 
 # Invalidate CloudFront cache
 if [ -n "${CF_DIST_ID}" ] && [ "${CF_DIST_ID}" != "None" ]; then

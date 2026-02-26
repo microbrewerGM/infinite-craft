@@ -14,6 +14,7 @@ Uses only stdlib + boto3 (available in Lambda runtime).
 
 import json
 import os
+import random
 import time
 import urllib.error
 import urllib.request
@@ -84,24 +85,25 @@ def _load_config():
         "workers_per_pulse": 1,
     }
     try:
-        resp = ssm.get_parameters_by_path(
+        paginator = ssm.get_paginator("get_parameters_by_path")
+        for page in paginator.paginate(
             Path=SSM_PREFIX,
             Recursive=True,
             WithDecryption=False,
-        )
-        for p in resp.get("Parameters", []):
-            name = p["Name"].rsplit("/", 1)[-1]
-            val = p["Value"]
-            if name == "strategy":
-                defaults["strategy"] = val
-            elif name == "rate-limit-delay":
-                defaults["rate_limit_delay"] = max(0.2, min(60.0, float(val)))
-            elif name == "max-duration":
-                defaults["max_duration"] = max(60, min(840, int(val)))
-            elif name == "workers-per-pulse":
-                defaults["workers_per_pulse"] = max(1, min(10, int(val)))
+        ):
+            for p in page.get("Parameters", []):
+                name = p["Name"].rsplit("/", 1)[-1]
+                val = p["Value"]
+                if name == "strategy":
+                    defaults["strategy"] = val
+                elif name == "rate-limit-delay":
+                    defaults["rate_limit_delay"] = max(0.2, min(60.0, float(val)))
+                elif name == "max-duration":
+                    defaults["max_duration"] = max(60, min(840, int(val)))
+                elif name == "workers-per-pulse":
+                    defaults["workers_per_pulse"] = max(1, min(10, int(val)))
     except Exception as e:
-        print(f"[config] SSM read failed, using defaults: {e}")
+        print(f"[config] SSM read failed ({type(e).__name__}), using defaults: {e}")
     return defaults
 
 
@@ -117,16 +119,14 @@ def _load_elements():
     table = _get_dynamo().Table(DISCOVERIES_TABLE)
     elements = {}
     kwargs = {
-        "ProjectionExpression": "#el, recipe, generation, emoji",
+        "ProjectionExpression": "#el, generation",
         "ExpressionAttributeNames": {"#el": "element"},
     }
     while True:
         resp = table.scan(**kwargs)
         for item in resp.get("Items", []):
             elements[item.get("element", "")] = {
-                "recipe": item.get("recipe", "base"),
                 "generation": int(item.get("generation", 0)),
-                "emoji": item.get("emoji", ""),
             }
         if "LastEvaluatedKey" not in resp:
             break
@@ -134,7 +134,7 @@ def _load_elements():
     return elements
 
 
-def _load_tried_sample(limit=50000):
+def _load_tried_sample(limit=10000):
     """Load a sample of tried pair keys for deduplication.
 
     For large datasets we load a random sample rather than the full set.
@@ -204,16 +204,11 @@ def _mark_pair_tried(pair_key):
         raise
 
 
-def _count_recent_runs():
-    """Count total worker runs for strategy rotation (paginated)."""
+def _count_total_runs():
+    """Count total worker runs for strategy rotation (approximate via DescribeTable)."""
     table = _get_dynamo().Table(WORKER_RUNS_TABLE)
-    total = 0
-    resp = table.scan(Select="COUNT")
-    total += resp.get("Count", 0)
-    while "LastEvaluatedKey" in resp:
-        resp = table.scan(Select="COUNT", ExclusiveStartKey=resp["LastEvaluatedKey"])
-        total += resp.get("Count", 0)
-    return total
+    table.load()
+    return table.item_count  # approximate, updated every ~6 hours — sufficient for rotation
 
 
 def _save_worker_run(run_summary):
@@ -237,7 +232,8 @@ def _query_pair(first, second):
     try:
         t0 = time.monotonic()
         with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.loads(resp.read().decode())
+            raw = resp.read(64 * 1024)  # Cap response at 64KB
+            data = json.loads(raw.decode())
             data["_response_time"] = time.monotonic() - t0
             return data
     except urllib.error.HTTPError as e:
@@ -285,7 +281,6 @@ def _generate_bfs_pairs(elements, tried, batch_size=100):
 
 def _generate_random_pairs(elements, tried, batch_size=100):
     """Random: pick random untried pairs."""
-    import random
     all_names = list(elements.keys())
     if len(all_names) < 2:
         return []
@@ -309,7 +304,6 @@ def _generate_random_pairs(elements, tried, batch_size=100):
 
 def _generate_anchor_pairs(elements, tried, batch_size=100):
     """Anchor sweep: pick a random element and combine with everything."""
-    import random
     all_names = list(elements.keys())
     if not all_names:
         return []
@@ -363,8 +357,8 @@ def lambda_handler(event, context):
                 "nothing_count": 0, "errors": 1,
                 "elements_total": 0,
                 "final_delay": Decimal("0"),
-                "source": event.get("source", "manual"),
-                "fatal_error": f"{type(e).__name__}: {e}",
+                "source": str(event.get("source", "manual"))[:50],
+                "fatal_error": f"{type(e).__name__}: {str(e)[:100]}",
             })
         except Exception:
             pass
@@ -380,10 +374,13 @@ def _run_pulse(event, run_id, started_at, start_mono):
     initial_delay = config["rate_limit_delay"]
     max_duration = config["max_duration"]
 
-    # Rotate strategy based on run count (cycle through algorithms)
+    # Strategy: event payload can override, otherwise rotate or use SSM value
     _STRATEGIES = ["bfs", "random", "anchor"]
-    if config["strategy"] == "rotate":
-        run_count = _count_recent_runs()
+    event_strategy = event.get("strategy")
+    if event_strategy in _STRATEGIES:
+        strategy = event_strategy
+    elif config["strategy"] == "rotate":
+        run_count = _count_total_runs()
         strategy = _STRATEGIES[run_count % len(_STRATEGIES)]
     else:
         strategy = config["strategy"]
@@ -399,7 +396,7 @@ def _run_pulse(event, run_id, started_at, start_mono):
     for base in BASE_ELEMENTS:
         if base not in elements:
             _save_discovery(base, "base", False, 0, "")
-            elements[base] = {"recipe": "base", "generation": 0, "emoji": ""}
+            elements[base] = {"generation": 0}
 
     print(f"[worker:{run_id}] Loaded {len(elements)} elements, "
           f"{len(tried)} tried pairs (sample)")
@@ -445,7 +442,7 @@ def _run_pulse(event, run_id, started_at, start_mono):
 
             # Rate limiting
             if consecutive_failures > 0:
-                wait = min(300, 5 * (2 ** (consecutive_failures - 1)))
+                wait = min(60, 5 * (2 ** (consecutive_failures - 1)))
                 if wait > time_left() - 2:
                     print(f"[worker:{run_id}] Backoff {wait:.0f}s exceeds remaining time, stopping")
                     break
@@ -465,7 +462,7 @@ def _run_pulse(event, run_id, started_at, start_mono):
                 consecutive_failures += 1
                 consecutive_successes = 0
                 errors += 1
-                delay = min(3600, max(known_safe_delay, delay) * 2.0)
+                delay = min(60, max(known_safe_delay, delay) * 2.0)
                 status_code = data.get("_status_code", "?")
                 print(f"[worker:{run_id}] Rate limited (HTTP {status_code}), "
                       f"streak={consecutive_failures}, delay={delay:.1f}s")
@@ -476,17 +473,22 @@ def _run_pulse(event, run_id, started_at, start_mono):
             consecutive_failures = 0
             if consecutive_successes >= stability_threshold:
                 old = delay
-                delay = max(min_delay, delay - 0.02)
+                delay = max(min_delay, delay * 0.9)
                 if delay < old:
                     known_safe_delay = old
 
             result_name = data.get("result")
-            if not result_name or result_name == "Nothing":
+            if not isinstance(result_name, str) or not result_name or result_name == "Nothing":
                 nothing_count += 1
                 continue
+            if len(result_name) > 200:
+                print(f"[worker:{run_id}] WARN: result name too long ({len(result_name)} chars), skipping")
+                continue
 
-            is_first = data.get("isNew", False)
+            is_first = bool(data.get("isNew", False))
             emoji = data.get("emoji", "")
+            if not isinstance(emoji, str) or len(emoji) > 20:
+                emoji = ""
 
             # Save recipe
             _save_recipe(pk, result_name)
@@ -504,9 +506,7 @@ def _run_pulse(event, run_id, started_at, start_mono):
                     if is_first:
                         first_discoveries += 1
                     elements[result_name] = {
-                        "recipe": f"{first} + {second}",
                         "generation": generation,
-                        "emoji": emoji,
                     }
                     print(f"[worker:{run_id}] {'FIRST' if is_first else 'NEW'}: "
                           f"{first} + {second} = {result_name}")
@@ -528,7 +528,7 @@ def _run_pulse(event, run_id, started_at, start_mono):
         "errors": errors,
         "elements_total": len(elements),
         "final_delay": Decimal(str(round(delay, 3))),
-        "source": event.get("source", "manual"),
+        "source": str(event.get("source", "manual"))[:50],
     }
 
     try:

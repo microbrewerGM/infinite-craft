@@ -11,6 +11,7 @@ GET /workers        — Recent worker run history
 import json
 import os
 import time
+import urllib.parse
 
 import boto3
 
@@ -35,14 +36,21 @@ def _get_dynamo():
 
 # ── Response helpers ─────────────────────────────────────────
 
+# Thread-local request ID set per invocation
 _request_id = None
 
 
 def _response(status, body, cache_seconds=60):
     """Build API Gateway proxy response with security headers."""
+    if cache_seconds < 0:
+        cache_control = "no-store"
+    elif cache_seconds == 0:
+        cache_control = "no-cache"
+    else:
+        cache_control = f"public, max-age={cache_seconds}"
     headers = {
         "Content-Type": "application/json",
-        "Cache-Control": f"public, max-age={cache_seconds}",
+        "Cache-Control": cache_control,
         "Access-Control-Allow-Origin": ALLOWED_ORIGINS,
         "Access-Control-Allow-Methods": "GET,OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
@@ -58,32 +66,64 @@ def _response(status, body, cache_seconds=60):
 
 
 def _error(status, message):
-    return _response(status, {"error": message}, cache_seconds=0)
+    return _response(status, {"error": message}, cache_seconds=-1)
 
 
 # ── Route: GET /state ────────────────────────────────────────
 
 def _get_state():
-    """Return summary statistics."""
+    """Return summary statistics using a single discovery table scan."""
     dynamo = _get_dynamo()
-
-    # Count discoveries (paginated)
     disc_table = dynamo.Table(DISCOVERIES_TABLE)
-    disc_resp = disc_table.scan(Select="COUNT")
-    discovery_count = disc_resp.get("Count", 0)
-    while "LastEvaluatedKey" in disc_resp:
-        disc_resp = disc_table.scan(Select="COUNT", ExclusiveStartKey=disc_resp["LastEvaluatedKey"])
-        discovery_count += disc_resp.get("Count", 0)
 
-    # Count recipes (paginated)
+    # Single paginated scan of discoveries with minimal projection
+    all_items = []
+    scan_kwargs = {
+        "ProjectionExpression": "#el, generation, recipe, is_new",
+        "ExpressionAttributeNames": {"#el": "element"},
+    }
+    while True:
+        resp = disc_table.scan(**scan_kwargs)
+        all_items.extend(resp.get("Items", []))
+        if "LastEvaluatedKey" not in resp:
+            break
+        scan_kwargs["ExclusiveStartKey"] = resp["LastEvaluatedKey"]
+
+    # Compute all stats in a single pass
+    discovery_count = len(all_items)
+    first_discovery_count = 0
+    gen_dist = {}
+    name_len_dist = {}
+    elem_gen = {}
+    ingredient_usage = {}
+
+    for item in all_items:
+        gen = int(item.get("generation", 0))
+        name = item.get("element", "")
+        gen_dist[gen] = gen_dist.get(gen, 0) + 1
+        elem_gen[name] = gen
+
+        if item.get("is_new"):
+            first_discovery_count += 1
+
+        length = len(name)
+        bucket = "1-4" if length <= 4 else "5-7" if length <= 7 else "8-10" if length <= 10 else "11-15" if length <= 15 else "16+"
+        name_len_dist[bucket] = name_len_dist.get(bucket, 0) + 1
+
+        recipe = item.get("recipe", "")
+        if recipe and recipe != "base" and " + " in recipe:
+            parts = recipe.split(" + ", 1)
+            for p in parts:
+                ingredient_usage[p] = ingredient_usage.get(p, 0) + 1
+
+    top_ingredients = sorted(ingredient_usage.items(), key=lambda x: x[1], reverse=True)[:20]
+
+    # Recipe count via DescribeTable (no scan needed)
     rec_table = dynamo.Table(RECIPES_TABLE)
-    rec_resp = rec_table.scan(Select="COUNT")
-    recipe_count = rec_resp.get("Count", 0)
-    while "LastEvaluatedKey" in rec_resp:
-        rec_resp = rec_table.scan(Select="COUNT", ExclusiveStartKey=rec_resp["LastEvaluatedKey"])
-        recipe_count += rec_resp.get("Count", 0)
+    rec_table.load()
+    recipe_count = rec_table.item_count  # approximate, updated every ~6 hours
 
-    # Last worker run — scan all and sort by started_at to get the most recent
+    # Last worker run
     runs_table = dynamo.Table(WORKER_RUNS_TABLE)
     all_runs = []
     runs_kwargs = {
@@ -98,59 +138,6 @@ def _get_state():
     all_runs.sort(key=lambda x: x.get("started_at", ""), reverse=True)
     last_run = all_runs[0] if all_runs else None
 
-    # Count first discoveries (paginated)
-    first_disc_resp = disc_table.scan(
-        Select="COUNT",
-        FilterExpression=boto3.dynamodb.conditions.Attr("is_new").eq(True),
-    )
-    first_discovery_count = first_disc_resp.get("Count", 0)
-    while "LastEvaluatedKey" in first_disc_resp:
-        first_disc_resp = disc_table.scan(
-            Select="COUNT",
-            FilterExpression=boto3.dynamodb.conditions.Attr("is_new").eq(True),
-            ExclusiveStartKey=first_disc_resp["LastEvaluatedKey"],
-        )
-        first_discovery_count += first_disc_resp.get("Count", 0)
-
-    # Generation distribution, name lengths, top ingredients
-    gen_resp = disc_table.scan(
-        ProjectionExpression="#el, generation, recipe",
-        ExpressionAttributeNames={"#el": "element"},
-    )
-    all_items = gen_resp.get("Items", [])
-    # Handle pagination for large tables
-    while "LastEvaluatedKey" in gen_resp:
-        gen_resp = disc_table.scan(
-            ProjectionExpression="#el, generation, recipe",
-            ExpressionAttributeNames={"#el": "element"},
-            ExclusiveStartKey=gen_resp["LastEvaluatedKey"],
-        )
-        all_items.extend(gen_resp.get("Items", []))
-
-    gen_dist = {}
-    name_len_dist = {}
-    elem_gen = {}
-    for item in all_items:
-        gen = int(item.get("generation", 0))
-        gen_dist[gen] = gen_dist.get(gen, 0) + 1
-        elem_gen[item.get("element", "")] = gen
-
-        name = item.get("element", "")
-        length = len(name)
-        bucket = "1-4" if length <= 4 else "5-7" if length <= 7 else "8-10" if length <= 10 else "11-15" if length <= 15 else "16+"
-        name_len_dist[bucket] = name_len_dist.get(bucket, 0) + 1
-
-    # Top ingredients — count from all discoveries (which ingredient produces the most unique elements)
-    ingredient_usage = {}
-    for item in all_items:
-        recipe = item.get("recipe", "")
-        if recipe and recipe != "base" and " + " in recipe:
-            parts = recipe.split(" + ", 1)
-            for p in parts:
-                ingredient_usage[p] = ingredient_usage.get(p, 0) + 1
-
-    top_ingredients = sorted(ingredient_usage.items(), key=lambda x: x[1], reverse=True)[:20]
-
     return _response(200, {
         "elements": discovery_count,
         "recipes": recipe_count,
@@ -160,7 +147,7 @@ def _get_state():
         "top_ingredients": [{"name": n, "count": c, "generation": int(elem_gen.get(n, 0))} for n, c in top_ingredients],
         "last_run": last_run,
         "timestamp": int(time.time()),
-    })
+    }, cache_seconds=120)
 
 
 # ── Route: GET /discoveries ──────────────────────────────────
@@ -200,9 +187,12 @@ def _get_discoveries(params):
                 return _error(400, "Invalid generation parameter: must be an integer")
             scan_kwargs["FilterExpression"] = scan_kwargs["FilterExpression"] & boto3.dynamodb.conditions.Attr("generation").eq(gen_val)
 
-        while True:
+        max_pages = 10
+        pages = 0
+        while pages < max_pages:
             resp = table.scan(**scan_kwargs)
             items.extend(resp.get("Items", []))
+            pages += 1
             if len(items) >= limit or "LastEvaluatedKey" not in resp:
                 break
             scan_kwargs["ExclusiveStartKey"] = resp["LastEvaluatedKey"]
@@ -297,23 +287,23 @@ def _get_discovery_detail(element):
     if not item:
         return _error(404, "Element not found")
 
-    # Find all recipes that produce this element (paginated scan)
+    # Find all recipes that produce this element via GSI query
     rec_table = dynamo.Table(RECIPES_TABLE)
     recipes = []
-    scan_kwargs = {
-        "FilterExpression": boto3.dynamodb.conditions.Attr("result").eq(element),
-        "ProjectionExpression": "pair_key, #r",
-        "ExpressionAttributeNames": {"#r": "result"},
+    query_kwargs = {
+        "IndexName": "result-index",
+        "KeyConditionExpression": boto3.dynamodb.conditions.Key("result").eq(element),
+        "ProjectionExpression": "pair_key",
     }
     while True:
-        rec_resp = rec_table.scan(**scan_kwargs)
+        rec_resp = rec_table.query(**query_kwargs)
         for r in rec_resp.get("Items", []):
             parts = r["pair_key"].split("|")
             if len(parts) == 2:
                 recipes.append({"first": parts[0], "second": parts[1]})
         if "LastEvaluatedKey" not in rec_resp:
             break
-        scan_kwargs["ExclusiveStartKey"] = rec_resp["LastEvaluatedKey"]
+        query_kwargs["ExclusiveStartKey"] = rec_resp["LastEvaluatedKey"]
 
     return _response(200, {
         "element": item,
@@ -348,7 +338,7 @@ def _get_first_discoveries():
     return _response(200, {
         "discoveries": all_firsts,
         "count": len(all_firsts),
-    })
+    }, cache_seconds=120)
 
 
 # ── Route: GET /workers ──────────────────────────────────────
@@ -382,7 +372,7 @@ def _get_workers():
     return _response(200, {
         "runs": all_items[:100],
         "count": len(all_items),
-    })
+    }, cache_seconds=30)
 
 
 # ── Route: GET /chain/{element} ────────────────────────────
@@ -526,5 +516,4 @@ def lambda_handler(event, context):
 
 def urllib_unquote(s):
     """Decode URL-encoded string (stdlib only)."""
-    import urllib.parse
     return urllib.parse.unquote(s)

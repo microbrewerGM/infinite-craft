@@ -22,7 +22,6 @@ __pycache__/
 
 # Tools
 .playwright-mcp/
-.forge/
 
 # Backups (large data exports)
 backups/
@@ -30,6 +29,7 @@ backups/
 # Private content
 blogs/
 docs/support_manual/
+docs/security-decisions.md
 
 # Repo management (private repo only)
 .gitignore.public
