@@ -184,13 +184,67 @@
   .time-filter button { padding: 4px 10px; background: #1a1a3a; border: 1px solid #2a2a4a; border-radius: 4px; color: #888; font-size: 11px; cursor: pointer; }
   .time-filter button:hover { border-color: #6366f1; color: #ccc; }
   .time-filter button.active { background: #6366f122; border-color: #6366f1; color: #a5b4fc; }
+
+  /* ── Mobile / Tablet Responsive ────────────────────────── */
+  #sidebar-toggle { display: none; position: fixed; top: 12px; left: 12px; z-index: 50; width: 44px; height: 44px; background: #12122ae0; border: 1px solid #2a2a4a; border-radius: 6px; cursor: pointer; padding: 11px 9px; backdrop-filter: blur(8px); }
+  #sidebar-toggle span { display: block; width: 26px; height: 2px; background: #e0e0e0; border-radius: 1px; transition: transform 0.25s, opacity 0.25s; }
+  #sidebar-toggle span:nth-child(2) { margin: 6px 0; }
+  #sidebar-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  #sidebar-toggle.open span:nth-child(2) { opacity: 0; }
+  #sidebar-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  #sidebar-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 29; }
+  #sidebar-backdrop.visible { display: block; }
+
+  @media (max-width: 1023px) {
+    #sidebar-toggle { display: block; }
+    #sidebar { position: fixed; top: 0; left: 0; bottom: 0; z-index: 30; transform: translateX(-100%); transition: transform 0.3s ease; }
+    #sidebar.open { transform: translateX(0); }
+    body { display: block; }
+    #main { width: 100%; height: 100vh; }
+    #view-toggle { left: 60px; overflow-x: auto; max-width: calc(100vw - 80px); }
+    #view-toggle button { min-height: 44px; white-space: nowrap; }
+    #element-card { left: 8px; right: 8px; bottom: 8px; }
+  }
+
+  @media (max-width: 767px) {
+    #sidebar { width: 100%; }
+    #search-box input { font-size: 16px; }
+    .element-item { min-height: 44px; }
+    #sort-bar button { min-height: 44px; padding: 6px 12px; font-size: 12px; }
+    .chart-grid { grid-template-columns: 1fr; }
+    .worker-summary { grid-template-columns: repeat(2, 1fr); }
+    .run-detail-grid { grid-template-columns: 1fr 1fr; }
+    .data-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    #legend { top: auto; bottom: 12px; right: 12px; max-width: 160px; max-height: 30vh; font-size: 10px; }
+    #chain-overlay.visible { flex-direction: column; }
+    #build-order-panel { width: 100%; max-height: 40vh; border-left: none; border-top: 1px solid #2a2a4a; margin-top: 0; }
+    #chain-graph-area { flex: 1; min-height: 40vh; }
+    .chain-header { flex-wrap: wrap; gap: 8px; }
+    .chain-controls button { min-height: 44px; }
+    .chain-close { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+    .time-filter { flex-wrap: wrap; }
+    .time-filter button { min-height: 44px; }
+    .card-actions button { min-height: 44px; }
+    .card-close { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    #sidebar { width: 320px; }
+    .chart-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .sort-bar button { min-height: 44px; }
+    .chain-controls button { min-height: 44px; }
+    .card-actions button { min-height: 44px; }
+  }
 </style>
 </head>
 <body>
 
+<button id="sidebar-toggle" aria-label="Toggle sidebar" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+
 <div id="sidebar">
-  <h1>Infinite Craft Explorer</h1>
-  <div style="font-size:10px;color:#444;margin-top:-6px;margin-bottom:4px">v1.3.0</div>
+  <h1>Infinite Craft Explorer <span style="font-size:10px;color:#444;font-weight:400;margin-left:auto">v1.4.0</span></h1>
   <div id="stats">
     <div class="stat"><span>Elements</span><span class="stat-value" id="stat-elements">--</span></div>
     <div class="stat"><span>Recipes</span><span class="stat-value" id="stat-recipes">--</span></div>
@@ -206,6 +260,8 @@
     <span id="status-text">Loading...</span>
   </div>
 </div>
+
+<div id="sidebar-backdrop"></div>
 
 <div id="main">
   <div id="view-toggle">

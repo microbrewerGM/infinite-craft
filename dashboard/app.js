@@ -1,3 +1,37 @@
+// ── Sidebar toggle (mobile/tablet) ──────────────────────────
+function openSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sidebar-backdrop').classList.add('visible');
+  document.getElementById('sidebar-toggle').classList.add('open');
+  document.getElementById('sidebar-toggle').setAttribute('aria-expanded', 'true');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-backdrop').classList.remove('visible');
+  document.getElementById('sidebar-toggle').classList.remove('open');
+  document.getElementById('sidebar-toggle').setAttribute('aria-expanded', 'false');
+}
+document.getElementById('sidebar-toggle').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.contains('open') ? closeSidebar() : openSidebar();
+});
+document.getElementById('sidebar-backdrop').addEventListener('click', closeSidebar);
+
+// ── Tooltip positioning helper ──────────────────────────────
+function positionTooltip(tooltip, event) {
+  const pad = 12;
+  const rect = tooltip.getBoundingClientRect();
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  let x = event.clientX + pad;
+  let y = event.clientY + pad;
+  if (x + rect.width > vw - pad) x = event.clientX - rect.width - pad;
+  if (y + rect.height > vh - pad) y = event.clientY - rect.height - pad;
+  if (x < pad) x = pad;
+  if (y < pad) y = pad;
+  tooltip.style.left = x + 'px';
+  tooltip.style.top = y + 'px';
+}
+
 // ── Config ──────────────────────────────────────────────────
 const API_BASE = window.__API_BASE__ || '';
 const POLL_INTERVAL = 5 * 60 * 1000;
@@ -292,8 +326,7 @@ function updateGraph(newDiscoveries) {
     tooltip.appendChild(el('span', {style: {color: '#888'}, textContent: d._inferred ? 'Generation unknown' : 'Generation ' + d.generation}));
     if (d.is_new) { tooltip.appendChild(document.createElement('br')); tooltip.appendChild(el('span', {style: {color: '#f59e0b'}, textContent: 'First Discovery'})); }
     tooltip.classList.add('visible');
-    tooltip.style.left = event.clientX + 12 + 'px';
-    tooltip.style.top = event.clientY + 12 + 'px';
+    positionTooltip(tooltip, event);
   }).on('mouseleave', () => tooltip.classList.remove('visible'));
 
   // Click on new nodes
@@ -428,8 +461,7 @@ function renderGraph() {
     tooltip.appendChild(el('span', {style: {color: '#888'}, textContent: d._inferred ? 'Generation unknown' : 'Generation ' + d.generation}));
     if (d.is_new) { tooltip.appendChild(document.createElement('br')); tooltip.appendChild(el('span', {style: {color: '#f59e0b'}, textContent: 'First Discovery'})); }
     tooltip.classList.add('visible');
-    tooltip.style.left = event.clientX + 12 + 'px';
-    tooltip.style.top = event.clientY + 12 + 'px';
+    positionTooltip(tooltip, event);
   }).on('mouseleave', () => tooltip.classList.remove('visible'));
 
   // Click on node to select
@@ -629,7 +661,12 @@ async function buildFullChain(targetId) {
 }
 
 // ── Chain overlay (full screen) ────────────────────────────
+let _currentChainTarget = null;
+let _currentChainMode = null;
+
 async function openChainOverlay(id, mode) {
+  _currentChainTarget = id;
+  _currentChainMode = mode;
   const overlay = document.getElementById('chain-overlay');
   const container = document.getElementById('chain-graph-area');
   const stepsEl = document.getElementById('build-order-steps');
@@ -753,6 +790,8 @@ function computeCriticalPathFromChain(chainNodes, elementId) {
 function closeChainOverlay() {
   document.getElementById('chain-overlay').classList.remove('visible');
   _chainGraphState = null;
+  _currentChainTarget = null;
+  _currentChainMode = null;
 }
 
 function renderChainGraph(chainNodes, chainEdges, targetId, criticalSet, depth) {
@@ -933,6 +972,7 @@ document.getElementById('element-list').addEventListener('click', (e) => {
       document.getElementById('content-pane').classList.remove('visible');
     }
     selectElement(row.dataset.id);
+    if (window.innerWidth < 1024) closeSidebar();
   }
 });
 
@@ -1701,8 +1741,16 @@ function updateNodeSizes() {
   });
 
   let _resizeTimer = null;
-  window.addEventListener('resize', () => {
+  function handleResize() {
     clearTimeout(_resizeTimer);
-    _resizeTimer = setTimeout(() => { if (currentView === 'graph') renderGraph(); }, 300);
-  });
+    _resizeTimer = setTimeout(() => {
+      if (currentView === 'graph') renderGraph();
+      else renderContentPane();
+      if (_currentChainTarget && document.getElementById('chain-overlay').classList.contains('visible')) {
+        openChainOverlay(_currentChainTarget, _currentChainMode || 'graph');
+      }
+    }, 300);
+  }
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('orientationchange', handleResize);
 })();

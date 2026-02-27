@@ -247,6 +247,7 @@ Resources:
                 Action:
                   - dynamodb:PutItem
                   - dynamodb:Scan
+                  - dynamodb:DescribeTable
                 Resource: !GetAtt WorkerRunsTable.Arn
         - PolicyName: WorkerSSMRead
           PolicyDocument:
