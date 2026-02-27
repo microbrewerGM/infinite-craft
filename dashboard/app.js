@@ -1,29 +1,36 @@
 // ── Sidebar toggle (mobile/tablet) ──────────────────────────
-function openSidebar() {
-  document.getElementById('sidebar').classList.add('open');
-  document.getElementById('sidebar-backdrop').classList.add('visible');
-  document.getElementById('sidebar-toggle').classList.add('open');
-  document.getElementById('sidebar-toggle').setAttribute('aria-expanded', 'true');
-}
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sidebar-backdrop').classList.remove('visible');
-  document.getElementById('sidebar-toggle').classList.remove('open');
-  document.getElementById('sidebar-toggle').setAttribute('aria-expanded', 'false');
-}
-document.getElementById('sidebar-toggle').addEventListener('click', () => {
-  document.getElementById('sidebar').classList.contains('open') ? closeSidebar() : openSidebar();
-});
-document.getElementById('sidebar-backdrop').addEventListener('click', closeSidebar);
+(function () {
+  var toggle = document.getElementById('sidebar-toggle');
+  var backdrop = document.getElementById('sidebar-backdrop');
+  var sidebar = document.getElementById('sidebar');
+  function openSidebar() {
+    sidebar.classList.add('open');
+    backdrop.classList.add('visible');
+    toggle.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    backdrop.classList.remove('visible');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  toggle.addEventListener('click', function () {
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  });
+  backdrop.addEventListener('click', closeSidebar);
+  // Expose closeSidebar for use by element-select handler
+  window._closeSidebar = closeSidebar;
+})();
 
 // ── Tooltip positioning helper ──────────────────────────────
 function positionTooltip(tooltip, event) {
-  const pad = 12;
-  const rect = tooltip.getBoundingClientRect();
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
-  let x = event.clientX + pad;
-  let y = event.clientY + pad;
+  var pad = 12;
+  var rect = tooltip.getBoundingClientRect();
+  var vw = window.innerWidth;
+  var vh = window.innerHeight;
+  var x = event.clientX + pad;
+  var y = event.clientY + pad;
   if (x + rect.width > vw - pad) x = event.clientX - rect.width - pad;
   if (y + rect.height > vh - pad) y = event.clientY - rect.height - pad;
   if (x < pad) x = pad;
@@ -663,6 +670,7 @@ async function buildFullChain(targetId) {
 // ── Chain overlay (full screen) ────────────────────────────
 let _currentChainTarget = null;
 let _currentChainMode = null;
+let _cachedChainData = null; // { chainNodes, chainEdges, criticalSet, depth, buildOrder }
 
 async function openChainOverlay(id, mode) {
   _currentChainTarget = id;
@@ -704,6 +712,9 @@ async function openChainOverlay(id, mode) {
   // Compute critical path from the full chain
   const { criticalSet, depth } = computeCriticalPathFromChain(chainNodes, id);
   const buildOrder = computeBuildOrder(chainNodes, id);
+
+  // Cache for resize re-render without re-fetching
+  _cachedChainData = { chainNodes, chainEdges, criticalSet, depth, buildOrder };
 
   // Controls
   const controlsEl = document.getElementById('chain-controls');
@@ -787,11 +798,21 @@ function computeCriticalPathFromChain(chainNodes, elementId) {
   return computeCriticalPath(chainNodes, elementId);
 }
 
+function rerenderChainOverlay() {
+  if (!_cachedChainData || !_currentChainTarget) return;
+  var { chainNodes, chainEdges, criticalSet, depth } = _cachedChainData;
+  var container = document.getElementById('chain-graph-area');
+  container.replaceChildren();
+  renderChainGraph(chainNodes, chainEdges, _currentChainTarget, criticalSet, depth);
+  if (_currentChainMode === 'critical') applyCriticalPathHighlight(criticalSet);
+}
+
 function closeChainOverlay() {
   document.getElementById('chain-overlay').classList.remove('visible');
   _chainGraphState = null;
   _currentChainTarget = null;
   _currentChainMode = null;
+  _cachedChainData = null;
 }
 
 function renderChainGraph(chainNodes, chainEdges, targetId, criticalSet, depth) {
@@ -972,7 +993,7 @@ document.getElementById('element-list').addEventListener('click', (e) => {
       document.getElementById('content-pane').classList.remove('visible');
     }
     selectElement(row.dataset.id);
-    if (window.innerWidth < 1024) closeSidebar();
+    if (window.innerWidth < 1024) window._closeSidebar();
   }
 });
 
@@ -1747,7 +1768,7 @@ function updateNodeSizes() {
       if (currentView === 'graph') renderGraph();
       else renderContentPane();
       if (_currentChainTarget && document.getElementById('chain-overlay').classList.contains('visible')) {
-        openChainOverlay(_currentChainTarget, _currentChainMode || 'graph');
+        rerenderChainOverlay();
       }
     }, 300);
   }
