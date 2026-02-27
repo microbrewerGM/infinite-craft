@@ -303,16 +303,16 @@ def _generate_random_pairs(elements, tried, batch_size=100):
 
 
 def _generate_anchor_pairs(elements, tried, batch_size=100):
-    """Anchor sweep: pick a random element and combine with everything."""
+    """Anchor sweep: pick a random element and combine with shuffled partners."""
     all_names = list(elements.keys())
     if not all_names:
         return []
 
     anchor = random.choice(all_names)
+    partners = [n for n in all_names if n != anchor]
+    random.shuffle(partners)
     pairs = []
-    for partner in all_names:
-        if partner == anchor:
-            continue
+    for partner in partners:
         key = _pair_key(anchor, partner)
         if key not in tried:
             pairs.append((anchor, partner))
