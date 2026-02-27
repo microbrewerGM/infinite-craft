@@ -18,14 +18,14 @@ Start with four elements. Combine everything. See how far the rabbit hole goes.
 
 This project answers that question with an army of autonomous serverless workers that explore the combinatorial space 24/7, running on AWS Free Tier for $0/month.
 
-## The Numbers (So Far)
+## The Numbers (So Far)*
 
 | | |
 |---|---|
-| **8,579** | elements discovered |
-| **48,847** | recipes cataloged |
-| **506** | first-ever global discoveries |
-| **63** | deepest generation reached |
+| **8,785*** | elements discovered |
+| **49,290*** | recipes cataloged |
+| **540*** | first-ever global discoveries |
+| **76*** | deepest generation reached |
 | **$0.00** | monthly AWS cost |
 
 The workers pulse every 4 hours, trying new combinations and logging everything. The element space appears to be effectively infinite — every session finds new things.
@@ -52,7 +52,7 @@ Generation 60. That means it took 60 layers of combination, building on building
 
 ## First Discoveries
 
-When you find an element that no one in the world has ever created before, Infinite Craft marks it with a special badge. Our explorers have found **506** of these.
+When you find an element that no one in the world has ever created before, Infinite Craft marks it with a special badge. Our explorers have found **540*** of these.
 
 Some highlights we discovered first:
 
@@ -67,32 +67,32 @@ Some highlights we discovered first:
 
 Nobody had ever combined "Gandalf Best" with "Spartacus" before us. We live in the best timeline.
 
-## The Most Prolific Ingredients
+## The Most Prolific Ingredients*
 
 Some elements are the glue that holds the craft universe together:
 
 | Element | Recipes | Gen |
 |---------|:-------:|:---:|
-| Fire | 785 | 0 |
-| Water | 533 | 0 |
-| Earth | 516 | 0 |
-| Wind | 383 | 0 |
-| Dusty Wind | 145 | 1 |
-| Painter | 135 | 1 |
-| Drumstick | 121 | 2 |
-| Malaria | 107 | 4 |
-| Crocodile | 105 | 4 |
-| Aphrodite | 78 | 4 |
+| Fire | 785* | 0 |
+| Water | 533* | 0 |
+| Earth | 516* | 0 |
+| Wind | 383* | 0 |
+| Dusty Wind | 145* | 1 |
+| Painter | 135* | 1 |
+| Drumstick | 121* | 2 |
+| Malaria | 107* | 4 |
+| Crocodile | 105* | 4 |
+| Aphrodite | 78* | 4 |
 
-"Malaria" is in the top 10 most useful ingredients. Somehow it combines with 107 other things to make new elements. Don't ask.
+"Malaria" is in the top 10 most useful ingredients. Somehow it combines with 107+ other things to make new elements. Don't ask.
 
 ## How Deep Does It Go?
 
 Elements have **generations** — how many combination steps it took to create them from the four base elements. Generation 0 is Water/Fire/Wind/Earth. Generation 1 is everything you can make directly from those.
 
-Our deepest discovery so far: **Generation 63**.
+Our deepest discovery so far: **Generation 76***.
 
-The generation distribution has a fascinating double-peak pattern — a spike at generation 1 (simple combinations), a valley around generation 15-20, and then a second wave of complex elements stretching out to generation 63. The element space doesn't peter out — it opens back up.
+The generation distribution has a fascinating double-peak pattern — a spike at generation 1 (simple combinations), a valley around generation 15-20, and then a second wave of complex elements stretching out past generation 70. The element space doesn't peter out — it opens back up.
 
 ## The Dashboard
 
@@ -113,6 +113,10 @@ Self-coordinating Lambda workers fire every 4 hours, pick a strategy (breadth-fi
 The whole thing runs on AWS Free Tier. Zero dollars. Forever.
 
 Want to run your own? See [HOWTO.md](HOWTO.md) for setup instructions.
+
+---
+
+*\* Numbers change daily as workers discover new elements. Visit the [live dashboard](https://infinite-craft.phenomsec.com) for current stats.*
 
 ## License
 
