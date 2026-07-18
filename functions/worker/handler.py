@@ -204,13 +204,6 @@ def _mark_pair_tried(pair_key):
         raise
 
 
-def _count_total_runs():
-    """Count total worker runs for strategy rotation (approximate via DescribeTable)."""
-    table = _get_dynamo().Table(WORKER_RUNS_TABLE)
-    table.load()
-    return table.item_count  # approximate, updated every ~6 hours — sufficient for rotation
-
-
 def _save_worker_run(run_summary):
     """Log this run to the worker_runs audit table."""
     table = _get_dynamo().Table(WORKER_RUNS_TABLE)
@@ -249,27 +242,25 @@ def _query_pair(first, second):
 # ── Strategies ───────────────────────────────────────────────
 
 def _generate_bfs_pairs(elements, tried, batch_size=100):
-    """BFS: combine newest generation with all known elements."""
+    """BFS: combine the deepest known elements with all others.
+
+    Anchors on the highest (newest) generation first — those elements are the
+    most novel and least-combined, so they yield the most new discoveries — and
+    descends through older generations only when a frontier is exhausted. This
+    means BFS keeps finding untried pairs as long as any exist anywhere, rather
+    than giving up after the top two generations.
+    """
     if not elements:
         return []
 
-    max_gen = max(e["generation"] for e in elements.values())
-    # Use current frontier (highest gen) as anchors
-    frontier = [name for name, e in elements.items() if e["generation"] == max_gen]
     all_names = list(elements.keys())
+    # Generations present, deepest (newest) first.
+    gens_desc = sorted({e["generation"] for e in elements.values()}, reverse=True)
 
     pairs = []
-    for anchor in frontier:
-        for partner in all_names:
-            key = _pair_key(anchor, partner)
-            if key not in tried:
-                pairs.append((anchor, partner))
-                if len(pairs) >= batch_size:
-                    return pairs
-    # If frontier exhausted, try gen-1
-    if not pairs and max_gen > 0:
-        prev_frontier = [name for name, e in elements.items() if e["generation"] == max_gen - 1]
-        for anchor in prev_frontier:
+    for gen in gens_desc:
+        frontier = [name for name, e in elements.items() if e["generation"] == gen]
+        for anchor in frontier:
             for partner in all_names:
                 key = _pair_key(anchor, partner)
                 if key not in tried:
@@ -279,36 +270,51 @@ def _generate_bfs_pairs(elements, tried, batch_size=100):
     return pairs
 
 
+def _novelty_weights(elements, names):
+    """Weight each element by generation + 1.
+
+    Newer (higher-generation) elements have been combined far less than the
+    original base elements, so most of their pairings are still untried. Biasing
+    selection toward them turns random/anchor draws — which otherwise almost
+    always land on the exhausted low-generation majority — into productive,
+    discovery-yielding combinations while still covering the whole pool.
+    """
+    return [elements[n]["generation"] + 1 for n in names]
+
+
 def _generate_random_pairs(elements, tried, batch_size=100):
-    """Random: pick random untried pairs."""
+    """Random: pick untried pairs, biased toward newer (less-explored) elements."""
     all_names = list(elements.keys())
     if len(all_names) < 2:
         return []
 
+    weights = _novelty_weights(elements, all_names)
+    # Draw a generous weighted candidate pool up front, then pair sequentially.
+    pool = random.choices(all_names, weights=weights, k=batch_size * 8)
+
     pairs = []
-    attempts = 0
-    max_attempts = batch_size * 10
-    while len(pairs) < batch_size and attempts < max_attempts:
-        a = random.choice(all_names)
-        b = random.choice(all_names)
+    i = 0
+    while len(pairs) < batch_size and i + 1 < len(pool):
+        a, b = pool[i], pool[i + 1]
+        i += 2
         if a == b:
-            attempts += 1
             continue
         key = _pair_key(a, b)
         if key not in tried:
             pairs.append((a, b))
             tried.add(key)  # Prevent duplicates within batch
-        attempts += 1
     return pairs
 
 
 def _generate_anchor_pairs(elements, tried, batch_size=100):
-    """Anchor sweep: pick a random element and combine with shuffled partners."""
+    """Anchor sweep: pick a (novelty-weighted) element and sweep it against
+    shuffled partners."""
     all_names = list(elements.keys())
     if not all_names:
         return []
 
-    anchor = random.choice(all_names)
+    weights = _novelty_weights(elements, all_names)
+    anchor = random.choices(all_names, weights=weights, k=1)[0]
     partners = [n for n in all_names if n != anchor]
     random.shuffle(partners)
     pairs = []
@@ -316,6 +322,7 @@ def _generate_anchor_pairs(elements, tried, batch_size=100):
         key = _pair_key(anchor, partner)
         if key not in tried:
             pairs.append((anchor, partner))
+            tried.add(key)  # Prevent re-proposing across loop iterations
             if len(pairs) >= batch_size:
                 break
     return pairs
@@ -374,14 +381,19 @@ def _run_pulse(event, run_id, started_at, start_mono):
     initial_delay = config["rate_limit_delay"]
     max_duration = config["max_duration"]
 
-    # Strategy: event payload can override, otherwise rotate or use SSM value
+    # Strategy: event payload can override, otherwise pick per SSM config.
+    # "rotate" means "choose an algorithm uniformly at random each pulse" —
+    # a genuinely random draw, not a counter-based round-robin. The previous
+    # implementation indexed into the list with an approximate DynamoDB
+    # item_count that AWS only refreshes ~every 6 hours; with a 4-hour pulse
+    # that counter was effectively frozen, so the "rotation" got stuck on a
+    # single strategy (bfs) run after run.
     _STRATEGIES = ["bfs", "random", "anchor"]
     event_strategy = event.get("strategy")
     if event_strategy in _STRATEGIES:
         strategy = event_strategy
     elif config["strategy"] == "rotate":
-        run_count = _count_total_runs()
-        strategy = _STRATEGIES[run_count % len(_STRATEGIES)]
+        strategy = random.choice(_STRATEGIES)
     else:
         strategy = config["strategy"]
 
@@ -435,7 +447,13 @@ def _run_pulse(event, run_id, started_at, start_mono):
 
             # Claim this pair atomically in DynamoDB
             if not _mark_pair_tried(pk):
-                continue  # Another worker already claimed it
+                # Already claimed (by another worker or a past run). Record it
+                # locally so the generator advances past it instead of
+                # re-proposing the same exhausted batch every iteration — the
+                # 10k tried-pairs sample can't see most already-tried pairs, so
+                # without this the loop spins with zero API calls until timeout.
+                tried.add(pk)
+                continue
 
             tried.add(pk)
             pairs_tried += 1

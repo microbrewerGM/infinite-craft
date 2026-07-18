@@ -178,7 +178,7 @@ Resources:
       Name: !Sub /infcft/${Stage}/strategy
       Type: String
       Value: rotate
-      Description: Exploration strategy (bfs, anchor, random, rotate)
+      Description: Exploration strategy — bfs, anchor, random, or rotate (rotate = pick one uniformly at random each pulse)
       Tags:
         app: InfiniteCraft
 
