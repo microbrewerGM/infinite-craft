@@ -1361,14 +1361,13 @@ function renderWorkerRunsInto(pane) {
   pane.appendChild(legendWrap);
 
   // Upcoming scheduled runs (next 24 hours)
-  const STRATEGIES = ['bfs', 'random', 'anchor'];
   const PULSE_INTERVAL = 4 * 3600000; // 4 hours in ms
   const upcomingWrap = el('div', {className:'scheduled-upcoming'});
   upcomingWrap.appendChild(el('h3', {textContent: 'Upcoming Scheduled Runs \u2014 Next 24 Hours'}));
+  upcomingWrap.appendChild(el('div', {style:{fontSize:'11px', color:'#666', marginBottom:'8px'}, textContent: 'Each pulse picks an algorithm at random, so upcoming algorithms can\u2019t be predicted.'}));
 
   // Find the most recent scheduled run to anchor projections
   const scheduledRuns = workerRuns.filter(r => r.source === 'scheduled' && r.started_at);
-  const totalRunCount = workerRuns.length;
   const nowMs = Date.now();
 
   let nextPulse;
@@ -1388,8 +1387,6 @@ function renderWorkerRunsInto(pane) {
 
   let futureCount = 0;
   for (let t = nextPulse; t < nowMs + 24 * 3600000; t += PULSE_INTERVAL) {
-    const runIndex = totalRunCount + futureCount;
-    const strategy = STRATEGIES[runIndex % STRATEGIES.length];
     const dt = new Date(t);
     const diffMs = t - nowMs;
     const diffH = Math.floor(diffMs / 3600000);
@@ -1398,7 +1395,7 @@ function renderWorkerRunsInto(pane) {
 
     const row = el('div', {className:'scheduled-row'}, [
       el('span', {className:'sched-time', textContent: dt.toLocaleString(undefined, {weekday:'short', hour:'2-digit', minute:'2-digit', hour12:true})}),
-      el('span', {className:'sched-strategy', textContent: strategy.toUpperCase()}),
+      el('span', {className:'sched-strategy', textContent: 'RANDOMIZED'}),
       el('span', {className:'sched-countdown', textContent: 'in ' + countdown}),
     ]);
     upcomingWrap.appendChild(row);
