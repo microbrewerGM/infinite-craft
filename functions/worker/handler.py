@@ -53,6 +53,12 @@ HEADERS = {
     "sec-fetch-site": "same-origin",
 }
 
+# Consecutive Cloudflare challenges after which the pulse gives up. Challenges
+# are intermittent, so a couple in a row is worth riding out; a sustained run of
+# them means the origin is actively refusing automated traffic and continuing
+# would just be noise against someone else's server.
+CHALLENGE_ABORT_STREAK = 5
+
 # ── Clients (reused across warm invocations) ─────────────────
 
 _dynamo = None
@@ -204,6 +210,93 @@ def _mark_pair_tried(pair_key):
         raise
 
 
+_STRATEGIES = ["bfs", "random", "anchor"]
+
+# Floor on each strategy's selection probability. Keeps a strategy that is
+# temporarily cold from being starved to zero (its rate could never recover if
+# it stopped being sampled) and guarantees a never-run strategy gets tried.
+_STRATEGY_FLOOR = 0.10
+
+# Below this many recorded calls a strategy's measured rate is noise, so it is
+# scored at the average of the strategies that do have data rather than at 0.
+_STRATEGY_MIN_CALLS = 50
+
+
+def _strategy_yields():
+    """Discoveries per API call for each strategy, from the run history.
+
+    Returns {strategy: rate_or_None}. None means "not enough data to judge".
+    """
+    table = _get_dynamo().Table(WORKER_RUNS_TABLE)
+    stats = {s: [0, 0] for s in _STRATEGIES}  # [discoveries, api_calls]
+    kwargs = {
+        "ProjectionExpression": "#s, #d, #a",
+        "ExpressionAttributeNames": {
+            "#s": "strategy",
+            "#d": "discoveries",
+            "#a": "api_calls",
+        },
+    }
+    while True:
+        resp = table.scan(**kwargs)
+        for item in resp.get("Items", []):
+            s = item.get("strategy")
+            if s in stats:
+                stats[s][0] += int(item.get("discoveries") or 0)
+                stats[s][1] += int(item.get("api_calls") or 0)
+        key = resp.get("LastEvaluatedKey")
+        if not key:
+            break
+        kwargs["ExclusiveStartKey"] = key
+
+    return {
+        s: (disc / api if api >= _STRATEGY_MIN_CALLS else None)
+        for s, (disc, api) in stats.items()
+    }
+
+
+def _select_strategy():
+    """Choose a strategy weighted by its observed discoveries per API call.
+
+    Uniform choice spends an equal share of every pulse on whichever strategy
+    the frontier has exhausted. The run history is unambiguous about the cost:
+    bfs recorded 0 discoveries across 172 runs while random recorded 7 across 9.
+    Weighting by measured yield puts the calls where they produce something,
+    which also means fewer wasted requests against an API that is now behind
+    bot protection.
+
+    Falls back to uniform choice if the history cannot be read — a selection
+    heuristic is never worth failing a pulse over.
+    """
+    try:
+        rates = _strategy_yields()
+    except Exception as e:
+        print(f"[strategy] history unreadable ({type(e).__name__}: {e}), choosing uniformly")
+        return random.choice(_STRATEGIES), None
+
+    measured = [r for r in rates.values() if r is not None]
+    # An unmeasured strategy is scored at the average of the measured ones, so
+    # it is explored on its merits rather than assumed worthless.
+    prior = (sum(measured) / len(measured)) if measured else 1.0
+    scored = {s: (rates[s] if rates[s] is not None else prior) for s in _STRATEGIES}
+
+    total = sum(scored.values())
+    if total <= 0:
+        # Nothing has ever produced a discovery; explore uniformly.
+        return random.choice(_STRATEGIES), None
+
+    spread = 1.0 - _STRATEGY_FLOOR * len(_STRATEGIES)
+    weights = [_STRATEGY_FLOOR + spread * (scored[s] / total) for s in _STRATEGIES]
+    chosen = random.choices(_STRATEGIES, weights=weights, k=1)[0]
+
+    detail = ", ".join(
+        f"{s}={w:.0%}"
+        + ("" if rates[s] is None else f" ({1000 * rates[s]:.1f}/1k)")
+        for s, w in zip(_STRATEGIES, weights)
+    )
+    return chosen, detail
+
+
 def _save_worker_run(run_summary):
     """Log this run to the worker_runs audit table."""
     table = _get_dynamo().Table(WORKER_RUNS_TABLE)
@@ -230,8 +323,28 @@ def _query_pair(first, second):
             data["_response_time"] = time.monotonic() - t0
             return data
     except urllib.error.HTTPError as e:
+        # A Cloudflare managed challenge is NOT rate limiting, though it also
+        # arrives as 403. It is bot protection: the response carries
+        # `cf-mitigated: challenge` and an interstitial that only a browser
+        # executing the JS challenge can clear. Backing off never clears it, so
+        # treating it as rate limiting makes the worker spend its whole budget
+        # retrying something that cannot succeed. Classify it separately so the
+        # caller can stand down instead.
+        if e.code == 403 and (e.headers.get("cf-mitigated") or "").lower() == "challenge":
+            return {"_challenged": True, "_status_code": 403}
         if e.code in (429, 403):
-            return {"_rate_limited": True, "_status_code": e.code}
+            retry_after = None
+            raw_ra = e.headers.get("Retry-After")
+            if raw_ra:
+                try:
+                    retry_after = max(0.0, min(300.0, float(raw_ra.strip())))
+                except ValueError:
+                    retry_after = None  # HTTP-date form; fall back to AIMD
+            return {
+                "_rate_limited": True,
+                "_status_code": e.code,
+                "_retry_after": retry_after,
+            }
         print(f"[query] HTTP {e.code} for {first} + {second}: {e.reason}")
         return None
     except Exception as e:
@@ -382,23 +495,24 @@ def _run_pulse(event, run_id, started_at, start_mono):
     max_duration = config["max_duration"]
 
     # Strategy: event payload can override, otherwise pick per SSM config.
-    # "rotate" means "choose an algorithm uniformly at random each pulse" —
-    # a genuinely random draw, not a counter-based round-robin. The previous
-    # implementation indexed into the list with an approximate DynamoDB
-    # item_count that AWS only refreshes ~every 6 hours; with a 4-hour pulse
-    # that counter was effectively frozen, so the "rotation" got stuck on a
-    # single strategy (bfs) run after run.
-    _STRATEGIES = ["bfs", "random", "anchor"]
+    # "rotate" means "choose an algorithm weighted by how productive it has
+    # actually been" — see _select_strategy. An earlier implementation indexed
+    # into the list with an approximate DynamoDB item_count that AWS refreshes
+    # only ~every 6 hours; with a 4-hour pulse that counter was frozen, so the
+    # "rotation" stuck on a single strategy (bfs) run after run.
+    strategy_weights = None
     event_strategy = event.get("strategy")
     if event_strategy in _STRATEGIES:
         strategy = event_strategy
     elif config["strategy"] == "rotate":
-        strategy = random.choice(_STRATEGIES)
+        strategy, strategy_weights = _select_strategy()
     else:
         strategy = config["strategy"]
 
     print(f"[worker:{run_id}] Config: strategy={strategy}, "
           f"delay={initial_delay}s, max_duration={max_duration}s")
+    if strategy_weights:
+        print(f"[worker:{run_id}] Strategy weights: {strategy_weights}")
 
     # Load state from DynamoDB
     elements = _load_elements()
@@ -419,6 +533,7 @@ def _run_pulse(event, run_id, started_at, start_mono):
     known_safe_delay = initial_delay
     consecutive_successes = 0
     consecutive_failures = 0
+    consecutive_challenges = 0
     stability_threshold = 20
 
     # Exploration loop
@@ -428,6 +543,8 @@ def _run_pulse(event, run_id, started_at, start_mono):
     errors = 0
     nothing_count = 0
     pairs_tried = 0
+    challenges = 0
+    stop_reason = "completed"
 
     def time_left():
         return max_duration - (time.monotonic() - start_mono)
@@ -437,6 +554,7 @@ def _run_pulse(event, run_id, started_at, start_mono):
         pairs = _generate_pairs(strategy, elements, tried, batch_size=50)
         if not pairs:
             print(f"[worker:{run_id}] No untried pairs available for strategy={strategy}")
+            stop_reason = "frontier_exhausted"
             break
 
         for first, second in pairs:
@@ -463,6 +581,7 @@ def _run_pulse(event, run_id, started_at, start_mono):
                 wait = min(60, 5 * (2 ** (consecutive_failures - 1)))
                 if wait > time_left() - 2:
                     print(f"[worker:{run_id}] Backoff {wait:.0f}s exceeds remaining time, stopping")
+                    stop_reason = "time_exhausted"
                     break
                 time.sleep(wait)
             else:
@@ -476,19 +595,45 @@ def _run_pulse(event, run_id, started_at, start_mono):
                 errors += 1
                 continue
 
+            if data.get("_challenged"):
+                consecutive_challenges += 1
+                challenges += 1
+                consecutive_successes = 0
+                errors += 1
+                print(f"[worker:{run_id}] Cloudflare challenge (HTTP 403), "
+                      f"streak={consecutive_challenges}")
+                # Backing off cannot clear a JS challenge, so retrying past a
+                # short streak is pure noise against the origin — and it burns
+                # the rest of the Lambda budget for nothing. Stand down and let
+                # the next scheduled pulse find out whether it has lifted.
+                if consecutive_challenges >= CHALLENGE_ABORT_STREAK:
+                    stop_reason = "cloudflare_challenge"
+                    print(f"[worker:{run_id}] Sustained bot challenge — ending pulse early")
+                    break
+                time.sleep(min(delay, max(0, time_left() - 2)))
+                continue
+
             if data.get("_rate_limited"):
                 consecutive_failures += 1
                 consecutive_successes = 0
+                consecutive_challenges = 0
                 errors += 1
-                delay = min(60, max(known_safe_delay, delay) * 2.0)
+                retry_after = data.get("_retry_after")
+                if retry_after is not None:
+                    # Honour the server's own number over our guess.
+                    delay = min(60, max(delay, retry_after))
+                else:
+                    delay = min(60, max(known_safe_delay, delay) * 2.0)
                 status_code = data.get("_status_code", "?")
                 print(f"[worker:{run_id}] Rate limited (HTTP {status_code}), "
-                      f"streak={consecutive_failures}, delay={delay:.1f}s")
+                      f"streak={consecutive_failures}, delay={delay:.1f}s"
+                      + (f" (Retry-After: {retry_after:.0f}s)" if retry_after is not None else ""))
                 continue
 
             # Successful API call
             consecutive_successes += 1
             consecutive_failures = 0
+            consecutive_challenges = 0
             if consecutive_successes >= stability_threshold:
                 old = delay
                 delay = max(min_delay, delay * 0.9)
@@ -529,6 +674,12 @@ def _run_pulse(event, run_id, started_at, start_mono):
                     print(f"[worker:{run_id}] {'FIRST' if is_first else 'NEW'}: "
                           f"{first} + {second} = {result_name}")
 
+        # The exits above only leave the inner loop over this batch. Without
+        # this, an aborted pulse would fetch a fresh batch and keep going —
+        # which for a bot challenge means continuing to hammer the origin.
+        if stop_reason != "completed":
+            break
+
     duration = round(time.monotonic() - start_mono, 1)
 
     # Save run summary to audit table
@@ -544,6 +695,8 @@ def _run_pulse(event, run_id, started_at, start_mono):
         "first_discoveries": first_discoveries,
         "nothing_count": nothing_count,
         "errors": errors,
+        "challenges": challenges,
+        "stop_reason": stop_reason,
         "elements_total": len(elements),
         "final_delay": Decimal(str(round(delay, 3))),
         "source": str(event.get("source", "manual"))[:50],
@@ -557,6 +710,7 @@ def _run_pulse(event, run_id, started_at, start_mono):
 
     print(f"[worker:{run_id}] Done: {api_calls} API calls, "
           f"{discoveries} discoveries ({first_discoveries} firsts), "
-          f"{errors} errors, {duration}s")
+          f"{errors} errors, {challenges} challenges, {duration}s "
+          f"({stop_reason})")
 
     return run_summary

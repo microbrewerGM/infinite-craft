@@ -258,7 +258,11 @@ Resources:
                   - ssm:GetParameter
                   - ssm:GetParameters
                   - ssm:GetParametersByPath
-                Resource: !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/infcft/${Stage}/*
+                # GetParametersByPath authorizes against the path's own ARN, not
+                # the child parameters — both entries are required.
+                Resource:
+                  - !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/infcft/${Stage}
+                  - !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/infcft/${Stage}/*
         - PolicyName: WorkerLogs
           PolicyDocument:
             Version: '2012-10-17'
