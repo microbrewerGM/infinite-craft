@@ -600,17 +600,21 @@ def _run_pulse(event, run_id, started_at, start_mono):
                 challenges += 1
                 consecutive_successes = 0
                 errors += 1
+                # Back off exactly as for a rate limit. Backoff cannot clear a
+                # JS challenge, but a challenge still means the origin is
+                # refusing this traffic, and the correct answer to that is to
+                # send less of it. Skipping the backoff here (an earlier version
+                # of this branch did) doubled request volume against a server
+                # already turning a third of it away.
+                delay = min(60, max(known_safe_delay, delay) * 2.0)
                 print(f"[worker:{run_id}] Cloudflare challenge (HTTP 403), "
-                      f"streak={consecutive_challenges}")
-                # Backing off cannot clear a JS challenge, so retrying past a
-                # short streak is pure noise against the origin — and it burns
-                # the rest of the Lambda budget for nothing. Stand down and let
-                # the next scheduled pulse find out whether it has lifted.
+                      f"streak={consecutive_challenges}, delay={delay:.1f}s")
+                # Past a short streak, retrying is pure noise — stand down and
+                # let the next scheduled pulse find out whether it has lifted.
                 if consecutive_challenges >= CHALLENGE_ABORT_STREAK:
                     stop_reason = "cloudflare_challenge"
                     print(f"[worker:{run_id}] Sustained bot challenge — ending pulse early")
                     break
-                time.sleep(min(delay, max(0, time_left() - 2)))
                 continue
 
             if data.get("_rate_limited"):
