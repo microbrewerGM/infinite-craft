@@ -336,6 +336,24 @@ Resources:
   # ============================================================
   # Worker Lambda (self-coordinating, EventBridge triggered)
   # ============================================================
+  #
+  # CloudWatch log retention is deliberately NOT declared here. Lambda
+  # auto-created /aws/lambda/infcft-{worker,api}-${Stage} on first invoke, so an
+  # AWS::Logs::LogGroup resource with those names would fail the deploy with
+  # "already exists" — bringing them under CloudFormation needs a resource
+  # import, and the only way to avoid that is to delete the groups and lose the
+  # history the retention is meant to preserve. Retention is therefore set out
+  # of band and is known drift:
+  #
+  #   aws logs put-retention-policy --log-group-name /aws/lambda/infcft-worker-${STAGE} \
+  #     --retention-in-days 30 --profile ${AWS_PROFILE} --region ${AWS_REGION}
+  #
+  # Set to 30 days on 2026-07-25, matching the worker-runs TTL in
+  # functions/worker/handler.py. Left unset, Lambda's default is Never Expire.
+  # Note the deployer can set retention (logs:PutRetentionPolicy is scoped to
+  # /aws/lambda/infcft-*) but cannot read it back: logs:DescribeLogGroups is a
+  # list operation AWS evaluates against Resource "*", which the scoped policy
+  # does not grant. Check the console to confirm.
 
   WorkerFunction:
     Type: AWS::Serverless::Function
