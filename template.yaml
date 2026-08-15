@@ -534,7 +534,7 @@ Resources:
           ContentSecurityPolicy:
             ContentSecurityPolicy: >-
               default-src 'self';
-              script-src 'self' https://d3js.org;
+              script-src 'self';
               style-src 'self' 'unsafe-inline';
               connect-src 'self';
               img-src 'self' data:;

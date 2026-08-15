@@ -218,8 +218,32 @@ let focusTimeout = null;
 const BASE_SET = new Set(['Water', 'Fire', 'Wind', 'Earth']);
 let _prevDiscoveryKeys = new Set(); // tracks rendered discoveries for incremental updates
 
+/**
+ * The graph is the only part of the dashboard that needs d3. If the script
+ * fails to load, say so in the graph pane and let the element list, analytics,
+ * discoveries, and worker views carry on — previously a missing d3 threw out
+ * of refreshDiscoveries() and left the whole page blank.
+ */
+let _graphUnavailableShown = false;
+
+function graphAvailable() {
+  if (typeof d3 !== 'undefined') return true;
+  if (!_graphUnavailableShown) {
+    _graphUnavailableShown = true;
+    const pane = document.getElementById('content-pane');
+    if (pane && currentView === 'graph') {
+      pane.textContent = 'The graph library failed to load, so the element graph is unavailable. The other views still work.';
+      pane.style.padding = '24px';
+      pane.style.color = '#999';
+    }
+    setStatus('error', 'Graph library unavailable');
+  }
+  return false;
+}
+
 function updateGraph(newDiscoveries) {
   if (!newDiscoveries.length) return;
+  if (!graphAvailable()) return;
 
   // Build set of current discovery keys
   const currentKeys = new Set(newDiscoveries.map(d => d.element));
@@ -361,6 +385,7 @@ function updateGraph(newDiscoveries) {
 }
 
 function renderGraph() {
+  if (!graphAvailable()) return;
   const svg = d3.select('#graph-svg');
   svg.selectAll('*').remove();
   selectedNode = null;
