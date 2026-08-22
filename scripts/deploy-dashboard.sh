@@ -70,7 +70,13 @@ echo "Uploading to s3://${BUCKET}/"
 aws s3 sync "${DASHBOARD_DIR}" "s3://${BUCKET}/" \
   --delete \
   --cache-control "public, max-age=300" \
-  --exclude ".DS_Store"
+  --exclude ".DS_Store" \
+  --exclude "vendor/*"
+
+# Vendored libraries are version-pinned and never change in place.
+aws s3 sync "${DASHBOARD_DIR}/vendor" "s3://${BUCKET}/vendor" \
+  --delete \
+  --cache-control "public, max-age=31536000, immutable"
 
 # Invalidate CloudFront cache
 if [ -n "${CF_DIST_ID}" ] && [ "${CF_DIST_ID}" != "None" ]; then

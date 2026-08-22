@@ -218,8 +218,41 @@ let focusTimeout = null;
 const BASE_SET = new Set(['Water', 'Fire', 'Wind', 'Earth']);
 let _prevDiscoveryKeys = new Set(); // tracks rendered discoveries for incremental updates
 
+/**
+ * The graph is the only part of the dashboard that needs d3. If the script
+ * fails to load, say so in the graph pane and let the element list, analytics,
+ * discoveries, and worker views carry on — previously a missing d3 threw out
+ * of refreshDiscoveries() and left the whole page blank.
+ */
+let _graphUnavailableAnnounced = false;
+
+function graphAvailable() {
+  if (typeof d3 !== 'undefined') return true;
+  showGraphUnavailable();
+  return false;
+}
+
+/**
+ * Renders the notice in place of the graph. This runs on every entry to the
+ * graph view rather than once: the graph view hides #content-pane, and
+ * switchView() re-renders that pane for the other three views, so a
+ * write-once message would be both invisible and overwritten.
+ */
+function showGraphUnavailable() {
+  const pane = document.getElementById('content-pane');
+  if (pane && currentView === 'graph') {
+    pane.textContent = 'The graph library failed to load, so the element graph is unavailable. The other views still work.';
+    pane.classList.add('pane-notice', 'visible');
+  }
+  if (!_graphUnavailableAnnounced) {
+    _graphUnavailableAnnounced = true;
+    setStatus('error', 'Graph library unavailable');
+  }
+}
+
 function updateGraph(newDiscoveries) {
   if (!newDiscoveries.length) return;
+  if (!graphAvailable()) return;
 
   // Build set of current discovery keys
   const currentKeys = new Set(newDiscoveries.map(d => d.element));
@@ -361,6 +394,7 @@ function updateGraph(newDiscoveries) {
 }
 
 function renderGraph() {
+  if (!graphAvailable()) return;
   const svg = d3.select('#graph-svg');
   svg.selectAll('*').remove();
   selectedNode = null;
@@ -1610,8 +1644,10 @@ function switchView(view) {
   const contentPane = document.getElementById('content-pane');
   if (view === 'graph') {
     contentPane.classList.remove('visible');
+    if (!graphAvailable()) return;
     if (simulation) simulation.restart();
   } else {
+    contentPane.classList.remove('pane-notice');
     contentPane.classList.add('visible');
     renderContentPane();
     // Fetch view-specific data on switch
@@ -1745,6 +1781,10 @@ function updateNodeSizes() {
     console.error('Init error:', e);
   }
   renderLegend();
+
+  // The graph is the landing view, so say why it is empty at load rather than
+  // waiting for the first data refresh to reach a d3 call.
+  graphAvailable();
 
   // Poll with visibility-aware backoff — pause when tab is hidden
   let pollTimer = setInterval(refreshAll, POLL_INTERVAL);

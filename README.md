@@ -30,6 +30,14 @@ This project answers that question with an army of autonomous serverless workers
 
 The workers pulse every 4 hours, trying new combinations and logging everything. The element space appears to be effectively infinite — every session finds new things.
 
+## Dependencies
+
+The dashboard vendors d3 v7.9.0 in `dashboard/vendor/` and serves it from our own
+origin. It used to load from `https://d3js.org`, which made a third-party CDN a
+runtime single point of failure and required `script-src 'self' https://d3js.org`
+in the CSP. The vendored file is byte-identical to the upstream release (the
+Subresource Integrity hash is unchanged) and the CSP is now `script-src 'self'`.
+
 ## Down the Rabbit Hole
 
 It starts normal enough. Water + Fire = Steam. Sure. Earth + Fire = Lava. Fine.

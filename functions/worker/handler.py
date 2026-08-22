@@ -212,20 +212,35 @@ def _mark_pair_tried(pair_key):
 
 _STRATEGIES = ["bfs", "random", "anchor"]
 
-# Floor on each strategy's selection probability. Keeps a strategy that is
-# temporarily cold from being starved to zero (its rate could never recover if
-# it stopped being sampled) and guarantees a never-run strategy gets tried.
-_STRATEGY_FLOOR = 0.10
+# Hard bounds on any single strategy's selection probability.
+#
+# The floor keeps a cold strategy sampled. Without it, a strategy that measures
+# badly is starved to zero and can never recover, because it stops generating
+# the very data that would show it improved — the frontier shifts as elements
+# accumulate, so today's dead strategy is not permanently dead.
+#
+# The ceiling keeps the worker from collapsing onto one algorithm. With three
+# strategies, a 0.75 cap forces the other two to split the remaining 0.25.
+_STRATEGY_MIN_WEIGHT = 0.05
+_STRATEGY_MAX_WEIGHT = 0.75
 
 # Below this many recorded calls a strategy's measured rate is noise, so it is
 # scored at the average of the strategies that do have data rather than at 0.
 _STRATEGY_MIN_CALLS = 50
 
+# Calls the thinnest-sampled strategy needs before the measured yields are
+# trusted in full. Below it, selection is blended back toward uniform. At the
+# observed ~18 discoveries per 1k calls, 500 calls is enough to tell a genuine
+# zero from bad luck (a true 18/1k rate would produce ~9 discoveries).
+_STRATEGY_CONFIDENT_CALLS = 500
 
-def _strategy_yields():
-    """Discoveries per API call for each strategy, from the run history.
 
-    Returns {strategy: rate_or_None}. None means "not enough data to judge".
+def _strategy_totals():
+    """Lifetime discoveries and API calls per strategy, from the run history.
+
+    Returns {strategy: (discoveries, api_calls)}. Run rows carry a 30-day TTL,
+    so this is a rolling window rather than all-time: a strategy that turns
+    productive later is not held down forever by old results.
     """
     table = _get_dynamo().Table(WORKER_RUNS_TABLE)
     stats = {s: [0, 0] for s in _STRATEGIES}  # [discoveries, api_calls]
@@ -249,50 +264,107 @@ def _strategy_yields():
             break
         kwargs["ExclusiveStartKey"] = key
 
-    return {
-        s: (disc / api if api >= _STRATEGY_MIN_CALLS else None)
-        for s, (disc, api) in stats.items()
-    }
+    return {s: (disc, api) for s, (disc, api) in stats.items()}
+
+
+def _shape_weights(scores):
+    """Turn raw scores into probabilities inside the min/max weight band.
+
+    Straight proportional weighting is unusable at the extremes. With the
+    current history — `random` the only strategy with a non-zero rate — it hands
+    `random` effectively everything and the others nothing. Clamp whoever falls
+    outside the band, then re-share the remaining budget among those still free
+    to move, repeating until every share fits.
+    """
+    lo, hi = _STRATEGY_MIN_WEIGHT, _STRATEGY_MAX_WEIGHT
+    weights = {}
+    free = set(scores)
+    budget = 1.0
+    while free:
+        total = sum(scores[s] for s in free)
+        if total > 0:
+            share = {s: budget * scores[s] / total for s in free}
+        else:
+            # No signal to separate them; split what is left evenly.
+            share = {s: budget / len(free) for s in free}
+        outside = [s for s in free if not lo <= share[s] <= hi]
+        if not outside:
+            weights.update(share)
+            break
+        for s in outside:
+            weights[s] = hi if share[s] > hi else lo
+            budget -= weights[s]
+            free.discard(s)
+
+    # Pinning every strategy can leave the total short of 1 — three strategies
+    # at 0.75/0.05/0.05 sum to 0.85. Hand the shortfall to whoever still has
+    # room under the ceiling, in proportion to that room, which keeps both
+    # bounds intact.
+    residual = 1.0 - sum(weights.values())
+    if residual > 1e-9:
+        headroom = {s: hi - w for s, w in weights.items()}
+        room = sum(headroom.values())
+        if room > 0:
+            for s in weights:
+                weights[s] += residual * headroom[s] / room
+    return weights
 
 
 def _select_strategy():
-    """Choose a strategy weighted by its observed discoveries per API call.
+    """Choose a strategy, weighted by its observed discoveries per API call.
 
-    Uniform choice spends an equal share of every pulse on whichever strategy
-    the frontier has exhausted. The run history is unambiguous about the cost:
-    bfs recorded 0 discoveries across 172 runs while random recorded 7 across 9.
-    Weighting by measured yield puts the calls where they produce something,
-    which also means fewer wasted requests against an API that is now behind
-    bot protection.
+    Two regimes, blended rather than switched between:
 
-    Falls back to uniform choice if the history cannot be read — a selection
-    heuristic is never worth failing a pulse over.
+    1. While the run history is thin, selection is uniform — every strategy
+       gets an equal share so each one earns its own measurement. A strategy
+       with no history at all pins the whole selector here on its own.
+    2. As the thinnest history fills in, weights slide toward measured yield,
+       bounded by _STRATEGY_MIN_WEIGHT / _STRATEGY_MAX_WEIGHT.
+
+    Blending is what makes the bounds hold for free: uniform sits inside the
+    band and the shaped target sits inside the band, so every point between
+    them does too.
+
+    Falls back to uniform if the history cannot be read — a selection heuristic
+    is never worth failing a pulse over.
     """
     try:
-        rates = _strategy_yields()
+        totals = _strategy_totals()
     except Exception as e:
         print(f"[strategy] history unreadable ({type(e).__name__}: {e}), choosing uniformly")
         return random.choice(_STRATEGIES), None
 
+    rates = {
+        s: (disc / calls if calls >= _STRATEGY_MIN_CALLS else None)
+        for s, (disc, calls) in totals.items()
+    }
     measured = [r for r in rates.values() if r is not None]
     # An unmeasured strategy is scored at the average of the measured ones, so
     # it is explored on its merits rather than assumed worthless.
     prior = (sum(measured) / len(measured)) if measured else 1.0
-    scored = {s: (rates[s] if rates[s] is not None else prior) for s in _STRATEGIES}
+    scored = {s: (prior if rates[s] is None else rates[s]) for s in _STRATEGIES}
 
-    total = sum(scored.values())
-    if total <= 0:
-        # Nothing has ever produced a discovery; explore uniformly.
-        return random.choice(_STRATEGIES), None
+    # Confidence is set by the *least*-sampled strategy: a comparison between
+    # strategies is only as trustworthy as its weakest arm. This self-corrects,
+    # since the floor keeps that arm being sampled until it catches up.
+    thinnest = min(calls for _, calls in totals.values())
+    confidence = min(1.0, thinnest / _STRATEGY_CONFIDENT_CALLS)
 
-    spread = 1.0 - _STRATEGY_FLOOR * len(_STRATEGIES)
-    weights = [_STRATEGY_FLOOR + spread * (scored[s] / total) for s in _STRATEGIES]
-    chosen = random.choices(_STRATEGIES, weights=weights, k=1)[0]
+    uniform = 1.0 / len(_STRATEGIES)
+    target = _shape_weights(scored)
+    weights = {
+        s: (1.0 - confidence) * uniform + confidence * target[s]
+        for s in _STRATEGIES
+    }
 
-    detail = ", ".join(
-        f"{s}={w:.0%}"
+    chosen = random.choices(
+        _STRATEGIES, weights=[weights[s] for s in _STRATEGIES], k=1
+    )[0]
+
+    detail = f"confidence={confidence:.0%}; " + ", ".join(
+        f"{s}={weights[s]:.0%}"
         + ("" if rates[s] is None else f" ({1000 * rates[s]:.1f}/1k)")
-        for s, w in zip(_STRATEGIES, weights)
+        for s in _STRATEGIES
     )
     return chosen, detail
 
